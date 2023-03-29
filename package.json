@@ -1,0 +1,35 @@
+{
+  "name": "museum",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"nodemon server",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.2",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-router-dom": "^6.9.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "concurrently": "^7.6.0",
+    "vite": "^4.2.1"
+  }
+}
