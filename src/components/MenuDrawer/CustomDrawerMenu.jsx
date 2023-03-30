@@ -42,7 +42,7 @@ export default function CustomDrawer() {
   ]
 
   const list = () => (
-    <Box className="CustomDrawerMenu"
+    <Box sx={{width: 0.5 }} className="CustomDrawerMenu sticky"
       role="presentation"
       onClick={toggleDrawer(false)}
     >
@@ -62,11 +62,11 @@ export default function CustomDrawer() {
   );
 
   return (
-    <>
+    <div className="CustomDrawerMenuButtonContainer">
           <Button className="CustomDrawerMenuButton" onClick={toggleDrawer(true)}><MenuIcon/></Button>
           <Drawer anchor='left' open={isOpen} onClose={toggleDrawer(false)}>
             {list()}
           </Drawer>
-    </>
+    </div>
   );
 }

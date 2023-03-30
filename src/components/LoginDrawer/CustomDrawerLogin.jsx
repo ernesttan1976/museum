@@ -18,7 +18,7 @@ export default function CustomDrawer() {
 
   const list = () => (
     <Box
-      className="CustomDrawerLogin"
+      className="CustomDrawerLogin sticky"
       role="presentation"
       onClick={toggleDrawer(false)}
     >
