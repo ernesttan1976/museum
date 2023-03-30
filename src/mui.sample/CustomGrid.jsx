@@ -15,16 +15,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function CustomGrid() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box className="CustomGrid" sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Item><CustomCard /></Item>
-          <Item><CustomCard /></Item>
-          <Item><CustomCard /></Item>
         </Grid>
         <Grid item xs={6}>
-          <Item><CustomCard /></Item>
-          <Item><CustomCard /></Item>
           <Item><CustomCard /></Item>
         </Grid>
       </Grid>

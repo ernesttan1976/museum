@@ -1,9 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connection.on("error", (err) =>
+  console.log(err.message + " is Mongod not running?")
+);
+mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
 
-const db = mongoose.connection;
-
-db.on('connected', function () {
-  console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
+const DATABASE_URL = process.env.DATABASE_URL;
+mongoose.connect(DATABASE_URL);
+mongoose.connection.once("open", () => {
+  console.log("Connected to mongoose...at "+DATABASE_URL);
 });

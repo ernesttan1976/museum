@@ -1,36 +1,38 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FolderIcon from '@mui/icons-material/Folder';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import {useNavigate} from 'react-router-dom';
 
 export default function CustomBottomNavigation() {
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState('/');
+
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    navigate(newValue);
   };
 
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation className="CustomBottomNavigation" value={value} onChange={handleChange}>
       <BottomNavigationAction
-        label="Recents"
-        value="recents"
-        icon={<RestoreIcon />}
+        label="Home"
+        value="/"
+        icon={<HomeOutlinedIcon />}
       />
       <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
+        label="Artworks"
+        value="/artworks"
+        icon={<ImageSearchOutlinedIcon />}
       />
       <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
+        label="Map"
+        value="/map"
+        icon={<LocationOnOutlinedIcon />}
       />
-      <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
     </BottomNavigation>
   );
 }

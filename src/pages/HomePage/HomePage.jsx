@@ -2,14 +2,14 @@ import React from 'react';
 import CustomCarousel from '../../mui.sample/CustomCarousel';
 import CustomGrid from '../../mui.sample/CustomGrid';
 import CustomContainer from '../../mui.sample/CustomContainer';
+import Box from '@mui/material/Box';
 
 const HomePage = () => {
     return (
-        <div>
+        <Box className="HomePage">
             <CustomCarousel />
             <CustomGrid />
-            <CustomContainer />
-        </div>
+        </Box>
     );
 }
 

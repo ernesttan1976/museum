@@ -32,7 +32,7 @@ export default function CustomCarousel(props) {
     ]
 
     return (
-        <Carousel sx={{ width: 100 / 100 }} height={420} autoPlay={true}>
+        <Carousel className="CustomCarousel" sx={{ width: 100 / 100 }} height={420} autoPlay={true}>
             {
                 items.map((item, i) => <Item key={i} item={item} />)
             }

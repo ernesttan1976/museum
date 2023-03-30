@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useState } from 'react'
+import Box from '@mui/material/Box';
 
 export default function FSignUpForm() {
 
@@ -26,9 +27,7 @@ export default function FSignUpForm() {
     const disable = data.password !== data.confirm;
 
     return (
-        <div>
-
-            <div className="form-container">
+            <Box className="form-container">
                 <form autoComplete='off' onSubmit={handleSubmit}>
                     <label htmlFor="">Name</label>
                     <input type="text" name="name" value={data.name} onChange={handleChange} />
@@ -38,8 +37,7 @@ export default function FSignUpForm() {
                     <input type="password" name="password" value={data.password} onChange={handleChange} />
                     <button type="submit" disabled={disable}>SIGN UP</button>
                 </form>
-            </div>
-            <p className="error-message">&nbsp;{data.error}</p>
-        </div>
+                <p className="error-message">&nbsp;{data.error}</p>
+            </Box>
     )
 }
