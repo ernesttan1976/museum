@@ -1,0 +1,64 @@
+[{
+    "_id": {
+      "$oid": "6425c260c9d195369ec02476"
+    },
+    "artworks": [
+      {
+        "$oid": "6415326a1fdaed807a26dd2e"
+      },
+      {
+        "$oid": "6425ba0ac9d195369ec02461"
+      },
+      {
+        "$oid": "6425bfb3c9d195369ec02471"
+      },
+      {
+        "$oid": "6425c0a3c9d195369ec02472"
+      },
+      {
+        "$oid": "6425c122c9d195369ec02473"
+      },
+      {
+        "$oid": "6425c1b4c9d195369ec02474"
+      }
+    ],
+    "exhibitionComments": [
+      ""
+    ],
+    "exhibitionEndDate": "16-3-2023",
+    "exhibitionEntry": "General Admission",
+    "exhibitionInformation": "Starting in the mid-19th century, the exhibition navigates the art history of Southeast Asia as one that is characterised by a continuous encounter with the new as the region’s artists negotiated the meaning of art and sought to reinvent vernacular expressions and aesthetics.\n\nPresented in a largely chronological sequence and punctuated by key turning points in artistic sensibilities, the exhibition also identifies how art is inseparably linked to the region’s tumultuous social and political history.\n\nThe title of the exhibition, Between Declarations and Dreams, is credited to one of Indonesia’s most cherished poets, Chairil Anwar. In his poem of 1948, \"Krawang-Bekasi”, Chairil Anwar laments the massacre of villagers in West Java by the Dutch colonial forces, giving vent to the desire for national independence at the time. This line may also be said to encapsulate the experiences of many artists in the region, caught as they are between declarations and dreams, the personal and the political.\n\nThe curatorial narrative explores four main themes places in a broadly chronological sequence, each one critically examining the shared artistic impulse of the region for each period: Authority and Anxiety, Imagining Country and Self, Manifesting the Nation, and Re:Defining Art.",
+    "exhibitionStartDate": "12-4-2022",
+    "exhibitionTitle": "Between Declarations and Dreams",
+    "exhibitionTitleSub": "Art of Southeast Asia since the 19th Century"
+  },{
+    "_id": {
+      "$oid": "6425c854c9d195369ec02494"
+    },
+    "artworks": [
+      {
+        "$oid": "6425c7c0c9d195369ec02492"
+      },
+      {
+        "$oid": "6425c781c9d195369ec02491"
+      },
+      {
+        "$oid": "6425c74ec9d195369ec02490"
+      },
+      {
+        "$oid": "6425c70fc9d195369ec0248f"
+      },
+      {
+        "$oid": "6425c6a6c9d195369ec0248e"
+      }
+    ],
+    "exhibitionComments": [
+      ""
+    ],
+    "exhibitionEndDate": "16-5-2023",
+    "exhibitionEntry": "General Admission",
+    "exhibitionInformation": "The most endearing fact about Singapore is her location: set in a vast archipelago of island neighbours, she raises questions of scale and proportion whenever she is contemplated. Geographically, she appears dwarfed by the immensity of her surroundings, leading her sea-locked inhabitants to constantly look outwards to the world at large. Yet her position in the world belies her physical size.  \n\nThis exhibition examines how artists in Singapore have grappled with similar issues since the 19th century, when much of Southeast Asia was under European colonial rule. With diverse values and systems coming into close contact with the region’s existing beliefs and social structures, the 19th century represents a break with what came before. It also marks the beginning of the modern condition and the rise of modern art in Southeast Asia and Singapore.\n\nIn Malay, “Siapa Nama Kamu?” means “What is your name?” This question is taken from National Language Class, a painting that hung on the walls of City Hall in the 1960s, where the Ministry of Culture was located. It was painted in 1959, the year Singapore gained self-governance from the British, and came to resonate with that historical change.\n\nThe display of about 300 works drawn from the National Collection and other sources provides a way to understand the history of Singapore art. Each artwork taken individually provides insights into why and how an artist responded to his surroundings and circumstances. Taken as a whole, the wide range of artworks reflects the complexities involved in telling this story.  \n\nSiapa Nama Kamu? is then a question and an invitation—to consider how art can operate as a mirror to but also complicate our reality.",
+    "exhibitionStartDate": "12-8-2022",
+    "exhibitionTitle": "Siapa Nama Kamu?",
+    "exhibitionTitleSub": "Art in Singapore since 19th Century"
+  }]
