@@ -9,46 +9,31 @@ import { red } from '@mui/material/colors';
 import { useEffect, useState } from "react";
 
 
-export default function ArtworksCard() {
- 
-  const [artworks, setArtworks] = useState([{ _id: "" }]);
-  // console.log(artworks);
-  useEffect(() => {
-    fetch("/api/artworks")
-      .then((response) => response.json())
-      .then((data) => setArtworks(data));
-  }, []);
+const StyledCard = styled(Card)(({ theme }) => ({
+  maxWidth: 350,
+  minHeight: 350,
+  border: '1px solid'
+}));
 
+export default function ArtworksCard(props) {
+  const { artwork } = props;
  
-   //! show artwork id's details
-  // const [selectedId, setSelectedId] = useState(artworks[0]._id);
-  // const selectedArtworks = artworks.find((a) => a._id === selectedId);
-  // const handleHover = (id) => () => {
-  //   setSelectedId(id);
-  // };
-
   return (
-    <Card className="artwork" sx={{ maxWidth: 345 }}>
-    <CardContent>
-      {artworks.map((artwork) => (
-    <React.Fragment key={artwork._id}>
-      <CardMedia
-        component="img"
-        height="194"
-        image={artwork.artworkUrl}
-        alt="The Commandant"
-      />
-      <Typography variant="body2" color="text.secondary">
-        {artwork.artistName}
-      </Typography>
-      <Typography paragraph>
-        {artwork.artworkTitle}
-      </Typography>
-    </React.Fragment>
-    ))}
-  </CardContent>
-
-  </Card>
+    <StyledCard className="artwork">
+      <CardContent>   
+        <CardMedia
+          component="img"
+          height="200"
+          image={artwork.artworkUrl}
+          alt={artwork.artworkTitle}
+        /> <br></br>
+        <Typography variant="body2" color="text.secondary">
+          {artwork.artistName}
+        </Typography> <p></p>
+        <Typography paragraph>
+          {artwork.artworkTitle}
+        </Typography>
+      </CardContent>
+    </StyledCard>
   );
 }
-
