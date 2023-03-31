@@ -16,7 +16,7 @@ export default function ExhibitionGrid() {
   return (
     <>
       <p>{JSON.stringify(exhibition)}</p>
-  <h1>{JSON.stringify(exhibition[0].exhibitionLocation.address)}</h1>
+  <h1>{JSON.stringify(exhibition[0]?.exhibitionLocation.address)}</h1>
       <Grid className="CustomGrid" container spacing={2}>
         <Grid item xs={12} sm={6} lg={3}>
           <CustomCard />
