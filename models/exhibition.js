@@ -38,7 +38,7 @@ const exhibitionsSchema = new Schema(
 
     artworks: [
       {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId, 
         ref: "Artwork",
       },
     ],
