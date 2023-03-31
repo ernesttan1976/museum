@@ -40,7 +40,7 @@ const artworkSchema = new Schema(
     },
 
     // embedded comments for user
-    artworkComments: [artworkComments],
+    // artworkComments: [artworkComments],
   },
   {
     timestamps: {
