@@ -1,13 +1,22 @@
 const Exhibition = require("../models/Exhibition");
 
-// const create = async (req, res) => {
-//   try {
-//     const createdHoliday = await Holiday.create(req.body);
-//     res.status(201).json(createdHoliday);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+const index = async (req, res) => {
+    try {
+      const foundExhibition = await Exhibition.find({});
+      res.status(200).json(foundExhibition);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  };
+
+const create = async (req, res) => {
+  try {
+    const createdExhibition = await Exhibition.create(req.body);
+    res.status(201).json(createdExhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 // const seed = async (req, res) => {
 //   try {
@@ -27,14 +36,7 @@ const Exhibition = require("../models/Exhibition");
 //   }
 // };
 
-// const index = async (req, res) => {
-//   try {
-//     const foundHolidays = await Holiday.find({});
-//     res.status(200).json(foundHolidays);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+
 
 // const deleteHoliday = async (req, res) => {
 //   try {
@@ -67,11 +69,11 @@ const Exhibition = require("../models/Exhibition");
 //   }
 // };
 
-// module.exports = {
-//   create,
+module.exports = {
+  create,
 //   seed,
-//   index,
+  index,
 //   delete: deleteHoliday,
 //   show,
 //   update,
-// };
+};
