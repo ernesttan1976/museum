@@ -1,0 +1,27 @@
+.CustomDrawerLogin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 300px;
+      position: sticky;
+    top: 0;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    row-gap: 8px;
+  }
+  
+  .form-container>label,
+  .form-container>input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+  }
+  

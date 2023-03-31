@@ -20,12 +20,12 @@ const exhibitionsSchema = new Schema(
     },
 
     exhibitionStartDate: {
-      type: Number,
+      type: Date,
       required: true,
     },
 
     exhibitionEndDate: {
-      type: Number,
+      type: Date,
       required: true,
     },
 
@@ -34,7 +34,16 @@ const exhibitionsSchema = new Schema(
       required: true,
     },
 
-    // location
+    exhibitionLocation: {
+      address: {
+        type: String,
+        required: true,
+      },
+      floor: {
+        type: Number,
+        required: true,
+      },
+    },
 
     artworks: [
       {

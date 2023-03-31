@@ -15,6 +15,7 @@ specifiers:
   mongoose: ^7.0.2
   morgan: ^1.10.0
   path: ^0.12.7
+  prop-types: ^15.8.1
   react: ^18.2.0
   react-dom: ^18.2.0
   react-material-ui-carousel: ^3.4.2
@@ -34,6 +35,7 @@ dependencies:
   mongoose: 7.0.3
   morgan: 1.10.0
   path: 0.12.7
+  prop-types: 15.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-material-ui-carousel: 3.4.2_d2ozaqu577hazxdrrs5x2o3xje

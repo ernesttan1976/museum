@@ -3,8 +3,10 @@ const path = require("path");
 const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
+
 // const userRouter = require("./routes/usersRouter");
 const artworkRouter = require("./routes/artworksRouter");
+
 const jwt = require("jsonwebtoken");
 
 const app = express();
@@ -41,7 +43,6 @@ app.get("/api/secret", isLoggedIn, (req, res) => {
 
 // app.use("/api/users", userRouter);
 app.use("/api/artworks", artworkRouter);
-
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
