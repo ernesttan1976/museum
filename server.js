@@ -36,11 +36,12 @@ const isLoggedIn = (req, res, next) => {
 };
 
 // app.use("/api/users", userRouter);
+
 app.use("/api/exhibitions", exhibitionRouter);
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
 
 app.listen(port, () => {
   console.log(`Express listening on port ${port}`);

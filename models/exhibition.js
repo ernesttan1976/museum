@@ -2,6 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //const Artwork = require("../models/artwork")
 
+const commentSchema = new Schema(
+  {
+    comments: {
+      type: Array,
+      trim: true,
+      required: true,
+    },
+},
+  {
+    timestamps: true,
+  }
+);
+
+
 const exhibitionsSchema = new Schema(
   {
     exhibitionTitle: {
@@ -51,8 +65,7 @@ const exhibitionsSchema = new Schema(
         ref: "Artwork",
       },
     ],
-
-    exhibitionComments: [exhibitionComments], // <- embedding comments from user
+    exhibitionComments: [commentSchema] // <- embedding comments from user
   },
   {
     timestamps: {

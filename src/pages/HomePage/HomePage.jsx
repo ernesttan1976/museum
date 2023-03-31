@@ -1,13 +1,14 @@
 import React from 'react';
-import CustomCarousel from '../../components/CustomCarousel/CustomCarousel';
-import CustomGrid from '../../components/CustomGrid/CustomGrid';
+import HomePageCarousell from "../../components/HomePageCarousell/HomePageCarousell";
+import ExhibitionGrid from "../../components/ExhibitionGrid/ExhibitionGrid";
 import Box from '@mui/material/Box';
+
 
 const HomePage = () => {
     return (
         <Box className="HomePage">
-            <CustomCarousel />
-            <CustomGrid />
+            <HomePageCarousell />
+            <ExhibitionGrid />
         </Box>
     );
 }
