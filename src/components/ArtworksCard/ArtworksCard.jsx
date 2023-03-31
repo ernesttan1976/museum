@@ -27,32 +27,28 @@ export default function ArtworksCard() {
   //   setSelectedId(id);
   // };
 
-
-
   return (
-    <div>
-      {artworks[0].artworkTitle}
-    </div>
+    <Card className="artwork" sx={{ maxWidth: 345 }}>
+    <CardContent>
+      {artworks.map((artwork) => (
+    <React.Fragment key={artwork._id}>
+      <CardMedia
+        component="img"
+        height="194"
+        image={artwork.artworkUrl}
+        alt="The Commandant"
+      />
+      <Typography variant="body2" color="text.secondary">
+        {artwork.artistName}
+      </Typography>
+      <Typography paragraph>
+        {artwork.artworkTitle}
+      </Typography>
+    </React.Fragment>
+    ))}
+  </CardContent>
 
-    // <Card className="artwork" sx={{ maxWidth: 345 }}>
-
-    //   <CardMedia
-    //     component="img"
-    //     height="194"
-    //     image="https://mui.com/static/images/cards/paella.jpg"
-    //     alt="Artworks"
-    //   />
-    //   <CardContent>
-    //     {artworks.map((artwork) => (
-    //     <Typography variant="body2" color="text.secondary" >
-    //      {artwork.artistName}
-    //     </Typography>
-    //     ))}
-    //     <Typography paragraph>
-    //         .....
-    //       </Typography>
-    //   </CardContent>
-    // </Card>
+  </Card>
   );
 }
 
