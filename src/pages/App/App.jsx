@@ -9,28 +9,31 @@ import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary'
 import HomePage from '../HomePage/HomePage';
 import ArtworksPage from '../ArtworksPage/ArtworksPage';
 import MapPage from '../MapPage/MapPage';
+import ExperimentalPage from '../ExperimentalPage/ExperimentalPage';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   const [user, setUser] = useState(null);
 
   return (
     <main className="App" >
-      {/* <NavBar /> */}
+      <CssBaseline />
       <Box className="Header">
-      <CustomDrawerMenu />
-      <div>LOGO HERE</div>
-      <CustomDrawerLogin />
+        <CustomDrawerMenu />
+        <div>LOGO HERE</div>
+        <CustomDrawerLogin />
       </Box>
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/artworks" element={<ArtworksPage />} />
           <Route path="/map" element={<MapPage />} />
+          <Route path="/experimental" element={<ExperimentalPage />} />
         </Routes>
       </ErrorBoundary>
       <Box className="Footer">
-      <CustomBottomNavigation />
+        <CustomBottomNavigation />
       </Box>
     </main>
   )

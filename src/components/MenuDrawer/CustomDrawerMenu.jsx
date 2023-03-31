@@ -15,6 +15,8 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+
 
 export default function CustomDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +40,11 @@ export default function CustomDrawer() {
     text: 'Map',
     to: '/map',
     icon: <LocationOnOutlinedIcon /> ,
+   },
+   {
+    text: 'Experimental',
+    to: '/experimental',
+    icon: <EmojiObjectsIcon /> ,
    },
   ]
 

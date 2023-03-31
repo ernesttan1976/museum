@@ -4,7 +4,7 @@ import App from './pages/App/App'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import {theme} from './theme.js';
+import { theme } from './theme.js';
 import { ThemeProvider } from '@emotion/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

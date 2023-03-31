@@ -20,11 +20,11 @@ body {
 
 .App {
   display: grid;
-  grid-template-columns: 64px 1fr 1fr 64px;
-  grid-template-rows: 64px calc(100vw-128px) 64px;
+  grid-template-columns: 56px 1fr 1fr 56px;
+  grid-template-rows: 56px calc(100vw-102px) 56px;
   grid-gap: 2px;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
   /* overflow-x: hidden; */
   flex: 0 0;
   scrollbar-width: none;
@@ -34,8 +34,10 @@ body {
 .Header{
   grid-area: 1 / 1 / 2 / 5;
   position: sticky;
+  width: 100%;
+  height: 56px;
   top: 0;
-  z-index: 5;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +48,7 @@ body {
   grid-area: 3 / 1 / 4 / 5;
   position: fixed;
   bottom: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;

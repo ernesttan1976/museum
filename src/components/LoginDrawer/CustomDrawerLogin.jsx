@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import MenuIcon from '@mui/icons-material/Menu';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 import AuthPage from '../../pages/AuthPage/AuthPage';
 
@@ -28,7 +28,7 @@ export default function CustomDrawer() {
 
   return (
     <>
-      <Button className="CustomDrawerLoginButton" onClick={toggleDrawer(true)}><MenuIcon /></Button>
+      <Button className="CustomDrawerLoginButton" onClick={toggleDrawer(true)}><PersonOutlineOutlinedIcon /></Button>
       <Drawer anchor='right' open={isOpen} onClose={toggleDrawer(false)}>
         {list()}
       </Drawer>
