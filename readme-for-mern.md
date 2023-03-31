@@ -228,6 +228,13 @@ When feature is done & want to share -> goto `main` && `git pull` && `git merge 
 When you want to see other people features in your branch -> goto `simon` and `git merge main`
 
 
+- get the latest update `git pull`
+- create a new branch `git checkout -b ida`
+- check branch `git branch`
+- switch branch `git switch main` or `git switch ida`
+- on the branch (git branch ida), check if ur features work with the main branch `git merge main`
+- push ur updates to the main branch (git branch main) `git merge ida`
+
 ## JWT vs Sessions
 
 ### Sessions
