@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 350,
-  minHeight: 350,
+  maxWidth: 500,
+  minHeight: 365,
   border: '1px solid'
 }));
 
