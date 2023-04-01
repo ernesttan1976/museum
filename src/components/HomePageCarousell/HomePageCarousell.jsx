@@ -2,14 +2,13 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 
-export default function HomePageCarousell(props) {
+export default function HomePageCarousell() {
 
-
-    var items = [
+    const items = [
         {
-            name: "Artwork #1",
-            description: "Avant Garde",
-            src: "https://picsum.photos/seed/1/400/300",
+            name: "Living Pictures",
+            description: "Photography in South East Asia",
+            src: "https://www.nationalgallery.sg/sites/default/files/living-pictures-masthead.jpg",
         },
         {
             name: "Artwork #2",
@@ -48,7 +47,7 @@ function Item(props) {
             <img className="CarouselItemImage" src={props.item.src} />
             <h2 className="CarouselItemName">{props.item.name}</h2>
             <p className="CarouselItemDescription">{props.item.description}</p>
-            <Button className="CarouselItemButton" size="medium" variant="outlined" color="primary">
+            <Button className="CarouselItemButton" size="small" variant="contained" color="secondary">
                 See more
             </Button>
         </Paper>

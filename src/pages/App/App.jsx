@@ -20,6 +20,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [exhibitions, setExhibition] = useState([]);
 
   return (
     <>
