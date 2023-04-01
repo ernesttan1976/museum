@@ -49,6 +49,7 @@ function App() {
           <Route path="/map/directions" element={<MapPage2 />} />
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>
+          <Route path="/exhibitions/:id/edit" element={<ExhibitionPage />}></Route>
           <Route path="/experimental" element={<ExperimentalPage />} />
         </Routes>
       </ErrorBoundary>
