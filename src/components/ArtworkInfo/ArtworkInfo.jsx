@@ -51,7 +51,7 @@ export default function ArtworkInfo( props ) {
           Year: {artwork.artworkYear}
         </Typography>
         <button>Edit</button>
-        <button>Delete</button>
+        <button>Delete</button> 
       </CardContent>
     </StyledCard>
   );
