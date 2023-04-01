@@ -17,22 +17,22 @@ export default function ArtworkGrid() {
        .then((data) => setArtworks(data));
    }, []);
 
-    const [selectedId, setSelectedId] = useState("");
-    const selectedArtwork = artworks.find((a) => a._id === selectedId);
-    const handleHover = (id) => {setSelectedId(id);};
+    const [selectedArtwork, setSelectedArtwork] = useState(null);
+    const handleHover = (id) => setSelectedArtwork(artworks.find((a) => a._id === id));
+    const onClick = (id) => setSelectedArtwork(artworks.find((a) => a._id === id));
 
    return (
     <>
      <Grid className="CustomGrid" container spacing={2}>
        {artworks.map((artwork) => (
          <Grid key={artwork._id} item xs={12} sm={6} lg={3}>
-           <ArtworksCard artwork={artwork} handleHover={handleHover}/>
+           <ArtworksCard artwork={artwork} onClick={onClick}/>
          </Grid>
        ))}
        
      </Grid>
+     {selectedArtwork && <Link to={`/artworks/${selectedArtwork._id}`} />}
      
-     <ArtworkInfo artwork={selectedArtwork} />
     </>
    );
 }
