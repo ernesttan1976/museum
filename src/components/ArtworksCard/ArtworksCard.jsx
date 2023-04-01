@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 350,
@@ -16,11 +16,13 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 export default function ArtworksCard(props) {
-  const { artwork } = props;
+  const { artwork, handleHover } = props;
  
   return (
+    <Card onMouseOver={() => handleHover(artwork._id)}>
+    <Link to={`/artworks/${artwork._id}`}>
     <StyledCard className="artwork">
-      <CardContent>   
+      <CardContent >   
         <CardMedia
           component="img"
           height="200"
@@ -34,6 +36,7 @@ export default function ArtworksCard(props) {
           {artwork.artworkTitle}
         </Typography>
       </CardContent>
-    </StyledCard>
+    </StyledCard> 
+    </Link></Card>
   );
 }
