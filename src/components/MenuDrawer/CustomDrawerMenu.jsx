@@ -19,6 +19,8 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 
+import "./CustomDrawerMenu.css"
+
 
 export default function CustomDrawer() {
   const [isOpen, setIsOpen] = useState(false);

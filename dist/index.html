@@ -13,11 +13,18 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
 />
-    <script type="module" crossorigin src="/assets/index-e96c9ccc.js"></script>
-    <link rel="stylesheet" href="/assets/index-e12e197a.css">
+    <script type="module" crossorigin src="/assets/index-ed28f34f.js"></script>
+    <link rel="stylesheet" href="/assets/index-18453478.css">
   </head>
   <body>
     <div class="App" id="root"></div>
     
+    <script defer>
+      function setScrollHeight(){
+        const max = document.body.scrollHeight > window.innerHeight ? document.body.scrollHeight : window.innerHeight ;
+        document.documentElement.style.setProperty('--scroll-height', max);
+        console.log("scroll height: ", document.body.scrollHeight , "max: ", max) ;
+      }
+    </script>
   </body>
 </html>

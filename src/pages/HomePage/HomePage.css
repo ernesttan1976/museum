@@ -1,0 +1,116 @@
+
+.HomePage {
+    grid-area: 2 / 1 / 3 / 5;
+    overflow-y: auto;
+    height: minmax(calc(100vw - 128px), var(--scroll-height));
+    /* overflow-x: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .CustomCarousel {
+    width: 100vw;
+    height: 280px;
+    overflow: hidden;
+  }
+  
+  .CarouselItem {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .CarouselItemImage {
+    height: 240px;
+    overflow:visible;
+    z-index: 0;
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    top: -40px;
+    bottom: -40px;
+    width: calc(100% + 40px);
+    animation: slide 30s infinite linear;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateY(20px);
+      transform: translateX(-15%);
+      width: calc(130% + 40px);
+    }
+    25% {
+      transform: translateY(0px);
+      transform: translateX(-7.5%);
+      width: calc(115% + 40px);
+    }
+    50% {
+      transform: translateY(-20px);
+      transform: translateX(0);
+        width: calc(100% + 40px);
+    }
+    75% {
+      transform: translateY(0px);
+      transform: translateX(-7.5%);
+      width: calc(115% + 40px);
+    }
+    100% {
+      transform: translateY(20px);
+      transform: translateX(-15%);
+      width: calc(130% + 40px);
+    }
+  
+  }
+  
+  
+  .CarouselItemName{
+    z-index: 5;
+    position: absolute;
+    top: 15px;
+    color: white;
+    background-color: #45454585;
+    padding: 8px;
+  }
+  
+  .CarouselItemDescription{
+    z-index: 5;
+    position: absolute;
+    top: 70px;
+    color: white;
+    background-color: #45454585;
+    padding: 8px;
+  }
+  
+  .CarouselItemButton{
+    z-index: 5;
+    position: absolute !important;
+    bottom: 30px;
+    /* color: white; */
+    background-color: #bdbdbd85;
+    padding: 8px;
+  }
+  
+  
+  .CustomGrid {
+    width: 100%;
+    height: fit-content;
+    overflow: visible;
+  }
+  
+  .CustomGrid [class*="MuiGrid-item"] {
+    display: flex;
+    flex-direction: column!important;
+  }
+
+  .Card {
+    width: 90%;
+    min-width: 200px;
+    justify-items: center;
+    align-self: center;
+  }
