@@ -14,6 +14,7 @@ import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded
 
 // import CustomSwipeableDrawer from '../../components/CustomSwipeableDrawer/CustomSwipeableDrawer';
 
+
 export default function MapPage() {
 
     useEffect(() => {
@@ -22,7 +23,7 @@ export default function MapPage() {
         setScrollHeight();
       }, []);
 
-    const locationsFrom =[
+const locationsFrom =[
         {
             value: '',
             label: '',
@@ -72,11 +73,14 @@ export default function MapPage() {
         to: "",
     });
 
+    const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
+
     const [level, setLevel] = useState('L1');
 
     const [category, setCategory] = useState('');
 
-    const handleLevel = (event, newLevel) => {
+    const handleLevel = (event,newLevel) => {
+        console.log("Level:",newLevel)
         setLevel(newLevel);
     };
 
@@ -134,7 +138,7 @@ export default function MapPage() {
                 </div>
                 
             </Box>
-            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={handleLevel} aria-label="level">
+            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={(ev,value)=>handleLevel(ev,value)} aria-label="level">
                 <ToggleButton value="B1" aria-label="B1">
                    B1
                 </ToggleButton>
@@ -173,7 +177,7 @@ export default function MapPage() {
             </ToggleButtonGroup>
 
             <Box className="MapComponent">
-                <MapComponent />
+                <MapComponent level={level}/>
             </Box>
         </Box>
     )
