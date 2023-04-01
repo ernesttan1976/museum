@@ -10,9 +10,12 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useState } from "react";
 import { CardContent } from '@mui/material';;
+import { useNavigate } from 'react-router-dom';
 
 
 function ArtworksNew(props) {
+  const {addArtwork} = props;
+const navigate = useNavigate();
   const [data, setData] = useState({
     // id: " ",
     artworkUrl: " ",
@@ -33,8 +36,20 @@ function ArtworksNew(props) {
         ev.preventDefault();
         alert(JSON.stringify(data));
     }
-  const disable = data.password !== data.confirm;
-  const handleAddNewArtWork = () => {};
+
+  const handleAddNewArtWork = async () => {
+    const response = await fetch("/api/artworks/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      });
+      const artwork = await response.json();
+      addArtwork(artwork);
+    console.log("new artwork submitted");
+    navigate('/artworks/');
+  };
   
     return (
     <Box component="form"
@@ -75,7 +90,7 @@ function ArtworksNew(props) {
          <TextField label="Year" type="text" name="artworkYear" value={data.artworkYear} placeholder='Year' onChange={handleChange}/>
           <br />
         </FormControl>         
-        <Button type="submit" disabled={disable} variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
+        <Button type="submit" variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
         </Grid></Grid>
         </CardContent>
       </card>
