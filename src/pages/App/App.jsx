@@ -15,6 +15,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [exhibitions, setExhibition] = useState([]);
 
   return (
     <main className="App" >
@@ -26,7 +27,7 @@ function App() {
       </Box>
       <ErrorBoundary>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage exhibitions={exhibitions} setExhibition={setExhibition} />} />
           <Route path="/artworks" element={<ArtworksPage />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/experimental" element={<ExperimentalPage />} />

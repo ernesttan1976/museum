@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePageCarousell from "../../components/HomePageCarousell/HomePageCarousell";
-import ExhibitionGrid from "../../components/ExhibitionGrid/ExhibitionGrid";
+import ExhibitionAccordion from '../../components/ExhibitionAccordion/ExhibitionAccordion';
+
 import Box from '@mui/material/Box';
 
 
@@ -8,7 +9,7 @@ const HomePage = () => {
     return (
         <Box className="HomePage">
             <HomePageCarousell />
-            <ExhibitionGrid />
+            <ExhibitionAccordion />
         </Box>
     );
 }

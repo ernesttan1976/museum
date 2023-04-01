@@ -27,7 +27,12 @@ const exhibitionsSchema = new Schema(
       type: String,
       required: true,
     },
-
+    
+    exhibitionDescription: {
+      type: String,
+      required: true,
+    },
+    
     exhibitionInformation: {
       type: String,
       required: true,
@@ -48,6 +53,11 @@ const exhibitionsSchema = new Schema(
       required: true,
     },
 
+    exhibitionImage: {
+      type: String,
+      required: true,
+    },
+    
     exhibitionLocation: {
       address: {
         type: String,

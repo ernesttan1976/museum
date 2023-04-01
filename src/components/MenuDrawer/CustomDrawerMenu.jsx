@@ -14,6 +14,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import MuseumOutlinedIcon from '@mui/icons-material/Museum';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 
@@ -32,6 +34,11 @@ export default function CustomDrawer() {
     icon: <HomeOutlinedIcon /> ,
    },
    {
+    text: 'Exhibition',
+    to: '/',
+    icon: <MuseumOutlinedIcon /> ,
+   },
+   {
     text: 'Artworks',
     to: '/artworks',
     icon: <ImageSearchOutlinedIcon /> ,
@@ -40,6 +47,16 @@ export default function CustomDrawer() {
     text: 'Map',
     to: '/map',
     icon: <LocationOnOutlinedIcon /> ,
+   },
+   {
+    text: 'Create Exhibition',
+    to: '/exhibitions/new',
+    icon: <AddCircleOutlineIcon /> ,
+   },
+   {
+    text: 'Create Artwork',
+    to: '/artworks/new',
+    icon: <AddCircleOutlineIcon /> ,
    },
    {
     text: 'Experimental',
