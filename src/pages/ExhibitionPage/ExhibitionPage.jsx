@@ -3,10 +3,20 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from '@mui/material/Button';
-import {Link, useParams } from 'react-router-dom';
-// import { Routes, Route, useParams } from 'react-router-dom'
+import {Link, Routes, Route, useParams } from 'react-router-dom';
+// import { useEffect } from "react";
 
 export default function ExhibitionPage() {
+
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   fetch("/api/exhibitions")
+  //     .then((response) => response.json())
+  //     .then((data) => setExhibition(data));
+  // }, []);
+
+
   const exhibition = {
     _id: {
       $oid: "6425c260c9d195369ec02476",
@@ -41,12 +51,12 @@ export default function ExhibitionPage() {
     exhibitionTitleSub: "Art of Southeast Asia since the 19th Century",
   };
 
-  //   if (!exhibition) {
-  //     return (
-  //     <>
-  //     <p>No Exhibition Available yet</p>
-  //     </>
-  //   )} else {
+    if (!exhibition) {
+      return (
+      <>
+      <p>No Exhibition Available yet</p>
+      </>
+    )} else {
 
   return (
     <CardContent>
@@ -80,4 +90,4 @@ export default function ExhibitionPage() {
       <Button variant="outlined"><Link to="/map" style={{textDecoration:"none"}}>Direction</Link></Button>
     </CardContent>
   );
-}
+}}
