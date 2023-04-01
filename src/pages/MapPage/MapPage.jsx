@@ -1,11 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import "./MapPage.css";
 import MapComponent from '../../components/MapComponent/MapComponent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import SwapVertIcon from '@mui/icons-material/SwapVert';
+import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
+
+// import CustomSwipeableDrawer from '../../components/CustomSwipeableDrawer/CustomSwipeableDrawer';
+
 
 export default function MapPage() {
 
@@ -15,7 +23,7 @@ export default function MapPage() {
         setScrollHeight();
       }, []);
 
-    const locationsFrom =[
+const locationsFrom =[
         {
             value: '',
             label: '',
@@ -65,32 +73,48 @@ export default function MapPage() {
         to: "",
     });
 
+    const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
+
     const [level, setLevel] = useState('L1');
 
-    const handleLevel = (event, newLevel) => {
+    const [category, setCategory] = useState('');
+
+    const handleLevel = (event,newLevel) => {
+        console.log("Level:",newLevel)
         setLevel(newLevel);
     };
 
+    const handleCategory = (event, newCategory) => {
+        setCategory(newCategory);
+    };
+
     function handleChange(event){
+        console.log(event.target);
         if (event.target.name==="from"){
-            console.log("From: ",event.target.value);
-            console.log("Remove ", event.target.value, " from select")
-            setLocationsTo(locationsFrom.filter(location=>(
-                location!==event.target.value 
-            )))
+            // console.log("From: ",event.target.value);
+            // console.log("Remove ", event.target.value, " from select")
+            const newLocationsTo = locationsFrom.filter(location=>(
+                location.value!==event.target.value))
+                console.log(newLocationsTo)
+            setLocationsTo(newLocationsTo);
+            setFormData({...formData, [event.target.name]: event.target.value});
         } else {
-            console.log("To: ",event.target.value);
+            setFormData({...formData, [event.target.name]: event.target.value});
         }
-        setFormData({...formData, [event.target.name]: event.target.value});
-        console.log(formData);
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log("Submit: ",formData);
     }
 
 
     return (
         <Box className="MapPage">
-            <Box className="MapPageForm" component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }} noValidate autoComplete="off">
+            <Box className="MapPageForm" component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1 } }} noValidate autoComplete="off">
                 <div className="MapFormTopRow">
-                    <TextField name="from" select label="From" helperText="Enter where you are" placeholder="Enter where you are" 
+                    <Button className="LeftButton"><RadioButtonCheckedIcon /></Button>
+                    <TextField sx={{ fontSize: '12px', minWidth: '150px'}} value={formData.from} className="MapFormTextField" size='small' margin='dense' name="from" select label="From" placeholder="Enter where you are" 
                         onChange={handleChange}>
                         {locationsFrom.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -98,18 +122,23 @@ export default function MapPage() {
                             </MenuItem>
                         ))}
                     </TextField>
+                    <Button  className="RightButton"><SwapVertIcon /></Button>
                 </div>
                 <div className="MapFormBottomRow">
-                    <TextField name="to" select label="To" helperText="Enter destination" placeholder="Enter destination">
+                    <Button className="LeftButton"><FmdGoodIcon /></Button>
+                    <TextField sx={{ fontSize: '12px', minWidth: '150px'}} value={formData.to} className="MapFormTextField" size='small' margin='dense'  name="to" select label="To" placeholder="Enter destination"
+                    onChange={handleChange}>
                         {locationsTo.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
                     </TextField>
+                    <Button  className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
+                
             </Box>
-            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={handleLevel} aria-label="text level">
+            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={(ev,value)=>handleLevel(ev,value)} aria-label="level">
                 <ToggleButton value="B1" aria-label="B1">
                    B1
                 </ToggleButton>
@@ -132,7 +161,24 @@ export default function MapPage() {
                    L6
                 </ToggleButton>
             </ToggleButtonGroup>
-            <MapComponent className="MapComponent" />
+            <ToggleButtonGroup className="CategoryButtonGroup" value={category} exclusive onChange={handleCategory} aria-label="category">
+                <ToggleButton value="Exhibitions" aria-label="Exhibitions">
+                   Exhibitions
+                </ToggleButton>
+                <ToggleButton value="Artworks" aria-label="Artworks">
+                   Artworks
+                </ToggleButton>
+                <ToggleButton value="Shop & Dine" aria-label="Shop & Dine">
+                   Shop & Dine
+                </ToggleButton>
+                <ToggleButton value="Amenities" aria-label="Amenities">
+                   Amenities
+                </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Box className="MapComponent">
+                <MapComponent level={level}/>
+            </Box>
         </Box>
     )
 }

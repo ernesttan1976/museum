@@ -2,9 +2,8 @@
 body {
   padding: 0;
   margin: 0;
-  /* display: flex;
-  width: 100%;
-  height: 100%; */
+  display: block;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -25,13 +24,11 @@ body {
 .App {
   display: grid;
   grid-template-columns: 56px 1fr 1fr 56px;
-  grid-template-rows: 56px var(--scroll-height)px 56px;
+  grid-template-rows: 56px minmax(calc(100vh - 112px), 1fr) 56px;
   grid-gap: 2px;
   width: 100vw;
   flex: 0 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .Header{

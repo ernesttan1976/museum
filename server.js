@@ -6,6 +6,7 @@ require("./config/database");
 
 // const userRouter = require("./routes/usersRouter");
 const artworkRouter = require("./routes/artworksRouter");
+const exhibitionRouter = require("./routes/exhibitionsRouter");
 
 const jwt = require("jsonwebtoken");
 
@@ -42,11 +43,15 @@ app.get("/api/secret", isLoggedIn, (req, res) => {
 });
 
 // app.use("/api/users", userRouter);
+
+
+app.use("/api/exhibitions", exhibitionRouter);
 app.use("/api/artworks", artworkRouter);
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
+
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
 
 app.listen(port, () => {
   console.log(`Express listening on port ${port}`);

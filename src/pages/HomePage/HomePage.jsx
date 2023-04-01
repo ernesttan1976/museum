@@ -1,9 +1,11 @@
 import React from 'react';
-import {useEffect} from 'react';
-import CustomCarousel from '../../components/CustomCarousel/CustomCarousel';
-import CustomGrid from '../../components/CustomGrid/CustomGrid';
+import HomePageCarousell from "../../components/HomePageCarousell/HomePageCarousell";
+import ExhibitionAccordion from '../../components/ExhibitionAccordion/ExhibitionAccordion';
 import Box from '@mui/material/Box';
 import "./HomePage.css"
+import {useEffect} from "react";
+import ExhibitionPage from '../ExhibitionPage/ExhibitionPage';
+import Mark from "../../pages/Mark";
 
 const HomePage = () => {
 
@@ -15,8 +17,10 @@ const HomePage = () => {
 
     return (
         <Box className="HomePage">
-            <CustomCarousel />
-            <CustomGrid />
+            <HomePageCarousell />
+            <Mark />
+            <ExhibitionAccordion />
+            <ExhibitionPage />
         </Box>
     );
 }

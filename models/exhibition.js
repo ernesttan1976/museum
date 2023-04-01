@@ -1,6 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//const Artwork = require("../models/artwork")
+
+const commentSchema = new Schema(
+  {
+    comments: {
+      type: Array,
+      trim: true,
+      required: true,
+    },
+},
+  {
+    timestamps: true,
+  }
+);
+
 
 const exhibitionsSchema = new Schema(
   {
@@ -13,7 +26,12 @@ const exhibitionsSchema = new Schema(
       type: String,
       required: true,
     },
-
+    
+    exhibitionDescription: {
+      type: String,
+      required: true,
+    },
+    
     exhibitionInformation: {
       type: String,
       required: true,
@@ -34,6 +52,11 @@ const exhibitionsSchema = new Schema(
       required: true,
     },
 
+    exhibitionImage: {
+      type: String,
+      required: true,
+    },
+    
     exhibitionLocation: {
       address: {
         type: String,
@@ -51,8 +74,7 @@ const exhibitionsSchema = new Schema(
         ref: "Artwork",
       },
     ],
-
-    exhibitionComments: [exhibitionComments], // <- embedding comments from user
+    exhibitionComments: [commentSchema] // <- embedding comments from user
   },
   {
     timestamps: {
