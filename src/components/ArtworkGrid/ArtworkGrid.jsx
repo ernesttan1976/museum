@@ -18,7 +18,7 @@ export default function ArtworkGrid() {
    }, []);
 
     const [selectedArtwork, setSelectedArtwork] = useState(null);
-    const handleHover = (id) => setSelectedArtwork(artworks.find((a) => a._id === id));
+
     const onClick = (id) => setSelectedArtwork(artworks.find((a) => a._id === id));
 
    return (
@@ -31,8 +31,8 @@ export default function ArtworkGrid() {
        ))}
        
      </Grid>
-     {selectedArtwork && <Link to={`/artworks/${selectedArtwork._id}`} />}
-     
+     <Link to={`/artworks/${selectedArtwork?._id}`} artworks={artworks} />
+
     </>
    );
 }

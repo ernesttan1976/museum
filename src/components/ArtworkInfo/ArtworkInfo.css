@@ -1,0 +1,11 @@
+.ArtworkInfo {
+grid-area: 3 / 2 / 3 / 4;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.ArtworkInfoImg {
+    width: 40%; 
+    height: 40%;
+}

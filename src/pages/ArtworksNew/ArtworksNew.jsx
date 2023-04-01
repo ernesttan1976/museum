@@ -1,3 +1,5 @@
+// admin only, create new artworks.
+
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -5,9 +7,10 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import { useState } from "react";
-import { CardContent } from '@mui/material';
-// admin only, create new artworks.
+import { CardContent } from '@mui/material';;
+
 
 function ArtworksNew(props) {
   const [data, setData] = useState({
@@ -34,14 +37,16 @@ function ArtworksNew(props) {
   const handleAddNewArtWork = () => {};
   
     return (
-    <Box className="form-container" sx={{
-        width: 500,
-        maxWidth: '100%',
-      }}>
+    <Box component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off">
       <card>
         <CardContent>
-          <grid container spacing={1}>
-            <grid sx={12} sm={6}item>
+          <Grid className="CustomGrid" container spacing={1}>
+            <Grid item xs={12} sm={6} lg={3}>
         <Typography variant="h3">Add new Artwork</Typography> 
         
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off' onSubmit={handleSubmit}>
@@ -71,7 +76,7 @@ function ArtworksNew(props) {
           <br />
         </FormControl>         
         <Button type="submit" disabled={disable} variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
-        </grid></grid>
+        </Grid></Grid>
         </CardContent>
       </card>
     </Box>
