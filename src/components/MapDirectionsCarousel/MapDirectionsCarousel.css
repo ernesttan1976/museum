@@ -1,0 +1,55 @@
+.DirectionsCarousel {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .DirectionsCarouselItem {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .DirectionsCarouselItemImage {
+    height: 240px;
+    overflow:visible;
+    z-index: 0;
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    top: -40px;
+    bottom: -40px;
+    width: calc(100% + 40px);
+    /* animation: slide 30s infinite linear; */
+  }
+
+  .DirectionsCarouselItemName{
+    z-index: 5;
+    position: absolute;
+    top: 15px;
+    color: white;
+    background-color: #45454585;
+    padding: 8px;
+  }
+  
+  .DirectionsCarouselItemDescription{
+    z-index: 5;
+    position: absolute;
+    top: 70px;
+    color: white;
+    background-color: #45454585;
+    padding: 8px;
+  }
+  
+  .DirectionsCarouselItemButton{
+    z-index: 5;
+    position: absolute !important;
+    bottom: 30px;
+    /* color: white; */
+    background-color: #bdbdbd85;
+    padding: 8px;
+  }
