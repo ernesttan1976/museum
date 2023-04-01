@@ -8,7 +8,7 @@ router.post("/", exhibitionsController.create);
 // router.get("/seed", holidaysController.seed);
 
 // router.get("/:id", holidaysController.show);
-// router.delete("/:id", holidaysController.delete);
-// router.put("/:id", holidaysController.update);
+router.delete("/:id", exhibitionsController.delete);
+router.put("/:id", exhibitionsController.update);
 
 module.exports = router;

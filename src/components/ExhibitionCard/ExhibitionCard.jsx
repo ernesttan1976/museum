@@ -5,8 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
+import {Link, useParams } from 'react-router-dom';
 
 export default function ExhibitionCard() {
+  const { id } = useParams();
+  
   const [exhibitions, setExhibition] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
 
@@ -44,6 +47,7 @@ export default function ExhibitionCard() {
           <Typography variant="body2" color="text.secondary">
             {exhibition.exhibitionDescription}
           </Typography>
+          <Link to={`/exhibitions/${exhibition._id}`}>More Details</Link>
         </CardContent>
       </Card>
     ))}

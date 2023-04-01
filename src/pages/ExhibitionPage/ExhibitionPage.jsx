@@ -1,9 +1,9 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
+import {Link, useParams } from 'react-router-dom';
 // import { Routes, Route, useParams } from 'react-router-dom'
 
 export default function ExhibitionPage() {
@@ -50,18 +50,34 @@ export default function ExhibitionPage() {
 
   return (
     <CardContent>
-      <Typography>{exhibition.exhibitionTitle}</Typography>
-      <CardMedia
+        <CardMedia
         component="img"
         height="194"
         image="https://www.nationalgallery.sg/sites/default/files/ng-journeys-img-01.jpg"
         alt={exhibition.exhibitionTitle}
       />
+      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id}`} style={{textDecoration:"none"}}>Edit</Link></Button>
+      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id}`} style={{textDecoration:"none"}}>Delete</Link></Button>
       <Typography variant="h5" component="h2">
-      {exhibition.exhibitionTitle}
+        {exhibition.exhibitionTitle}
       </Typography>
-      <button>Edit</button>
-      <button>Delete</button>
+      <Typography variant="body2" color="text.secondary">
+        {exhibition.exhibitionTitleSub}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        Start: {exhibition.exhibitionStartDate}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        End: {exhibition.exhibitionEndDate}
+        </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {exhibition.exhibitionEntry}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {exhibition.exhibitionDescription}
+      </Typography>
+      <Button variant="outlined"><Link to="https://web.nationalgallery.sg/#/gallery-passes" style={{textDecoration:"none"}}>Book</Link></Button>
+      <Button variant="outlined"><Link to="/map" style={{textDecoration:"none"}}>Direction</Link></Button>
     </CardContent>
   );
 }
