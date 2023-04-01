@@ -6,6 +6,7 @@ require("./config/database");
 
 // const userRouter = require("./routes/usersRouter");
 const artworkRouter = require("./routes/artworksRouter");
+const exhibitionRouter = require("./routes/exhibitionsRouter");
 
 const jwt = require("jsonwebtoken");
 
