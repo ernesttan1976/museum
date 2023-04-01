@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
+import { Link } from "react-router-dom";
 import "./ArtworkInfo.css";
 
 export default function ArtworkInfo() {
@@ -67,9 +68,12 @@ export default function ArtworkInfo() {
             Year: {artwork.artworkYear}
           </Typography>
           <br />
-          <button>Edit</button>
-          <br />
-          <button>Delete</button>
+
+          <Link to={`/artworks/${artwork._id}/edit`}>
+          <button>Edit</button> {/* linked to edit artwork page*/}
+          </Link><br />
+          <button>Delete</button> {/* To do - delete artwork */}
+
         {/* </CardContent> */}
         </Grid>
      </Grid></Box>

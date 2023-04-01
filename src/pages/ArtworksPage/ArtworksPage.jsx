@@ -14,6 +14,8 @@ export default function ArtworksPage(){
        .then((data) => setArtworks(data));
    }, []);
 
+const addArtwork = (artwork) => setArtworks([artwork, ...artworks]); // add artwork
+
     useEffect(() => {
         console.log('Component mounted');
         //this function is in index.html
