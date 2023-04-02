@@ -66,8 +66,8 @@ export default function ExhibitionPage() {
         image="https://www.nationalgallery.sg/sites/default/files/ng-journeys-img-01.jpg"
         alt={exhibition.exhibitionTitle}
       />
-      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id}`} style={{textDecoration:"none"}}>Edit</Link></Button>
-      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id}`} style={{textDecoration:"none"}}>Delete</Link></Button>
+      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id.$oid}/edit`} style={{textDecoration:"none"}}>Edit</Link></Button>
+      <Button variant="outlined"><Link to={`/exhibitions/${exhibition._id.$oid}`} style={{textDecoration:"none"}}>Delete</Link></Button>
       <Typography variant="h5" component="h2">
         {exhibition.exhibitionTitle}
       </Typography>

@@ -19,6 +19,7 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
+import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,7 +52,7 @@ function App() {
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/new" element={<ExhibitionNew />}></Route>
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>
-          <Route path="/exhibitions/:id/edit" element={<ExhibitionPage />}></Route>
+          <Route path="/exhibitions/:id/edit" element={<ExhibitionUpdate />}></Route>
           <Route path="/experimental" element={<ExperimentalPage />} />
         </Routes>
       </ErrorBoundary>
