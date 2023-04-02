@@ -20,7 +20,6 @@ const HomePage = () => {
             <HomePageCarousell />
             <Mark />
             <ExhibitionAccordion />
-            <ExhibitionPage />
         </Box>
     );
 }

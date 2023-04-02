@@ -41,14 +41,14 @@ const deleteExhibition = async (req, res) => {
   }
 };
 
-// const show = async (req, res) => {
-//   try {
-//     const holiday = await Holiday.findById(req.params.id);
-//     res.status(200).json(holiday);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+const show = async (req, res) => {
+  try {
+    const exhibition = await Exhibition.findById(req.params.id);
+    res.status(200).json(exhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const update = async (req, res) => {
   try {
@@ -68,6 +68,6 @@ module.exports = {
   seed,
   index,
   delete: deleteExhibition,
-//   show,
+  show,
   update,
 };
