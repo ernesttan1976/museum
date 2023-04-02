@@ -111,21 +111,21 @@ function ExhibitionNew() {
             value={data.exhibitionInformation}
             onChange={handleChange}
           />
-          <TextField
+          {/* <TextField
             required
             label="Location"
             type="text"
             name="exhibitionLocation"
             value={data.exhibitionLocation}
             onChange={handleChange}
-          />
-          <TextField
+          /> */}
+          {/* <TextField
             label="Floor Number"
             type="number"
             name="exhibitionFloor"
             value={data.exhibitionFloor}
             onChange={handleChange}
-          />
+          /> */}
           <TextField
             label="Start Date"
             type="date"

@@ -57,10 +57,10 @@ const exhibitionsSchema = new Schema(
       required: true,
     },
     
-    exhibitionLocation: {
-      type: Schema.Types.ObjectId, 
-      ref: "Location",
-    },
+    // exhibitionLocation: {
+    //   type: Schema.Types.ObjectId, 
+    //   ref: "Location",
+    // },
 
     artworks: [
       {

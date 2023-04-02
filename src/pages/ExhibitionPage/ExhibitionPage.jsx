@@ -59,7 +59,12 @@ export default function ExhibitionPage() {
             image={exhibition.exhibitionImage}
             alt={exhibition.exhibitionTitle}
           />
-          <Button variant="outlined">Edit</Button>
+          <Link
+            to={`/exhibitions/${exhibition._id}/edit`}
+            style={{ textDecoration: "none" }}
+          >
+            <Button variant="outlined">Edit</Button>
+          </Link>
           <Button
             variant="outlined"
             onClick={() => handleDelete(exhibition._id)}
