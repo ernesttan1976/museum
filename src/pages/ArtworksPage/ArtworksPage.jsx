@@ -1,6 +1,5 @@
 //! admin user -> show artworks
 import Box from '@mui/material/Box';
-
 import { useEffect, useState } from "react";
 import ArtworkGrid from '../../components/ArtworkGrid/ArtworkGrid';
 import "./ArtworksPage.css"
@@ -14,11 +13,8 @@ export default function ArtworksPage(){
        .then((data) => setArtworks(data));
    }, []);
 
-const addArtwork = (artwork) => setArtworks([artwork, ...artworks]); // add artwork
-
     useEffect(() => {
         console.log('Component mounted');
-        //this function is in index.html
         setScrollHeight();
       }, []);
 
