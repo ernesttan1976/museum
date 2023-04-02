@@ -59,7 +59,7 @@ const navigate = useNavigate();
     return (
     <Box component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: '150ch' },
       }}
       noValidate
       autoComplete="off"
@@ -147,11 +147,11 @@ const navigate = useNavigate();
           onChange={handleChange}/>
 
           <br />
-
+ 
           <label>Year:</label>
          <TextField 
          label="Year" 
-         type="text" 
+         type="number" 
          name="artworkYear" 
          value={data.artworkYear} 
          placeholder='Year' 
