@@ -14,6 +14,7 @@ function ExhibitionUpdate(props) {
       noValidate
       autoComplete="off"
     >
+      <Typography>Update Page</Typography>
       <div>
         <TextField
           required

@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "6425c260c9d195369ec02476"
+  },
+  "artworks": [
+    {
+      "$oid": "6415326a1fdaed807a26dd2e"
+    },
+    {
+      "$oid": "6425ba0ac9d195369ec02461"
+    },
+    {
+      "$oid": "6425bfb3c9d195369ec02471"
+    },
+    {
+      "$oid": "6425c0a3c9d195369ec02472"
+    },
+    {
+      "$oid": "6425c122c9d195369ec02473"
+    },
+    {
+      "$oid": "6425c1b4c9d195369ec02474"
+    }
+  ],
+  "exhibitionComments": [
+    ""
+  ],
+  "exhibitionEndDate": "16-3-2023",
+  "exhibitionEntry": "General Admission",
+  "exhibitionInformation": "Starting in the mid-19th century, the exhibition navigates the art history of Southeast Asia as one that is characterised by a continuous encounter with the new as the region’s artists negotiated the meaning of art and sought to reinvent vernacular expressions and aesthetics.\n\nPresented in a largely chronological sequence and punctuated by key turning points in artistic sensibilities, the exhibition also identifies how art is inseparably linked to the region’s tumultuous social and political history.\n\nThe title of the exhibition, Between Declarations and Dreams, is credited to one of Indonesia’s most cherished poets, Chairil Anwar. In his poem of 1948, \"Krawang-Bekasi”, Chairil Anwar laments the massacre of villagers in West Java by the Dutch colonial forces, giving vent to the desire for national independence at the time. This line may also be said to encapsulate the experiences of many artists in the region, caught as they are between declarations and dreams, the personal and the political.\n\nThe curatorial narrative explores four main themes places in a broadly chronological sequence, each one critically examining the shared artistic impulse of the region for each period: Authority and Anxiety, Imagining Country and Self, Manifesting the Nation, and Re:Defining Art.",
+  "exhibitionStartDate": {
+    "$date": {
+      "$numberLong": "1670083200000"
+    }
+  },
+  "exhibitionTitle": "Between Declarations and Dreams",
+  "exhibitionTitleSub": "Art of Southeast Asia since the 19th Century",
+  "exhibitionLocation": {
+    "address": "Gallery 2, UOB Southeast Asia Gallery.",
+    "floor": 2
+  },
+  "exhibitionImage": "https://www.nationalgallery.sg/sites/default/files/living-see-04.jpg",
+  "exhibitionDescription": "Starting in the mid-19th century, the exhibition navigates the art history of Southeast Asia as one that is characterised by a continuous encounter with the new as the region’s artists negotiated the meaning of art and sought to reinvent vernacular expressions and aesthetics."
+},{
+  "_id": {
+    "$oid": "6425c854c9d195369ec02494"
+  },
+  "artworks": [
+    {
+      "$oid": "6425c7c0c9d195369ec02492"
+    },
+    {
+      "$oid": "6425c781c9d195369ec02491"
+    },
+    {
+      "$oid": "6425c74ec9d195369ec02490"
+    },
+    {
+      "$oid": "6425c70fc9d195369ec0248f"
+    },
+    {
+      "$oid": "6425c6a6c9d195369ec0248e"
+    }
+  ],
+  "exhibitionComments": [
+    ""
+  ],
+  "exhibitionEndDate": {
+    "$date": {
+      "$numberLong": "1670083200000"
+    }
+  },
+  "exhibitionEntry": "General Admission",
+  "exhibitionInformation": "The most endearing fact about Singapore is her location: set in a vast archipelago of island neighbours, she raises questions of scale and proportion whenever she is contemplated. Geographically, she appears dwarfed by the immensity of her surroundings, leading her sea-locked inhabitants to constantly look outwards to the world at large. Yet her position in the world belies her physical size.  \n\nThis exhibition examines how artists in Singapore have grappled with similar issues since the 19th century, when much of Southeast Asia was under European colonial rule. With diverse values and systems coming into close contact with the region’s existing beliefs and social structures, the 19th century represents a break with what came before. It also marks the beginning of the modern condition and the rise of modern art in Southeast Asia and Singapore.\n\nIn Malay, “Siapa Nama Kamu?” means “What is your name?”",
+  "exhibitionStartDate": {
+    "$date": {
+      "$numberLong": "1670428800000"
+    }
+  },
+  "exhibitionTitle": "Siapa Nama Kamu?",
+  "exhibitionTitleSub": "Art in Singapore since 19th Century",
+  "exhibitionLocation": {
+    "location": "Gallery 2, UOB Southeast Asia Gallery.",
+    "floor": 3
+  },
+  "exhibitionImage": "https://www.nationalgallery.sg/sites/default/files/living-see-02.jpg",
+  "exhibitionDescription": "The most endearing fact about Singapore is her location: set in a vast archipelago of island neighbours, she raises questions of scale and proportion whenever she is contemplated. "
+}]
