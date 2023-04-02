@@ -15,7 +15,6 @@ export default function ArtworksPage(){
 
     useEffect(() => {
         console.log('Component mounted');
-        //this function is in index.html
         setScrollHeight();
       }, []);
 

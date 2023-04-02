@@ -54,6 +54,7 @@ function App() {
           <Route path="/exhibitions/new" element={<ExhibitionNew />}></Route>
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>
           <Route path="/exhibitions/:id/edit" element={<ExhibitionUpdate />}></Route>
+          <Route path="/exhibitions/:id/edit" element={<ExhibitionUpdate />}></Route>
           <Route path="/experimental" element={<ExperimentalPage />} />
         </Routes>
       </ErrorBoundary>

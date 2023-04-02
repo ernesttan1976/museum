@@ -10,16 +10,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 350,
-  minHeight: 350,
+  maxWidth: 500,
+  minHeight: 365,
   border: '1px solid'
 }));
 
 export default function ArtworksCard(props) {
-  const { artwork, handleHover } = props;
+  const { artwork, onClick } = props;
  
   return (
-    <Card onMouseOver={() => handleHover(artwork._id)}>
+    <Card onMouseOver={() => onClick(artwork._id)}>
     <Link to={`/artworks/${artwork._id}`}>
     <StyledCard className="artwork">
       <CardContent >   
