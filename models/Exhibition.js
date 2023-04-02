@@ -58,14 +58,8 @@ const exhibitionsSchema = new Schema(
     },
     
     exhibitionLocation: {
-      address: {
-        type: String,
-        required: true,
-      },
-      floor: {
-        type: Number,
-        required: true,
-      },
+      type: Schema.Types.ObjectId, 
+      ref: "Location",
     },
 
     artworks: [

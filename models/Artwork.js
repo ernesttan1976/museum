@@ -36,7 +36,8 @@ const artworkSchema = new Schema(
     },
 
     artworkLocation: {
-      type: String,
+      type: Schema.Types.ObjectId, 
+      ref: "Location",
     },
 
     // embedded comments for user

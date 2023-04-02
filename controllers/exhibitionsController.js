@@ -18,6 +18,20 @@ const create = async (req, res) => {
   }
 };
 
+const seed = async (req, res) => {
+  try {
+    await Exhibition.deleteMany({});
+
+    const seedExhibitions = require('../database-seed/exhibitions-seed.json'); 
+    console.log(seedExhibitions);
+
+    const exhibitions = await Exhibition.create(seedExhibitions);
+    res.status(200).json(exhibitions);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const deleteExhibition = async (req, res) => {
   try {
     const deletedExhibition = await Exhibition.findByIdAndDelete(req.params.id);
@@ -51,7 +65,7 @@ const update = async (req, res) => {
 
 module.exports = {
   create,
-//   seed,
+  seed,
   index,
   delete: deleteExhibition,
 //   show,

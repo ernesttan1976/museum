@@ -5,7 +5,7 @@ const router = express.Router();
 // start from /api/exhibitions
 router.get("/", exhibitionsController.index);
 router.post("/", exhibitionsController.create);
-// router.get("/seed", holidaysController.seed);
+router.get("/seed", exhibitionsController.seed);
 
 // router.get("/:id", holidaysController.show);
 router.delete("/:id", exhibitionsController.delete);
