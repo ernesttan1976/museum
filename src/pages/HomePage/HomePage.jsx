@@ -4,8 +4,6 @@ import ExhibitionAccordion from '../../components/ExhibitionAccordion/Exhibition
 import Box from '@mui/material/Box';
 import "./HomePage.css"
 import {useEffect} from "react";
-import ExhibitionPage from '../ExhibitionPage/ExhibitionPage';
-import Mark from "../../pages/Mark";
 
 const HomePage = () => {
 
@@ -18,7 +16,6 @@ const HomePage = () => {
     return (
         <Box className="HomePage">
             <HomePageCarousell />
-            <Mark />
             <ExhibitionAccordion />
         </Box>
     );
