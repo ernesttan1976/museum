@@ -5,9 +5,8 @@
   "type": "commonjs",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "vite": "vite",
-    "start": "nodemon server",
-    "dev": "concurrently \"vite\" \"nodemon server",
+    "start": "node server",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node_modules/.bin/mocha"
