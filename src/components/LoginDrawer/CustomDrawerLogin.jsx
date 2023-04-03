@@ -21,7 +21,8 @@ export default function CustomDrawer() {
     <Box
       className="CustomDrawerLogin sticky"
       role="presentation"
-      onClick={toggleDrawer(false)}
+      //! onClick={toggleDrawer(false)}
+      //! to uncomment later after sign up and login completed.
     >
       <AuthPage />
     </Box>

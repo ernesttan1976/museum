@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function ArtworksEditForm() {
 const { id } = useParams();
@@ -98,6 +100,24 @@ useEffect(() => {
           name="artworkLocation" 
           value={artwork.artworkLocation  || ""} 
           onChange={handleChange} />
+
+          <br />
+          
+           <label>Artwork Floor:</label>  
+          <Select label="Floor" 
+          type="text" 
+          name="artworkFloor" 
+          value={artwork.artworkFloor} 
+          placeholder='Select Floor' 
+          onChange={handleChange}>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
 
           <br />
 
