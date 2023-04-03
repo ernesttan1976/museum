@@ -74,7 +74,7 @@ const exhibitionsSchema = new Schema(
         ref: "Artwork",
       },
     ],
-    exhibitionComments: [commentSchema] // <- embedding comments from user
+    exhibitionComments: [commentSchema]
   },
   {
     timestamps: {

@@ -1,4 +1,5 @@
 const Exhibition = require("../models/Exhibition");
+require("../models/Artwork");
 
 const index = async (req, res) => {
     try {
@@ -43,7 +44,7 @@ const deleteExhibition = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const exhibition = await Exhibition.findById(req.params.id);
+    const exhibition = await Exhibition.findById(req.params.id).populate("artworks");
     res.status(200).json(exhibition);
   } catch (error) {
     res.status(400).json({ error: error.message });
