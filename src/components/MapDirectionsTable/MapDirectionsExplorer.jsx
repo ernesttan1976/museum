@@ -42,7 +42,7 @@ export default function BasicTable() {
       setExplorer(explorers);
     };
     fetchExplorer();
-  });
+  },[]);
 
   
 
