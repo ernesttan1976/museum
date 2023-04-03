@@ -18,6 +18,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
+        chunkSizeWarningLimit: 1024,
       },
       treeshake: true,
     },
@@ -35,4 +36,9 @@ export default defineConfig({
 //       main: './src/index.js'
 //     }
 //   }
+// }
+// output: {
+//   dir: 'dist',
+//   format: 'es',
+//   chunkSizeWarningLimit: 1024 // Set limit to 1KB
 // }
