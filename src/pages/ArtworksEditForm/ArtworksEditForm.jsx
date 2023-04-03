@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function ArtworksEditForm() {
 const { id } = useParams();
@@ -23,13 +25,14 @@ useEffect(() => {
   }, [id]);
 
     const handleChange = (event) => {
-    const key = event.target.name;
-    const value = event.target.value;
+    const key = event.target?.name;
+    const value = event.target?.value;
 
     setArtwork({ ...artwork, [key]: value });
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (event) => {
+    event.preventDefault()
     const response = await fetch(`/api/artworks/${id}`, {
       method: "PUT",
       headers: {
@@ -37,10 +40,7 @@ useEffect(() => {
       },
       body: JSON.stringify(artwork),
     });
-    const updatedArtwork = await response.json();
-    console.log("artwork info updated");
     navigate('/artworks');
-    return updatedArtwork;
   };
  
     return (
@@ -56,9 +56,9 @@ useEffect(() => {
           <label>Image URL:</label>
           <TextField 
           label="Image URL" 
-          type="text" 
+          type="url" 
           name="artworkUrl" 
-          value={artwork.artworkUrl} 
+          value={artwork.artworkUrl  || ""} 
           onChange={handleChange} />
           
           <br />
@@ -68,7 +68,7 @@ useEffect(() => {
           label="Artist Name" 
           type="text" 
           name="artistName" 
-          value={artwork.artistName} 
+          value={artwork.artistName  || ""}  
           onChange={handleChange} />
 
           <br />
@@ -78,7 +78,7 @@ useEffect(() => {
           label="Dimension" 
           type="text" 
           name="artworkDimension" 
-          value={artwork.artworkDimension} 
+          value={artwork.artworkDimension  || ""} 
           onChange={handleChange} />
 
           <br />
@@ -88,7 +88,7 @@ useEffect(() => {
           label="Information" 
           type="text" 
           name="artworkInformation" 
-          value={artwork.artworkInformation} 
+          value={artwork.artworkInformation  || ""}  
           onChange={handleChange} />
 
           <br />
@@ -98,8 +98,26 @@ useEffect(() => {
           label="Location" 
           type="text" 
           name="artworkLocation" 
-          value={artwork.artworkLocation} 
+          value={artwork.artworkLocation  || ""} 
           onChange={handleChange} />
+
+          <br />
+          
+           <label>Artwork Floor:</label>  
+          <Select label="Floor" 
+          type="text" 
+          name="artworkFloor" 
+          value={artwork.artworkFloor} 
+          placeholder='Select Floor' 
+          onChange={handleChange}>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
 
           <br />
 
@@ -108,7 +126,7 @@ useEffect(() => {
           label="Medium" 
           type="text" 
           name="artworkMedium" 
-          value={artwork.artworkMedium} 
+          value={artwork.artworkMedium  || ""} 
           onChange={handleChange} />
 
           <br />
@@ -118,7 +136,7 @@ useEffect(() => {
           label="Title" 
           type="text" 
           name="artworkTitle" 
-          value={artwork.artworkTitle} 
+          value={artwork.artworkTitle || ""} 
           onChange={handleChange} />
 
           <br />
@@ -128,7 +146,7 @@ useEffect(() => {
          label="Year" 
          type="number" 
          name="artworkYear" 
-         value={artwork.artworkYear} 
+         value={artwork.artworkYear  || ""} 
          onChange={handleChange} />
 
           <br />    

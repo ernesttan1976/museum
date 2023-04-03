@@ -68,7 +68,6 @@ const exhibitionsSchema = new Schema(
       default: 'L1',
       required: true,
     },
-
     artworks: [
       {
         type: Schema.Types.ObjectId, 

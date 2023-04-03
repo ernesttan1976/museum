@@ -6,7 +6,6 @@ const router = express.Router();
 router.get("/", locationsController.index);
 router.post("/", locationsController.create);
 
-// router.get("/:id", holidaysController.show);
 router.delete("/:id", locationsController.delete);
 router.put("/:id", locationsController.update);
 

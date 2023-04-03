@@ -11,16 +11,30 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
-
+import {useNavigate} from 'react-router-dom';
 // import CustomSwipeableDrawer from '../../components/CustomSwipeableDrawer/CustomSwipeableDrawer';
 
 
 export default function MapPage() {
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         console.log('Component mounted');
         //this function is in index.html
         setScrollHeight();
+      }, []);
+
+    const [locations, setLocations] = useState([]); 
+
+      useEffect(() => {
+        const fetchLocations = async () => {
+            const response = await fetch(`/api/locations`);
+            const data = await response.json();
+            setLocations(data);
+            console.log(locations);
+          };
+          fetchLocations();
       }, []);
 
 const locationsFrom =[
@@ -85,6 +99,7 @@ const locationsFrom =[
     };
 
     const handleCategory = (event, newCategory) => {
+        console.log("Category:", newCategory);
         setCategory(newCategory);
     };
 
@@ -106,6 +121,7 @@ const locationsFrom =[
     function handleSubmit(event){
         event.preventDefault();
         console.log("Submit: ",formData);
+        navigate(`/map/directions/from/${formData.from}/to/${formData.to}`);
     }
 
 

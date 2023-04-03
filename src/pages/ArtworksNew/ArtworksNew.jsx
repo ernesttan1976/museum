@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import { CardContent } from '@mui/material';;
 import { useNavigate } from 'react-router-dom';
 import { number } from "prop-types";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
  
  
 function ArtworksNew() {
@@ -22,8 +24,8 @@ function ArtworksNew() {
 
 const navigate = useNavigate();
   const [data, setData] = useState({
-    artworkUrl: " ",
-    artistName: " ",
+    artworkUrl: "",
+    artistName: "",
     artworkDimension: "",
     artworkInformation: "",
     artworkLocation: "",
@@ -32,12 +34,13 @@ const navigate = useNavigate();
     artworkYear: number,
   });
   
-  function handleChange(ev){
-        setData({...data, [ev.target.name]: ev.target.value});
+  function handleChange(event){
+        setData({...data, [event.target.name]: event.target.value});
         console.log(data);
     }
 
-  const handleAddNewArtWork = async () => {
+  const handleAddNewArtWork = async (event) => {
+    event.preventDefault()
     const response = await fetch("/api/artworks", {
       method: "POST",
       headers: {
@@ -75,7 +78,8 @@ const navigate = useNavigate();
           <label>Image URL:</label>
           <TextField 
           label="Image URL" 
-          type="text" name="artworkUrl" 
+          type="text" 
+          name="artworkUrl" 
           value={data.artworkUrl} 
           placeholder='Image URL' 
           onChange={handleChange}/>
@@ -126,7 +130,20 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Medium:</label>
+          <label>Floor</label>
+          <Select label="Floor" name="artworkFloor" value="L1" onChange={handleChange}>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+           </Select>
+
+          <br />
+
+          <label> Artwork Medium: </label>
           <TextField 
           label="Medium" 
           type="text" 

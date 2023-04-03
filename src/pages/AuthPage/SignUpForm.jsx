@@ -17,15 +17,29 @@ export default function SignUpForm({ setUser }) {
 
   const disable = state.password !== state.confirm;
 
-  const handleSubmit = async (event) => {
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     await signUp(state);
+  //     setUser(getUser());
+  //     navigate("/");
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      await signUp(state);
-      setUser(getUser());
-      navigate("/");
-    } catch (error) {
-      setError(error.message);
-    }
+    window.alert(JSON.stringify(state));
+    fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(state),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   const handleChange = (event) => {
@@ -37,19 +51,58 @@ export default function SignUpForm({ setUser }) {
 
   return (
       <div className="form-container">
-        <Box component="form" autoComplete="off" onSubmit={handleSubmit}>
+        <form component="form" autoComplete="off" onSubmit={handleSubmit}>
           {error}
-          <label>Name</label>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" type="text" name="name" value={state.name} onChange={handleChange} required/>
-          <label>Email</label>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" type="email" name="email" value={state.email} onChange={handleChange} required/>
-          <label>Password</label>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" type="password" name="password" value={state.password} onChange={handleChange} required/>
-          <label>Confirm</label>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" type="password" name="confirm" value={state.confirm} onChange={handleChange}  required/>
+          <fieldset>
+          <label>Name:</label>
+          <TextField 
+          id="outlined-basic" 
+          label="UserName" 
+          variant="outlined" 
+          type="text" 
+          name="name" 
+          value={state.name} 
+          onChange={handleChange} 
+          required/>
+          <br />
+          <label>Email:</label>
+          <TextField 
+          id="outlined-basic" 
+          label="Email Address"  
+          variant="outlined" 
+          type="email" 
+          name="email" 
+          value={state.email} 
+          onChange={handleChange} 
+          required/>
+          <br />
+          <label>Password:</label>
+          <TextField 
+          id="outlined-basic" 
+          label="Password (min 5)" 
+          variant="outlined" 
+          type="password" 
+          name="password" 
+          value={state.password} 
+          onChange={handleChange} 
+          required/>
+           <br />
+          <label>Confirm:</label>
+          <TextField 
+          id="outlined-basic" 
+          label="Confirm Password"  
+          variant="outlined" 
+          type="password" 
+          name="confirm" 
+          value={state.confirm} 
+          onChange={handleChange} 
+          required/>
+          <br />
+          <br />
           <Button variant="contained" type="submit" disabled={disable}>Sign Up</Button>
           <p className="error-message">&nbsp;{state.error}</p>
-        </Box>
+        </fieldset>
+        </form>
       </div>
   );
 }

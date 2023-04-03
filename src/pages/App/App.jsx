@@ -9,7 +9,6 @@ import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import HomePage from "../HomePage/HomePage";
 import ArtworksPage from "../ArtworksPage/ArtworksPage";
 import ArtworksNew from "../ArtworksNew/ArtworksNew";
-// import ArtworkInfo from '../ArtworkInfo/ArtworkInfo';
 import ArtworkInfo from "../../components/ArtworkInfo/ArtworkInfo";
 import ArtworksEditForm from "../ArtworksEditForm/ArtworksEditForm";
 import MapPage from "../MapPage/MapPage";
@@ -37,19 +36,13 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/artworks" element={<ArtworksPage />} />{" "}
-          {/* list of submitted artworks */}
-          <Route path="/artworks/new" element={<ArtworksNew />} />{" "}
-          {/* GET Add a new artwork form, POST when submitted to list of artworks */}
-          <Route path="/artworks/:id" element={<ArtworkInfo />} />{" "}
-          {/* GET idv artwork's information page, admin can edit and delete */}
-          <Route
-            path="/artworks/:id/edit"
-            element={<ArtworksEditForm />}
-          />{" "}
-          {/* GET for artwork edit and update form */}
+          <Route path="/artworks" element={<ArtworksPage/>} />
+          <Route path="/artworks/new" element={<ArtworksNew />} />
+          <Route path="/artworks/:id" element={<ArtworkInfo />} />
+          <Route path="/artworks/:id/edit" element={<ArtworksEditForm />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
+          {/* <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} /> */}
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/new" element={<ExhibitionNew />}></Route>
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>

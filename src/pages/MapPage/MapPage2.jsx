@@ -10,9 +10,9 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
-
 import MapDirectionsCarousel from "../../components/MapDirectionsCarousel/MapDirectionsCarousel"
-import MapComponent from '../../components/MapComponent/MapComponent';
+import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
+
 
 
 
@@ -110,6 +110,25 @@ export default function MapPage2(){
         console.log("Submit: ",formData);
     }
 
+    //Mark's Code
+
+    // const [toggle,SetToggle] = useState(false);
+
+    // const onToggle = () => {
+    //     toggle ? setToggle(false) : setToggle(true);
+    // }
+
+    const [toggle, setToggle] = useState(true);
+
+    const handleSwitchChange = (event) => {
+      toggle ? setToggle(false) : setToggle(true);
+    }
+
+
+    //Slide up Drawer Code 
+
+
+
 
     return (
         
@@ -143,10 +162,9 @@ export default function MapPage2(){
                     </TextField>
                     <Button  className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
-            </Box>
-            <h1>Map route Carousel Here</h1>
             <MapDirectionsCarousel />
-            <h1>swipe up menu of directions Here</h1>
+            <MapDirectionsDrawer />
+            </Box>        
         </Box>
     )
 }
