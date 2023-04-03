@@ -28,6 +28,7 @@ const rows2 = [
 export default function BasicTable() {
   return (
     <>
+    <h6>Explorer Mode</h6>
     <TableContainer style={{ width: '30%' }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
@@ -43,6 +44,8 @@ export default function BasicTable() {
               key={row2.name}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+            
+
               <TableCell component="th" scope="row">{row2.icon}</TableCell>
               <TableCell align="left">{row2.directions}</TableCell>
               <TableCell align="left">{row2.img}</TableCell>
