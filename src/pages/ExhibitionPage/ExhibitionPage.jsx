@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
 export default function ExhibitionPage() {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState({});
@@ -111,6 +111,7 @@ export default function ExhibitionPage() {
           </Button>
         </Grid>
       </Grid>
+      <ExhibitionArtworksCard artworks={exhibition.artworks} />
     </Box>
   );
 }
