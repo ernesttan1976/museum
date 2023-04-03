@@ -18,7 +18,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
-        chunkSizeLimit: 100000,
       },
       treeshake: true,
     },
