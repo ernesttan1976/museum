@@ -9,6 +9,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
+import TurnRightOutlinedIcon from '@mui/icons-material/TurnRightOutlined';
+import TurnLeftOutlinedIcon from '@mui/icons-material/TurnLeftOutlined';
+import TurnSlightLeftOutlinedIcon from '@mui/icons-material/TurnSlightLeftOutlined';
+import TurnSlightRightOutlinedIcon from '@mui/icons-material/TurnSlightRightOutlined';
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
+
 function createData(icon, directions, img) {
   return { icon, directions, img};
 }
@@ -22,6 +29,23 @@ const rows = [
   createData('Icon5', "Directions5", "img5"),
 ];
 
+const Icons = {
+  turnRight : <TurnRightOutlinedIcon />,
+  turnLeft : <TurnLeftOutlinedIcon />,
+  slightRight : <TurnSlightRightOutlinedIcon />,
+  slightLeft : <TurnSlightLeftOutlinedIcon />,
+  camera : <CameraAltOutlinedIcon />,
+  artwork : <PhotoOutlinedIcon />
+
+}
+
+// rows= {
+//   icon: "turnRight",
+//   text: "some text",
+//   image:"url"
+// }
+
+// {Icons[rows.icon]}
 
 export default function BasicTable() {
   return (
