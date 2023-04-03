@@ -37,7 +37,7 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/artworks" element={<ArtworksPage />} />{" "}
+          <Route path="/artworks" element={<ArtworksPage/>} />{" "}
           {/* list of submitted artworks */}
           <Route path="/artworks/new" element={<ArtworksNew />} />{" "}
           {/* GET Add a new artwork form, POST when submitted to list of artworks */}
@@ -50,6 +50,7 @@ function App() {
           {/* GET for artwork edit and update form */}
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
+          {/* <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} /> */}
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/new" element={<ExhibitionNew />}></Route>
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>

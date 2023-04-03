@@ -15,7 +15,7 @@ function ExhibitionUpdate() {
 
   useEffect(() => {
     const fetchExhibition = async () => {
-      const response = await fetch(`/api/exhibitions/${id}/edit`);
+      const response = await fetch(`/api/exhibitions/${id}`);
       const exhibition = await response.json();
       setExhibition(exhibition);
     };
@@ -36,8 +36,8 @@ function ExhibitionUpdate() {
       },
       body: JSON.stringify(exhibition),
     });
-    // console.log("exhibition info updated");
-    // navigate("/");
+    console.log("exhibition info updated");
+    navigate("/");
     return response.json();
   };
 
@@ -53,65 +53,60 @@ function ExhibitionUpdate() {
       <Typography variant="h5">Update Page</Typography>
       <FormControl fullWidth sx={{ m: 10 }} autoComplete="off">
         <div>
+          <label>Exhibition Title:</label>
           <TextField
-            required
-            label="Exhibition Title"
             type="text"
             name="exhibitionTitle"
             value={exhibition.exhibitionTitle}
             onChange={handleChange}
           />
+          <label>Exhibition Subheader:</label>
           <TextField
-            required
-            label="Subheader"
             type="text"
             name="exhibitionTitleSub"
             value={exhibition.exhibitionTitleSub}
             onChange={handleChange}
           />
+          <label>Image URL:</label>
           <TextField
-            required
-            label="Image URL"
-            type="text"
+            type="url"
             name="exhibitionImage"
             value={exhibition.exhibitionImage}
             onChange={handleChange}
           />
+          <label>Short Description:</label>
           <TextField
-            required
-            label="Short Description"
             type="text"
             name="exhibitionDescription"
             value={exhibition.exhibitionDescription}
             onChange={handleChange}
           />
+          <label>Full Description:</label>
           <TextField
-            required
             multiline
             rows={6}
-            label="Full Description"
             type="text"
             name="exhibitionInformation"
             value={exhibition.exhibitionInformation}
             onChange={handleChange}
           />
-          {/* <TextField
+          {/* <label>Exhibition Location:</label>
+          <TextField
             required
-            label="Location"
             type="text"
             name="exhibitionLocation"
             value={exhibition.exhibitionLocation}
             onChange={handleChange}
-          /> */}
-          {/* <TextField
-            label="Floor Number"
+          />
+          <label>Floor Number:</label>
+          <TextField
             type="number"
             name="exhibitionFloor"
             value={exhibition.exhibitionFloor}
             onChange={handleChange}
           /> */}
+          <label>Start Date:</label>
           <TextField
-            label="Start Date"
             type="date"
             name="exhibitionStartDate"
             value={exhibition.exhibitionStartDate}
@@ -120,8 +115,8 @@ function ExhibitionUpdate() {
               shrink: true,
             }}
           />
+          <label>End Title:</label>
           <TextField
-            label="End Date"
             type="date"
             name="exhibitionEndDate"
             value={exhibition.exhibitionEndDate}
@@ -130,9 +125,8 @@ function ExhibitionUpdate() {
               shrink: true,
             }}
           />
+          <label>Entry:</label>
           <TextField
-            required
-            label="Entry"
             type="text"
             name="exhibitionEntry"
             value={exhibition.exhibitionEntry}

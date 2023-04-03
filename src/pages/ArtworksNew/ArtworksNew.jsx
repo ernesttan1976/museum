@@ -22,8 +22,8 @@ function ArtworksNew() {
 
 const navigate = useNavigate();
   const [data, setData] = useState({
-    artworkUrl: " ",
-    artistName: " ",
+    artworkUrl: "",
+    artistName: "",
     artworkDimension: "",
     artworkInformation: "",
     artworkLocation: "",
@@ -32,12 +32,13 @@ const navigate = useNavigate();
     artworkYear: number,
   });
   
-  function handleChange(ev){
-        setData({...data, [ev.target.name]: ev.target.value});
+  function handleChange(event){
+        setData({...data, [event.target.name]: event.target.value});
         console.log(data);
     }
 
-  const handleAddNewArtWork = async () => {
+  const handleAddNewArtWork = async (event) => {
+    event.preventDefault()
     const response = await fetch("/api/artworks", {
       method: "POST",
       headers: {
@@ -75,7 +76,8 @@ const navigate = useNavigate();
           <label>Image URL:</label>
           <TextField 
           label="Image URL" 
-          type="text" name="artworkUrl" 
+          type="text" 
+          name="artworkUrl" 
           value={data.artworkUrl} 
           placeholder='Image URL' 
           onChange={handleChange}/>
