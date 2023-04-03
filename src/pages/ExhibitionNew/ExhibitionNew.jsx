@@ -7,6 +7,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 function ExhibitionNew() {
   const [exhibitions, setExhibition] = useState([]);
@@ -22,16 +25,20 @@ function ExhibitionNew() {
     exhibitionDescription: "",
     exhibitionInformation: "",
     exhibitionLocation: "",
-    exhibitionFloor: "",
     exhibitionStartDate: "",
     exhibitionEndDate: "",
     exhibitionEntry: "",
     // artworks:[],
   });
 
+  const [floor, setFloor] = useState("B1");
+
+  const handleFloorChange = (event) => {
+    setFloor(event.target.value);
+  };
+
   function handleChange(ev) {
     setData({ ...data, [ev.target.name]: ev.target.value });
-    console.log(data);
   }
 
   const navigate = useNavigate();
@@ -47,7 +54,7 @@ function ExhibitionNew() {
 
     const exhibition = await response.json();
     addExhibition(exhibition);
-    console.log("new artwork submitted");
+    console.log("new exhibition submitted");
     navigate("/");
   };
 
@@ -113,19 +120,17 @@ function ExhibitionNew() {
           />
           {/* <TextField
             required
-            label="Location"
-            type="text"
-            name="exhibitionLocation"
-            value={data.exhibitionLocation}
+            label="Unit"
+            type="Number"
+            name="locationUnit"
+            value={data.locationUnit}
             onChange={handleChange}
-          /> */}
-          {/* <TextField
-            label="Floor Number"
-            type="number"
-            name="exhibitionFloor"
-            value={data.exhibitionFloor}
-            onChange={handleChange}
-          /> */}
+          />
+          <InputLabel>Floor</InputLabel>
+          <Select name="locationFloor" value={data.locationFloor} label="floor" onChange={handleFloorChange}>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+          </Select> */}
           <TextField
             label="Start Date"
             type="date"
