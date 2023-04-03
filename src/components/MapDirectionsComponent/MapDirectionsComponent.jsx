@@ -8,11 +8,9 @@ import ZoomInOutlinedIcon from '@mui/icons-material/ZoomInOutlined';
 import ZoomOutOutlinedIcon from '@mui/icons-material/ZoomOutOutlined';
 import CenterFocusStrongOutlinedIcon from '@mui/icons-material/CenterFocusStrongOutlined';
 
-//https://picsum.photos/seed/1/400/300
+import Level1 from '../../images/maps/Level1.png';
 
-import MAPIMAGES from "./MapImages.js";
-
-export default function MapComponent({level}) {
+export default function MapComponent() {
 
   const IMAGE_WIDTH = 400;
 
@@ -30,7 +28,7 @@ export default function MapComponent({level}) {
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => resetTransform()}><CenterFocusStrongOutlinedIcon /></Button>
           </ButtonGroup>
           <TransformComponent className="MapImage">
-            <img src={MAPIMAGES[level]} alt="map" width="400px" height="300px"/>
+            <img src={Level1} alt="map" width="400px" height="300px"/>
           </TransformComponent>
         </>
   )

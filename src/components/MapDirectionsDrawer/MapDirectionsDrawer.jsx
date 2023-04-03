@@ -53,7 +53,6 @@ function SwipeableEdgeDrawer(props) {
  const [toggle, setToggle] = useState(true);
 
  const handleSwitchChange = (event) => {
-  event.preventDefault();
    toggle ? setToggle(false) : setToggle(true);
  }
 

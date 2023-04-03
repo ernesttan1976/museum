@@ -12,6 +12,7 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
 import MapDirectionsCarousel from "../../components/MapDirectionsCarousel/MapDirectionsCarousel"
 import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
+import MapDirectionsComponent from "../../components/MapDirectionsComponent/MapDirectionsComponent";
 
 
 
@@ -163,7 +164,8 @@ export default function MapPage2(){
                     </TextField>
                     <Button  className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
-            <MapDirectionsCarousel />
+            <MapDirectionsComponent />
+            {/* <MapDirectionsCarousel /> */}
             <MapDirectionsDrawer />
             </Box>        
         </Box>
