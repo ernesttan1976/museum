@@ -1,5 +1,6 @@
 export default function ArtworkDeleteButton({ id, delArtwork }) {
-  const handleDelete = async () => {
+  const handleDelete = async (event) => {
+    event.preventDefault()
     const response = await fetch(`/api/artworks/${id}`, {
       method: "DELETE",
       headers: {

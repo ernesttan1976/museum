@@ -37,7 +37,7 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/artworks" element={<ArtworksPage />} />{" "}
+          <Route path="/artworks" element={<ArtworksPage/>} />{" "}
           {/* list of submitted artworks */}
           <Route path="/artworks/new" element={<ArtworksNew />} />{" "}
           {/* GET Add a new artwork form, POST when submitted to list of artworks */}
