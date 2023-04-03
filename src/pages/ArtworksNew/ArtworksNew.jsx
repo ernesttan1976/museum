@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import { CardContent } from '@mui/material';;
 import { useNavigate } from 'react-router-dom';
 import { number } from "prop-types";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
  
  
 function ArtworksNew() {
@@ -128,7 +130,20 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Medium:</label>
+          <label>Floor</label>
+          <Select label="Floor" name="artworkFloor" value="L1" onChange={handleChange}>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+           </Select>
+
+          <br />
+
+          <label> Artwork Medium: </label>
           <TextField 
           label="Medium" 
           type="text" 

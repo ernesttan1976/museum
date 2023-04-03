@@ -58,8 +58,15 @@ const exhibitionsSchema = new Schema(
     },
     
     exhibitionLocation: {
-      type: Schema.Types.ObjectId, 
-      ref: "Location",
+      type: String,
+      required: true,
+    },
+
+    exhibitionFloor: {
+      type: String,
+      enum: ['B1', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6'],
+      default: 'L1',
+      required: true,
     },
     artworks: [
       {
