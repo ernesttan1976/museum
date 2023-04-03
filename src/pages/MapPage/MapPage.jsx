@@ -156,10 +156,10 @@ export default function MapPage() {
     function handleChange(event) {
         console.log(event.target);
         if (event.target.name === "from") {
-            const newLocationsTo = locationsFrom.filter(location => (
-                location.value !== event.target.value))
-            console.log(newLocationsTo)
-            setLocationsTo(newLocationsTo);
+            // const newLocationsTo = locationsFrom.filter(location => (
+            //     location.value !== event.target.value))
+            // console.log(newLocationsTo)
+            // setLocationsTo(newLocationsTo);
             setFormData({ ...formData, [event.target.name]: event.target.value });
         } else {
             setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -169,7 +169,7 @@ export default function MapPage() {
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Submit: ", formData);
-        navigate(`/map/directions/from/${formData.from._id}/to/${formData.to_id}`);
+        navigate(`/map/directions/from/${formData.from._id}/to/${formData.to._id}`);
     }
 
 
@@ -181,7 +181,7 @@ export default function MapPage() {
                     <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.from} className="MapFormTextField" size='small' margin='dense' name="from" select label="From" placeholder="Enter where you are"
                         onChange={handleChange}>
                         {locationsFrom.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
+                            <MenuItem key={`${option.label}from`} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
@@ -193,7 +193,7 @@ export default function MapPage() {
                     <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.to} className="MapFormTextField" size='small' margin='dense' name="to" select label="To" placeholder="Enter destination"
                         onChange={handleChange}>
                         {locationsTo.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
+                            <MenuItem key={`${option.label}to`} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
