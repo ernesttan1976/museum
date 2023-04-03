@@ -8,6 +8,15 @@ export default defineConfig({
     proxy: {
       "/api": "http://127.0.0.1:3001",
     }
-  }
+  },
+  build: {
+    // enable tree shaking
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+      treeshake: true,
+    },
+  },
 })
 
