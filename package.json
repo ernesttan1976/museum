@@ -5,7 +5,7 @@
   "type": "commonjs",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "vite",
+    "start": "npx vite",
     "dev": "concurrently \"vite\" \"nodemon server",
     "build": "vite build",
     "preview": "vite preview",
@@ -17,7 +17,6 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
     "@mui/x-data-grid": "^6.0.4",
-
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
