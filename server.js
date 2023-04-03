@@ -4,7 +4,7 @@ const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
 
-// const userRouter = require("./routes/usersRouter");
+const userRouter = require("./routes/usersRouter");
 const artworkRouter = require("./routes/artworksRouter");
 const exhibitionRouter = require("./routes/exhibitionsRouter");
 const locationRouter = require("./routes/locationsRouter");
@@ -43,7 +43,7 @@ app.get("/api/secret", isLoggedIn, (req, res) => {
   res.json({ user });
 });
 
-// app.use("/api/users", userRouter);
+app.use("/api/users", userRouter);
 
 
 app.use("/api/exhibitions", exhibitionRouter);

@@ -75,6 +75,9 @@ export default function ArtworkInfo() {
             Location: {artwork.artworkLocation}
           </Typography><br/>
           <Typography variant="body1" color="text.secondary">
+            Floor: {artwork.artworkFloor}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
             Medium: {artwork.artworkMedium}
           </Typography><br/>
           <Typography variant="body1" color="text.secondary">
