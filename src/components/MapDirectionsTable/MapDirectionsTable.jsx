@@ -51,7 +51,7 @@ export default function BasicTable() {
   return (
     <>
     {/* <MapDirectionsSliderSwitch /> */}
-    <TableContainer style={{ width: '30%' }} component={Paper}>
+    <TableContainer style={{ width: '100%' }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>

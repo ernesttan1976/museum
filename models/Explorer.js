@@ -18,6 +18,11 @@ const explorerSchema = new Schema(
       required: true,
     },
 
+    featureTitle: {
+      type: String,
+      required: true,
+    },
+
     icon: {
       type: String,
       required: true,
