@@ -11,11 +11,13 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
-
+import {useNavigate} from 'react-router-dom';
 // import CustomSwipeableDrawer from '../../components/CustomSwipeableDrawer/CustomSwipeableDrawer';
 
 
 export default function MapPage() {
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log('Component mounted');
@@ -106,6 +108,7 @@ const locationsFrom =[
     function handleSubmit(event){
         event.preventDefault();
         console.log("Submit: ",formData);
+        navigate(`/map/directions/from/${formData.from}/to/${formData.to}`);
     }
 
 

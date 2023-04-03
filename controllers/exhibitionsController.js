@@ -18,62 +18,56 @@ const create = async (req, res) => {
   }
 };
 
-// const seed = async (req, res) => {
-//   try {
-//     await Holiday.deleteMany({});
+const seed = async (req, res) => {
+  try {
+    await Exhibition.deleteMany({});
 
-//     const holidays = await Holiday.create([
-//       { name: "World Kindness" },
-//       { name: "Spicy Hermit Cookie" },
-//       { name: "Lost Sock Memorial" },
-//       { name: "Bathtub Party" },
-//       { name: "Zipper" },
-//       { name: "Test Delete Route" },
-//     ]);
-//     res.status(201).json(holidays);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+    const seedExhibitions = require('../database-seed/exhibitions-seed.json'); 
+    console.log(seedExhibitions);
 
+    const exhibitions = await Exhibition.create(seedExhibitions);
+    res.status(200).json(exhibitions);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
+const deleteExhibition = async (req, res) => {
+  try {
+    const deletedExhibition = await Exhibition.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedExhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-// const deleteHoliday = async (req, res) => {
-//   try {
-//     const deletedHoliday = await Holiday.findByIdAndDelete(req.params.id);
-//     res.status(200).json(deletedHoliday);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+const show = async (req, res) => {
+  try {
+    const exhibition = await Exhibition.findById(req.params.id);
+    res.status(200).json(exhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-// const show = async (req, res) => {
-//   try {
-//     const holiday = await Holiday.findById(req.params.id);
-//     res.status(200).json(holiday);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
-
-// const update = async (req, res) => {
-//   try {
-//     const updatedHoliday = await Holiday.findByIdAndUpdate(
-//       req.params.id,
-//       req.body,
-//       { new: true }
-//     );
-//     res.status(200).json(updatedHoliday);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+const update = async (req, res) => {
+  try {
+    const updatedExhibition = await Exhibition.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedExhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   create,
-//   seed,
+  seed,
   index,
-//   delete: deleteHoliday,
-//   show,
-//   update,
+  delete: deleteExhibition,
+  show,
+  update,
 };
