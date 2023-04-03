@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,6 +9,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
+
 
 
 function createData(icon, directions, img) {
@@ -26,6 +30,23 @@ const rows2 = [
   ];
 
 export default function BasicTable() {
+
+  const { id } = useParams();
+  const [explorers, setExplorer] = useState([]);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchExplorer = async () => {
+      const response = await fetch("/api/map/directions");
+      const explorers = await response.json();
+      setExplorer(explorers);
+    };
+    fetchExplorer();
+  });
+
+  
+
+
   return (
     <>
     <h6>Explorer Mode</h6>
@@ -33,22 +54,19 @@ export default function BasicTable() {
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell align="left">Direction icon</TableCell>
+            <TableCell align="left">Direction icon </TableCell>
             <TableCell align="left">Directions</TableCell>
             <TableCell align="left">Img</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows2.map((row2) => (
-            <TableRow
-              key={row2.name}
+          {explorers.map((explorer,index) => (
+            <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            
-
-              <TableCell component="th" scope="row">{row2.icon}</TableCell>
-              <TableCell align="left">{row2.directions}</TableCell>
-              <TableCell align="left">{row2.img}</TableCell>
+              <TableCell component="th" scope="row">{explorer.icon}</TableCell>
+              <TableCell align="left">{explorer.directions}</TableCell>
+              <TableCell align="left">{explorer.imgUrl}</TableCell>
             </TableRow>
           ))}
         </TableBody>
