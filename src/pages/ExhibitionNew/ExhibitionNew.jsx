@@ -18,26 +18,10 @@ function ExhibitionNew() {
   const addExhibition = (exhibition) =>
     setExhibition([exhibition, ...exhibitions]);
 
-  const [data, setData] = useState({
-    exhibitionTitle: "",
-    exhibitionTitleSub: "",
-    exhibitionImage: "",
-    exhibitionDescription: "",
-    exhibitionInformation: "",
-    exhibitionLocation: "",
-    exhibitionStartDate: "",
-    exhibitionEndDate: "",
-    exhibitionEntry: "",
-    // artworks:[],
-  });
-
-  const [floor, setFloor] = useState("B1");
-
-  const handleFloorChange = (event) => {
-    setFloor(event.target.value);
-  };
+  const [data, setData] = useState({});
 
   function handleChange(ev) {
+    ev.preventDefault();
     setData({ ...data, [ev.target.name]: ev.target.value });
   }
 
@@ -74,7 +58,7 @@ function ExhibitionNew() {
       onSubmit={handleSubmit}
     >
       <FormControl fullWidth sx={{ m: 10 }} autoComplete="off">
-        <Typography variant="h4">Add New Exhibition</Typography>
+        <Typography variant="h4">Create Exhibition</Typography>
         <div>
           <TextField
             required
@@ -118,19 +102,29 @@ function ExhibitionNew() {
             value={data.exhibitionInformation}
             onChange={handleChange}
           />
-          {/* <TextField
+          <label>Exhibition Location:</label>
+          <TextField
             required
-            label="Unit"
-            type="Number"
-            name="locationUnit"
-            value={data.locationUnit}
+            type="text"
+            name="exhibitionLocation"
+            value={data.exhibitionLocation}
             onChange={handleChange}
           />
           <InputLabel>Floor</InputLabel>
-          <Select name="locationFloor" value={data.locationFloor} label="floor" onChange={handleFloorChange}>
+          <Select
+            name="exhibitionFloor"
+            value={data.exhibitionFloor}
+            type="text"
+            onChange={handleChange}
+          >
             <MenuItem value="B1">B1</MenuItem>
             <MenuItem value="L1">L1</MenuItem>
-          </Select> */}
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
           <TextField
             label="Start Date"
             type="date"
