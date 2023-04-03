@@ -84,8 +84,4 @@ const exhibitionsSchema = new Schema(
   }
 );
 
-// const exhibitionCommentsSchema = new Schema({
-//   // user schema
-// });
-
 module.exports = mongoose.model("Exhibition", exhibitionsSchema);
