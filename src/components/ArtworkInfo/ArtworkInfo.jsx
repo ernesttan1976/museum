@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { styled } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import "./ArtworkInfo.css";
 import { useNavigate } from 'react-router-dom';
-import ArtworkDeleteButton from "../ArtworkDeleteButton/ArtworkDeleteButton";
 
 export default function ArtworkInfo() {
   const { id } = useParams();
@@ -26,22 +24,23 @@ export default function ArtworkInfo() {
     fetchArtwork();
   }, [id]);
 
-  console.log("artist name " + artwork.artistName)
+  // console.log("artist name " + artwork.artistName)
 
-  //! after delete to redirect to (/artworks) page.
-  // const delArtwork = (id) =>
-  //   setArtwork(artwork.filter(({ _id }) => _id !== id)); // delete artwork
-  
-    const delArtwork = async (id) => {
-    await fetch(`/api/artworks/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    navigate('/artworks');
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`/api/artworks/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      navigate("/artworks");
+    } catch (error) {
+      console.error(error);
+    }
   };
-
 
   if (Object.keys(artwork).length === 0) {
     return (
@@ -55,8 +54,6 @@ export default function ArtworkInfo() {
       <Box className="ArtworkInfo">
       <Grid container spacing={2}>
         <Grid xs={12}>
-        {/* <CardContent> */}
-          {/* <Typography>Idv Artwork's Information</Typography> */}
           <CardMedia className="ArtworkInfoImg"
             component="img"
             image={artwork.artworkUrl}
@@ -84,14 +81,10 @@ export default function ArtworkInfo() {
             Year: {artwork.artworkYear}
           </Typography>
           <br />
-
           <Link to={`/artworks/${artwork._id}/edit`}>
-          <button>Edit</button> {/* linked to edit artwork page*/}
+          <Button>Edit</Button> 
           </Link><br />
-
-          <ArtworkDeleteButton id={artwork._id} delArtwork={delArtwork} />
-
-        {/* </CardContent> */}
+          <Button onClick={() => handleDelete(artwork._id)}>Delete</Button>
         </Grid>
      </Grid></Box>
     );
