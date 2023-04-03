@@ -10,6 +10,10 @@ export default defineConfig({
     }
   },
   build: {
+    target: 'node',
+    outDir: 'dist',
+    minify: true,
+    sourcemap: false,
     // enable tree shaking
     rollupOptions: {
       output: {
@@ -20,3 +24,15 @@ export default defineConfig({
   },
 })
 
+
+// build: {
+//   target: 'node',
+//   outDir: 'dist',
+//   minify: true,
+//   sourcemap: false,
+//   rollupOptions: {
+//     input: {
+//       main: './src/index.js'
+//     }
+//   }
+// }
