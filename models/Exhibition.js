@@ -57,10 +57,10 @@ const exhibitionsSchema = new Schema(
       required: true,
     },
     
-    // exhibitionLocation: {
-    //   type: Schema.Types.ObjectId, 
-    //   ref: "Location",
-    // },
+    exhibitionLocation: {
+      type: Schema.Types.ObjectId, 
+      ref: "Location",
+    },
 
     artworks: [
       {
@@ -78,8 +78,8 @@ const exhibitionsSchema = new Schema(
   }
 );
 
-const exhibitionCommentsSchema = new Schema({
-  // user schema
-});
+// const exhibitionCommentsSchema = new Schema({
+//   // user schema
+// });
 
 module.exports = mongoose.model("Exhibition", exhibitionsSchema);

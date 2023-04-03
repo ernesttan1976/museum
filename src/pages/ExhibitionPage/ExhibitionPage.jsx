@@ -50,7 +50,7 @@ export default function ExhibitionPage() {
   // } else {
 
   return (
-    <Box width="25ch">
+    <Box width="50ch">
       <Grid container spacing={2}>
         <Grid xs={12}>
           <CardMedia
@@ -88,7 +88,7 @@ export default function ExhibitionPage() {
             {exhibition.exhibitionEntry}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {exhibition.exhibitionDescription}
+            {exhibition.exhibitionInformation}
           </Typography>
           <Button variant="outlined">
             <Link
