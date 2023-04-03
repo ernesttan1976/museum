@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     comments: {
-      type: Array,
+      type: String,
       trim: true,
       required: true,
     },

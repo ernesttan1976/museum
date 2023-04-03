@@ -54,6 +54,7 @@ function ExhibitionComments({ comments }) {
       ></textarea>
       <Link to={`/api/exhibitions/${id}/comments`}>
         <Button
+          name="comments"
           type="submit"
           variant="contained"
           color="primary"
