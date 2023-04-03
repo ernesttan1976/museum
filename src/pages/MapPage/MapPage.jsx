@@ -33,6 +33,7 @@ export default function MapPage() {
             const data = await response.json();
             setLocations(data);
             console.log(data);
+            filterLocations();
         };
         fetchLocations();
     }, []);
@@ -94,46 +95,56 @@ export default function MapPage() {
             if (filterFloor[0][cat[category]]) {
                 result.push(...filterFloor[0][cat[category]].map(item => ({
                     value: item,
-                    label: `${category}: ${item}`
+                    label: `${category} ${item}`
                 })));
             }
             console.log(result);
-            setLocationsFrom(result);
-            setLocationsTo(result);
+            if (formData.from==="") {
+                setLocationsFrom(result);
+                return;
+            };
+            if (formData.to==="") {
+                setLocationsTo(result)
+            };
         } else {
             let result = [];
 
             if (filterFloor[0].exhibitions.length>0) {
                 result.push(...filterFloor[0].exhibitions.map(item => ({
                     value: item,
-                    label: `EXHIBITION: ${item.exhibitionTitle}`
+                    label: `EXHIBITION ${item.exhibitionTitle}`
                 })));
             }
 
             if (filterFloor[0].artworks.length>0) {
                 result.push(...filterFloor[0].artworks.map(item => ({
                     value: item,
-                    label: `ARTWORK: ${item.artworkTitle}`
+                    label: `ARTWORK ${item.artworkTitle}`
                 })));
             }
 
             if (filterFloor[0].shopanddine.length>0) {
                 result.push(...filterFloor[0].shopanddine.map(item => ({
                     value: item,
-                    label: `SHOP & DINE: ${item}`
+                    label: `SHOP & DINE ${item}`
                 })));
             }
 
             if (filterFloor[0].amenities.length>0) {
                 result.push(...filterFloor[0].amenities.map(item => ({
                     value: item,
-                    label: `AMENITIES: ${item}`
+                    label: `AMENITIES ${item}`
                 })));
             }
 
             console.log(result);
-            setLocationsFrom(result);
-            setLocationsTo(result);
+            if (formData.from==="") {
+                setLocationsFrom(result);
+                return;
+            };
+            if (formData.to==="") {
+                setLocationsTo(result)
+            };
         }
 
     }
@@ -181,7 +192,7 @@ export default function MapPage() {
                     <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.from} className="MapFormTextField" size='small' margin='dense' name="from" select label="From" placeholder="Enter where you are"
                         onChange={handleChange}>
                         {locationsFrom.map((option) => (
-                            <MenuItem key={`${option.label}from`} value={option.value}>
+                            <MenuItem key={option.label} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
@@ -193,7 +204,7 @@ export default function MapPage() {
                     <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.to} className="MapFormTextField" size='small' margin='dense' name="to" select label="To" placeholder="Enter destination"
                         onChange={handleChange}>
                         {locationsTo.map((option) => (
-                            <MenuItem key={`${option.label}to`} value={option.value}>
+                            <MenuItem key={option.label} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
