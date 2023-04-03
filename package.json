@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

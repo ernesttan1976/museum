@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, "dist")));
 // });
 
 const isLoggedIn = (req, res, next) => {
-  const { authorization } = req.headers;
-  const token = authorization.split(" ")[1];
   try {
+    const { authorization } = req.headers;
+    const token = authorization.split(" ")[1];
     const decode = jwt.verify(token, process.env.JWT_SECRET);
     if (decode) {
       res.locals.user = decode.user;
@@ -42,10 +42,10 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
-// app.get("/api/secret", isLoggedIn, (req, res) => {
-//   const { user } = res.locals;
-//   res.json({ user });
-// });
+app.get("/api/secret", isLoggedIn, (req, res) => {
+  const { user } = res.locals;
+  res.json({ user });
+});
 
 app.use("/api/users", userRouter);
 
@@ -65,3 +65,5 @@ setTimeout(() => {
     console.log(`Express listening on port ${port}`);
   });
 }, 1000); // add a delay of 3 seconds before starting the server
+
+module.exports=app;
