@@ -121,6 +121,7 @@ export default function MapPage2(){
     const [toggle, setToggle] = useState(true);
 
     const handleSwitchChange = (event) => {
+        event.preventDefault; 
       toggle ? setToggle(false) : setToggle(true);
     }
 
