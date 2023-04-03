@@ -5,6 +5,7 @@
   "type": "commonjs",
   "proxy": "http://localhost:3001",
   "scripts": {
+    "vite": "vite",
     "start": "nodemon server",
     "dev": "concurrently \"vite\" \"nodemon server",
     "build": "vite build",
