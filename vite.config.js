@@ -10,8 +10,6 @@ export default defineConfig({
     }
   },
   build: {
-    target: 'node',
-    outDir: 'dist',
     minify: true,
     sourcemap: false,
     // enable tree shaking
