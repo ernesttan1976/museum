@@ -10,13 +10,9 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
-
 import MapDirectionsCarousel from "../../components/MapDirectionsCarousel/MapDirectionsCarousel"
-import MapDirectionsTable from '../../components/MapDirectionsTable/MapDirectionsTable';
-import MapDirectionsExplorer from '../../components/MapDirectionsTable/MapDirectionsExplorer';
 import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
 
-import Switch from '@mui/material/Switch';
 
 
 
@@ -166,15 +162,8 @@ export default function MapPage2(){
                     </TextField>
                     <Button  className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
-                <h1>Map route Carousel Here</h1>
             <MapDirectionsCarousel />
-            <h1>swipe up menu of directions Here</h1>
             <MapDirectionsDrawer />
-            <div>
-                <Switch toggle={toggle} onChange={handleSwitchChange}
-                />                
-            </div>
-            {toggle ? <MapDirectionsTable /> : <MapDirectionsExplorer />}
             </Box>        
         </Box>
     )
