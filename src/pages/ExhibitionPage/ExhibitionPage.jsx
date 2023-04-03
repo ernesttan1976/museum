@@ -90,6 +90,12 @@ export default function ExhibitionPage() {
           <Typography variant="body2" color="text.secondary">
             {exhibition.exhibitionInformation}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {exhibition.exhibitionLocation}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {exhibition.exhibitionFloor}
+          </Typography>
           <Button variant="outlined">
             <Link
               to="https://web.nationalgallery.sg/#/gallery-passes"
