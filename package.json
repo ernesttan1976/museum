@@ -8,7 +8,8 @@
     "start": "vite",
     "dev": "concurrently \"vite\" \"nodemon server",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node_modules/.bin/mocha"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -36,7 +37,10 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "chai": "^4.3.7",
     "concurrently": "^7.6.0",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3",
     "vite": "^4.2.1"
   }
 }

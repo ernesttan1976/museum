@@ -60,11 +60,6 @@ export default function CustomDrawer() {
     to: '/artworks/new',
     icon: <AddCircleOutlineIcon /> ,
    },
-   {
-    text: 'Experimental',
-    to: '/experimental',
-    icon: <EmojiObjectsIcon /> ,
-   },
   ]
 
   const list = () => (
