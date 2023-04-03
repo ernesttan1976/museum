@@ -5,7 +5,7 @@
   "type": "commonjs",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "npx vite",
+    "start": "node server",
     "dev": "concurrently \"vite\" \"nodemon server",
     "build": "vite build",
     "preview": "vite preview",
