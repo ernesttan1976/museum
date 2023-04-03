@@ -1,0 +1,229 @@
+[{
+  "_id": {
+    "$oid": "642a6bf17cc11f490441bbfb"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6425c7c0c9d195369ec02492"
+    },
+    {
+      "$oid": "6425c781c9d195369ec02491"
+    },
+    {
+      "$oid": "6425c74ec9d195369ec02490"
+    },
+    {
+      "$oid": "6425c70fc9d195369ec0248f"
+    },
+    {
+      "$oid": "6425c6a6c9d195369ec0248e"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c854c9d195369ec02494"
+    }
+  ],
+  "floor": "B1",
+  "shopanddine": [
+    "National Kitchen"
+  ]
+},{
+  "_id": {
+    "$oid": "642a6d2f7cc11f490441bbff"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6415326a1fdaed807a26dd2e"
+    },
+    {
+      "$oid": "6425ba0ac9d195369ec02461"
+    },
+    {
+      "$oid": "6425bfb3c9d195369ec02471"
+    },
+    {
+      "$oid": "6425c0a3c9d195369ec02472"
+    },
+    {
+      "$oid": "6425c122c9d195369ec02473"
+    },
+    {
+      "$oid": "6425c1b4c9d195369ec02474"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c260c9d195369ec02476"
+    }
+  ],
+  "floor": "L1",
+  "shopanddine": []
+},{
+  "_id": {
+    "$oid": "642a6d587cc11f490441bc00"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6425c7c0c9d195369ec02492"
+    },
+    {
+      "$oid": "6425c781c9d195369ec02491"
+    },
+    {
+      "$oid": "6425c74ec9d195369ec02490"
+    },
+    {
+      "$oid": "6425c70fc9d195369ec0248f"
+    },
+    {
+      "$oid": "6425c6a6c9d195369ec0248e"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c854c9d195369ec02494"
+    }
+  ],
+  "floor": "L2",
+  "shopanddine": []
+},{
+  "_id": {
+    "$oid": "642a6d5f7cc11f490441bc01"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6415326a1fdaed807a26dd2e"
+    },
+    {
+      "$oid": "6425ba0ac9d195369ec02461"
+    },
+    {
+      "$oid": "6425bfb3c9d195369ec02471"
+    },
+    {
+      "$oid": "6425c0a3c9d195369ec02472"
+    },
+    {
+      "$oid": "6425c122c9d195369ec02473"
+    },
+    {
+      "$oid": "6425c1b4c9d195369ec02474"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c260c9d195369ec02476"
+    }
+  ],
+  "floor": "L3",
+  "shopanddine": []
+},{
+  "_id": {
+    "$oid": "642a6d687cc11f490441bc02"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6425c7c0c9d195369ec02492"
+    },
+    {
+      "$oid": "6425c781c9d195369ec02491"
+    },
+    {
+      "$oid": "6425c74ec9d195369ec02490"
+    },
+    {
+      "$oid": "6425c70fc9d195369ec0248f"
+    },
+    {
+      "$oid": "6425c6a6c9d195369ec0248e"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c854c9d195369ec02494"
+    }
+  ],
+  "floor": "L4",
+  "shopanddine": []
+},{
+  "_id": {
+    "$oid": "642a6d6f7cc11f490441bc03"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6415326a1fdaed807a26dd2e"
+    },
+    {
+      "$oid": "6425ba0ac9d195369ec02461"
+    },
+    {
+      "$oid": "6425bfb3c9d195369ec02471"
+    },
+    {
+      "$oid": "6425c0a3c9d195369ec02472"
+    },
+    {
+      "$oid": "6425c122c9d195369ec02473"
+    },
+    {
+      "$oid": "6425c1b4c9d195369ec02474"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c260c9d195369ec02476"
+    }
+  ],
+  "floor": "L5",
+  "shopanddine": []
+},{
+  "_id": {
+    "$oid": "642a6d767cc11f490441bc04"
+  },
+  "amenities": [
+    "Washroom"
+  ],
+  "artworks": [
+    {
+      "$oid": "6425c7c0c9d195369ec02492"
+    },
+    {
+      "$oid": "6425c781c9d195369ec02491"
+    },
+    {
+      "$oid": "6425c74ec9d195369ec02490"
+    },
+    {
+      "$oid": "6425c70fc9d195369ec0248f"
+    },
+    {
+      "$oid": "6425c6a6c9d195369ec0248e"
+    }
+  ],
+  "exhibitions": [
+    {
+      "$oid": "6425c854c9d195369ec02494"
+    }
+  ],
+  "floor": "L6",
+  "shopanddine": []
+}]

@@ -61,20 +61,6 @@ const exhibitionsSchema = new Schema(
       type: Schema.Types.ObjectId, 
       ref: "Location",
     },
-
-// const Icons = {
-//   "turnLeft": <LeftIcon />
-// }
-
-// rows= {
-// icon: "turnLeft",
-// text: "some text",
-// image: "url",
-
-// }
-
-// {Icons[rows.icon]}
-
     artworks: [
       {
         type: Schema.Types.ObjectId, 

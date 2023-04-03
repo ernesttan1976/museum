@@ -25,6 +25,18 @@ export default function MapPage() {
         setScrollHeight();
       }, []);
 
+    const [locations, setLocations] = useState([]); 
+
+      useEffect(() => {
+        const fetchLocations = async () => {
+            const response = await fetch(`/api/locations`);
+            const data = await response.json();
+            setLocations(data);
+            console.log(locations);
+          };
+          fetchLocations();
+      }, []);
+
 const locationsFrom =[
         {
             value: '',
@@ -87,6 +99,7 @@ const locationsFrom =[
     };
 
     const handleCategory = (event, newCategory) => {
+        console.log("Category:", newCategory);
         setCategory(newCategory);
     };
 
