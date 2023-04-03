@@ -39,7 +39,7 @@ export default function ArtworkInfo() {
         "Content-Type": "application/json",
       },
     });
-    navigate('/artworks/');
+    navigate('/artworks');
   };
 
 
