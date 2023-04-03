@@ -2,7 +2,7 @@ const Location = require("../models/Location");
 
 const index = async (req, res) => {
     try {
-      const foundLocation = await Location.find({});
+      const foundLocation = await Location.find({}).populate('exhibitions').populate('artworks');
       res.status(200).json(foundLocation);
     } catch (error) {
       res.status(400).json({ error: error.message });
