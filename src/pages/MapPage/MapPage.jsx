@@ -33,11 +33,11 @@ export default function MapPage() {
             const response = await fetch(`/api/locations`);
             const data = await response.json();
             setLocations(data);
-            console.log(data);
-            filterLocations();
         };
         fetchLocations();
     }, []);
+
+
 
     const [locationsFrom, setLocationsFrom] = useState([]);
 
@@ -66,8 +66,14 @@ export default function MapPage() {
     const [locationsTo, setLocationsTo] = useState([])
 
     const [formData, setFormData] = useState({
-        from: "",
-        to: "",
+        from: {
+            label: "",
+            value: ""
+        },
+        to: {
+            label: "",
+            value: ""
+        }
     });
 
     const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
@@ -83,160 +89,134 @@ export default function MapPage() {
         "AMENITIES": "amenities",
     }
 
-    function filterLocations(event) {
+    function filterLocations() {
         if (!locations) return;
 
         const filterFloor = locations.filter(item => (item.floor === level));
-
         if (filterFloor.length === 0) return;
+        // console.log(filterFloor)
 
-        let result = [];
+        let result = [{
+            value: "",
+            label: ""
+        }];
 
-        if (category != '') {
 
-            console.log(cat[category]);
-            if (filterFloor[0][cat[category]]) {
-                result.push(...filterFloor[0][cat[category]].map(item => ({
-                    label: `${category} ${item}`,
-                    value: item
-                })));
-            }
-            console.log(result);
-        } else {
-
-            if (filterFloor[0].exhibitions.length > 0) {
-                result.push(...filterFloor[0].exhibitions.map(item => ({
-                    label: `EXHIBITION ${item.exhibitionTitle}`,
-                    value: item
-                })));
-            }
-
-            if (filterFloor[0].artworks.length > 0) {
-                result.push(...filterFloor[0].artworks.map(item => ({
-                    label: `ARTWORK ${item.artworkTitle}`,
-                    value: item
-                })));
-            }
-
-            if (filterFloor[0].shopanddine.length > 0) {
-                result.push(...filterFloor[0].shopanddine.map(item => ({
-                    label: `SHOP & DINE ${item}`,
-                    value: item
-                })));
-            }
-
-            if (filterFloor[0].amenities.length > 0) {
-                result.push(...filterFloor[0].amenities.map(item => ({
-                    label: `AMENITIES ${item}`,
-                    value: item
-                })));
-            }
-
-            console.log(result);
+        if (filterFloor[0].exhibitions.length > 0 && (category === "EXHIBITIONS" || category ==='')) {
+            result.push(...filterFloor[0].exhibitions.map(item => ({
+                value: item._id,
+                label: `EXHIBITION ${item.exhibitionTitle}`
+            })));
         }
 
-        if (result.length>0){
-            if (event?.target.name==="from") {
-                setLocationsFrom(result);
-            } else if (event?.target.name==="to") {
-                setLocationsTo(result);
-            } else {
-                setLocationsFrom(result);
-                setLocationsTo(result);
-            };    
+        if (filterFloor[0].artworks.length > 0 && (category === "ARTWORKS" || category ==='')) {
+            result.push(...filterFloor[0].artworks.map(item => ({
+                value: item._id,
+                label: `ARTWORK ${item.artworkTitle}`
+            })));
+        }
+
+        if (filterFloor[0].shopanddine.length > 0 && (category === "SHOP & DINE" || category ==='')) {
+            result.push(...filterFloor[0].shopanddine.map(item => ({
+                value: item,
+                label: `SHOP & DINE ${item}`
+            })));
+        }
+
+        if (filterFloor[0].amenities.length > 0 && (category === "AMENITIES"  || category ==='')) {
+            result.push(...filterFloor[0].amenities.map(item => ({
+                value: item,
+                label: `AMENITIES ${item}`
+            })));
+        }
+
+        // console.log(result);
+
+        if (result.length > 0) {
+            setLocationsFrom(result);
+            setLocationsTo(result);
         }
 
     }
-
-
-    function handleFocus(event){
-        // filterLocations(event)
-    }
-
-    useEffect(() => {
-        filterLocations();
-    }, [level, category, locations]);
 
     const handleLevel = (event, newLevel) => {
         console.log("Level:", newLevel)
         setLevel(newLevel);
+        filterLocations();
     };
 
     const handleCategory = (event, newCategory) => {
         console.log("Category:", newCategory);
         setCategory(newCategory);
+        filterLocations();
     };
 
-    function handleChange(event) {
-        console.log(event.target);
-        if (event.target.name === "from") {
-            // const newLocationsTo = locationsFrom.filter(location => (
-            //     location.value !== event.target.value))
-            // console.log(newLocationsTo)
-            // setLocationsTo(newLocationsTo);
-            setFormData({ ...formData, [event.target.name]: event.target.value });
-        } else {
-            setFormData({ ...formData, [event.target.name]: event.target.value });
-        }
+    function handleChange(event, values, field) {
+        //field = 'from' or 'to'
+        console.log(field,":",values);
+        setFormData({
+            ...formData, [field]: values
+        });
+        console.log(formData);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Submit: ", formData);
-        navigate(`/map/directions/from/${formData.from._id}/to/${formData.to._id}`);
+        navigate(`/map/directions/from/${formData.from.value}/to/${formData.to.value}`);
     }
+
+    useEffect(()=>{
+        filterLocations();
+    }, [level, category, locations])
 
 
     return (
-        <Box className="MapPage">
-            <Box className="MapPageForm" component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1 } }} noValidate autoComplete="off">
-                <div className="MapFormTopRow">
-                    <Button className="LeftButton"><RadioButtonCheckedIcon /></Button>
+        <Box className="MapPage1">
+            <Box className="MapPageForm1" onSubmit={handleSubmit} component="form" sx={{ '& .MuiTextField-root': { m: 1 } }} noValidate autoComplete="off">
+                <div className="MapFormTopRow1" >
+                    <Button className="LeftButton1"><RadioButtonCheckedIcon /></Button>
                     <Autocomplete
-                        className="MapFormTextField"
-                        sx={{ fontSize: '12px', minWidth: '150px' }} 
-                        value={formData.from} 
-                        size='small' 
-                        margin='dense' 
-                        name="from" 
+                        className="MapFormTextField1"
+                        sx={{ fontSize: '12px', minWidth: '150px' }}
+                        value={formData.from}
+                        size='small'
+                        margin='dense'
                         placeholder="Enter where you are"
-                        onChange={handleChange}
-                        onFocus={handleFocus}
                         disablePortal
                         options={locationsFrom}
+                        onChange={(event, values) => handleChange(event, values, "from")}
                         isOptionEqualToValue={(option, currentValue) => {
                             if (currentValue === '') return true;
                             return option.name === currentValue.name;
-                          }}
-                        renderInput={(params) => <TextField {...params} label="From" />}
+                        }}
+                        renderInput={(params) => <TextField {...params} name="from" label="From" />}
                     />
-                    <Button className="RightButton"><SwapVertIcon /></Button>
+                    <Button className="RightButton1"><SwapVertIcon /></Button>
                 </div>
-                <div className="MapFormBottomRow">
-                    <Button className="LeftButton"><FmdGoodIcon /></Button>
+                <div className="MapFormBottomRow1" >
+                    <Button className="LeftButton1"><FmdGoodIcon /></Button>
                     <Autocomplete
-                        className="MapFormTextField"
-                        sx={{ fontSize: '12px', minWidth: '150px' }} 
-                        value={formData.to} 
-                        size='small' 
-                        margin='dense' 
-                        name="tp" 
+                        className="MapFormTextField1"
+                        sx={{ fontSize: '12px', minWidth: '150px' }}
+                        value={formData.to}
+                        size='small'
+                        margin='dense'
                         placeholder="Enter destination"
-                        onChange={handleChange}
-                        onFocus={handleFocus}
                         disablePortal
                         options={locationsTo}
+                        onChange={(event, values) => handleChange(event, values, "to")}
                         isOptionEqualToValue={(option, currentValue) => {
                             if (currentValue === '') return true;
                             return option.name === currentValue.name;
-                          }}
-                        renderInput={(params) => <TextField {...params} label="To" />}
+                        }}
+                        renderInput={(params) => <TextField {...params} name="to" label="to" />}
                     />
-                    <Button className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
+                    <Button className="RightButton1" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
 
             </Box>
-            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={(ev, value) => handleLevel(ev, value)} aria-label="level">
+            <ToggleButtonGroup className="LevelButtonGroup1" value={level} exclusive onChange={(ev, value) => handleLevel(ev, value)} aria-label="level">
                 <ToggleButton value="B1" aria-label="B1">
                     B1
                 </ToggleButton>
@@ -259,7 +239,7 @@ export default function MapPage() {
                     L6
                 </ToggleButton>
             </ToggleButtonGroup>
-            <ToggleButtonGroup className="CategoryButtonGroup" value={category} exclusive onChange={handleCategory} aria-label="category">
+            <ToggleButtonGroup className="CategoryButtonGroup1" value={category} exclusive onChange={handleCategory} aria-label="category">
                 <ToggleButton value="EXHIBITIONS" aria-label="Exhibitions">
                     EXHIBITIONS
                 </ToggleButton>
@@ -274,7 +254,7 @@ export default function MapPage() {
                 </ToggleButton>
             </ToggleButtonGroup>
 
-            <Box className="MapComponent">
+            <Box className="MapComponent1">
                 <MapComponent level={level} />
             </Box>
         </Box>
@@ -290,133 +270,5 @@ export default function MapPage() {
 
 
 
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
-    {
-        label: 'The Lord of the Rings: The Return of the King',
-        year: 2003,
-    },
-    { label: 'The Good, the Bad and the Ugly', year: 1966 },
-    { label: 'Fight Club', year: 1999 },
-    {
-        label: 'The Lord of the Rings: The Fellowship of the Ring',
-        year: 2001,
-    },
-    {
-        label: 'Star Wars: Episode V - The Empire Strikes Back',
-        year: 1980,
-    },
-    { label: 'Forrest Gump', year: 1994 },
-    { label: 'Inception', year: 2010 },
-    {
-        label: 'The Lord of the Rings: The Two Towers',
-        year: 2002,
-    },
-    { label: "One Flew Over the Cuckoo's Nest", year: 1975 },
-    { label: 'Goodfellas', year: 1990 },
-    { label: 'The Matrix', year: 1999 },
-    { label: 'Seven Samurai', year: 1954 },
-    {
-        label: 'Star Wars: Episode IV - A New Hope',
-        year: 1977,
-    },
-    { label: 'City of God', year: 2002 },
-    { label: 'Se7en', year: 1995 },
-    { label: 'The Silence of the Lambs', year: 1991 },
-    { label: "It's a Wonderful Life", year: 1946 },
-    { label: 'Life Is Beautiful', year: 1997 },
-    { label: 'The Usual Suspects', year: 1995 },
-    { label: 'Léon: The Professional', year: 1994 },
-    { label: 'Spirited Away', year: 2001 },
-    { label: 'Saving Private Ryan', year: 1998 },
-    { label: 'Once Upon a Time in the West', year: 1968 },
-    { label: 'American History X', year: 1998 },
-    { label: 'Interstellar', year: 2014 },
-    { label: 'Casablanca', year: 1942 },
-    { label: 'City Lights', year: 1931 },
-    { label: 'Psycho', year: 1960 },
-    { label: 'The Green Mile', year: 1999 },
-    { label: 'The Intouchables', year: 2011 },
-    { label: 'Modern Times', year: 1936 },
-    { label: 'Raiders of the Lost Ark', year: 1981 },
-    { label: 'Rear Window', year: 1954 },
-    { label: 'The Pianist', year: 2002 },
-    { label: 'The Departed', year: 2006 },
-    { label: 'Terminator 2: Judgment Day', year: 1991 },
-    { label: 'Back to the Future', year: 1985 },
-    { label: 'Whiplash', year: 2014 },
-    { label: 'Gladiator', year: 2000 },
-    { label: 'Memento', year: 2000 },
-    { label: 'The Prestige', year: 2006 },
-    { label: 'The Lion King', year: 1994 },
-    { label: 'Apocalypse Now', year: 1979 },
-    { label: 'Alien', year: 1979 },
-    { label: 'Sunset Boulevard', year: 1950 },
-    {
-        label: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-        year: 1964,
-    },
-    { label: 'The Great Dictator', year: 1940 },
-    { label: 'Cinema Paradiso', year: 1988 },
-    { label: 'The Lives of Others', year: 2006 },
-    { label: 'Grave of the Fireflies', year: 1988 },
-    { label: 'Paths of Glory', year: 1957 },
-    { label: 'Django Unchained', year: 2012 },
-    { label: 'The Shining', year: 1980 },
-    { label: 'WALL·E', year: 2008 },
-    { label: 'American Beauty', year: 1999 },
-    { label: 'The Dark Knight Rises', year: 2012 },
-    { label: 'Princess Mononoke', year: 1997 },
-    { label: 'Aliens', year: 1986 },
-    { label: 'Oldboy', year: 2003 },
-    { label: 'Once Upon a Time in America', year: 1984 },
-    { label: 'Witness for the Prosecution', year: 1957 },
-    { label: 'Das Boot', year: 1981 },
-    { label: 'Citizen Kane', year: 1941 },
-    { label: 'North by Northwest', year: 1959 },
-    { label: 'Vertigo', year: 1958 },
-    {
-        label: 'Star Wars: Episode VI - Return of the Jedi',
-        year: 1983,
-    },
-    { label: 'Reservoir Dogs', year: 1992 },
-    { label: 'Braveheart', year: 1995 },
-    { label: 'M', year: 1931 },
-    { label: 'Requiem for a Dream', year: 2000 },
-    { label: 'Amélie', year: 2001 },
-    { label: 'A Clockwork Orange', year: 1971 },
-    { label: 'Like Stars on Earth', year: 2007 },
-    { label: 'Taxi Driver', year: 1976 },
-    { label: 'Lawrence of Arabia', year: 1962 },
-    { label: 'Double Indemnity', year: 1944 },
-    {
-        label: 'Eternal Sunshine of the Spotless Mind',
-        year: 2004,
-    },
-    { label: 'Amadeus', year: 1984 },
-    { label: 'To Kill a Mockingbird', year: 1962 },
-    { label: 'Toy Story 3', year: 2010 },
-    { label: 'Logan', year: 2017 },
-    { label: 'Full Metal Jacket', year: 1987 },
-    { label: 'Dangal', year: 2016 },
-    { label: 'The Sting', year: 1973 },
-    { label: '2001: A Space Odyssey', year: 1968 },
-    { label: "Singin' in the Rain", year: 1952 },
-    { label: 'Toy Story', year: 1995 },
-    { label: 'Bicycle Thieves', year: 1948 },
-    { label: 'The Kid', year: 1921 },
-    { label: 'Inglourious Basterds', year: 2009 },
-    { label: 'Snatch', year: 2000 },
-    { label: '3 Idiots', year: 2009 },
-    { label: 'Monty Python and the Holy Grail', year: 1975 },
-];
 
 

@@ -44,7 +44,7 @@ function App() {
           <Route path="/artworks/:id/edit" element={<ArtworksEditForm />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
-          <Route path="api/map/directions/from/:from/to/:to" element={<MapPage2 />} />
+          <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} />
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/new" element={<ExhibitionNew />}></Route>
           <Route path="/exhibitions/:id" element={<ExhibitionPage />}></Route>
