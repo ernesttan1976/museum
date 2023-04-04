@@ -14,17 +14,28 @@ const show = async (req, res) => {
     const from = req.params.from;
     const to = req.params.to;
 
-    function findRoute(from, to){
-
-      if (from==="XXX" && to==="YYY"){
+    function findRoute(from, to) {
+      if (
+        from === "exhibition A object ID " &&
+        to === "exhibition B object ID"
+      ) {
         result = {
           fromMapUrl: "AAA.png",
           toMapUrl: "BBB.png",
-          steps: [ObjectId]
-        }
+          steps: [ObjectId], // Object ID of Route A
+        };
+      } else if (
+        from === "exhibition A object ID " &&
+        to === "exhibition C object ID"
+      ) {
+        result = {
+          fromMapUrl: "AAA.png",
+          toMapUrl: "CCC.png",
+          steps: [ObjectId], // Object ID of Route B
+        };
       }
 
-      return result
+      return result;
     }
 
     res.status(200).json(foundExplorer);
