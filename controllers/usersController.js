@@ -40,6 +40,7 @@ const login = async (req, res) => {
       const payload = { user };
       const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 });
       res.status(200).json({ token });
+      console.log("user login successful");
     } else {
       res.status(401).json({ message: "wrong password" });
     }

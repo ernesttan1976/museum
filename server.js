@@ -44,8 +44,6 @@ app.get("/api/secret", isLoggedIn, (req, res) => {
 });
 
 app.use("/api/users", userRouter);
-
-
 app.use("/api/exhibitions", exhibitionRouter);
 app.use("/api/artworks", artworkRouter);
 app.use("/api/locations", locationRouter);
