@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import "./CustomDrawerLogin.css";
-
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -21,8 +20,7 @@ export default function CustomDrawer() {
     <Box
       className="CustomDrawerLogin sticky"
       role="presentation"
-      //! onClick={toggleDrawer(false)}
-      //! to uncomment later after sign up and login completed.
+      onClick={toggleDrawer(false)}
     >
       <AuthPage />
     </Box>
