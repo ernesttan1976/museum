@@ -35,17 +35,6 @@ export default function BasicTable() {
   const [explorers, setExplorer] = useState([]);
   // const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchExplorer = async () => {
-      const response = await fetch("/api/map/directions");
-      const explorers = await response.json();
-      setExplorer(explorers);
-    };
-    fetchExplorer();
-  },[]);
-
-  
-
 
   return (
     <>
@@ -60,7 +49,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {explorers.map((explorer,index) => (
+          {/* {explorers.map((explorer,index) => (
             <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
@@ -69,7 +58,7 @@ export default function BasicTable() {
               <TableCell align="left">
               <img src={`${explorer.imgUrl}`} height="150" /> </TableCell>
             </TableRow>
-          ))}
+          ))} */}
         </TableBody>
       </Table>
     </TableContainer>
