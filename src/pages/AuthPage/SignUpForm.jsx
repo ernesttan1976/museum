@@ -11,26 +11,17 @@ export default function SignUpForm({ setUser }) {
     email: "",
     password: "",
     confirm: "",
+    userRole: "user",
   });
   const [error, setError] = useState("No Error");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const disable = state.password !== state.confirm;
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     await signUp(state);
-  //     setUser(getUser());
-  //     navigate("/");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.alert(JSON.stringify(state));
+    window.alert(state.email + " account has been created successfully");
+    // window.alert(JSON.stringify(state));
     fetch("/api/users", {
       method: "POST",
       headers: {
@@ -39,7 +30,9 @@ export default function SignUpForm({ setUser }) {
       body: JSON.stringify(state),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log( data ));
+      console.log("submitted");
+      // navigate('/login');
   };
 
   const handleChange = (event) => {
@@ -50,7 +43,7 @@ export default function SignUpForm({ setUser }) {
   };
 
   return (
-      <div className="form-container">
+      <Box className="form-container">
         <form component="form" autoComplete="off" onSubmit={handleSubmit}>
           {error}
           <fieldset>
@@ -103,7 +96,7 @@ export default function SignUpForm({ setUser }) {
           <p className="error-message">&nbsp;{state.error}</p>
         </fieldset>
         </form>
-      </div>
+      </Box>
   );
 }
 
