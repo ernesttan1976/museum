@@ -14,10 +14,10 @@ async function createComment(req, res, next) {
   try {
     const id = req.params.id;
     const exhibition = await Exhibition.findById(id);
-    exhibition.exhibitionComments.push(req.body);
+    const comment = req.body;
+    exhibition.exhibitionComments.push(comment);
     await exhibition.save();
     res.status(200).json(exhibition);
-    console.log(exhibition.exhibitionComments);
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
@@ -42,7 +42,7 @@ async function createComment(req, res, next) {
 // }
 
 module.exports = {
-    // index,
+  // index,
   create: createComment,
   //delete: deleteComment,
 };

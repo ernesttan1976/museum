@@ -24,13 +24,11 @@ function ExhibitionComments({ comments }) {
     });
     const exhibition = await response.json();
     addExhibition(exhibition);
-    console.log("new comment submitted");
     navigate("/");
   };
 
   function handleChange(ev) {
     ev.preventDefault();
-    console.log(data);
     setData({ ...data, [ev.target.name]: ev.target.value });
   }
 
@@ -40,21 +38,20 @@ function ExhibitionComments({ comments }) {
 
   return (
     <>
-      <Typography>Comments</Typography>
+      <Typography>{JSON.stringify(comments)}</Typography>
       {/* {comments.map((comment) => (
         <Typography>{comment}</Typography>
       ))} */}
       <label>Comment:</label>
       <textarea
         type="text"
-        name="exhibitionComments"
+        name="comments"
         rows="4"
         cols="50"
         onChange={handleChange}
       ></textarea>
-      <Link to={`/api/exhibitions/${id}/comments`}>
+      <Link to={`/exhibitions/${id}`}>
         <Button
-          name="comments"
           type="submit"
           variant="contained"
           color="primary"
