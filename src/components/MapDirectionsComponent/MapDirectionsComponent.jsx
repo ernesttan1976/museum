@@ -22,7 +22,7 @@ export default function MapComponent() {
      >
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
         <>
-          <ButtonGroup className="MapToolBar" disableElevation variant="contained" aria-label="zoom in, zoom out and reset">
+          <ButtonGroup className="MapToolBar2" disableElevation variant="contained" aria-label="zoom in, zoom out and reset">
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => zoomIn()}><ZoomInOutlinedIcon /></Button>
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => zoomOut()}><ZoomOutOutlinedIcon /></Button>
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => resetTransform()}><CenterFocusStrongOutlinedIcon /></Button>

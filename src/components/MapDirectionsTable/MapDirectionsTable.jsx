@@ -60,7 +60,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {explorers.map((explorer,index) => (
+          {explorers.map((explorer,index) => ( //turn this one into a filter 
             <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >

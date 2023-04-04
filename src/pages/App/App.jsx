@@ -7,6 +7,7 @@ import CustomBottomNavigation from "../../components/CustomBottomNavigation/Cust
 import { Routes, Route } from "react-router-dom";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import HomePage from "../HomePage/HomePage";
+import Login from "../AuthPage/LoginForm";
 import ArtworksPage from "../ArtworksPage/ArtworksPage";
 import ArtworksNew from "../ArtworksNew/ArtworksNew";
 import ArtworkInfo from "../../components/ArtworkInfo/ArtworkInfo";
@@ -36,6 +37,7 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/artworks" element={<ArtworksPage/>} />
           <Route path="/artworks/new" element={<ArtworksNew />} />
           <Route path="/artworks/:id" element={<ArtworkInfo />} />
