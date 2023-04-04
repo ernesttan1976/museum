@@ -1,9 +1,11 @@
-const Explorer = require("../models/Explorer");
+const Directions = require("../models/Directions");
 
 const index = async (req, res) => {
   try {
-    const foundExplorer = await Explorer.find({});
-    res.status(200).json(foundExplorer);
+    const foundDirections = await Directions.findById(
+      "642bb5bf350c1b20a4cdb627"
+    ).populate("routeDirections");
+    res.status(200).json(foundDirections);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -46,5 +48,4 @@ const show = async (req, res) => {
 
 module.exports = {
   index,
-  show,
 };

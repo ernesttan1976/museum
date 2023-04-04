@@ -9,15 +9,13 @@ const userRouter = require("./routes/usersRouter");
 const artworkRouter = require("./routes/artworksRouter");
 const exhibitionRouter = require("./routes/exhibitionsRouter");
 const locationRouter = require("./routes/locationsRouter");
-const explorerRouter = require("./routes/explorerRouter");
 const commentRouter = require("./routes/commentsRouter");
+const directionsRouter = require("./routes/directionsRouter");
 
 const jwt = require("jsonwebtoken");
 
 const app = express();
 const port = process.env.PORT || 3001;
-
-
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -52,14 +50,12 @@ app.use("/api/users", userRouter);
 app.use("/api/exhibitions", exhibitionRouter);
 app.use("/api/artworks", artworkRouter);
 app.use("/api/locations", locationRouter);
-app.use("/api/map/directions", explorerRouter);
 app.use("/api", commentRouter);
+app.use("/api/map/directions", directionsRouter);
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
-
-
 
 setTimeout(() => {
   app.listen(port, () => {
@@ -67,4 +63,4 @@ setTimeout(() => {
   });
 }, 1000); // add a delay of 3 seconds before starting the server
 
-module.exports=app;
+module.exports = app;
