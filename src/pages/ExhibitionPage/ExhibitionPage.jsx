@@ -14,6 +14,8 @@ export default function ExhibitionPage() {
   const [exhibition, setExhibition] = useState({});
   const navigate = useNavigate();
 
+  // const addComment = () => setExhibition({ ...exhibition, exhibitionComments: []})
+
   useEffect(() => {
     const fetchExhibition = async () => {
       const response = await fetch(`/api/exhibitions/${id}`);
@@ -22,10 +24,6 @@ export default function ExhibitionPage() {
     };
     fetchExhibition();
   }, [id]);
-
-  // const addExhibition = (exhibition) => setExhibition([exhibition, ...exhibitions]);
-  // const delExhibition = (id) =>
-  //   setExhibition(exhibitions.filter(({ _id }) => _id !== id));
 
   const handleDelete = async (id) => {
     try {
@@ -42,14 +40,6 @@ export default function ExhibitionPage() {
       console.error(error);
     }
   };
-
-  // if (Object.keys(exhibition).length === 0) {
-  //   return (
-  //     <>
-  //       <p>No Exhibition Available yet</p>
-  //     </>
-  //   );
-  // } else {
 
   return (
     <Box width="50ch">
@@ -114,7 +104,10 @@ export default function ExhibitionPage() {
         </Grid>
       </Grid>
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
-      <ExhibitionComments comments={exhibition.exhibitionComments}/>
+      <ExhibitionComments
+        comments={exhibition.exhibitionComments}
+        setExhibition={setExhibition}
+      />
     </Box>
   );
 }

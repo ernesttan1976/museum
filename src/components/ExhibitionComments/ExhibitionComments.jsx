@@ -4,33 +4,21 @@ import Button from "@mui/material/Button";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function ExhibitionComments({ comments }) {
-  const navigate = useNavigate();
+function ExhibitionComments({ comments, setExhibition }) {
   const { id } = useParams();
-  const [exhibitions, setExhibition] = useState([]);
-  const [data, setData] = useState([]);
+  const [comment, setComment] = useState("");
 
-  // add exhibition
-  const addExhibition = (exhibition) =>
-    setExhibition([exhibition, ...exhibitions]);
-
-  const handleAddNewExhibition = async () => {
+  const handleAddNewExhibition = async (event) => {
     const response = await fetch(`/api/exhibitions/${id}/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ comments: comment }),
     });
     const exhibition = await response.json();
-    addExhibition(exhibition);
-    navigate("/");
+    setExhibition(exhibition);
   };
-
-  function handleChange(ev) {
-    ev.preventDefault();
-    setData({ ...data, [ev.target.name]: ev.target.value });
-  }
 
   if (!comments) {
     return null;
@@ -38,24 +26,24 @@ function ExhibitionComments({ comments }) {
 
   return (
     <>
-      <Typography>{JSON.stringify(comments)}</Typography>
-      {/* {comments.map((comment) => (
-        <Typography>{comment}</Typography>
-      ))} */}
+      <Typography variant="h4">Comments</Typography>
+      {comments.map((review) => (
+        <Typography key={review._id}>{review.comments}</Typography>
+      ))}
       <label>Comment:</label>
       <textarea
         type="text"
-        name="comments"
         rows="4"
         cols="50"
-        onChange={handleChange}
+        onChange={(event) => setComment(event.target.value)}
+        value={comment}
       ></textarea>
       <Link to={`/exhibitions/${id}`}>
         <Button
+          onClick={handleAddNewExhibition}
           type="submit"
           variant="contained"
           color="primary"
-          onClick={handleAddNewExhibition}
         >
           Submit
         </Button>
