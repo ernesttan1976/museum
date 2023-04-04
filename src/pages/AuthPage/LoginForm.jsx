@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 export default function LoginForm() {
   const [error, setError] = useState("No error");
@@ -10,7 +13,7 @@ export default function LoginForm() {
     const formData = new FormData(event.target);
     const body = Object.fromEntries(formData);
 
-    try {
+    try { 
       const response = await fetch("/api/users/login", {
         method: "POST",
         headers: {
@@ -30,37 +33,30 @@ export default function LoginForm() {
     }
   };
 
-  const handleSecret = async () => {
-    try {
-      const response = await fetch("/api/secret", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      setError(JSON.stringify(data));
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
   return (
-    <>
+    <Box>
       <form onSubmit={handleLogin}>
         {error}
         <fieldset>
-          <legend>Login</legend>
           <label>
-            Email: <input name="email" />
+            User Email Address: 
+            <TextField 
+             label="Enter your email address"
+            name="email" />
           </label>
+          <br />
           <label>
-            Password: <input name="password" />
+            Password: 
+            <TextField 
+            label="Enter your password" 
+            name="password" />
           </label>
-          <button>Login</button>
+          <br /><br />
+          <Button variant="contained" type="submit" >Login</Button>
+          <br />
+          <p></p>
         </fieldset>
       </form>
-      <button onClick={handleSecret}>Secret</button>
-    </>
+    </Box>
   );
 }

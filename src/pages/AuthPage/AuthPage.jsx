@@ -2,8 +2,9 @@
 import Box from '@mui/material/Box';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
-export default function AuthPage(){
 
+
+export default function AuthPage(){
         return (
         <Box className="AuthPage">
         <h2>Sign Up</h2>
