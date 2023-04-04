@@ -22,20 +22,3 @@ export default defineConfig({
   },
 })
 
-
-// build: {
-//   target: 'node',
-//   outDir: 'dist',
-//   minify: true,
-//   sourcemap: false,
-//   rollupOptions: {
-//     input: {
-//       main: './src/index.js'
-//     }
-//   }
-// }
-// output: {
-//   dir: 'dist',
-//   format: 'es',
-//   chunkSizeWarningLimit: 1024 // Set limit to 1KB
-// }

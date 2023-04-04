@@ -48,7 +48,7 @@ function App() {
           <Route path="/artworks/:id/edit" element={<ArtworksEditForm user={user}/>} />  {/* admin access only -> (user.role === "admin" */}
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
-          {/* <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} /> */}
+          <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} />
           ///map/directions?to=1234from=5678 //get request, post to req.query
           <Route path="/exhibitions/new" element={<ExhibitionNew user={user}/>}></Route> {/* admin access only-> (user.role === "admin") */}
           <Route path="/exhibitions/:id" element={<ExhibitionPage user={user}/>}></Route> {/* admin access see edit and delete btn -> (user.role === "admin") */}

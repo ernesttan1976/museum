@@ -7,11 +7,15 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 function ExhibitionUpdate() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [exhibition, setExhibition] = useState({});
+  const [artworks, setArtwork] = useState([]);
 
   useEffect(() => {
     const fetchExhibition = async () => {
@@ -22,13 +26,24 @@ function ExhibitionUpdate() {
     fetchExhibition();
   }, [id]);
 
-  const handleChange = (event) => {
+  useEffect(() => {
+    const fetchArtwork = async () => {
+      const response = await fetch("/api/artworks");
+      const artworks = await response.json();
+      setArtwork(artworks);
+    };
+    fetchArtwork();
+  }, [id]);
+
+  function handleChange(event) {
+    event.preventDefault();
     const key = event.target.name;
     const value = event.target.value;
     setExhibition({ ...exhibition, [key]: value });
-  };
+  }
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (event) => {
+    event.preventDefault();
     const response = await fetch(`/api/exhibitions/${id}`, {
       method: "PUT",
       headers: {
@@ -53,35 +68,35 @@ function ExhibitionUpdate() {
       <Typography variant="h5">Update Page</Typography>
       <FormControl fullWidth sx={{ m: 10 }} autoComplete="off">
         <div>
-          <label>Exhibition Title:</label>
+          <Typography>Exhibition Title:</Typography>
           <TextField
             type="text"
             name="exhibitionTitle"
             value={exhibition.exhibitionTitle}
             onChange={handleChange}
           />
-          <label>Exhibition Subheader:</label>
+          <Typography>Exhibition Subheader:</Typography>
           <TextField
             type="text"
             name="exhibitionTitleSub"
             value={exhibition.exhibitionTitleSub}
             onChange={handleChange}
           />
-          <label>Image URL:</label>
+          <Typography>Image URL:</Typography>
           <TextField
             type="url"
             name="exhibitionImage"
             value={exhibition.exhibitionImage}
             onChange={handleChange}
           />
-          <label>Short Description:</label>
+          <Typography>Short Description:</Typography>
           <TextField
             type="text"
             name="exhibitionDescription"
             value={exhibition.exhibitionDescription}
             onChange={handleChange}
           />
-          <label>Full Description:</label>
+          <Typography>Full Description:</Typography>
           <TextField
             multiline
             rows={6}
@@ -90,7 +105,7 @@ function ExhibitionUpdate() {
             value={exhibition.exhibitionInformation}
             onChange={handleChange}
           />
-          {/* <label>Exhibition Location:</label>
+          <label>Location:</label>
           <TextField
             required
             type="text"
@@ -98,13 +113,26 @@ function ExhibitionUpdate() {
             value={exhibition.exhibitionLocation}
             onChange={handleChange}
           />
-          <label>Floor Number:</label>
-          <TextField
-            type="number"
+          <Typography>Floor:</Typography>
+          <Select
             name="exhibitionFloor"
             value={exhibition.exhibitionFloor}
+            type="text"
             onChange={handleChange}
-          /> */}
+          >
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
+          <Select name="artworks" type="text" onChange={handleChange}>
+            {artworks.map((artwork) => (
+              <MenuItem value={artwork._id}>{artwork.artworkTitle}</MenuItem>
+            ))}
+          </Select>
           <label>Start Date:</label>
           <TextField
             type="date"
@@ -115,7 +143,7 @@ function ExhibitionUpdate() {
               shrink: true,
             }}
           />
-          <label>End Title:</label>
+          <label>End Date:</label>
           <TextField
             type="date"
             name="exhibitionEndDate"

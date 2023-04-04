@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import ExhibitionCard from "../ExhibitionCard/ExhibitionCard";
 
 export default function ExhibitionGrid() {
-
   return (
     <>
       <Grid
@@ -15,11 +14,9 @@ export default function ExhibitionGrid() {
         alignItems="center"
       >
         <Grid item xs={12} sm={12} lg={12}>
-        <ExhibitionCard />
+          <ExhibitionCard />
         </Grid>
-        </Grid>
+      </Grid>
     </>
   );
 }
-
-
