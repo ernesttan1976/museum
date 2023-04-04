@@ -1,4 +1,5 @@
 const Directions = require("../models/Directions");
+require("../models/Explorer");
 
 const index = async (req, res) => {
   try {
