@@ -5,15 +5,56 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    margin: 10px 0;
 }
 
 .IconSliderInner{
     width: 200%;
     height: 100px;
     display: flex;
+    column-gap: max(5px,10vw);
     overflow-x: auto;
 }
+
+.IconSliderInner .MuiButton-root{
+    /* margin: 0px 8px; */
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.IconSliderInner .MuiButton-startIcon{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.IconSliderInner .MuiStack-root:first-of-type{
+    margin-left: 25px;
+} 
+
+.IconSliderInner .MuiStack-root:last-of-type{
+    margin-right: 40px;
+} 
+
+.IconSliderInner .MuiTypography-root{
+    text-align: center;
+}
+
+
+.IconSliderInner svg{
+    width: 60%;
+    height: auto;
+}
+
+/* .IconSliderInner .IconButtonInvisible{
+    opacity: 0;
+} */
 
 .IconSlider .MuiBottomNavigationAction-label{
     opacity: 1;
