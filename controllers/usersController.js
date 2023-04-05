@@ -40,6 +40,7 @@ const login = async (req, res) => {
       const payload = { user };
       const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 });
       res.status(200).json({ token });
+      console.log("user login successful");
     } else {
       res.status(401).json({ message: "wrong password" });
     }
@@ -48,7 +49,21 @@ const login = async (req, res) => {
   }
 };
 
+
+const logout = async (req, res) => {
+if (req.headers && req.headers.authorization){
+  console.log("working? is" + req.headers.authorization);
+}
+};
+
+// if (req.session) {
+//   req.session.destroy();
+// }
+// res.render("users/login", { msg: "", isLoggedIn: false });
+
+
 module.exports = {
   create,
   login,
+  logout,
 };

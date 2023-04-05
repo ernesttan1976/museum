@@ -1,15 +1,18 @@
-// import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import Box from '@mui/material/Box';
-import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
-export default function AuthPage(){
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
+
+export default function AuthPage(){
         return (
         <Box className="AuthPage">
-        <h2>Sign Up</h2>
-        <SignUpForm />
-        <h2>Log In</h2>
-        <LoginForm />
+          <Link to={`/users/login`}>
+          <Button>Log In</Button>
+          </Link>
+          <br />
+          <Link to={`/users/signup`}>
+          <Button>Sign Up</Button>
+          </Link>
         </Box>        
     )
 }

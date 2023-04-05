@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUser, signUp } from "../../utilities/users-service";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export default function SignUpForm({ setUser }) {
   const [state, setState] = useState({
@@ -11,26 +13,17 @@ export default function SignUpForm({ setUser }) {
     email: "",
     password: "",
     confirm: "",
+    userRole: "user",
   });
   const [error, setError] = useState("No Error");
   const navigate = useNavigate();
 
   const disable = state.password !== state.confirm;
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     await signUp(state);
-  //     setUser(getUser());
-  //     navigate("/");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.alert(JSON.stringify(state));
+    window.alert(state.email + " account has been created successfully. Please Login.");
+    // window.alert(JSON.stringify(state));
     fetch("/api/users", {
       method: "POST",
       headers: {
@@ -39,7 +32,9 @@ export default function SignUpForm({ setUser }) {
       body: JSON.stringify(state),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log( data ));
+      console.log("submitted");
+      navigate('/users/login');
   };
 
   const handleChange = (event) => {
@@ -50,7 +45,7 @@ export default function SignUpForm({ setUser }) {
   };
 
   return (
-      <div className="form-container">
+      <Box className="form-container">
         <form component="form" autoComplete="off" onSubmit={handleSubmit}>
           {error}
           <fieldset>
@@ -103,7 +98,12 @@ export default function SignUpForm({ setUser }) {
           <p className="error-message">&nbsp;{state.error}</p>
         </fieldset>
         </form>
-      </div>
+        <Typography variant="p">Already have an account? 
+        <Link to={`/users/login`}>
+         <Button>Login</Button>
+        </Link>now!
+      </Typography>
+      </Box>
   );
 }
 
