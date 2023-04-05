@@ -102,4 +102,5 @@ export default function ArtworkInfo({user}) {
     );
   }
 }
+
  
