@@ -1,0 +1,31 @@
+.exhibitionAccordionContainer {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    text-align: center;
+}
+
+.ExhibitionAccordion {
+    width: 100%;
+    display: flex;
+}
+
+.AccordionSummary {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 20px;
+}
+
+.AccordionDetails {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
