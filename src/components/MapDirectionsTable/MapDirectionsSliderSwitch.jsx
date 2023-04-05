@@ -6,7 +6,7 @@ import * as React from 'react';
 export default function SwitchLabels() {
   return (
     <FormGroup>
-      <FormControlLabel control={<Switch true />} label="Explorer mode" />
+      <FormControlLabel control={<Switch false/>} label="Explorer mode" />
     </FormGroup>
   );
 }

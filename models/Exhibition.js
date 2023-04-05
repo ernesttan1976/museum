@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     comments: {
-      type: Array,
+      type: String,
       trim: true,
       required: true,
     },
@@ -58,8 +58,15 @@ const exhibitionsSchema = new Schema(
     },
     
     exhibitionLocation: {
-      type: Schema.Types.ObjectId, 
-      ref: "Location",
+      type: String,
+      required: true,
+    },
+
+    exhibitionFloor: {
+      type: String,
+      enum: ['B1', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6'],
+      default: 'L1',
+      required: true,
     },
     artworks: [
       {
@@ -67,7 +74,7 @@ const exhibitionsSchema = new Schema(
         ref: "Artwork",
       },
     ],
-    exhibitionComments: [commentSchema] // <- embedding comments from user
+    exhibitionComments: [commentSchema]
   },
   {
     timestamps: {
@@ -76,9 +83,5 @@ const exhibitionsSchema = new Schema(
     },
   }
 );
-
-// const exhibitionCommentsSchema = new Schema({
-//   // user schema
-// });
 
 module.exports = mongoose.model("Exhibition", exhibitionsSchema);

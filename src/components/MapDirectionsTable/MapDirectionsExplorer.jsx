@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,49 +10,55 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import TurnRightOutlinedIcon from '@mui/icons-material/TurnRightOutlined';
+import TurnLeftOutlinedIcon from '@mui/icons-material/TurnLeftOutlined';
+import TurnSlightLeftOutlinedIcon from '@mui/icons-material/TurnSlightLeftOutlined';
+import TurnSlightRightOutlinedIcon from '@mui/icons-material/TurnSlightRightOutlined';
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
 
-function createData(icon, directions, img) {
-  return { icon, directions, img};
+
+
+const Icons = {
+  turnRight : <TurnRightOutlinedIcon />,
+  turnLeft : <TurnLeftOutlinedIcon />,
+  slightRight : <TurnSlightRightOutlinedIcon />,
+  slightLeft : <TurnSlightLeftOutlinedIcon />,
+  camera : <CameraAltOutlinedIcon />,
+  artwork : <PhotoOutlinedIcon />
+
 }
 
-
-const rows2 = [
-    createData('Icon1', "Directions1", "img1"),
-    createData('Icon1', "Special exhibition text", "img1"),
-    createData('Icon2', "Directions2", "img2"),
-    createData('Icon2', "exhibition feature here", "img2"),
-    createData('Icon3', "Directions3", "img3"),
-    createData('Icon4', "Directions4", "img4"),
-    createData('Icon5', "Directions5", "img5"), 
-    createData('Icon3', "something to look at ", "img3"),
-  ];
-
 export default function BasicTable() {
+
+  const { id } = useParams();
+  const [explorers, setExplorer] = useState([]);
+  // const navigate = useNavigate();
+
+
   return (
     <>
     <h6>Explorer Mode</h6>
-    <TableContainer style={{ width: '30%' }} component={Paper}>
+    <TableContainer style={{ width: '100%' }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell align="left">Direction icon</TableCell>
+            <TableCell align="left">Direction icon </TableCell>
             <TableCell align="left">Directions</TableCell>
             <TableCell align="left">Img</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows2.map((row2) => (
-            <TableRow
-              key={row2.name}
+          {/* {explorers.map((explorer,index) => (
+            <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            
-
-              <TableCell component="th" scope="row">{row2.icon}</TableCell>
-              <TableCell align="left">{row2.directions}</TableCell>
-              <TableCell align="left">{row2.img}</TableCell>
+              <TableCell component="th" scope="row">{Icons[explorer.icon]}</TableCell>
+              <TableCell align="left">{explorer.directions}{explorer.explorerPrompt}<a href ={`${explorer.featureUrl}`}>{explorer.featureTitle}</a></TableCell>
+              <TableCell align="left">
+              <img src={`${explorer.imgUrl}`} height="150" /> </TableCell>
             </TableRow>
-          ))}
+          ))} */}
         </TableBody>
       </Table>
     </TableContainer>

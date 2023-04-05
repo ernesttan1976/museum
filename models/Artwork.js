@@ -55,8 +55,5 @@ const artworkSchema = new Schema(
   }
 );
 
-const artworkCommentsSchema = new Schema({
-  // user schema
-});
 
 module.exports = mongoose.model("Artwork", artworkSchema);

@@ -66,7 +66,7 @@ function SwipeableEdgeDrawer(props) {
             height: `calc(90% - ${drawerBleeding}px)`,
             overflow: 'visible',
             display: "flex",
-            width: "50%",
+            width: "60%",
             justifyContent: "center",
             alignItems: "center",
             margin: "auto",
@@ -89,8 +89,7 @@ function SwipeableEdgeDrawer(props) {
         }}
         >
         <div>
-          <Switch toggle={toggle} onChange={handleSwitchChange} />  
-                       
+          <Switch toggle={toggle} onChange={handleSwitchChange} />         
         </div>
             {toggle ? <MapDirectionsTable /> : <MapDirectionsExplorer />}
         

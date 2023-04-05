@@ -126,3 +126,9 @@
   align-items: center;
 }
 
+.MapToolBar2{
+  position:absolute;
+  top: 75%;
+  right: 41%;
+  z-index: 10;
+}

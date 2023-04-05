@@ -6,11 +6,15 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
+import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
 
 export default function ExhibitionPage() {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState({});
   const navigate = useNavigate();
+
+  // const addComment = () => setExhibition({ ...exhibition, exhibitionComments: []})
 
   useEffect(() => {
     const fetchExhibition = async () => {
@@ -20,10 +24,6 @@ export default function ExhibitionPage() {
     };
     fetchExhibition();
   }, [id]);
-
-  // const addExhibition = (exhibition) => setExhibition([exhibition, ...exhibitions]);
-  // const delExhibition = (id) =>
-  //   setExhibition(exhibitions.filter(({ _id }) => _id !== id));
 
   const handleDelete = async (id) => {
     try {
@@ -40,14 +40,6 @@ export default function ExhibitionPage() {
       console.error(error);
     }
   };
-
-  // if (Object.keys(exhibition).length === 0) {
-  //   return (
-  //     <>
-  //       <p>No Exhibition Available yet</p>
-  //     </>
-  //   );
-  // } else {
 
   return (
     <Box width="50ch">
@@ -90,6 +82,12 @@ export default function ExhibitionPage() {
           <Typography variant="body2" color="text.secondary">
             {exhibition.exhibitionInformation}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {exhibition.exhibitionLocation}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {exhibition.exhibitionFloor}
+          </Typography>
           <Button variant="outlined">
             <Link
               to="https://web.nationalgallery.sg/#/gallery-passes"
@@ -105,6 +103,11 @@ export default function ExhibitionPage() {
           </Button>
         </Grid>
       </Grid>
+      <ExhibitionArtworksCard artworks={exhibition.artworks} />
+      <ExhibitionComments
+        comments={exhibition.exhibitionComments}
+        setExhibition={setExhibition}
+      />
     </Box>
   );
 }
