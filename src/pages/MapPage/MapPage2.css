@@ -132,3 +132,20 @@
   right: 41%;
   z-index: 10;
 }
+
+.MapImage2{
+  width: 100vw;
+  height: 300px;
+}
+
+.MapPage2 .react-transform-component{
+
+  height: 550px;
+
+}
+
+.MuiTabs-flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
