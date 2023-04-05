@@ -15,7 +15,7 @@ export default defineConfig({
     // enable tree shaking
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: ['react', 'react-dom'],
       },
       treeshake: true,
     },

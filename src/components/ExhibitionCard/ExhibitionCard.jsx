@@ -26,7 +26,7 @@ export default function ExhibitionCard() {
   return (
     <>
     {exhibitions.map((exhibition, index) => (
-        <Card key={index} className="Card" sx={{ maxWidth: 345 }}>
+        <Card key={index}>
         <CardHeader
           title={exhibition.exhibitionTitle}
           subheader={exhibition.exhibitionTitleSub}

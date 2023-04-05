@@ -1,20 +1,18 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import ExhibitionCard from "../ExhibitionCard/ExhibitionCard";
+import "./ExhibitionGrid.css";
 
 export default function ExhibitionGrid() {
   return (
     <>
       <Grid
-        className="CustomGrid"
+        className="ExhibitionGridContainer"
         container
         spacing={2}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
       >
-        <Grid item xs={12} sm={12} lg={12}>
-          <ExhibitionCard />
+        <Grid className="ExhibitionGridItem" item xs={12} md={6} lg={3}>
+          <ExhibitionCard/>
         </Grid>
       </Grid>
     </>

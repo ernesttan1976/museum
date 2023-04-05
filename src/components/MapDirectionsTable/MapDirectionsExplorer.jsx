@@ -16,6 +16,7 @@ import TurnSlightLeftOutlinedIcon from '@mui/icons-material/TurnSlightLeftOutlin
 import TurnSlightRightOutlinedIcon from '@mui/icons-material/TurnSlightRightOutlined';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
+import { Typography } from '@mui/material';
 
 
 
@@ -29,16 +30,17 @@ const Icons = {
 
 }
 
-export default function BasicTable() {
+export default function BasicTable(props) {
+  const { direction, table } = props;
 
   const { id } = useParams();
-  const [explorers, setExplorer] = useState([]);
+  const [tableData, setTableData] = useState([]);
   // const navigate = useNavigate();
 
 
   return (
     <>
-    <h6>Explorer Mode</h6>
+    <Typography>Explorer Mode - on</Typography>
     <TableContainer style={{ width: '100%' }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
@@ -49,16 +51,16 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {explorers.map((explorer,index) => (
+          {table?.map((table,index) => (
             <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">{Icons[explorer.icon]}</TableCell>
-              <TableCell align="left">{explorer.directions}{explorer.explorerPrompt}<a href ={`${explorer.featureUrl}`}>{explorer.featureTitle}</a></TableCell>
+              <TableCell component="th" scope="row">{Icons[table.icon]}</TableCell>
+              <TableCell align="left">{table.directions}{table.explorerPrompt}<a href ={`${table.featureUrl}`}>{table.featureTitle}</a></TableCell>
               <TableCell align="left">
-              <img src={`${explorer.imgUrl}`} height="150" /> </TableCell>
+              <img src={`${table.imgUrl}`} height="150" /> </TableCell>
             </TableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

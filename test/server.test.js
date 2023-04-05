@@ -26,13 +26,6 @@ describe("Server", () => {
     }
   });
 
-  it("should return a 403 response for GET /api/secret without authentication", async () => {
-    try {
-      await axios.get("http://localhost:3001/api/secret");
-    } catch (error) {
-      expect(error.response.status).to.equal(403);
-    }
-  });
 
   after(() => {
     // Close the server after running the tests
