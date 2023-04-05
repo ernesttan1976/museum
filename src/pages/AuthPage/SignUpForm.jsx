@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUser, signUp } from "../../utilities/users-service";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export default function SignUpForm({ setUser }) {
   const [state, setState] = useState({
@@ -14,13 +16,13 @@ export default function SignUpForm({ setUser }) {
     userRole: "user",
   });
   const [error, setError] = useState("No Error");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const disable = state.password !== state.confirm;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.alert(state.email + " account has been created successfully");
+    window.alert(state.email + " account has been created successfully. Please Login.");
     // window.alert(JSON.stringify(state));
     fetch("/api/users", {
       method: "POST",
@@ -32,7 +34,7 @@ export default function SignUpForm({ setUser }) {
       .then((response) => response.json())
       .then((data) => console.log( data ));
       console.log("submitted");
-      // navigate('/login');
+      navigate('/users/login');
   };
 
   const handleChange = (event) => {
@@ -96,6 +98,11 @@ export default function SignUpForm({ setUser }) {
           <p className="error-message">&nbsp;{state.error}</p>
         </fieldset>
         </form>
+        <Typography variant="p">Already have an account? 
+        <Link to={`/users/login`}>
+         <Button>Login</Button>
+        </Link>now!
+      </Typography>
       </Box>
   );
 }

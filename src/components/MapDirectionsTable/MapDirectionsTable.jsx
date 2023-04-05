@@ -16,6 +16,7 @@ import TurnSlightLeftOutlinedIcon from '@mui/icons-material/TurnSlightLeftOutlin
 import TurnSlightRightOutlinedIcon from '@mui/icons-material/TurnSlightRightOutlined';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
+import { Typography } from '@mui/material';
 
 
 
@@ -29,16 +30,22 @@ const Icons = {
 
 }
 
-export default function BasicTable() {
+export default function BasicTable(props) {
+  const { direction, table } = props;
+  const [tableData, setTableData] = useState([]);
 
-  const { id } = useParams();
-  const [explorers, setExplorer] = useState([]);
-  // const navigate = useNavigate();
+  // if (!table) {
+  //   return <>loading</>
+  // }
+
+  const filteredTable = table?.filter(function(row) {
+    return row.explorerPrompt === "" && row.featureUrl === "" && row.featureTitle === ""
+  }) 
 
 
   return (
     <>
-    <h6>Explorer Mode</h6>
+    <Typography>Explorer Mode - off</Typography>
     <TableContainer style={{ width: '100%' }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
@@ -49,16 +56,17 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {explorers.map((explorer,index) => ( //turn this one into a filter 
+
+          {filteredTable?.map((row,index) => (
             <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">{Icons[explorer.icon]}</TableCell>
-              <TableCell align="left">{explorer.directions}</TableCell>
+              <TableCell component="th" scope="row">{Icons[row.icon]}</TableCell>
+              <TableCell align="left">{row.directions}</TableCell>
               <TableCell align="left">
-              <img src={`${explorer.imgUrl}`} height="150" /> </TableCell>
+              <img src={`${row.imgUrl}`} height="150" /> </TableCell>
             </TableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

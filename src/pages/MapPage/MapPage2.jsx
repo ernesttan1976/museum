@@ -38,14 +38,12 @@ export default function MapPage2(){
 
     return (
         <Box className="MapPage2">
-        <div>
-            <h1>Map Directions</h1>
-            <h1>{direction.route}</h1>
-        </div>
-        <Box>
-            {/* <MapDirectionsCarousel /> */}
-            <MapDirectionsDrawer />
-            </Box>        
+          <div>
+              <h1>Map Directions</h1>
+          </div>
+          <Box>
+              <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>
+          </Box>        
         </Box>
     )
 }
