@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import "./ArtworkInfo.css";
 import { useNavigate } from 'react-router-dom';
 
-export default function ArtworkInfo() {
+export default function ArtworkInfo({user}) {
   const { id } = useParams();
   const [artwork, setArtwork] = useState({});
   const navigate = useNavigate();
@@ -54,6 +54,8 @@ export default function ArtworkInfo() {
       <Box className="ArtworkInfo">
       <Grid container spacing={2}>
         <Grid xs={12}>
+          {user && user.userRole == "admin" ? (
+          <>
           <CardMedia className="ArtworkInfoImg"
             component="img"
             image={artwork.artworkUrl}
@@ -88,6 +90,39 @@ export default function ArtworkInfo() {
           <Button>Edit</Button> 
           </Link><br />
           <Button onClick={() => handleDelete(artwork._id)}>Delete</Button>
+          </> ) : (
+            <>
+            <CardMedia className="ArtworkInfoImg"
+            component="img"
+            image={artwork.artworkUrl}
+            alt={artwork.artworkTitle}
+          />
+          <Typography variant="h5" component="h2">
+            {artwork.artworkTitle}
+          </Typography> <br/>
+          <Typography variant="subtitle1" color="text.secondary">
+            {artwork.artistName}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Dimension: {artwork.artworkDimension}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Information: {artwork.artworkInformation}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Location: {artwork.artworkLocation}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Floor: {artwork.artworkFloor}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Medium: {artwork.artworkMedium}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Year: {artwork.artworkYear}
+          </Typography>
+            </>
+          )}
         </Grid>
      </Grid></Box>
     );
