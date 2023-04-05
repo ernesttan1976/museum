@@ -49,7 +49,21 @@ const login = async (req, res) => {
   }
 };
 
+
+const logout = async (req, res) => {
+if (req.headers && req.headers.authorization){
+  console.log("working? is" + req.headers.authorization);
+}
+};
+
+// if (req.session) {
+//   req.session.destroy();
+// }
+// res.render("users/login", { msg: "", isLoggedIn: false });
+
+
 module.exports = {
   create,
   login,
+  logout,
 };
