@@ -39,12 +39,6 @@ export default function LoginForm({setUser}) {
       setError(error.message);
     }
   };
-  // const handleChange = (event) => {
-  //   setuserState({
-  //     ...userstate,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
 
   return (
     <Box>
@@ -57,7 +51,6 @@ export default function LoginForm({setUser}) {
             type="email"
              label="Enter your email address"
             name="email" 
-            // onChange={handleChange}
             required />
           </label>
           <br />
@@ -66,7 +59,6 @@ export default function LoginForm({setUser}) {
             <TextField 
             label="Enter your password" 
             name="password" 
-            // onChange={handleChange}
             required />
           </label>
           <br /><br />
@@ -76,11 +68,11 @@ export default function LoginForm({setUser}) {
         </fieldset>
       </form>
       {/* {error && <p>{error}</p>} */}
-      <Typography variant="p">No account yet? 
+      <Typography variant="p">No account yet? </Typography>
         <Link to={`/users/signup`}>
          <Button>Sign Up</Button>
-        </Link>now!
-      </Typography>
+        </Link>
+      
     </Box>
   );
 }
