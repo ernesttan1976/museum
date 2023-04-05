@@ -14,10 +14,18 @@ const HomePage = ({user}) => {
 
     return (
         <Box className="HomePage">
-            {/* <h1>{JSON.stringify(user)}</h1> */}
-            <>Welcome {user.name}</>
-            <HomePageCarousell />
+            {user ? (
+             <>
+             Welcome {user.name}
+             <HomePageCarousell />
+             <ExhibitionAccordion />
+             </>
+            ) : (
+             <>
+             <HomePageCarousell />
             <ExhibitionAccordion />
+            </>
+            )}
         </Box>
     );
 }
