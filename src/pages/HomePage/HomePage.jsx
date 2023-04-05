@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import "./HomePage.css"
 import {useEffect, useState} from "react";
 import IconSlider from "../../components/IconSlider/IconSlider"
+import Typography from '@mui/material/Typography';
 
 const HomePage = ({user}) => { 
     useEffect(() => {
@@ -16,7 +17,7 @@ const HomePage = ({user}) => {
     return (
         <Box className="HomePage">
             <>
-            {user && <Typography variant={h2}>Welcome {user.name}</Typography>}
+            {user && <Typography >Welcome {user.name}</Typography>}
             <IconSlider />
             <HomePageCarousell />
             <ExhibitionAccordion />
