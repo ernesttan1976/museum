@@ -23,6 +23,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
 import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate"
+import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
 import { getToken , getUser} from "../../utilities/users-service";
 
 function App() {
@@ -34,14 +35,15 @@ function App() {
       <CssBaseline />
       <Box className="Header">
         <CustomDrawerMenu />
-
         <img src="/src/images/logo.gif" />
         <CustomDrawerLogin user={user} setUser={setUser}/>
+
       </Box>
 
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
+          <Route path="/admin/signup" element={<AdminSignUpForm />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route path="/users/login" element={<LoginForm setUser={setUser} />} /> 
           <Route path="/users/logout" element={<LogOutMsg/>} />

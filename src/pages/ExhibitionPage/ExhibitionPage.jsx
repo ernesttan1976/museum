@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
 import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
 
-export default function ExhibitionPage() {
+export default function ExhibitionPage({ user }) {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState({});
   const navigate = useNavigate();
@@ -51,19 +51,6 @@ export default function ExhibitionPage() {
             image={exhibition.exhibitionImage}
             alt={exhibition.exhibitionTitle}
           />
-          <Link
-            to={`/exhibitions/${exhibition._id}/edit`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button variant="outlined">Edit</Button>
-          </Link>
-          <Button
-            variant="outlined"
-            onClick={() => handleDelete(exhibition._id)}
-          >
-            Delete
-          </Button>
-
           <Typography variant="h5" component="h2">
             {exhibition.exhibitionTitle}
           </Typography>
@@ -103,6 +90,24 @@ export default function ExhibitionPage() {
           </Button>
         </Grid>
       </Grid>
+      {user && user.userRole == "admin" ? (
+        <>
+          <Link
+            to={`/exhibitions/${exhibition._id}/edit`}
+            style={{ textDecoration: "none" }}
+          >
+            <Button variant="outlined">Edit</Button>
+          </Link>
+          <Button
+            variant="outlined"
+            onClick={() => handleDelete(exhibition._id)}
+          >
+            Delete
+          </Button>
+        </>
+      ) : (
+        <></>
+      )}
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
       <ExhibitionComments
         comments={exhibition.exhibitionComments}

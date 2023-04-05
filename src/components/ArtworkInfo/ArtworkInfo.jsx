@@ -1,16 +1,16 @@
-import * as React from 'react';
+import * as React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Unstable_Grid2";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import "./ArtworkInfo.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-export default function ArtworkInfo({user}) {
+export default function ArtworkInfo({ user }) {
   const { id } = useParams();
   const [artwork, setArtwork] = useState({});
   const navigate = useNavigate();
@@ -47,9 +47,8 @@ export default function ArtworkInfo({user}) {
       <>
         <p>No Artwork available yet</p>
       </>
-    )
+    );
   } else {
-
     return (
       <Box className="ArtworkInfo">
       <Grid container spacing={2}>
@@ -103,4 +102,3 @@ export default function ArtworkInfo({user}) {
   }
 }
 
- 
