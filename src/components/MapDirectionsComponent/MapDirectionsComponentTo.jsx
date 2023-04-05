@@ -8,18 +8,25 @@ import ZoomInOutlinedIcon from '@mui/icons-material/ZoomInOutlined';
 import ZoomOutOutlinedIcon from '@mui/icons-material/ZoomOutOutlined';
 import CenterFocusStrongOutlinedIcon from '@mui/icons-material/CenterFocusStrongOutlined';
 
-import Level1 from '../../images/maps/Level1.png';
 
-export default function MapComponent({Level1}) {
+export default function MapComponent(props) {
 
-  const IMAGE_WIDTH = 400;
+
+  const { maps } = props;
+
+  const IMAGE_WIDTH = 1000;
+  const IMAGE_HEIGHT = 0.75*IMAGE_WIDTH;
+  const INITIAL_X = window.innerWidth>=800 ? (window.innerWidth-IMAGE_WIDTH)/2 : 0;
 
   return (
     <TransformWrapper 
       initialScale={1}
-      initialPositionX={window.innerWidth/2-IMAGE_WIDTH/2}
-      initialPositionY={0}
-     >
+      initialPositionX={(window.innerWidth-IMAGE_WIDTH)/2}
+      initialPositionY={-160}
+      minScale={0.5}
+      maxScale={64}
+      limitToBounds={true}
+      >
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
         <>
           <ButtonGroup className="MapToolBar2" disableElevation variant="contained" aria-label="zoom in, zoom out and reset">
@@ -27,8 +34,9 @@ export default function MapComponent({Level1}) {
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => zoomOut()}><ZoomOutOutlinedIcon /></Button>
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => resetTransform()}><CenterFocusStrongOutlinedIcon /></Button>
           </ButtonGroup>
-          <TransformComponent className="MapImage">
-            <img src={Level1} alt="map" width="400px" height="300px"/>
+          <TransformComponent className="MapImage2">
+            <img src={`/src/images/maps/${maps?.[1]}.png`} alt="map" width={IMAGE_WIDTH} height={0.75*IMAGE_WIDTH}/>
+
           </TransformComponent>
         </>
   )
