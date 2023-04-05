@@ -41,10 +41,10 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
-app.get("/api/secret", isLoggedIn, (req, res) => {
-  const { user } = res.locals;
-  res.json({ user });
-});
+// app.get("/api/secret", isLoggedIn, (req, res) => {
+//   const { user } = res.locals;
+//   res.json({ user });
+// });
 
 app.use("/api/users", userRouter);
 app.use("/api/exhibitions", exhibitionRouter);
