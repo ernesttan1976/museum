@@ -7,13 +7,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function SignUpForm({ setUser }) {
+export default function AdminSignUpForm({ setUser }) {
   const [state, setState] = useState({
     name: "",
     email: "",
     password: "",
     confirm: "",
-    userRole: "user",
+    userRole: "admin",
   });
   const [error, setError] = useState("No Error");
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function SignUpForm({ setUser }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.alert(state.email + " account has been created successfully. Please Login.");
+    window.alert(state.email + " admin account has been created successfully. Please Login.");
     // window.alert(JSON.stringify(state));
     fetch("/api/users", {
       method: "POST",
@@ -40,7 +40,7 @@ export default function SignUpForm({ setUser }) {
   const handleChange = (event) => {
     setState({
       ...state, 
-      [event.target.name]: event.target.value, userRole:"user"
+      [event.target.name]: event.target.value, userRole:"admin"
     });
     console.log(state);
   };
