@@ -23,8 +23,9 @@ const show = async (req, res) => {
         to === "6425ba0ac9d195369ec02461"
       ) {
         result = {
-          fromMapUrl: "AAA.png",
-          toMapUrl: "BBB.png",
+          fromMapUrl: "EXHIBITION Between Declarations and Dreams",
+          toMapUrl:
+            "BBB.ARTWORK Royal Family Portrait with Moustached Minister",
           steps: "642bb5bf350c1b20a4cdb627", // Object ID of Route A
         };
       } else {
