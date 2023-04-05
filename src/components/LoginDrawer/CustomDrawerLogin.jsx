@@ -8,33 +8,16 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import AuthPage from '../../pages/AuthPage/AuthPage';
+import { logout } from "../../utilities/users-service";
+
 // const [user, setUser] = useState(getUser());
 
-export default function CustomDrawer({user}) {
+export default function CustomDrawer({user, setUser}) {
   const [isOpen, setIsOpen] = useState(false);
-
-  //! logout testing start
-   const [error, setError] = useState("No error");
-  const navigate = useNavigate();
-  const handleLogoutMsg = async (event) => {
-    // event.preventDefault();
-
-    try {
-      const response = await fetch("/api/users/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-    //   const data = await response.json();
-        window.alert(" account has login successfully.");
-        navigate('/');
-    } catch (error) {
-      setError(error.message);
-    }};
-    
-//! logout testing end
+  const handleLogout = async (user) => {
+    logout();
+    setUser(null);
+  };
 
   const toggleDrawer = (open) => (event) => {
     setIsOpen(open);
@@ -49,7 +32,7 @@ console.log("user is " + user);
       {user ? (
         <>
           <Link to={`/users/logout`}>
-          <Button onClick={handleLogoutMsg}>Log Out</Button>
+          <Button onClick={handleLogout}>Log Out</Button>
           </Link>
         </>
         ) : (

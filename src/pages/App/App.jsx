@@ -9,7 +9,7 @@ import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import HomePage from "../HomePage/HomePage";
 import SignUpForm from "../AuthPage/SignUpForm";
 import LoginForm from "../AuthPage/LoginForm";
-import LogoutForm from "../AuthPage/LogoutForm";
+import LogOutMsg from "../AuthPage/LogOutMsg";
 import ArtworksPage from "../ArtworksPage/ArtworksPage";
 import ArtworksNew from "../ArtworksNew/ArtworksNew";
 import ArtworkInfo from "../../components/ArtworkInfo/ArtworkInfo";
@@ -33,15 +33,17 @@ function App() {
       <CssBaseline />
       <Box className="Header">
         <CustomDrawerMenu />
+
         <img src="/src/images/logo.gif" />
-        <CustomDrawerLogin user={user}/>
+        <CustomDrawerLogin user={user} setUser={setUser}/>
       </Box>
+
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route path="/users/login" element={<LoginForm setUser={setUser} />} /> 
-          <Route path="/users/logout" element={<LogoutForm/>} />
+          <Route path="/users/logout" element={<LogOutMsg/>} />
           <Route path="/artworks" element={<ArtworksPage />} />
           <Route path="/artworks/new" element={<ArtworksNew user={user}/>} /> {/* admin access only-> (user.role === "admin") */}
           <Route path="/artworks/:id" element={<ArtworkInfo user={user}/>} /> {/* admin access see edit and delete btn -> (user.role === "admin") */}
