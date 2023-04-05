@@ -4,6 +4,7 @@ import ExhibitionAccordion from '../../components/ExhibitionAccordion/Exhibition
 import Box from '@mui/material/Box';
 import "./HomePage.css"
 import {useEffect, useState} from "react";
+import IconSlider from "../../components/IconSlider/IconSlider"
 
 const HomePage = ({user}) => { 
     useEffect(() => {
@@ -14,18 +15,12 @@ const HomePage = ({user}) => {
 
     return (
         <Box className="HomePage">
-            {user ? (
-             <>
-             Welcome {user.name}
-             <HomePageCarousell />
-             <ExhibitionAccordion />
-             </>
-            ) : (
-             <>
-             <HomePageCarousell />
+            <>
+            {user && <Typography variant={h2}>Welcome {user.name}</Typography>}
+            <IconSlider />
+            <HomePageCarousell />
             <ExhibitionAccordion />
             </>
-            )}
         </Box>
     );
 }

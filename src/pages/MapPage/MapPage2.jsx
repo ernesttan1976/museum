@@ -5,6 +5,7 @@ import "./MapPage2.css";
 import Box from '@mui/material/Box';
 import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
 import MapDirectionsComponent from "../../components/MapDirectionsComponent/MapDirectionsComponent";
+import MapDirectionsTab from "../../components/MapDirectionsTab/MapDirectionsTab";
 
 
 export default function MapPage2(){
@@ -41,9 +42,8 @@ export default function MapPage2(){
           <div>
               <h1>Map Directions</h1>
           </div>
-          <Box>
+              <MapDirectionsTab maps={direction.mapImg} />
               <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>
-          </Box>        
         </Box>
     )
 }

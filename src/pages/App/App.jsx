@@ -33,9 +33,11 @@ function App() {
       <CssBaseline />
       <Box className="Header">
         <CustomDrawerMenu />
-        <div>LOGO HERE</div>
+
+        <img src="/src/images/logo.gif" />
         <CustomDrawerLogin user={user} setUser={setUser}/>
-      </Box> 
+      </Box>
+
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
