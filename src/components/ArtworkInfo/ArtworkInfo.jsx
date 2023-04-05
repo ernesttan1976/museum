@@ -1,16 +1,16 @@
-import * as React from 'react';
+import * as React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Unstable_Grid2";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import "./ArtworkInfo.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-export default function ArtworkInfo({user}) {
+export default function ArtworkInfo({ user }) {
   const { id } = useParams();
   const [artwork, setArtwork] = useState({});
   const navigate = useNavigate();
@@ -47,85 +47,68 @@ export default function ArtworkInfo({user}) {
       <>
         <p>No Artwork available yet</p>
       </>
-    )
+    );
   } else {
-
     return (
       <Box className="ArtworkInfo">
-      <Grid container spacing={2}>
-        <Grid xs={12}>
-          {user && user.userRole == "admin" ? (
-          <>
-          <CardMedia className="ArtworkInfoImg"
-            component="img"
-            image={artwork.artworkUrl}
-            alt={artwork.artworkTitle}
-          />
-          <Typography variant="h5" component="h2">
-            {artwork.artworkTitle}
-          </Typography> <br/>
-          <Typography variant="subtitle1" color="text.secondary">
-            {artwork.artistName}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Dimension: {artwork.artworkDimension}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Information: {artwork.artworkInformation}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Location: {artwork.artworkLocation}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Floor: {artwork.artworkFloor}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Medium: {artwork.artworkMedium}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Year: {artwork.artworkYear}
-          </Typography>
-          <br />
-          <Link to={`/artworks/${artwork._id}/edit`}>
-          <Button>Edit</Button> 
-          </Link><br />
-          <Button onClick={() => handleDelete(artwork._id)}>Delete</Button>
-          </> ) : (
+        <Grid container spacing={2}>
+          <Grid xs={12}>
             <>
-            <CardMedia className="ArtworkInfoImg"
-            component="img"
-            image={artwork.artworkUrl}
-            alt={artwork.artworkTitle}
-          />
-          <Typography variant="h5" component="h2">
-            {artwork.artworkTitle}
-          </Typography> <br/>
-          <Typography variant="subtitle1" color="text.secondary">
-            {artwork.artistName}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Dimension: {artwork.artworkDimension}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Information: {artwork.artworkInformation}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Location: {artwork.artworkLocation}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Floor: {artwork.artworkFloor}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Medium: {artwork.artworkMedium}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Year: {artwork.artworkYear}
-          </Typography>
+              <CardMedia
+                className="ArtworkInfoImg"
+                component="img"
+                image={artwork.artworkUrl}
+                alt={artwork.artworkTitle}
+              />
+              <Typography variant="h5" component="h2">
+                {artwork.artworkTitle}
+              </Typography>{" "}
+              <br />
+              <Typography variant="subtitle1" color="text.secondary">
+                {artwork.artistName}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Dimension: {artwork.artworkDimension}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Information: {artwork.artworkInformation}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Location: {artwork.artworkLocation}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Floor: {artwork.artworkFloor}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Medium: {artwork.artworkMedium}
+              </Typography>
+              <br />
+              <Typography variant="body1" color="text.secondary">
+                Year: {artwork.artworkYear}
+              </Typography>
+              {user && user.userRole == "admin" ? (
+                <>
+                  <br />
+                  <Link to={`/artworks/${artwork._id}/edit`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  <br />
+                  <Button onClick={() => handleDelete(artwork._id)}>
+                    Delete
+                  </Button>
+                </>
+              ) : (
+                <> </>
+              )}
             </>
-          )}
+          </Grid>
         </Grid>
-     </Grid></Box>
+      </Box>
     );
   }
 }
- 

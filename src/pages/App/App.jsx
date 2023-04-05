@@ -22,6 +22,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
 import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate"
+import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
 import { getToken , getUser} from "../../utilities/users-service";
 
 function App() {
@@ -32,13 +33,14 @@ function App() {
     <>
       <CssBaseline />
       <Box className="Header">
-        <CustomDrawerMenu />
+        <CustomDrawerMenu user={user} />
         <div>LOGO HERE</div>
         <CustomDrawerLogin user={user}/>
       </Box>
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
+          <Route path="/admin/signup" element={<AdminSignUpForm />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route path="/users/login" element={<LoginForm setUser={setUser} />} /> 
           <Route path="/users/logout" element={<LogoutForm/>} />
@@ -53,7 +55,6 @@ function App() {
           <Route path="/exhibitions/new" element={<ExhibitionNew user={user}/>}></Route> {/* admin access only-> (user.role === "admin") */}
           <Route path="/exhibitions/:id" element={<ExhibitionPage user={user}/>}></Route> {/* admin access see edit and delete btn -> (user.role === "admin") */}
           <Route path="/exhibitions/:id/edit" element={<ExhibitionUpdate user={user}/>}></Route> {/* admin access only -> (user.role === "admin" */}
-          <Route path="/experimental" element={<ExperimentalPage />} />
         </Routes>
       </ErrorBoundary>
       <Box className="Footer">
