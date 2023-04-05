@@ -13,6 +13,7 @@ export async function signUp(userData) {
 
 export async function login(userData) {
   const token = await usersAPI.login(userData);
+  console.log(`tokern is ${token}`);
   localStorage.setItem("token", token);
   return getUser();
 }

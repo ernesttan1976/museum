@@ -26,7 +26,7 @@ export default function ExhibitionCard() {
   return (
     <>
     {exhibitions.map((exhibition, index) => (
-        <Card key={index} className="ExhibitionGridItem">
+        <Card key={index}>
         <CardHeader
           title={exhibition.exhibitionTitle}
           subheader={exhibition.exhibitionTitleSub}

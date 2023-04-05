@@ -3,6 +3,7 @@ import "./MapPage.css";
 import MapComponent from '../../components/MapComponent/MapComponent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -32,12 +33,13 @@ export default function MapPage() {
             const response = await fetch(`/api/locations`);
             const data = await response.json();
             setLocations(data);
-            console.log(data);
         };
         fetchLocations();
     }, []);
 
-    const [locationsFrom, setLocationsFrom]=useState([]);
+
+
+    const [locationsFrom, setLocationsFrom] = useState([]);
 
     // const locationsFrom = [
     //     {
@@ -64,8 +66,14 @@ export default function MapPage() {
     const [locationsTo, setLocationsTo] = useState([])
 
     const [formData, setFormData] = useState({
-        from: "",
-        to: "",
+        from: {
+            label: "",
+            value: ""
+        },
+        to: {
+            label: "",
+            value: ""
+        }
     });
 
     const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
@@ -85,124 +93,130 @@ export default function MapPage() {
         if (!locations) return;
 
         const filterFloor = locations.filter(item => (item.floor === level));
+        if (filterFloor.length === 0) return;
+        // console.log(filterFloor)
 
-        if (filterFloor.length===0) return;
+        let result = [{
+            value: "",
+            label: ""
+        }];
 
-        if (category != '') {
-            let result = [];
-            console.log(cat[category]);
-            if (filterFloor[0][cat[category]]) {
-                result.push(...filterFloor[0][cat[category]].map(item => ({
-                    value: item,
-                    label: `${category}: ${item}`
-                })));
-            }
-            console.log(result);
-            setLocationsFrom(result);
-            setLocationsTo(result);
-        } else {
-            let result = [];
 
-            if (filterFloor[0].exhibitions.length>0) {
-                result.push(...filterFloor[0].exhibitions.map(item => ({
-                    value: item,
-                    label: `EXHIBITION: ${item.exhibitionTitle}`
-                })));
-            }
+        if (filterFloor[0].exhibitions.length > 0 && (category === "EXHIBITIONS" || category ==='')) {
+            result.push(...filterFloor[0].exhibitions.map(item => ({
+                value: item._id,
+                label: `EXHIBITION ${item.exhibitionTitle}`
+            })));
+        }
 
-            if (filterFloor[0].artworks.length>0) {
-                result.push(...filterFloor[0].artworks.map(item => ({
-                    value: item,
-                    label: `ARTWORK: ${item.artworkTitle}`
-                })));
-            }
+        if (filterFloor[0].artworks.length > 0 && (category === "ARTWORKS" || category ==='')) {
+            result.push(...filterFloor[0].artworks.map(item => ({
+                value: item._id,
+                label: `ARTWORK ${item.artworkTitle}`
+            })));
+        }
 
-            if (filterFloor[0].shopanddine.length>0) {
-                result.push(...filterFloor[0].shopanddine.map(item => ({
-                    value: item,
-                    label: `SHOP & DINE: ${item}`
-                })));
-            }
+        if (filterFloor[0].shopanddine.length > 0 && (category === "SHOP & DINE" || category ==='')) {
+            result.push(...filterFloor[0].shopanddine.map(item => ({
+                value: item,
+                label: `SHOP & DINE ${item}`
+            })));
+        }
 
-            if (filterFloor[0].amenities.length>0) {
-                result.push(...filterFloor[0].amenities.map(item => ({
-                    value: item,
-                    label: `AMENITIES: ${item}`
-                })));
-            }
+        if (filterFloor[0].amenities.length > 0 && (category === "AMENITIES"  || category ==='')) {
+            result.push(...filterFloor[0].amenities.map(item => ({
+                value: item,
+                label: `AMENITIES ${item}`
+            })));
+        }
 
-            console.log(result);
+        // console.log(result);
+
+        if (result.length > 0) {
             setLocationsFrom(result);
             setLocationsTo(result);
         }
 
     }
 
-
-    useEffect(() => {
-        filterLocations();
-    }, [level, category]);
-
     const handleLevel = (event, newLevel) => {
         console.log("Level:", newLevel)
         setLevel(newLevel);
+        filterLocations();
     };
 
     const handleCategory = (event, newCategory) => {
         console.log("Category:", newCategory);
         setCategory(newCategory);
+        filterLocations();
     };
 
-    function handleChange(event) {
-        console.log(event.target);
-        if (event.target.name === "from") {
-            // const newLocationsTo = locationsFrom.filter(location => (
-            //     location.value !== event.target.value))
-            // console.log(newLocationsTo)
-            // setLocationsTo(newLocationsTo);
-            setFormData({ ...formData, [event.target.name]: event.target.value });
-        } else {
-            setFormData({ ...formData, [event.target.name]: event.target.value });
-        }
+    function handleChange(event, values, field) {
+        //field = 'from' or 'to'
+        console.log(field,":",values);
+        setFormData({
+            ...formData, [field]: values
+        });
+        console.log(formData);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Submit: ", formData);
-        navigate(`/map/directions/from/${formData.from._id}/to/${formData.to._id}`);
+        navigate(`/map/directions/from/${formData.from.value}/to/${formData.to.value}`);
     }
+
+    useEffect(()=>{
+        filterLocations();
+    }, [level, category, locations])
 
 
     return (
-        <Box className="MapPage">
-            <Box className="MapPageForm" component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1 } }} noValidate autoComplete="off">
-                <div className="MapFormTopRow">
-                    <Button className="LeftButton"><RadioButtonCheckedIcon /></Button>
-                    <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.from} className="MapFormTextField" size='small' margin='dense' name="from" select label="From" placeholder="Enter where you are"
-                        onChange={handleChange}>
-                        {locationsFrom.map((option) => (
-                            <MenuItem key={`${option.label}from`} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <Button className="RightButton"><SwapVertIcon /></Button>
+        <Box className="MapPage1">
+            <Box className="MapPageForm1" onSubmit={handleSubmit} component="form" sx={{ '& .MuiTextField-root': { m: 1 } }} noValidate autoComplete="off">
+                <div className="MapFormTopRow1" >
+                    <Button className="LeftButton1"><RadioButtonCheckedIcon /></Button>
+                    <Autocomplete
+                        className="MapFormTextField1"
+                        sx={{ fontSize: '12px', minWidth: '150px' }}
+                        value={formData.from}
+                        size='small'
+                        margin='dense'
+                        placeholder="Enter where you are"
+                        disablePortal
+                        options={locationsFrom}
+                        onChange={(event, values) => handleChange(event, values, "from")}
+                        isOptionEqualToValue={(option, currentValue) => {
+                            if (currentValue === '') return true;
+                            return option.name === currentValue.name;
+                        }}
+                        renderInput={(params) => <TextField {...params} name="from" label="From" />}
+                    />
+                    <Button className="RightButton1"><SwapVertIcon /></Button>
                 </div>
-                <div className="MapFormBottomRow">
-                    <Button className="LeftButton"><FmdGoodIcon /></Button>
-                    <TextField sx={{ fontSize: '12px', minWidth: '150px' }} value={formData.to} className="MapFormTextField" size='small' margin='dense' name="to" select label="To" placeholder="Enter destination"
-                        onChange={handleChange}>
-                        {locationsTo.map((option) => (
-                            <MenuItem key={`${option.label}to`} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <Button className="RightButton" type="submit"><DirectionsWalkRoundedIcon /></Button>
+                <div className="MapFormBottomRow1" >
+                    <Button className="LeftButton1"><FmdGoodIcon /></Button>
+                    <Autocomplete
+                        className="MapFormTextField1"
+                        sx={{ fontSize: '12px', minWidth: '150px' }}
+                        value={formData.to}
+                        size='small'
+                        margin='dense'
+                        placeholder="Enter destination"
+                        disablePortal
+                        options={locationsTo}
+                        onChange={(event, values) => handleChange(event, values, "to")}
+                        isOptionEqualToValue={(option, currentValue) => {
+                            if (currentValue === '') return true;
+                            return option.name === currentValue.name;
+                        }}
+                        renderInput={(params) => <TextField {...params} name="to" label="to" />}
+                    />
+                    <Button className="RightButton1" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>
 
             </Box>
-            <ToggleButtonGroup className="LevelButtonGroup" value={level} exclusive onChange={(ev, value) => handleLevel(ev, value)} aria-label="level">
+            <ToggleButtonGroup className="LevelButtonGroup1" value={level} exclusive onChange={(ev, value) => handleLevel(ev, value)} aria-label="level">
                 <ToggleButton value="B1" aria-label="B1">
                     B1
                 </ToggleButton>
@@ -225,24 +239,36 @@ export default function MapPage() {
                     L6
                 </ToggleButton>
             </ToggleButtonGroup>
-            <ToggleButtonGroup className="CategoryButtonGroup" value={category} exclusive onChange={handleCategory} aria-label="category">
-                <ToggleButton value="Exhibitions" aria-label="Exhibitions">
-                    Exhibitions
+            <ToggleButtonGroup className="CategoryButtonGroup1" value={category} exclusive onChange={handleCategory} aria-label="category">
+                <ToggleButton value="EXHIBITIONS" aria-label="Exhibitions">
+                    EXHIBITIONS
                 </ToggleButton>
-                <ToggleButton value="Artworks" aria-label="Artworks">
-                    Artworks
+                <ToggleButton value="ARTWORKS" aria-label="Artworks">
+                    ARTWORKS
                 </ToggleButton>
-                <ToggleButton value="Shop & Dine" aria-label="Shop & Dine">
-                    Shop & Dine
+                <ToggleButton value="SHOP & DINE" aria-label="Shop & Dine">
+                    SHOP & DINE
                 </ToggleButton>
-                <ToggleButton value="Amenities" aria-label="Amenities">
-                    Amenities
+                <ToggleButton value="AMENITIES" aria-label="Amenities">
+                    AMENITIES
                 </ToggleButton>
             </ToggleButtonGroup>
 
-            <Box className="MapComponent">
+            <Box className="MapComponent1">
                 <MapComponent level={level} />
             </Box>
         </Box>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+

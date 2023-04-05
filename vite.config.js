@@ -15,27 +15,10 @@ export default defineConfig({
     // enable tree shaking
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: ['react', 'react-dom'],
       },
       treeshake: true,
     },
   },
 })
 
-
-// build: {
-//   target: 'node',
-//   outDir: 'dist',
-//   minify: true,
-//   sourcemap: false,
-//   rollupOptions: {
-//     input: {
-//       main: './src/index.js'
-//     }
-//   }
-// }
-// output: {
-//   dir: 'dist',
-//   format: 'es',
-//   chunkSizeWarningLimit: 1024 // Set limit to 1KB
-// }

@@ -37,7 +37,7 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 function SwipeableEdgeDrawer(props) {
-  const { window } = props;
+  const { direction,table, window } = props;
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -66,7 +66,7 @@ function SwipeableEdgeDrawer(props) {
             height: `calc(90% - ${drawerBleeding}px)`,
             overflow: 'visible',
             display: "flex",
-            width: "50%",
+            width: "60%",
             justifyContent: "center",
             alignItems: "center",
             margin: "auto",
@@ -89,10 +89,9 @@ function SwipeableEdgeDrawer(props) {
         }}
         >
         <div>
-          <Switch toggle={toggle} onChange={handleSwitchChange} />  
-                       
+          <Switch toggle={toggle} onChange={handleSwitchChange} />         
         </div>
-            {toggle ? <MapDirectionsTable /> : <MapDirectionsExplorer />}
+            {toggle ? <MapDirectionsTable table={table} /> : <MapDirectionsExplorer table={table} />}
         
       </SwipeableDrawer>
     </Root>

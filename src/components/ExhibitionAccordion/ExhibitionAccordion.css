@@ -1,31 +1,59 @@
 .exhibitionAccordionContainer {
+    width: 90%;
+    column-gap: 10px;
+    row-gap: 10px;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    text-align: center;
 }
 
-.ExhibitionAccordion {
+/* .ExhibitionAccordion */
+.exhibitionAccordionContainer .MuiAccordion-root {
     width: 100%;
-    display: flex;
 }
 
-.AccordionSummary {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 20px;
+/* AccordionSummary */
+.exhibitionAccordionContainer .MuiAccordionSummary-content p{
+    text-align: center;
+    width: 100%;
 }
 
-.AccordionDetails {
+.exhibitionAccordionContainer .AccordionDetails {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction:row;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 100%;
+}
+
+.exhibitionAccordionContainer .ExhibitionGridContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+/* .MuiGrid-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+} */
+
+.exhibitionAccordionContainer .MuiCard-root{
+    width: 300px;
+    height: 600px;
+}
+
+.exhibitionAccordionContainer .MuiCardHeader-root{
+    height: 145px;
+}
+
+.exhibitionAccordionContainer .MuiCardHeader-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 100%;
 }

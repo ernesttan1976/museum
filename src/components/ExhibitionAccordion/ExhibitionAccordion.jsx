@@ -17,8 +17,7 @@ export default function ExhibitionAccordion() {
     "Level 3",
     "Level 4",
     "Level 5",
-    "Level 6",
-    "Level 7",
+    "Level 6"
   ];
 
   return (
@@ -29,8 +28,7 @@ export default function ExhibitionAccordion() {
       <Box className="exhibitionAccordionContainer">
         {floors.map((floor, index) => (
           <Accordion className="ExhibitionAccordion" key={index}>
-            <AccordionSummary
-              className="AccordionSummary"
+            <AccordionSummary className="AccordionSummary"
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -38,10 +36,8 @@ export default function ExhibitionAccordion() {
               <Typography>{floor}</Typography>
             </AccordionSummary>
             <AccordionDetails className="AccordionDetails">
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6} lg={3}>
-                  <ExhibitionCard />
-                </Grid>
+              <Grid container className="ExhibitionGridContainer" spacing={2}>
+                  <ExhibitionCard item xs={12} md={6} lg={3}/>
               </Grid>
             </AccordionDetails>
           </Accordion>

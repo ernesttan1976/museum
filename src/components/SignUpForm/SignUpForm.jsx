@@ -39,7 +39,7 @@ export default function FSignUpForm() {
                     <input type="email" name="email" value={data.email} onChange={handleChange} />
                     <label htmlFor="">Password: </label>
                     <input type="password" name="password" value={data.password} onChange={handleChange} />
-                    <button type="submit" disabled={disable}>SIGN UP</button>
+                    <Button type="submit" disabled={disable}>SIGN UP</Button>
                 </form>
                 <p className="error-message">&nbsp;{data.error}</p>
             </Box>
