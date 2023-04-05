@@ -32,7 +32,7 @@ export default function LoginForm({setUser}) {
         setError("");
         window.alert(" account has login successfully.");
         navigate('/');
-      } else {
+       } else {
         setError(data.message);
       }
     } catch (error) {
