@@ -1,5 +1,7 @@
 
 import { useState, useEffect} from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+
 import "./MapPage2.css";
 
 import Box from '@mui/material/Box';
@@ -15,13 +17,13 @@ export default function MapPage2(){
         //this function is in index.html
         setScrollHeight();
       }, []);
-
+    const { from, to } = useParams();
     const [direction, setDirection] = useState([]);
 
     // fetch object ID  
     useEffect(() => {
     const fetchDirection = async () => {
-      const response = await fetch("/api/map/directions");
+      const response = await fetch(`/api/map/directions/from/${from}/to/${to}`);
       const direction = await response.json();
       setDirection(direction);
       console.log(direction);
