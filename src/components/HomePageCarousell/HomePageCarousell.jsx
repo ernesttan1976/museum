@@ -1,39 +1,31 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
+import Typography from "@mui/material/Typography";
 
 export default function HomePageCarousell() {
 
     const items = [
         {
-            name: "Living Pictures",
-            description: "Photography in South East Asia",
-            src: "https://www.nationalgallery.sg/sites/default/files/living-pictures-masthead.jpg",
+            name: "Siapa Nama Kamu? Art in Singapore since the 19th Century",
+            src: "https://www.nationalgallery.sg/sites/default/files/crawl_images/28895478/28895478-1080p.jpg",
         },
         {
-            name: "Artwork #2",
-            description: "Abstract",
-            src: "https://picsum.photos/seed/2/400/300",
+            name: "Listening to Architecture: The Gallery's Histories and Transformations",
+            src: "https://www.nationalgallery.sg/sites/default/files/thumbnails/image/familair-other-masthead-1822.jpg",
         },
         {
-            name: "Artwork #3",
-            description: "Unclassified",
-            src: "https://picsum.photos/seed/3/400/300",
+            name: "Back-of-House Tour: Former Supreme Court: Unseen, Unheard",
+            src: "https://www.nationalgallery.sg/sites/default/files/crawl_images/28908523/28908523-1080p.jpg",
         },
         {
-            name: "Artwork #4",
-            description: "Abstract",
-            src: "https://picsum.photos/seed/4/400/300",
+            name: "Living Pictures: Photography in South East Asia ",
+            src: "https://www.nationalgallery.sg/sites/default/files/crawl_images/460102714/460102714-1080p.jpg",
         },
-        {
-            name: "Artwork #5",
-            description: "Underwater",
-            src: "https://picsum.photos/seed/5/400/300",
-        }
     ]
 
     return (
-        <Carousel className="CustomCarousel" autoPlay={true} interval={30000} animation="slide">
+        <Carousel className="CustomCarousel" autoPlay={true} interval={3000} animation="fade">
             {
                 items.map((item, i) => <Item key={i} item={item} />)
             }
@@ -45,11 +37,7 @@ function Item(props) {
     return (
         <Paper className="CarouselItem" >
             <img className="CarouselItemImage" src={props.item.src} />
-            <h2 className="CarouselItemName">{props.item.name}</h2>
-            <p className="CarouselItemDescription">{props.item.description}</p>
-            <Button className="CarouselItemButton" size="small" variant="contained" color="secondary">
-                See more
-            </Button>
+            <Typography variant="h4" className="CarouselItemName">{props.item.name}</Typography>
         </Paper>
     )
 }
