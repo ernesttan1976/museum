@@ -25,6 +25,7 @@ import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
 import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate";
 import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
 import { getToken, getUser } from "../../utilities/users-service";
+import Logo from '../../images/logo.gif';
 
 function App() {
   const [exhibitions, setExhibition] = useState([]);
@@ -35,7 +36,7 @@ function App() {
       <CssBaseline />
       <Box className="Header">
         <CustomDrawerMenu user={user} />
-        <img className="logo" src="/src/images/logo.gif" />
+        <img className="logo" src={Logo} />
         <CustomDrawerLogin user={user} setUser={setUser} />
       </Box>
       <ErrorBoundary>
