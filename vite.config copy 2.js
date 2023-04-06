@@ -11,8 +11,12 @@ export default defineConfig({
   },
   build: {
     minify: true,
+    sourcemap: false,
     // enable tree shaking
     rollupOptions: {
+      output: {
+        manualChunks: ['react', 'react-dom'],
+      },
       treeshake: true,
     },
   },
