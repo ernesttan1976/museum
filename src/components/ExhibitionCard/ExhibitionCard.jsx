@@ -5,12 +5,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "./ExhibitionCard.css";
-
+import { Link } from "react-router-dom";
 
 export default function ExhibitionCard() {
-  const { id } = useParams();
 
   const [exhibitions, setExhibition] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
@@ -27,32 +24,36 @@ export default function ExhibitionCard() {
 
   return (
     <>
-        {exhibitions.map((exhibition, index) => (
-          <Card className="exhibitionGridCard" key={index}>
-            <CardHeader
-              title={exhibition.exhibitionTitle}
-              subheader={exhibition.exhibitionTitleSub}
-            />
-            <CardMedia
-              component="img"
-              height="194"
-              image={exhibition.exhibitionImage}
-              alt={exhibition.exhibitionTitle}
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                {exhibition.exhibitionEntry}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {exhibition.exhibitionStartDate}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {exhibition.exhibitionDescription}
-              </Typography>
-              <Link to={`/exhibitions/${exhibition._id}`}>More Details</Link>
-            </CardContent>
-          </Card>
-        ))}
+      {exhibitions.map((exhibition) => (
+        <Card className="exhibitionGridCard" key={exhibition._id}>
+          <CardHeader
+            title={exhibition.exhibitionTitle}
+            subheader={exhibition.exhibitionTitleSub}
+          />
+          <CardMedia
+            component="img"
+            height="194"
+            image={exhibition.exhibitionImage}
+            alt={exhibition.exhibitionTitle}
+          />
+          <CardContent>
+            <Typography variant="h6" color="text.secondary">
+              {exhibition.exhibitionEntry}
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary">
+              {exhibition.exhibitionDescription}
+            </Typography>
+            <Typography variant="p" color="text.secondary">
+              Exhibition ends:{" "}
+              {new Date(exhibition.exhibitionEndDate).toLocaleDateString(
+                "en-GB"
+              )}<br></br>
+            </Typography>
+            <Link to={`/exhibitions/${exhibition._id}`}>More Details</Link>
+          </CardContent>
+        </Card>
+      ))}
     </>
   );
 }

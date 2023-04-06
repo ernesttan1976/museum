@@ -1,20 +1,22 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+
+import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
+import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
+import "./ExhibitionPage.css";
+
 import CardMedia from "@mui/material/CardMedia";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
-import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
 
 export default function ExhibitionPage({ user }) {
   const { id } = useParams();
-  const [exhibition, setExhibition] = useState({});
   const navigate = useNavigate();
 
-  // const addComment = () => setExhibition({ ...exhibition, exhibitionComments: []})
+  const [exhibition, setExhibition] = useState({});
 
   useEffect(() => {
     const fetchExhibition = async () => {
@@ -42,39 +44,37 @@ export default function ExhibitionPage({ user }) {
   };
 
   return (
-    <Box width="50ch">
+    <Box className="ExhibitionPage" width="100ch">
       <Grid container spacing={2}>
         <Grid xs={12}>
           <CardMedia
             component="img"
-            height="194"
             image={exhibition.exhibitionImage}
             alt={exhibition.exhibitionTitle}
           />
           <Typography variant="h5" component="h2">
             {exhibition.exhibitionTitle}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          </Typography><br/>
+          <Typography variant="subtitle1" color="text.secondary">
             {exhibition.exhibitionTitleSub}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Start: {exhibition.exhibitionStartDate}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            End: {exhibition.exhibitionEndDate}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
             {exhibition.exhibitionEntry}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
             {exhibition.exhibitionInformation}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {exhibition.exhibitionLocation}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {exhibition.exhibitionFloor}
-          </Typography>
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Location: {exhibition.exhibitionLocation}
+          </Typography><br/>
+          <Typography variant="p" color="text.secondary">
+            Exhibition Duration:{" "}
+            {new Date(exhibition.exhibitionStartDate).toLocaleDateString(
+              "en-GB"
+            )} ~ {new Date(exhibition.exhibitionEndDate).toLocaleDateString(
+              "en-GB"
+            )}
+          </Typography><br/><br/>
           <Button variant="outlined">
             <Link
               to="https://web.nationalgallery.sg/#/gallery-passes"
@@ -92,6 +92,7 @@ export default function ExhibitionPage({ user }) {
       </Grid>
       {user && user.userRole == "admin" ? (
         <>
+        <br/>
           <Link
             to={`/exhibitions/${exhibition._id}/edit`}
             style={{ textDecoration: "none" }}
@@ -103,13 +104,16 @@ export default function ExhibitionPage({ user }) {
             onClick={() => handleDelete(exhibition._id)}
           >
             Delete
-          </Button>
+          </Button><br/>
         </>
       ) : (
         <></>
       )}
+      <br/>
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
-      <ExhibitionComments user={user} comments={exhibition.exhibitionComments}
+      <ExhibitionComments
+        user={user}
+        comments={exhibition.exhibitionComments}
         setExhibition={setExhibition}
       />
     </Box>
