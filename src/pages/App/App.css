@@ -6,9 +6,9 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* ::-webkit-scrollbar {
+  width: 15px !important;
+  height: 15px !important;
   border-radius: 6px;
 }
 
@@ -19,7 +19,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #07C0FF;
   border-radius: 5px;
-}
+} */
 
 .logo {
   width: 150px;

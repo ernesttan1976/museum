@@ -60,7 +60,7 @@
     opacity: 1;
 }
 
-.IconSlider ::-webkit-scrollbar {
+/* .IconSlider ::-webkit-scrollbar {
     width: 1px;
     height: 1px;
     border-radius: 6px;
@@ -74,4 +74,4 @@
 .IconSlider ::-webkit-scrollbar-thumb {
     background-color: white;
     border-radius: 5px;
-}
+} */
