@@ -6,18 +6,12 @@ import EventIcon from '@mui/icons-material/Event';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
-// import HomeIcon from '@mui/icons-material/Home';
-// import ImageSearchIcon from '@mui/icons-material/ImageSearch';
-// import LocationOnIcon from '@mui/icons-material/LocationOn';
-// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-// import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
-// import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import "./IconSlider.css";
-// import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+
 
 
 const IconSlider = () => {
@@ -36,7 +30,7 @@ const IconSlider = () => {
         {
             name: "Art Journey",
             icon: <RouteIcon />,
-            href: "/https://web.nationalgallery.sg/#/art-journeys",
+            href: "https://web.nationalgallery.sg/#/art-journeys",
         },
         {
             name: "Tours",
@@ -64,11 +58,8 @@ const IconSlider = () => {
     return (
         <Box className="IconSlider">
             <Box className="IconSliderInner">
-                    {/* <Stack direction="column" spacing={1} alignItems="center">
-                        <Button className="IconButtonInvisible" size='large' variant="contained" startIcon={BUTTON_LIST[0].icon} />
-                    </Stack> */}
                 {BUTTON_LIST.map(item => (
-                    <Stack direction="column" spacing={1} alignItems="center">
+                    <Stack key={item.name} direction="column" spacing={1} alignItems="center">
                         <Button className="IconButton" size='large' variant="contained" href={item.href} startIcon={item.icon} />
                         <Typography sx={{fontSize:10}} variant="button">{item.name}</Typography>
                     </Stack>))}
@@ -79,8 +70,3 @@ const IconSlider = () => {
 
 export default IconSlider;
 
-                    // <BottomNavigationAction
-                    //     label={item.name}
-                    //     value={item.href}
-                    //     icon={item.icon}
-                    //   />
