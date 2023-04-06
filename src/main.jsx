@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThemeProvider theme={theme}>
         <Router>
           <App className="App"/>
-        </Router>
+         </Router>
       </ThemeProvider>
     </React.StrictMode>
   </ErrorBoundary>

@@ -17,15 +17,13 @@ import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { red } from '@mui/material/colors';
-
-
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 
 import "./CustomDrawerMenu.css";
 
-export default function CustomDrawer({ user }) {
+export default function CustomDrawer({user}) {
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("user is " + user);
   const toggleDrawer = (open) => (event) => {
     setIsOpen(open);
   };
@@ -86,14 +84,19 @@ export default function CustomDrawer({ user }) {
     },
   ];
 
-  const list = () => (
-    <Box
+  return (
+    <div className="CustomDrawerMenuButtonContainer">
+      <Button className="CustomDrawerMenuButton" onClick={toggleDrawer(true)}>
+        <MenuIcon />
+      </Button>
+      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
+      <Box
       sx={{ width: 0.5 }}
       className="CustomDrawerMenu sticky"
       role="presentation"
       onClick={toggleDrawer(false)}
     >
-      {user && user.userRole == "admin"? (
+      {user && user.userRole =="admin" ? (
         <List>
           {adminMenuItems.map((item, index) => (
             <ListItem key={item.text} disablePadding>
@@ -108,7 +111,7 @@ export default function CustomDrawer({ user }) {
         </List>
       ) : (
         <List>
-          {userMenuItems.map((item, index) => (
+          {userMenuItems  .map((item, index) => (
             <ListItem key={item.text} disablePadding>
               <Link to={item.to}>
                 <ListItemButton>
@@ -121,15 +124,6 @@ export default function CustomDrawer({ user }) {
         </List>
       )}
     </Box>
-  );
-
-  return (
-    <div className="CustomDrawerMenuButtonContainer">
-      <Button className="CustomDrawerMenuButton" onClick={toggleDrawer(true)}>
-        <MenuIcon />
-      </Button>
-      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
-        {list()}
       </Drawer>
     </div>
   );
