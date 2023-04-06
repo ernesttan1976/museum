@@ -109,8 +109,7 @@ export default function ExhibitionPage({ user }) {
         <></>
       )}
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
-      <ExhibitionComments
-        comments={exhibition.exhibitionComments}
+      <ExhibitionComments user={user} comments={exhibition.exhibitionComments}
         setExhibition={setExhibition}
       />
     </Box>
