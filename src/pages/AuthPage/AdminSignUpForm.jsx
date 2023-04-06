@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function AdminSignUpForm({ setUser }) {
+export default function AdminSignUpForm() {
   const [state, setState] = useState({
     name: "",
     email: "",

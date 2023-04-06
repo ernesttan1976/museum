@@ -61,7 +61,7 @@ function App() {
           <Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ?  <ArtworksEditForm user={user}/> :<AccessDeniedMsg /> } />  {/* admin access only -> (user.role === "admin" */}
           <Route path="/exhibitions/new" element={user && user.userRole == "admin" ?  <ExhibitionNew user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only-> (user.role === "admin") */}
           <Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only -> (user.role === "admin" */}
-              
+          <Route path="/admin/signup" element={user && user.userRole == "admin" ? <AdminSignUpForm user={user}/> :<AccessDeniedMsg /> } />   {/* admin access only -> (user.role === "admin" */}
       </Routes>
       </ErrorBoundary>
       <Box className="Footer">
