@@ -9,7 +9,7 @@ import { getToken , getUser} from "../../utilities/users-service";
 
 export default function LoginForm({setUser}) {
 
-  const [error, setError] = useState("No error");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const handleLogin = async (event) => {
@@ -26,11 +26,13 @@ export default function LoginForm({setUser}) {
         body: JSON.stringify(body),
       });
       const data = await response.json();
+      
       if (data.token) {
         localStorage.setItem("token", data.token);
         setUser(getUser())
         setError("");
-        window.alert(" account has login successfully.");
+        window.alert(" account has login successfully."); 
+        // to edit later
         navigate('/');
        } else {
         setError(data.message);
