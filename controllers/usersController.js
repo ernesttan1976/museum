@@ -24,14 +24,14 @@ const create = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (password.length < 5) {
-    res.status(400).json({ message: "password too short" });
+    res.status(400).json({ message: "Incorrect Password" });
     return;
   }
 
   try {
     const user = await User.findOne({ email });
     if (user === null) {
-      res.status(401).json({ message: "no user" });
+      res.status(401).json({ message: "No user found, Please sign up." });
       return;
     }
 
@@ -49,11 +49,10 @@ const login = async (req, res) => {
   }
 };
 
-
 const logout = async (req, res) => {
-if (req.headers && req.headers.authorization){
-  console.log("working? is" + req.headers.authorization);
-}
+  if (req.headers && req.headers.authorization) {
+    console.log("working? is" + req.headers.authorization);
+  }
 };
 
 // if (req.session) {
@@ -61,10 +60,8 @@ if (req.headers && req.headers.authorization){
 // }
 // res.render("users/login", { msg: "", isLoggedIn: false });
 
-
 module.exports = {
   create,
   login,
   logout,
 };
-
