@@ -34,7 +34,8 @@ function App() {
     <>
       <CssBaseline />
       <Box className="Header">
-        <CustomDrawerMenu />
+
+        <CustomDrawerMenu user={user} />
         <img className="logo" src="/src/images/logo.gif" />
         <CustomDrawerLogin user={user} setUser={setUser}/>
 
