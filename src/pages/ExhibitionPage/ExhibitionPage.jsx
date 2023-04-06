@@ -111,6 +111,7 @@ export default function ExhibitionPage({ user }) {
       )}
       <br/>
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
+      <br/>
       <ExhibitionComments
         user={user}
         comments={exhibition.exhibitionComments}
