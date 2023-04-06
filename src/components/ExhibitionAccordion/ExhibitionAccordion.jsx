@@ -22,7 +22,9 @@ export default function ExhibitionAccordion() {
 
   return (
     <>
-      <Typography variant="h2">Exhibitions</Typography>
+    <br></br>
+      <Typography variant="h3">Exhibitions</Typography>
+      <br></br>
       <Box className="exhibitionAccordionContainer">
         {floors.map((floor, index) => (
           <Accordion className="ExhibitionAccordion" key={index}>
@@ -32,7 +34,7 @@ export default function ExhibitionAccordion() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography variant="h4">{floor}</Typography>
+              <Typography variant="h6">{floor}</Typography>
             </AccordionSummary>
             <AccordionDetails className="AccordionDetails">
               <Grid container className="ExhibitionGridContainer" spacing={2}>

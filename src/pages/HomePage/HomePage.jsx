@@ -20,7 +20,7 @@ const HomePage = ({user}) => {
             {user && <Typography >Welcome {user.name}</Typography>}
             <IconSlider />
             <HomePageCarousell />
-            <ExhibitionAccordion />
+            <ExhibitionAccordion id="exhibition" />
             </>
         </Box>
     );
