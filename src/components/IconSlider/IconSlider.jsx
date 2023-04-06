@@ -58,11 +58,8 @@ const IconSlider = () => {
     return (
         <Box className="IconSlider">
             <Box className="IconSliderInner">
-                    {/* <Stack direction="column" spacing={1} alignItems="center">
-                        <Button className="IconButtonInvisible" size='large' variant="contained" startIcon={BUTTON_LIST[0].icon} />
-                    </Stack> */}
                 {BUTTON_LIST.map(item => (
-                    <Stack direction="column" spacing={1} alignItems="center">
+                    <Stack key={item.name} direction="column" spacing={1} alignItems="center">
                         <Button className="IconButton" size='large' variant="contained" href={item.href} startIcon={item.icon} />
                         <Typography sx={{fontSize:10}} variant="button">{item.name}</Typography>
                     </Stack>))}
@@ -73,8 +70,3 @@ const IconSlider = () => {
 
 export default IconSlider;
 
-                    // <BottomNavigationAction
-                    //     label={item.name}
-                    //     value={item.href}
-                    //     icon={item.icon}
-                    //   />
