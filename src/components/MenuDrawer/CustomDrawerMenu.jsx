@@ -16,11 +16,14 @@ import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import MuseumOutlinedIcon from "@mui/icons-material/Museum";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { red } from '@mui/material/colors';
+import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
+
 import "./CustomDrawerMenu.css";
 
 export default function CustomDrawer({user}) {
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("user is " + user);
   const toggleDrawer = (open) => (event) => {
     setIsOpen(open);
   };
@@ -99,7 +102,7 @@ export default function CustomDrawer({user}) {
             <ListItem key={item.text} disablePadding>
               <Link to={item.to}>
                 <ListItemButton>
-                  {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+                  {item.icon && <ListItemIcon sx={{ color: red[800] }}>{item.icon}</ListItemIcon>}
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </Link>
@@ -112,7 +115,7 @@ export default function CustomDrawer({user}) {
             <ListItem key={item.text} disablePadding>
               <Link to={item.to}>
                 <ListItemButton>
-                  {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+                  {item.icon && <ListItemIcon sx={{ color: red[800] }}>{item.icon}</ListItemIcon>}
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </Link>

@@ -1,76 +1,86 @@
-import HomeIcon from '@mui/icons-material/Home';
-import ImageSearchIcon from '@mui/icons-material/ImageSearch';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import ArtTrackIcon from '@mui/icons-material/ArtTrack';
+import RouteIcon from '@mui/icons-material/Route';
+import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
+import EventIcon from '@mui/icons-material/Event';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+// import HomeIcon from '@mui/icons-material/Home';
+// import ImageSearchIcon from '@mui/icons-material/ImageSearch';
+// import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 // import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
 // import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import "./IconSlider.css";
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+// import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+
 
 const IconSlider = () => {
 
     const BUTTON_LIST = [
         {
-            name: "Home",
-            icon: <HomeIcon />,
-            href: "/",
+            name: "Tickets",
+            icon: <ConfirmationNumberIcon />,
+            href: "https://www.nationalgallery.sg/admissions",
         },
         {
-            name: "Artworks",
-            icon: <ImageSearchIcon />,
-            href: "/artworks",
+            name: "Exhibitions",
+            icon: <ArtTrackIcon />,
+            href: "https://www.nationalgallery.sg/see-do/exhibitions",
         },
         {
-            name: "Map",
-            icon: <LocationOnIcon />,
-            href: "/map",
+            name: "Art Journey",
+            icon: <RouteIcon />,
+            href: "/https://web.nationalgallery.sg/#/art-journeys",
         },
         {
-            name: "Passes",
-            icon: <HomeOutlinedIcon />,
-            href: "/",
+            name: "Tours",
+            icon: <SpatialAudioIcon />,
+            href: "http://web.nationalgallery.sg/#/search?q%20=&tab=Tours",
         },
         {
-            name: "Home",
-            icon: <HomeOutlinedIcon />,
-            href: "/",
+            name: "Events",
+            icon: <EventIcon />,
+            href: "https://www.nationalgallery.sg/whats-on",
         },
         {
-            name: "Home",
-            icon: <HomeOutlinedIcon />,
-            href: "/",
+            name: "Dining",
+            icon: <RestaurantIcon />,
+            href: "https://www.nationalgallery.sg/see-do/shopping-and-dining",
         },
         {
-            name: "Home",
-            icon: <HomeOutlinedIcon />,
-            href: "/",
+            name: "Donate",
+            icon: <VolunteerActivismIcon />,
+            href: "https://donate.nationalgallery.sg/",
         },
-        {
-            name: "Home",
-            icon: <HomeOutlinedIcon />,
-            href: "/",
-        }
     ]
 
 
     return (
         <Box className="IconSlider">
             <Box className="IconSliderInner">
+                    {/* <Stack direction="column" spacing={1} alignItems="center">
+                        <Button className="IconButtonInvisible" size='large' variant="contained" startIcon={BUTTON_LIST[0].icon} />
+                    </Stack> */}
                 {BUTTON_LIST.map(item => (
-                    // <Button className="IconButton" variant="contained" href={item.href} startIcon={item.icon} iconSizeLarge textSizeSmall>
-                    //     {item.name}</Button>
-                        <BottomNavigationAction
-                        label={item.name}
-                        value={item.href}
-                        icon={item.icon}
-                      />
-                ))}
+                    <Stack direction="column" spacing={1} alignItems="center">
+                        <Button className="IconButton" size='large' variant="contained" href={item.href} startIcon={item.icon} />
+                        <Typography sx={{fontSize:10}} variant="button">{item.name}</Typography>
+                    </Stack>))}
             </Box>
         </Box>
     );
 }
 
 export default IconSlider;
+
+                    // <BottomNavigationAction
+                    //     label={item.name}
+                    //     value={item.href}
+                    //     icon={item.icon}
+                    //   />

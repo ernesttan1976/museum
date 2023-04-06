@@ -9,8 +9,9 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import AccessDeniedMsg from '../../components/AccessDeniedMsg/AccessDeniedMsg'
 
-function ArtworksEditForm() {
+function ArtworksEditForm({user}) {
 const { id } = useParams();
 const [artwork, setArtwork] = useState({});
 const navigate = useNavigate();
@@ -51,6 +52,7 @@ useEffect(() => {
       }}
       noValidate
       autoComplete="off">
+
         <Typography variant="h4">Edit Artworks</Typography>
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
           <label>Image URL:</label>

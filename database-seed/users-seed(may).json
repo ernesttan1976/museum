@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "642b8058804fe8d5ab711758"
+  },
+  "name": "Admin",
+  "email": "Admin@gmail.com",
+  "password": "$2b$06$XnAfJrJUB7rIOXpgVb1AK.Kvsey6c.EC.D3cQvXq0UK/LYh.z1BMm",
+  "userRole": "admin",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1680572504633"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1680572504633"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642b9094804fe8d5ab711837"
+  },
+  "name": "ida",
+  "email": "ida@gmail.com",
+  "password": "$2b$06$TEANRkgP8i9CddkaiYrU0u.ogxHs5ROwzJz6HD04/rxI34dYh9E1.",
+  "userRole": "user",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1680576660947"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1680576660947"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642d00c6bea849daef04c30e"
+  },
+  "name": "admin1",
+  "email": "admin@ng.com",
+  "password": "$2b$06$A4QSaKGOXrRXEfpO7fs2YOOWAAP1WOmOFjem.J45jAqTi.terKLky",
+  "userRole": "admin",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1680670918111"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1680670918111"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642d43c300e899c5cdf6c0e4"
+  },
+  "name": "maymoe",
+  "email": "mm@gmail.com",
+  "password": "$2b$06$kISWXjN10f6pakBtnJIqm.k0qPaS/tQ/8jRU1dzkdbyA6PCHdiZ4C",
+  "userRole": "admin",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1680688068001"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1680688068001"
+    }
+  },
+  "__v": 0
+}]

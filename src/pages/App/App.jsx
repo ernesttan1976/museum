@@ -6,6 +6,7 @@ import CustomDrawerLogin from "../../components/LoginDrawer/CustomDrawerLogin";
 import CustomBottomNavigation from "../../components/CustomBottomNavigation/CustomBottomNavigation";
 import { Routes, Route } from "react-router-dom";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+import AccessDeniedMsg from '../../components/AccessDeniedMsg/AccessDeniedMsg'
 import HomePage from "../HomePage/HomePage";
 import SignUpForm from "../AuthPage/SignUpForm";
 import LoginForm from "../AuthPage/LoginForm";
@@ -33,11 +34,10 @@ function App() {
     <>
       <CssBaseline />
       <Box className="Header">
-        <CustomDrawerMenu user={user} setUser={setUser} />
-        <img src="/src/images/logo.gif" />
-        <CustomDrawerLogin user={user} setUser={setUser} />
+        <CustomDrawerMenu user={user} />
+        <img className="logo" src="/src/images/logo.gif" />
+        <CustomDrawerLogin user={user} setUser={setUser}/>
       </Box>
-
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
@@ -49,21 +49,9 @@ function App() {
           />
           <Route path="/users/logout" element={<LogOutMsg />} />
           <Route path="/artworks" element={<ArtworksPage />} />
-          <Route
-            path="/artworks/new"
-            element={<ArtworksNew user={user} />}
-          />{" "}
-          {/* admin access only-> (user.role === "admin") */}
-          <Route
-            path="/artworks/:id"
-            element={<ArtworkInfo user={user} />}
-          />{" "}
-          {/* admin access see edit and delete btn -> (user.role === "admin") */}
-          <Route
-            path="/artworks/:id/edit"
-            element={<ArtworksEditForm user={user} />}
-          />{" "}
-          {/* admin access only -> (user.role === "admin" */}
+          <Route path="/artworks/:id" element={<ArtworkInfo user={user}/>} /> {/* admin access see edit and delete btn -> (user.role === "admin") */}
+          <Route path="/exhibitions/:id" element={<ExhibitionPage user={user}/>}></Route> {/* admin access see edit and delete btn -> (user.role === "admin") */}
+          <Route path="/experimental" element={<ExperimentalPage />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
           <Route
@@ -71,22 +59,12 @@ function App() {
             element={<MapPage2 />}
           />
           ///map/directions?to=1234from=5678 //get request, post to req.query
-          <Route
-            path="/exhibitions/new"
-            element={<ExhibitionNew user={user} />}
-          ></Route>{" "}
-          {/* admin access only-> (user.role === "admin") */}
-          <Route
-            path="/exhibitions/:id"
-            element={<ExhibitionPage user={user} />}
-          ></Route>{" "}
-          {/* admin access see edit and delete btn -> (user.role === "admin") */}
-          <Route
-            path="/exhibitions/:id/edit"
-            element={<ExhibitionUpdate user={user} />}
-          ></Route>{" "}
-          {/* admin access only -> (user.role === "admin" */}
-        </Routes>
+          <Route path="/artworks/new" element={user && user.userRole == "admin" ?  <ArtworksNew user={user} /> :<AccessDeniedMsg /> } /> {/* admin access only-> (user.role === "admin") */}
+          <Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ?  <ArtworksEditForm user={user}/> :<AccessDeniedMsg /> } />  {/* admin access only -> (user.role === "admin" */}
+          <Route path="/exhibitions/new" element={user && user.userRole == "admin" ?  <ExhibitionNew user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only-> (user.role === "admin") */}
+          <Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only -> (user.role === "admin" */}
+              
+      </Routes>
       </ErrorBoundary>
       <Box className="Footer">
         <CustomBottomNavigation />
