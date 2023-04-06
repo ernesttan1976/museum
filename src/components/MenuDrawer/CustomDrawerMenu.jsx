@@ -23,7 +23,7 @@ import "./CustomDrawerMenu.css";
 
 export default function CustomDrawer({ user }) {
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("user is " + user);
   const toggleDrawer = (open) => (event) => {
     setIsOpen(open);
   };
