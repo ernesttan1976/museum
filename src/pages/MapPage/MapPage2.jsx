@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 
 import { useState, useEffect} from 'react';
 import { useParams, useNavigate } from "react-router-dom";
@@ -5,9 +7,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./MapPage2.css";
 
 import Box from '@mui/material/Box';
-import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
-import MapDirectionsComponent from "../../components/MapDirectionsComponent/MapDirectionsComponent";
 import MapDirectionsTab from "../../components/MapDirectionsTab/MapDirectionsTab";
+import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirectionsDrawer";
+
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 
 export default function MapPage2(){
@@ -49,10 +54,8 @@ export default function MapPage2(){
 
     return (
         <Box className="MapPage2">
-          <div>
-              <h1>Map Directions</h1>
-              <h1>{error}</h1>
-          </div>
+            <Typography className="routeDirections" variant="h5"> Route Directions </Typography>
+                <Button href="/map" variant="outlined">BACK TO MAP</Button>
               <MapDirectionsTab maps={direction.mapImg} />
               <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>
         </Box>
