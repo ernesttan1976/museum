@@ -21,9 +21,9 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
-import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate"
+import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate";
 import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
-import { getToken , getUser} from "../../utilities/users-service";
+import { getToken, getUser } from "../../utilities/users-service";
 
 function App() {
   const [exhibitions, setExhibition] = useState([]);
@@ -33,10 +33,9 @@ function App() {
     <>
       <CssBaseline />
       <Box className="Header">
-        <CustomDrawerMenu />
+        <CustomDrawerMenu user={user} setUser={setUser} />
         <img src="/src/images/logo.gif" />
-        <CustomDrawerLogin user={user} setUser={setUser}/>
-
+        <CustomDrawerLogin user={user} setUser={setUser} />
       </Box>
 
       <ErrorBoundary>
@@ -44,19 +43,49 @@ function App() {
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/admin/signup" element={<AdminSignUpForm />} />
           <Route path="/users/signup" element={<SignUpForm />} />
-          <Route path="/users/login" element={<LoginForm setUser={setUser} />} /> 
-          <Route path="/users/logout" element={<LogOutMsg/>} />
+          <Route
+            path="/users/login"
+            element={<LoginForm setUser={setUser} />}
+          />
+          <Route path="/users/logout" element={<LogOutMsg />} />
           <Route path="/artworks" element={<ArtworksPage />} />
-          <Route path="/artworks/new" element={<ArtworksNew user={user}/>} /> {/* admin access only-> (user.role === "admin") */}
-          <Route path="/artworks/:id" element={<ArtworkInfo user={user}/>} /> {/* admin access see edit and delete btn -> (user.role === "admin") */}
-          <Route path="/artworks/:id/edit" element={<ArtworksEditForm user={user}/>} />  {/* admin access only -> (user.role === "admin" */}
+          <Route
+            path="/artworks/new"
+            element={<ArtworksNew user={user} />}
+          />{" "}
+          {/* admin access only-> (user.role === "admin") */}
+          <Route
+            path="/artworks/:id"
+            element={<ArtworkInfo user={user} />}
+          />{" "}
+          {/* admin access see edit and delete btn -> (user.role === "admin") */}
+          <Route
+            path="/artworks/:id/edit"
+            element={<ArtworksEditForm user={user} />}
+          />{" "}
+          {/* admin access only -> (user.role === "admin" */}
           <Route path="/map" element={<MapPage />} />
           <Route path="/map/directions" element={<MapPage2 />} />
-          <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} />
+          <Route
+            path="/map/directions/from/:from/to/:to"
+            element={<MapPage2 />}
+          />
           ///map/directions?to=1234from=5678 //get request, post to req.query
-          <Route path="/exhibitions/new" element={<ExhibitionNew user={user}/>}></Route> {/* admin access only-> (user.role === "admin") */}
-          <Route path="/exhibitions/:id" element={<ExhibitionPage user={user}/>}></Route> {/* admin access see edit and delete btn -> (user.role === "admin") */}
-          <Route path="/exhibitions/:id/edit" element={<ExhibitionUpdate user={user}/>}></Route> {/* admin access only -> (user.role === "admin" */}
+          <Route
+            path="/exhibitions/new"
+            element={<ExhibitionNew user={user} />}
+          ></Route>{" "}
+          {/* admin access only-> (user.role === "admin") */}
+          <Route
+            path="/exhibitions/:id"
+            element={<ExhibitionPage user={user} />}
+          ></Route>{" "}
+          {/* admin access see edit and delete btn -> (user.role === "admin") */}
+          <Route
+            path="/exhibitions/:id/edit"
+            element={<ExhibitionUpdate user={user} />}
+          ></Route>{" "}
+          {/* admin access only -> (user.role === "admin" */}
         </Routes>
       </ErrorBoundary>
       <Box className="Footer">
