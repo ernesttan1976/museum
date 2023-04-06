@@ -24,6 +24,7 @@ import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
 import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate";
 import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
+import PageNotFound from "../PageNotFound/PageNotFound";
 import { getToken, getUser } from "../../utilities/users-service";
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
       </Box>
       <ErrorBoundary>
         <Routes>
-          <Route path="/*" element={<AccessDeniedMsg />}/> 
+          <Route path="/*" element={<PageNotFound />}/> 
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route
