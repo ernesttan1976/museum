@@ -12,6 +12,8 @@ import MapDirectionsTab from "../../components/MapDirectionsTab/MapDirectionsTab
 
 export default function MapPage2(){
 
+  const [error, setError] = useState("");
+
     useEffect(() => {
         console.log('Component mounted');
         //this function is in index.html
@@ -24,9 +26,15 @@ export default function MapPage2(){
     useEffect(() => {
     const fetchDirection = async () => {
       const response = await fetch(`/api/map/directions/from/${from}/to/${to}`);
+      if (!response.ok) { 
+        console.log("Path does not exist" )
+        setError("Route does not exist...yet")
+        // ("Network response was not OK");
+      } else {
       const direction = await response.json();
       setDirection(direction);
       console.log(direction);
+      }
     };
     fetchDirection();
      },[]);  
@@ -43,6 +51,7 @@ export default function MapPage2(){
         <Box className="MapPage2">
           <div>
               <h1>Map Directions</h1>
+              <h1>{error}</h1>
           </div>
               <MapDirectionsTab maps={direction.mapImg} />
               <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>

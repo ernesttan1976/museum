@@ -14,8 +14,12 @@ import TurnRightOutlinedIcon from '@mui/icons-material/TurnRightOutlined';
 import TurnLeftOutlinedIcon from '@mui/icons-material/TurnLeftOutlined';
 import TurnSlightLeftOutlinedIcon from '@mui/icons-material/TurnSlightLeftOutlined';
 import TurnSlightRightOutlinedIcon from '@mui/icons-material/TurnSlightRightOutlined';
+import StraightOutlinedIcon from '@mui/icons-material/StraightOutlined';
+import StairsOutlinedIcon from '@mui/icons-material/StairsOutlined';
+
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
+
 import { Typography } from '@mui/material';
 
 
@@ -25,6 +29,9 @@ const Icons = {
   turnLeft : <TurnLeftOutlinedIcon />,
   slightRight : <TurnSlightRightOutlinedIcon />,
   slightLeft : <TurnSlightLeftOutlinedIcon />,
+  goStraight: <StraightOutlinedIcon />,
+  
+  stairs : <StairsOutlinedIcon />,
   camera : <CameraAltOutlinedIcon />,
   artwork : <PhotoOutlinedIcon />
 
