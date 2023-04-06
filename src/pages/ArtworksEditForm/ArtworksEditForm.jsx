@@ -53,8 +53,6 @@ useEffect(() => {
       noValidate
       autoComplete="off">
 
-        {/* {user && user.userRole == "admin" ? (
-            <> */}
         <Typography variant="h4">Edit Artworks</Typography>
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
           <label>Image URL:</label>
@@ -156,9 +154,6 @@ useEffect(() => {
           <br />    
           <Button type="submit" onClick={handleUpdate} >Update Artwork</Button>
         </FormControl>    
-        {/* </> ) : (
-          <AccessDeniedMsg />
-          )} */}
     </Box>
     );
 }
