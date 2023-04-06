@@ -168,7 +168,9 @@ const navigate = useNavigate();
           <label>Year:</label>
          <TextField 
          label="Year" 
-         type="number" 
+        //  type="number"
+         type="text"
+         pattern="\d{4}"  
          name="artworkYear" 
          value={data.artworkYear} 
          placeholder='Year' 
