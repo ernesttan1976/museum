@@ -11,7 +11,7 @@ export default function ExhibitionGrid() {
         container
         spacing={2}
       >
-        <Grid className="ExhibitionGridItem" item xs={12} md={6} lg={3}>
+        <Grid className="ExhibitionGridItem" item xs={12} sm={6} lg={3}>
           <ExhibitionCard/>
         </Grid>
       </Grid>
