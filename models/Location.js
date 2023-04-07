@@ -54,12 +54,14 @@ const locationsSchema = new Schema(
     ],
     shopanddine: [
       {
-        type: String, 
+        type: String,
+        minlength: 3,
       },
     ],
     amenities: [
       {
-        type: String, 
+        type: String,
+        minlength: 3
       },
     ],
 

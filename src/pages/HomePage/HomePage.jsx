@@ -7,6 +7,13 @@ import {useEffect, useState} from "react";
 import IconSlider from "../../components/IconSlider/IconSlider"
 import Typography from '@mui/material/Typography';
 
+function setScrollHeight() {
+    const max = document.body.scrollHeight > window.innerHeight ? document.body.scrollHeight : window.innerHeight;
+    document.documentElement.style.setProperty('--scroll-height', max);
+    console.log("scroll height: ", document.body.scrollHeight, "max: ", max);
+    return max;
+  }
+
 const HomePage = ({user}) => { 
     useEffect(() => {
         console.log('Component mounted');

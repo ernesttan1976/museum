@@ -9,14 +9,29 @@ const index = async (req, res) => {
     }
   };
 
-const create = async (req, res) => {
-  try {
-    const createdLocation = await Location.create(req.body);
-    res.status(201).json(createdLocation);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+  const create = async (req, res) => {
+    try {
+      const location = new Location(req.body);
+      const errors = location.validateSync();
+      if (errors) {
+        throw new Error(errors);
+      }
+      const createdLocation = await location.save();
+      res.status(201).json(createdLocation);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  };
+  
+
+// const create = async (req, res) => {
+//   try {
+//     const createdLocation = await Location.create(req.body);
+//     res.status(201).json(createdLocation);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
 
 const deleteLocation = async (req, res) => {
   try {
@@ -38,16 +53,22 @@ const deleteLocation = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const updatedLocation = await Location.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const location = await Location.findById(req.params.id);
+    if (!location) {
+      throw new Error("Location not found");
+    }
+    location.set(req.body);
+    const errors = location.validateSync();
+    if (errors) {
+      throw new Error(errors);
+    }
+    const updatedLocation = await location.save();
     res.status(200).json(updatedLocation);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
+
 
 module.exports = {
   create,
