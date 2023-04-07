@@ -2,6 +2,8 @@
 ## [https://museumrender.onrender.com/](https://museumrender.onrender.com/)
 ## Introduction 
 
+## Group Members
+[Ernest](https://github.com/ernesttan1976), [Ida](https://github.com/didadeeee), [May](https://github.com/MayMoeOo95) and [Mark](https://github.com/Marklimjr).
 
 ## Why We Choose React?
 Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps.
