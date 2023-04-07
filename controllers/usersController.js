@@ -1,13 +1,12 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const create = async (req, res) => {
   const { password } = req.body;
   if (password.length < 5) {
-    res.status(400).json({ message: "password too short" });
+    res.status(400).json({ message: "Password is too Short, Please Try Agian." });
     return;
   }
 
@@ -49,19 +48,7 @@ const login = async (req, res) => {
   }
 };
 
-const logout = async (req, res) => {
-  if (req.headers && req.headers.authorization) {
-    console.log("working? is" + req.headers.authorization);
-  }
-};
-
-// if (req.session) {
-//   req.session.destroy();
-// }
-// res.render("users/login", { msg: "", isLoggedIn: false });
-
 module.exports = {
   create,
   login,
-  logout,
 };

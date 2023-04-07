@@ -14,32 +14,29 @@ import { logout } from "../../utilities/users-service";
 
 export default function CustomDrawer({user, setUser}) {
   const [isOpen, setIsOpen] = useState(false);
+  
+  //User's Logout 
   const handleLogout = async (user) => {
     logout();
     setUser(null);
+    console.log("user has been logged out successfully.");
   };
 
   const toggleDrawer = (open) => (event) => {
     setIsOpen(open);
   };
-console.log("user is " + user);
+
+  console.log("user is " + user);
   const list = () => (
-      <Box
+    <Box
         className="CustomDrawerLogin sticky"
         role="presentation"
-        onClick={toggleDrawer(false)}
-      >
-      {user ? (
-        <>
+        onClick={toggleDrawer(false)}>
+      {user ? ( <>
           <Link to={`/users/logout`}>
           <Button onClick={handleLogout}>Log Out</Button>
           </Link>
-        </>
-        ) : (
-        <>
-          <AuthPage />
-        </>
-        )}
+        </>) : ( <> <AuthPage /> </> )}
     </Box>
   );
 
