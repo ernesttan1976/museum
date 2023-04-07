@@ -88,11 +88,12 @@ export default function ArtworkInfo({ user }) {
             <>
           <br />
           <Link to={`/artworks/${artwork._id}/edit`}>
-          <Button>Edit</Button> 
-          </Link><br />
+          <Button >Edit</Button> 
+          </Link>
+          <br />
           <Button onClick={() => handleDelete(artwork._id)}>Delete</Button>
           </> ) : (
-            <> </>
+            null
           )}
           </>
         </Grid>
