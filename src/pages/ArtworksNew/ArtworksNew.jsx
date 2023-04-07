@@ -86,6 +86,17 @@ const navigate = useNavigate();
           
           <br />
 
+          {/* <label>Artwork Title :</label> */}
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={data.artworkTitle} 
+          placeholder='Artwork Title' 
+          onChange={handleChange}/>
+
+          <br />
+
           {/* <label>Artist Name:</label> */}
           <TextField 
           label="Artist Name" 
@@ -130,17 +141,6 @@ const navigate = useNavigate();
 
           <br />
 
-          {/* <label>Artwork Title :</label> */}
-          <TextField 
-          label="Title" 
-          type="text" 
-          name="artworkTitle" 
-          value={data.artworkTitle} 
-          placeholder='Artwork Title' 
-          onChange={handleChange}/>
-
-          <br />
- 
           {/* <label>Year:</label> */}
          <TextField 
          label="Year" 
