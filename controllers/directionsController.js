@@ -30,14 +30,19 @@ const show = async (req, res) => {
         };
       } else if (
         from === "6425c260c9d195369ec02476" &&
-        to === "64294d76491228c2e173f9a0"
+        to === "6425c854c9d195369ec02494"
       ) {
         result = {
           fromMapUrl: "EXHIBITION Between Declarations and Dreams",
           toMapUrl: "Living Pictures",
           steps: "642e2ff3e64813ab8c55a0ca", // Object ID of Route B
         };
+      } else {
+        result = {
+          steps: "64305ed5cf61dfb8fdd221cc",
+        };
       }
+
       return result;
     }
 
