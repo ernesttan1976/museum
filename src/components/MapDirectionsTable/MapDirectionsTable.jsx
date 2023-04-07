@@ -57,9 +57,9 @@ export default function BasicTable(props) {
       <Table sx={{ minWidth: 400 }} aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell align="left">Direction icon </TableCell>
-            <TableCell align="left">Directions</TableCell>
-            <TableCell align="left">Img</TableCell>
+            <TableCell align="center">Direction icon </TableCell>
+            <TableCell align="center">Directions</TableCell>
+            <TableCell align="center">Img</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,9 +68,9 @@ export default function BasicTable(props) {
             <TableRow key={index}
             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">{Icons[row.icon]}</TableCell>
-              <TableCell align="left">{row.directions}</TableCell>
-              <TableCell align="left">
+              <TableCell align="center" component="th" scope="row">{Icons[row.icon]}</TableCell>
+              <TableCell align="center">{row.directions}</TableCell>
+              <TableCell align="center">
               <img src={`${row.imgUrl}`} height="150" /> </TableCell>
             </TableRow>
           ))}

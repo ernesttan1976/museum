@@ -20,7 +20,7 @@ const show = async (req, res) => {
     function findRoute(from, to) {
       if (
         from === "6425c260c9d195369ec02476" &&
-        to === "6425c854c9d195369ec02494"
+        to === "6425ba0ac9d195369ec02461"
       ) {
         result = {
           fromMapUrl: "EXHIBITION Between Declarations and Dreams",

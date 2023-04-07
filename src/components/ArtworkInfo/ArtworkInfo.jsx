@@ -63,7 +63,7 @@ export default function ArtworkInfo({ user }) {
             {artwork.artworkTitle}
           </Typography> <br/>
           <Typography variant="subtitle1" color="text.secondary">
-            {artwork.artistName}
+           By {artwork.artistName}
           </Typography><br/>
           <Typography variant="body1" color="text.secondary">
             Dimension: {artwork.artworkDimension}
@@ -71,28 +71,28 @@ export default function ArtworkInfo({ user }) {
           <Typography variant="body1" color="text.secondary">
             Information: {artwork.artworkInformation}
           </Typography><br/>
+                    <Typography variant="body1" color="text.secondary">
+            Medium: {artwork.artworkMedium}
+          </Typography><br/>
+          <Typography variant="body1" color="text.secondary">
+            Year: {artwork.artworkYear}
+          </Typography> <br/>
           <Typography variant="body1" color="text.secondary">
             Location: {artwork.artworkLocation}
           </Typography><br/>
           <Typography variant="body1" color="text.secondary">
             Floor: {artwork.artworkFloor}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Medium: {artwork.artworkMedium}
-          </Typography><br/>
-          <Typography variant="body1" color="text.secondary">
-            Year: {artwork.artworkYear}
           </Typography>
-
           {user && user.userRole == "admin" ? (
             <>
           <br />
           <Link to={`/artworks/${artwork._id}/edit`}>
-          <Button>Edit</Button> 
-          </Link><br />
+          <Button >Edit</Button> 
+          </Link>
+          <br />
           <Button onClick={() => handleDelete(artwork._id)}>Delete</Button>
           </> ) : (
-            <> </>
+            null
           )}
           </>
         </Grid>

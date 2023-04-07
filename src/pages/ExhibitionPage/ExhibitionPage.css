@@ -22,6 +22,8 @@
   padding-bottom: 30px;
 }
 
-.ExhibitionPage button {
-  margin-top: 20px;
+.ExhibitionPageButton {
+  display: flex;
+  justify-content: center;
 }
+

@@ -75,7 +75,7 @@ const navigate = useNavigate();
         <Typography variant="h4">Add new Artwork</Typography> 
         
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
-          <label>Image URL:</label>
+          {/* <label>Image URL:</label> */}
           <TextField 
           label="Image URL" 
           type="text" 
@@ -86,7 +86,18 @@ const navigate = useNavigate();
           
           <br />
 
-          <label>Artist Name:</label>
+          {/* <label>Artwork Title :</label> */}
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={data.artworkTitle} 
+          placeholder='Artwork Title' 
+          onChange={handleChange}/>
+
+          <br />
+
+          {/* <label>Artist Name:</label> */}
           <TextField 
           label="Artist Name" 
           type="text" 
@@ -97,7 +108,7 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Dimension:</label>
+          {/* <label>Artwork Dimension:</label> */}
           <TextField 
           label="Dimension" 
           type="text" 
@@ -108,7 +119,7 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Information:</label>
+          {/* <label>Artwork Information:</label> */}
           <TextField 
           label="Information" 
           type="text" 
@@ -119,31 +130,7 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Location:</label>
-          <TextField 
-          label="Location" 
-          type="text" 
-          name="artworkLocation" 
-          value={data.artworkLocation} 
-          placeholder='Artwork Location' 
-          onChange={handleChange}/>
-
-          <br />
-
-          <label>Floor</label>
-          <Select label="Floor" name="artworkFloor" value="L1" onChange={handleChange}>
-            <MenuItem value="B1">B1</MenuItem>
-            <MenuItem value="L1">L1</MenuItem>
-            <MenuItem value="L2">L2</MenuItem>
-            <MenuItem value="L3">L3</MenuItem>
-            <MenuItem value="L4">L4</MenuItem>
-            <MenuItem value="L5">L5</MenuItem>
-            <MenuItem value="L6">L6</MenuItem>
-           </Select>
-
-          <br />
-
-          <label> Artwork Medium: </label>
+          {/* <label> Artwork Medium: </label> */}
           <TextField 
           label="Medium" 
           type="text" 
@@ -154,30 +141,51 @@ const navigate = useNavigate();
 
           <br />
 
-          <label>Artwork Title :</label>
+          {/* <label>Year:</label> */}
+         <TextField 
+         label="Year" 
+         type="text"
+         name="artworkYear"
+         value={data.artworkYear} 
+         placeholder='Year' 
+         pattern="\d{4}"
+         onChange={handleChange}/>
+
+          <br />  
+
+          {/* <label>Artwork Location:</label> */}
           <TextField 
-          label="Title" 
+          label="Location" 
           type="text" 
-          name="artworkTitle" 
-          value={data.artworkTitle} 
-          placeholder='Artwork Title' 
+          name="artworkLocation" 
+          value={data.artworkLocation} 
+          placeholder='Artwork Location' 
           onChange={handleChange}/>
 
           <br />
- 
-          <label>Year:</label>
-         <TextField 
-         label="Year" 
-        //  type="number"
-         type="text"
-         pattern="\d{4}"  
-         name="artworkYear" 
-         value={data.artworkYear} 
-         placeholder='Year' 
-         onChange={handleChange}/>
 
-          <br />    
-          <Button type="submit" variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
+          <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
+          {/* <label>Floor</label> */}
+          <InputLabel>Floor</InputLabel>
+          <Select sx={{ width: '100px' }}
+          label="Floor" 
+          name="artworkFloor" 
+          value="L1" 
+          onChange={handleChange}>
+
+            <MenuItem value="" disabled>Select Floor</MenuItem>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+           </Select>
+           </FormControl>
+
+          <br />  
+          <Button sx={{ width: '100px' }} type="submit" variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
         </FormControl>         
         
         {/* </Grid></Grid>
