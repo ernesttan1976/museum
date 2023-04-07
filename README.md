@@ -1,15 +1,16 @@
 # National Gallery Mobile App
-## [https://museumrender.onrender.com/](https://museumrender.onrender.com/)
-## Introduction 
 
-## Group Members
-GitHub Manager: [Ernest](https://github.com/ernesttan1976)
+### Getting Started
+https://museumrender.onrender.com/
+
+## Contribution
+GitHub Manager: [Ernest](https://github.com/ernesttan1976)</br>
 In charge with ... </br>
-Scrum Master: [Ida](https://github.com/didadeeee)
+Scrum Master: [Ida](https://github.com/didadeeee)</br>
 Utilising [Trello](https://trello.com/invite/b/iE3FX0N4/ATTI2210f3e4c5cad04ab957b63d518ae7e0C5D3A9A5/national-gallery-web) to plan and etc. </br>
-Documenter: [May](https://github.com/MayMoeOo95) </br>
-In charge with wireframing and etc.
-Database Manager: [Mark](https://github.com/Marklimjr)
+Documenter: [May](https://github.com/MayMoeOo95)</br>
+In charge with wireframing and etc.</br>
+Database Manager: [Mark](https://github.com/Marklimjr)</br>
 Designer: K2Z [Kally](), [Kriti]() & [Zhi Qing]() </br>
 
 ## Why We Choose React?
@@ -48,10 +49,13 @@ Notes:
 * Some of the features are not applicable for certain frameworks (represented as N/A).
 * The external libraries are listed in brackets in the column cells.
 
-## Wireframe (Google Docs)
-[Google Docs](https://docs.google.com/presentation/d/e/2PACX-1vRL0aiMT7cBwV2QXR_AL4nHtXz5O6ddihnm15mgE4lASZb3DqV5tccraChUTRICch9JTthKFCbvjjWl)
+## Wireframe
+![Home Page Wireframe](/src/images/readme/homepagewireframe.png "Home Page Wireframe")</br>
+![Artwork Wireframe](/src/images/readme/artworkwireframe.png "Artwork Wireframe")</br>
+![Map Wireframe](/src/images/readme/mapwireframe.png "Map Wireframe")</br>
+![Map Route Wireframe](/src/images/readme/routewireframe.png "Map Route Wireframe")</br>
 
-## Userstories
+## User Stories
 - As a non-logged in user, I want to read accessible, consistent information on home screen & exhibition detail screen.
 - As a logged in user, I want to leave a comment about the exhibition that I joined at National Gallery Singapore.
 - As a visitor, I want to improve my wayfinding and exploration of National Gallery Singapore through the Map feature.
@@ -62,7 +66,116 @@ Notes:
 [![](https://mermaid.ink/img/pako:eNqFUl1PgzAU_SvkPrNlA8Y23pwSXTI02VyihpcrdEgCLWmLOhn_3fLlFhtjH5qbe057Ts9tBRGLCXhA-E2KCcc8pIZa3b7f-Vuj6upmCclTmhgUc6I1E8aSjKxjDSA5ppnWLVCID8Z1Or6jRN6165B2RaCc7APjdBqNWGXcXm02_vbZ8IxQ2acSUypCGLgD2pP9p7v1av34B3lAe_L1QxD49_-R9URkKjM9kpiIiKeFTBk9Y7TMXwlXzyQcE7JFqZhndDAQsTwnVIpfOQzwhYN2Rj19ddQ85EQIpaPp8wvhn-vBhJxwNa9Y_YhWIwT5RtS0oUkkJgcsM9kEUisqlpLtjjQCT_KSmFAWMUrSfyPwDpgJ1S2QglfBJ3jWwh0704U7nU9t23UcxzbhCN5iPLcdy5pYy4nrzpbOrDbhizF1w7Q9_dLWjUT9DRFCzX8?type=png)](https://mermaid.live/edit#pako:eNqFUl1PgzAU_SvkPrNlA8Y23pwSXTI02VyihpcrdEgCLWmLOhn_3fLlFhtjH5qbe057Ts9tBRGLCXhA-E2KCcc8pIZa3b7f-Vuj6upmCclTmhgUc6I1E8aSjKxjDSA5ppnWLVCID8Z1Or6jRN6165B2RaCc7APjdBqNWGXcXm02_vbZ8IxQ2acSUypCGLgD2pP9p7v1av34B3lAe_L1QxD49_-R9URkKjM9kpiIiKeFTBk9Y7TMXwlXzyQcE7JFqZhndDAQsTwnVIpfOQzwhYN2Rj19ddQ85EQIpaPp8wvhn-vBhJxwNa9Y_YhWIwT5RtS0oUkkJgcsM9kEUisqlpLtjjQCT_KSmFAWMUrSfyPwDpgJ1S2QglfBJ3jWwh0704U7nU9t23UcxzbhCN5iPLcdy5pYy4nrzpbOrDbhizF1w7Q9_dLWjUT9DRFCzX8)
 
 ## Screenshots
+![Home Page Carousell](/src/images/readme/homepagecarousell.png "Home Page Carousell")</br>
+![Exhibition](/src/images/readme/exhibitionaccordion.png "Exhibition")</br>
+![Map](/src/images/readme/maps.png "Maps")</br>
+![Map Route](/src/images/readme/maps.png "Map Route")</br>
 
+## Technologies Used
+1. React
+2. React Material UI
+3. Node.js
+4. Express Framework
+5. MongoDB & Mongoose
+6. JavaScript
+7. Render deployment
+8. Git & GitHub
+
+
+
+
+## Features
+### Login, Sign Up (User & Admin)
+```js
+insert your favorite express controller method here
+```
+
+```js
+insert your favorite react component here
+```
+
+### Artwork CRUD
+```js
+insert your favorite express controller method here
+```
+
+```js
+insert your favorite react component here
+```
+
+### Exhibition CRUD
+```js
+insert your favorite express controller method here
+```
+
+```js
+insert your favorite react component here
+```
+
+### Map Search
+```js
+insert your favorite express controller method here
+```
+
+```js
+insert your favorite react component here
+```
+
+### Map Route
+```js
+insert your favorite express controller method here
+```
+
+```js
+insert your favorite react component here
+```
+
+### Client Side Routing
+```js
+is it app.jsx code here?
+```
+
+## Conclusion
+
+### Biggest Challenge
+Ernest: </br>
+
+Ida: 
+- Material UI CSS Style Default Behaviour
+- Learning to work in a group using Github
+- Managing expectations
+- Communicate each other's code
+
+May: </br>
+Mark: </br>
+
+will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
+
+### Key Learnings
+shall we move the react key learnings here?
+
+Ernest: </br>
+
+Ida: 
+- Group Git
+- Learnt debugging skills from fellow members
+- Material UI - Difficult at first but very powerful tool
+- Utilising wireframing, trello to manage a group project
+- Model is CRUCIAL
+
+May: </br>
+Mark: </br>
+
+will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
+
+## Q & A
+
+## Resources
+
+Product Prototype: <a href="https://www.figma.com/proto/WZ6XPMR2mlYvRAr9kvNFpD/P3-Gallery-Explorer-Redesign-v3.0?node-id=1-2&starting-point-node-id=1%3A2&scaling=scale-down">Figma</a><br />
+Wireframe: <a href="https://docs.google.com/presentation/d/1QK74u5tYnI7stAfgfH9_ZuHCs52L_hfNjI2NLIp1Txw/edit?usp=sharing">Google Docs</a><br />
+Project Management: <a href="https://trello.com/invite/b/iE3FX0N4/ATTI2210f3e4c5cad04ab957b63d518ae7e0C5D3A9A5/national-gallery-web">Trello</a><br />
+Path & Components: <a href="https://docs.google.com/presentation/d/1zn3BJGd09h5cBunKGQARrrkWUGV-Zak4PTxHN-Otd1w/edit?usp=sharing">Google Docs</a><br />
 
 <!-- 
 ## How to Configure MUI Theme?
