@@ -28,7 +28,7 @@ function ExhibitionComments({ user, comments, setExhibition }) {
 
   return (
     <>
-      <Typography variant="h4">Comments</Typography>
+      <Typography variant="h5">Comments</Typography>
       {comments.map((review) => (
         <Typography variant="subtitle1" key={review._id}>
           {review.comments}

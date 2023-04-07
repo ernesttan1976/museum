@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import "./ExhibitionArtworksCard.css";
 
 export default function ExhibitionArtworksCard({ artworks }) {
-  if (!artworks) {
+  if (!artworks || artworks.length === 0) {
     return null;
   }
 
