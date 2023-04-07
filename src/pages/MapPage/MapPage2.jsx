@@ -13,6 +13,7 @@ import MapDirectionsDrawer from "../../components/MapDirectionsDrawer/MapDirecti
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export default function MapPage2(){
@@ -54,10 +55,12 @@ export default function MapPage2(){
 
     return (
         <Box className="MapPage2">
+          <Box className="MapPage2Top">        
             <Typography className="routeDirections" variant="h5"> Route Directions </Typography>
-                <Button href="/map" variant="outlined">BACK TO MAP</Button>
-              <MapDirectionsTab maps={direction.mapImg} />
-              <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>
+            <Button component={Link} to="/map" variant="outlined">BACK TO MAP</Button>
+          </Box>
+          <MapDirectionsTab maps={direction.mapImg} />
+          <MapDirectionsDrawer direction={direction} table ={direction.routeDirections}/>
         </Box>
     )
 }

@@ -49,7 +49,8 @@ export default function BasicTabs(props) {
   };
 
   return (
-    <Box sx={{ width: '100%' , }}>
+        <Box sx={{ width: '100%' , }}>
+
       <TabPanel  value={value} index={0} sx={{ height: '300' , }}>
         <MapDirectionsComponentFrom maps={maps}/>
       </TabPanel>
