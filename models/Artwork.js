@@ -61,5 +61,4 @@ const artworkSchema = new Schema(
   }
 );
 
-
 module.exports = mongoose.model("Artwork", artworkSchema);
