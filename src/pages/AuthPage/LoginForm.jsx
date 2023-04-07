@@ -32,8 +32,7 @@ export default function LoginForm({setUser}) {
         localStorage.setItem("token", data.token);
         setUser(getUser())
         setError("");
-        window.alert(" account has login successfully."); 
-        // to edit later
+        window.alert("Account has login successfully."); 
         navigate('/');
        } else {
         setError(data.message);
@@ -50,21 +49,18 @@ export default function LoginForm({setUser}) {
         <Typography variant="h5">User Login </Typography>
         {error}
           <Box className="R1">
-          <label>
-            User Email Address: </label>
             <TextField 
             type="email"
-             label="Enter your email address"
+            label="Enter your email address"
             name="email" 
             required />
           </Box>
 
           <Box className="R1">
-          <label>
-            Password: </label>
             <TextField 
             label="Enter your password" 
             name="password" 
+            type="password"
             required />
           </Box>
 

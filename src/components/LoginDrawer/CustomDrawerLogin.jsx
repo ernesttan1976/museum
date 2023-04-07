@@ -17,7 +17,6 @@ export default function CustomDrawer({user, setUser}) {
   const handleLogout = async (user) => {
     logout();
     setUser(null);
-    // navigate('/users/logout');
   };
 
   const toggleDrawer = (open) => (event) => {

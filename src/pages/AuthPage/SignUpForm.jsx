@@ -23,8 +23,12 @@ export default function SignUpForm({ setUser }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.alert(state.email + " account has been created successfully. Please Login.");
-    // window.alert(JSON.stringify(state));
+    if (state.password.length < 5) {
+    setError("Password must be at least 5 characters or numbers long.");
+    return;
+    }
+
+    window.alert(state.email + " Account has been created successfully. Please Login.");
     fetch("/api/users", {
       method: "POST",
       headers: {
@@ -48,12 +52,11 @@ export default function SignUpForm({ setUser }) {
 
   return (
       <Box className="SignUpForm">
-        <form component="form" autoComplete="off" onSubmit={handleSubmit}>
+        <form component="form" autoComplete="off" onSubmit={handleSubmit} className="Form">
           <Typography variant="h5">Sign Up a new Account </Typography>
           {error}
 
           <Box className="R1">
-          <label>Name : </label>
           <TextField 
           id="outlined-basic" 
           label="UserName" 
@@ -66,7 +69,6 @@ export default function SignUpForm({ setUser }) {
           </Box>
 
           <Box className="R1">
-          <label>Email : </label>
           <TextField 
           id="outlined-basic" 
           label="Email Address"  
@@ -77,9 +79,8 @@ export default function SignUpForm({ setUser }) {
           onChange={handleChange} 
           required/>
           </Box>
-          <br />
+
           <Box className="R1">
-          <label>Password : </label>
           <TextField 
           id="outlined-basic" 
           label="Password (min 5)" 
@@ -92,7 +93,6 @@ export default function SignUpForm({ setUser }) {
           </Box>
 
            <Box className="R1">
-          <label>Confirm : </label>
           <TextField 
           id="outlined-basic" 
           label="Confirm Password"  
