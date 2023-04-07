@@ -38,7 +38,6 @@ Notes:
 * The ratings are represented by stars (★), with 5 stars being the highest rating.
 * Some of the features are not applicable for certain frameworks (represented as N/A).
 * The external libraries are listed in brackets in the column cells.
-* I added an additional row for UI Component Libraries to show that React has an external library called Material UI.
 
 ## Wireframe (Google Docs)
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRL0aiMT7cBwV2QXR_AL4nHtXz5O6ddihnm15mgE4lASZb3DqV5tccraChUTRICch9JTthKFCbvjjWl/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
