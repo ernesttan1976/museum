@@ -9,7 +9,6 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import AccessDeniedMsg from '../../components/AccessDeniedMsg/AccessDeniedMsg'
 
 function ArtworksEditForm({user}) {
 const { id } = useParams();
@@ -49,13 +48,14 @@ useEffect(() => {
     component="form"
       sx={{
         '& .MuiTextField-root': { p:2, m: 1, width: '150ch' },
+        textAlign: 'center'
       }}
       noValidate
       autoComplete="off">
-
+        
         <Typography variant="h4">Edit Artworks</Typography>
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
-          <label>Image URL:</label>
+          {/* <label>Image URL:</label> */}
           <TextField 
           label="Image URL" 
           type="url" 
@@ -65,7 +65,7 @@ useEffect(() => {
           
           <br />
 
-          <label>Artist Name:</label>
+          {/* <label>Artist Name:</label> */}
           <TextField 
           label="Artist Name" 
           type="text" 
@@ -75,7 +75,7 @@ useEffect(() => {
 
           <br />
 
-          <label>Artwork Dimension:</label>
+          {/* <label>Artwork Dimension:</label> */}
           <TextField 
           label="Dimension" 
           type="text" 
@@ -85,7 +85,7 @@ useEffect(() => {
 
           <br />
 
-          <label>Artwork Information:</label>
+          {/* <label>Artwork Information:</label> */}
           <TextField 
           label="Information" 
           type="text" 
@@ -95,35 +95,7 @@ useEffect(() => {
 
           <br />
 
-          <label>Artwork Location:</label>
-          <TextField 
-          label="Location" 
-          type="text" 
-          name="artworkLocation" 
-          value={artwork.artworkLocation  || ""} 
-          onChange={handleChange} />
-
-          <br />
-          
-           <label>Artwork Floor:</label>  
-          <Select label="Floor" 
-          type="text" 
-          name="artworkFloor" 
-          value={artwork.artworkFloor} 
-          placeholder='Select Floor' 
-          onChange={handleChange}>
-            <MenuItem value="B1">B1</MenuItem>
-            <MenuItem value="L1">L1</MenuItem>
-            <MenuItem value="L2">L2</MenuItem>
-            <MenuItem value="L3">L3</MenuItem>
-            <MenuItem value="L4">L4</MenuItem>
-            <MenuItem value="L5">L5</MenuItem>
-            <MenuItem value="L6">L6</MenuItem>
-          </Select>
-
-          <br />
-
-          <label>Artwork Medium:</label>
+          {/* <label>Artwork Medium:</label> */}
           <TextField 
           label="Medium" 
           type="text" 
@@ -133,7 +105,7 @@ useEffect(() => {
 
           <br />
 
-          <label>Artwork Title :</label>
+          {/* <label>Artwork Title :</label> */}
           <TextField 
           label="Title" 
           type="text" 
@@ -143,7 +115,7 @@ useEffect(() => {
 
           <br />
  
-          <label>Year:</label>
+          {/* <label>Year:</label> */}
          <TextField 
          label="Year" 
          type="number" 
@@ -151,8 +123,36 @@ useEffect(() => {
          value={artwork.artworkYear  || ""} 
          onChange={handleChange} />
 
+        {/* <label>Artwork Location:</label> */}
+          <TextField 
+          label="Location" 
+          type="text" 
+          name="artworkLocation" 
+          value={artwork.artworkLocation  || ""} 
+          onChange={handleChange} />
+
+          <br />
+          
+           <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
+          <label>Floor</label>
+          <Select sx={{ width: '200px' }}
+          label="Floor" 
+          name="artworkFloor" 
+          value={artwork.artworkFloor || ""} 
+          onChange={handleChange}>
+            <MenuItem value="" disabled>Select Floor</MenuItem>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
+          </FormControl>
+
           <br />    
-          <Button type="submit" onClick={handleUpdate} >Update Artwork</Button>
+          <Button sx={{ width: '100px' }} type="submit" variant="contained" onClick={handleUpdate} >Update Artwork</Button>
         </FormControl>    
     </Box>
     );
