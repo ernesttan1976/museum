@@ -3,7 +3,14 @@
 ## Introduction 
 
 ## Group Members
-[Ernest](https://github.com/ernesttan1976), [Ida](https://github.com/didadeeee), [May](https://github.com/MayMoeOo95) and [Mark](https://github.com/Marklimjr).
+GitHub Manager: [Ernest](https://github.com/ernesttan1976)
+In charge with ... </br>
+Scrum Master: [Ida](https://github.com/didadeeee)
+Utilising [Trello](https://trello.com/invite/b/iE3FX0N4/ATTI2210f3e4c5cad04ab957b63d518ae7e0C5D3A9A5/national-gallery-web) to plan and etc. </br>
+Documenter: [May](https://github.com/MayMoeOo95) </br>
+In charge with wireframing and etc.
+Database Manager: [Mark](https://github.com/Marklimjr)
+Designer: K2Z [Kally](), [Kriti]() & [Zhi Qing]() </br>
 
 ## Why We Choose React?
 Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps.
@@ -42,12 +49,22 @@ Notes:
 * The external libraries are listed in brackets in the column cells.
 
 ## Wireframe (Google Docs)
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRL0aiMT7cBwV2QXR_AL4nHtXz5O6ddihnm15mgE4lASZb3DqV5tccraChUTRICch9JTthKFCbvjjWl/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[Google Docs](https://docs.google.com/presentation/d/e/2PACX-1vRL0aiMT7cBwV2QXR_AL4nHtXz5O6ddihnm15mgE4lASZb3DqV5tccraChUTRICch9JTthKFCbvjjWl)
+
+## Userstories
+- As a non-logged in user, I want to read accessible, consistent information on home screen & exhibition detail screen.
+- As a logged in user, I want to leave a comment about the exhibition that I joined at National Gallery Singapore.
+- As a visitor, I want to improve my wayfinding and exploration of National Gallery Singapore through the Map feature.
+- As an admin, I want to create, update and delete exhibition and artworks information. </br></br>
+[Product Prototype](https://www.figma.com/proto/WZ6XPMR2mlYvRAr9kvNFpD/P3-Gallery-Explorer-Redesign-v3.0?node-id=1-2&starting-point-node-id=1%3A2&scaling=scale-down)
 
 ## ERD Diagram (mermaid.live)
 [![](https://mermaid.ink/img/pako:eNqFUl1PgzAU_SvkPrNlA8Y23pwSXTI02VyihpcrdEgCLWmLOhn_3fLlFhtjH5qbe057Ts9tBRGLCXhA-E2KCcc8pIZa3b7f-Vuj6upmCclTmhgUc6I1E8aSjKxjDSA5ppnWLVCID8Z1Or6jRN6165B2RaCc7APjdBqNWGXcXm02_vbZ8IxQ2acSUypCGLgD2pP9p7v1av34B3lAe_L1QxD49_-R9URkKjM9kpiIiKeFTBk9Y7TMXwlXzyQcE7JFqZhndDAQsTwnVIpfOQzwhYN2Rj19ddQ85EQIpaPp8wvhn-vBhJxwNa9Y_YhWIwT5RtS0oUkkJgcsM9kEUisqlpLtjjQCT_KSmFAWMUrSfyPwDpgJ1S2QglfBJ3jWwh0704U7nU9t23UcxzbhCN5iPLcdy5pYy4nrzpbOrDbhizF1w7Q9_dLWjUT9DRFCzX8?type=png)](https://mermaid.live/edit#pako:eNqFUl1PgzAU_SvkPrNlA8Y23pwSXTI02VyihpcrdEgCLWmLOhn_3fLlFhtjH5qbe057Ts9tBRGLCXhA-E2KCcc8pIZa3b7f-Vuj6upmCclTmhgUc6I1E8aSjKxjDSA5ppnWLVCID8Z1Or6jRN6165B2RaCc7APjdBqNWGXcXm02_vbZ8IxQ2acSUypCGLgD2pP9p7v1av34B3lAe_L1QxD49_-R9URkKjM9kpiIiKeFTBk9Y7TMXwlXzyQcE7JFqZhndDAQsTwnVIpfOQzwhYN2Rj19ddQ85EQIpaPp8wvhn-vBhJxwNa9Y_YhWIwT5RtS0oUkkJgcsM9kEUisqlpLtjjQCT_KSmFAWMUrSfyPwDpgJ1S2QglfBJ3jWwh0704U7nU9t23UcxzbhCN5iPLcdy5pYy4nrzpbOrDbhizF1w7Q9_dLWjUT9DRFCzX8)
 
+## Screenshots
 
+
+<!-- 
 ## How to Configure MUI Theme?
 1. ([Use Theme Generator https://zenoo.github.io/mui-theme-creator/](https://zenoo.github.io/mui-theme-creator/))
 2. Set primary and secondary colours.
@@ -139,3 +156,4 @@ For showing a placeholder while waiting for content to load
 
 This element is part of a larger element like a menu or it can be a list of images or messages.  
 
+-->
