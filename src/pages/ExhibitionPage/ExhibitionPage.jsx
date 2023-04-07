@@ -54,64 +54,76 @@ export default function ExhibitionPage({ user }) {
           />
           <Typography variant="h5" component="h2">
             {exhibition.exhibitionTitle}
-          </Typography><br/>
+          </Typography>
+          <br />
           <Typography variant="subtitle1" color="text.secondary">
             {exhibition.exhibitionTitleSub}
-          </Typography><br/>
+          </Typography>
+          <br />
           <Typography variant="body1" color="text.secondary">
             {exhibition.exhibitionEntry}
-          </Typography><br/>
+          </Typography>
+          <br />
           <Typography variant="body1" color="text.secondary">
             {exhibition.exhibitionInformation}
-          </Typography><br/>
+          </Typography>
+          <br />
           <Typography variant="body1" color="text.secondary">
             Location: {exhibition.exhibitionLocation}
-          </Typography><br/>
+          </Typography>
+          <br />
           <Typography variant="p" color="text.secondary">
             Exhibition Duration:{" "}
             {new Date(exhibition.exhibitionStartDate).toLocaleDateString(
               "en-GB"
-            )} ~ {new Date(exhibition.exhibitionEndDate).toLocaleDateString(
-              "en-GB"
-            )}
-          </Typography><br/><br/>
-          <Button variant="outlined">
-            <Link
-              to="https://web.nationalgallery.sg/#/gallery-passes"
-              style={{ textDecoration: "none" }}
-            >
-              Book
-            </Link>
-          </Button>
-          <Button variant="outlined">
-            <Link to="/map" style={{ textDecoration: "none" }}>
-              Direction
-            </Link>
-          </Button>
+            )}{" "}
+            ~{" "}
+            {new Date(exhibition.exhibitionEndDate).toLocaleDateString("en-GB")}
+          </Typography>
+          <br />
+          <br />
+          <Box className="ExhibitionPageButton">
+            <Button variant="outlined">
+              <Link
+                to="https://web.nationalgallery.sg/#/gallery-passes"
+                style={{ textDecoration: "none" }}
+              >
+                Book
+              </Link>
+            </Button>
+            <Button variant="outlined">
+              <Link to="/map" style={{ textDecoration: "none" }}>
+                Direction
+              </Link>
+            </Button>
+          </Box>
         </Grid>
       </Grid>
       {user && user.userRole == "admin" ? (
         <>
-        <br/>
-          <Link
-            to={`/exhibitions/${exhibition._id}/edit`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button variant="outlined">Edit</Button>
-          </Link>
-          <Button
-            variant="outlined"
-            onClick={() => handleDelete(exhibition._id)}
-          >
-            Delete
-          </Button><br/>
+          <br />
+          <Box className="ExhibitionPageButton">
+            <Link
+              to={`/exhibitions/${exhibition._id}/edit`}
+              style={{ textDecoration: "none" }}
+            >
+              <Button variant="outlined">Edit</Button>
+            </Link>
+            <Button
+              variant="outlined"
+              onClick={() => handleDelete(exhibition._id)}
+            >
+              Delete
+            </Button>
+            <br />
+          </Box>
         </>
       ) : (
         <></>
       )}
-      <br/>
+      <br />
       <ExhibitionArtworksCard artworks={exhibition.artworks} />
-      <br/>
+      <br />
       <ExhibitionComments
         user={user}
         comments={exhibition.exhibitionComments}
