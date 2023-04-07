@@ -65,6 +65,16 @@ useEffect(() => {
           
           <br />
 
+          {/* <label>Artwork Title :</label> */}
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={artwork.artworkTitle || ""} 
+          onChange={handleChange} />
+
+          <br />
+
           {/* <label>Artist Name:</label> */}
           <TextField 
           label="Artist Name" 
@@ -105,16 +115,6 @@ useEffect(() => {
 
           <br />
 
-          {/* <label>Artwork Title :</label> */}
-          <TextField 
-          label="Title" 
-          type="text" 
-          name="artworkTitle" 
-          value={artwork.artworkTitle || ""} 
-          onChange={handleChange} />
-
-          <br />
- 
           {/* <label>Year:</label> */}
          <TextField 
          label="Year" 
