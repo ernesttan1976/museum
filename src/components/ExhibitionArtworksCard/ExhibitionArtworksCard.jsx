@@ -8,12 +8,7 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 500,
-  minHeight: 365,
-  border: "1px solid",
-}));
+import "./ExhibitionArtworksCard.css";
 
 export default function ExhibitionArtworksCard({ artworks }) {
   if (!artworks) {
@@ -21,9 +16,10 @@ export default function ExhibitionArtworksCard({ artworks }) {
   }
 
   return (
-    // <h1>test</h1>
-    <Card>
-      <StyledCard className="artwork">
+    <>
+    <Typography className="title" variant="h4">Artworks</Typography>
+    <br></br>
+    <Card className="ArtworksCard">
         {artworks.map((artwork) => (
           <CardContent key={artwork._id}>
             <CardMedia
@@ -40,7 +36,7 @@ export default function ExhibitionArtworksCard({ artworks }) {
             <Typography paragraph>{artwork.artworkTitle}</Typography>
           </CardContent>
         ))}
-      </StyledCard>{" "}
     </Card>
+    </>
   );
 }

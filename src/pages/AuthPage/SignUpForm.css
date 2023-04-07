@@ -1,0 +1,32 @@
+.SignUpForm {
+    width: 100%;
+    height: 100%;
+    /* height: minmax(auto, calc(var(--scroll-height)px - 282px)); */
+    grid-area: 2 / 1 / 3 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.Form {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.R1 {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+/* start row, start Col, End Row, End col */

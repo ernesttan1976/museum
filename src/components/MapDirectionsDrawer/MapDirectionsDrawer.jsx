@@ -85,7 +85,7 @@ function SwipeableEdgeDrawer(props) {
         swipeAreaWidth={drawerBleeding}
         disableSwipeToOpen={false}
         ModalProps={{
-          keepMounted: true,
+        keepMounted: true,
         }}
         >
         <div>

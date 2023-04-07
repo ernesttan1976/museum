@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import "./SignUpForm.css";
 
 export default function SignUpForm({ setUser }) {
   const [state, setState] = useState({
@@ -15,7 +16,7 @@ export default function SignUpForm({ setUser }) {
     confirm: "",
     userRole: "user",
   });
-  const [error, setError] = useState("No Error");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const disable = state.password !== state.confirm;
@@ -46,11 +47,13 @@ export default function SignUpForm({ setUser }) {
   };
 
   return (
-      <Box className="form-container">
+      <Box className="SignUpForm">
         <form component="form" autoComplete="off" onSubmit={handleSubmit}>
+          <Typography variant="h5">Sign Up a new Account </Typography>
           {error}
-          <fieldset>
-          <label>Name:</label>
+
+          <Box className="R1">
+          <label>Name : </label>
           <TextField 
           id="outlined-basic" 
           label="UserName" 
@@ -60,8 +63,10 @@ export default function SignUpForm({ setUser }) {
           value={state.name} 
           onChange={handleChange} 
           required/>
-          <br />
-          <label>Email:</label>
+          </Box>
+
+          <Box className="R1">
+          <label>Email : </label>
           <TextField 
           id="outlined-basic" 
           label="Email Address"  
@@ -71,8 +76,10 @@ export default function SignUpForm({ setUser }) {
           value={state.email} 
           onChange={handleChange} 
           required/>
+          </Box>
           <br />
-          <label>Password:</label>
+          <Box className="R1">
+          <label>Password : </label>
           <TextField 
           id="outlined-basic" 
           label="Password (min 5)" 
@@ -82,8 +89,10 @@ export default function SignUpForm({ setUser }) {
           value={state.password} 
           onChange={handleChange} 
           required/>
-           <br />
-          <label>Confirm:</label>
+          </Box>
+
+           <Box className="R1">
+          <label>Confirm : </label>
           <TextField 
           id="outlined-basic" 
           label="Confirm Password"  
@@ -93,29 +102,21 @@ export default function SignUpForm({ setUser }) {
           value={state.confirm} 
           onChange={handleChange} 
           required/>
-          <br />
-          <br />
+          </Box>
+
+          <Box className="R1">
           <Button variant="contained" type="submit" disabled={disable}>Sign Up</Button>
           <p className="error-message">&nbsp;{state.error}</p>
-        </fieldset>
-        </form>
+          </Box>
+
+        <Box className="R1">
         <Typography variant="p">Already have an account? 
         <Link to={`/users/login`}>
          <Button>Login</Button>
-        </Link>now!
-      </Typography>
+        </Link>
+        </Typography>
+        </Box>
+      </form>
       </Box>
   );
 }
-
-
-// import TextField from '@mui/material/TextField';
-//     <Box
-//       component="form"
-//       sx={{
-//         '& > :not(style)': { m: 1, width: '25ch' },
-//       }}
-//       noValidate
-//       autoComplete="off"
-//     >
-//       <TextField id="outlined-basic" label="Outlined" variant="outlined" />

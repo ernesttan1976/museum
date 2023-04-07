@@ -1,14 +1,14 @@
-import { Typography } from "@mui/material";
 import { useState } from "react";
-import Button from "@mui/material/Button";
 import { useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 function ExhibitionComments({ user, comments, setExhibition }) {
   const { id } = useParams();
   const [comment, setComment] = useState("");
 
-  const handleAddNewExhibition = async (event) => {
+  const handleAddNewComment = async (event) => {
     const response = await fetch(`/api/exhibitions/${id}/comments`, {
       method: "POST",
       headers: {
@@ -18,9 +18,11 @@ function ExhibitionComments({ user, comments, setExhibition }) {
     });
     const exhibition = await response.json();
     setExhibition(exhibition);
+    setComment("");
   };
 
-  if (!comments) {
+
+  if (!comments || comments.length === 0) {
     return null;
   }
 
@@ -28,18 +30,24 @@ function ExhibitionComments({ user, comments, setExhibition }) {
     <>
       <Typography variant="h4">Comments</Typography>
       {comments.map((review) => (
-        <Typography key={review._id}>{review.comments}</Typography>
+        <Typography variant="subtitle1" key={review._id}>
+          {review.comments}
+        </Typography>
       ))}
-      {user && user.userRole === 'user'? (
+      {user && user.userRole === "user" ? (
         <>
-          <label>Comment:</label>
-          <textarea
+          <br></br>
+          <Typography variant="h6">Submit Your Comment:</Typography>
+          <br></br>
+          <TextField
             type="text"
             rows="4"
             cols="50"
             onChange={(event) => setComment(event.target.value)}
             value={comment}
-          ></textarea>
+          ></TextField>
+          <br></br>
+          <br></br>
           <Button
             onClick={handleAddNewComment}
             type="submit"
@@ -49,10 +57,11 @@ function ExhibitionComments({ user, comments, setExhibition }) {
             Submit
           </Button>
         </>
-      ): null }
+      ) : null}
+
+      
     </>
   );
 }
 
 export default ExhibitionComments;
-

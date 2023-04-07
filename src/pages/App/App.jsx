@@ -24,6 +24,7 @@ import ExhibitionPage from "../ExhibitionPage/ExhibitionPage";
 import ExhibitionNew from "../ExhibitionNew/ExhibitionNew";
 import ExhibitionUpdate from "../ExhibitionUpdate/ExhibitionUpdate";
 import AdminSignUpForm from "../AuthPage/AdminSignUpForm";
+import PageNotFound from "../PageNotFound/PageNotFound";
 import { getToken, getUser } from "../../utilities/users-service";
 import Logo from '../../images/logo.gif';
 
@@ -41,7 +42,7 @@ function App() {
       </Box>
       <ErrorBoundary>
         <Routes>
-          <Route path="/*" element={<AccessDeniedMsg />}/> 
+          <Route path="/*" element={<PageNotFound />}/> 
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route
@@ -68,61 +69,14 @@ function App() {
             element={<MapPage2 />}
           />
           ///map/directions?to=1234from=5678 //get request, post to req.query
-          <Route
-            path="/artworks/new"
-            element={
-              user && user.userRole == "admin" ? (
-                <ArtworksNew user={user} />
-              ) : (
-                <AccessDeniedMsg />
-              )
-            }
-          />{" "}
-          {/* admin access only-> (user.role === "admin") */}
-          <Route
-            path="/artworks/:id/edit"
-            element={
-              user && user.userRole == "admin" ? (
-                <ArtworksEditForm user={user} />
-              ) : (
-                <AccessDeniedMsg />
-              )
-            }
-          />{" "}
-          {/* admin access only -> (user.role === "admin" */}
-          <Route
-            path="/exhibitions/new"
-            element={
-              user && user.userRole == "admin" ? (
-                <ExhibitionNew user={user} />
-              ) : (
-                <AccessDeniedMsg />
-              )
-            }
-          />{" "}
-          {/* admin access only-> (user.role === "admin") */}
-          <Route
-            path="/exhibitions/:id/edit"
-            element={
-              user && user.userRole == "admin" ? (
-                <ExhibitionUpdate user={user} />
-              ) : (
-                <AccessDeniedMsg />
-              )
-            }
-          />{" "}
-          {/* admin access only -> (user.role === "admin" */}
-          <Route
-            path="/admin/signup"
-            element={
-              user && user.userRole == "admin" ? (
-                <AdminSignUpForm />
-              ) : (
-                <AccessDeniedMsg />
-              )
-            }
-          />
-        </Routes>
+          
+          <Route path="/artworks/new" element={user && user.userRole == "admin" ?  <ArtworksNew user={user} /> :<AccessDeniedMsg /> } /> {/* admin access only-> (user.role === "admin") */}
+          <Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ?  <ArtworksEditForm user={user}/> :<AccessDeniedMsg /> } />  {/* admin access only -> (user.role === "admin" */}
+          <Route path="/exhibitions/new" element={user && user.userRole == "admin" ?  <ExhibitionNew user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only-> (user.role === "admin") */}
+          <Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user}/> :<AccessDeniedMsg /> } /> {/* admin access only -> (user.role === "admin" */}
+          <Route path="/admin/signup" element={user && user.userRole == "admin" ? <AdminSignUpForm user={user}/> :<AccessDeniedMsg /> } />   {/* admin access only -> (user.role === "admin" */}
+      </Routes>
+
       </ErrorBoundary>
       <Box className="Footer">
         <CustomBottomNavigation />

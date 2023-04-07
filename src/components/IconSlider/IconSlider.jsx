@@ -5,6 +5,7 @@ import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 import EventIcon from '@mui/icons-material/Event';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -51,6 +52,11 @@ const IconSlider = () => {
             name: "Donate",
             icon: <VolunteerActivismIcon />,
             href: "https://donate.nationalgallery.sg/",
+        },
+        {
+            name: "Contact",
+            icon: <AddIcCallIcon />,
+            href: "https://www.nationalgallery.sg/about/contact-us",
         },
     ]
 

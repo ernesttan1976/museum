@@ -19,8 +19,14 @@ const artworkSchema = new Schema(
     },
 
     artworkYear: {
-      type: Number,
+      type: String,
       required: true,
+      validate: {
+        validator: function (v) {
+          return /^\d{4}$/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid 4-digit year!`,
+      },
     },
 
     artworkMedium: {
