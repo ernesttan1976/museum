@@ -16,5 +16,13 @@ export default defineConfig({
       treeshake: true,
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.js',
+    coverage: {
+      reporter: ['default','text', 'json', 'html'],
+    }
+  }
 })
 
