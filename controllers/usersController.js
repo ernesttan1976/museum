@@ -13,7 +13,7 @@ const create = async (req, res) => {
   try {
     const user = await User.create(req.body);
     const payload = { user };
-    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 });
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 }); // 1hr
     res.status(201).json(token);
   } catch (error) {
     res.status(500).json(error);
@@ -41,7 +41,7 @@ const login = async (req, res) => {
       res.status(200).json({ token });
       console.log("user login successful");
     } else {
-      res.status(401).json({ message: "wrong password" });
+      res.status(401).json({ message: "Wrong password" });
     }
   } catch (error) {
     res.status(500).json(error);

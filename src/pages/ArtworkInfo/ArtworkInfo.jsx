@@ -24,7 +24,7 @@ export default function ArtworkInfo({ user }) {
     fetchArtwork();
   }, [id]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id) => { 
     try {
       const response = await fetch(`/api/artworks/${id}`, {
         method: "DELETE",

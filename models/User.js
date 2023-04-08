@@ -38,15 +38,6 @@ const usersSchema = new Schema(
   }
 );
 
-// usersSchema.virtual("createdAtFormatted").get(function () {
-//   // to convert date into cleaner form
-//   return this.created_at.toLocaleString("en-UK");
-// });
-
-// usersSchema.virtual("updatedAtFormatted").get(function () {
-//   return this.updated_at.toLocaleString("en-UK");
-// });
-
 usersSchema.pre("save", async function (next) {
   // 'this' is the user doc
   if (!this.isModified("password")) return next();
