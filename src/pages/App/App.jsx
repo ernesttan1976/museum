@@ -41,7 +41,7 @@ function App() {
       </Box>
       <ErrorBoundary>
         <Routes>
-          <Route path="/*" element={<PageNotFound />}/> 
+          <Route path="/*" element={<PageNotFound />} />
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/users/signup" element={<SignUpForm />} />
           <Route

@@ -21,7 +21,6 @@ function ExhibitionComments({ user, comments, setExhibition }) {
     setComment("");
   };
 
-
   if (!comments || comments.length === 0) {
     return null;
   }
@@ -58,8 +57,6 @@ function ExhibitionComments({ user, comments, setExhibition }) {
           </Button>
         </>
       ) : null}
-
-      
     </>
   );
 }
