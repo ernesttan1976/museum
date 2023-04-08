@@ -1,119 +1,46 @@
-.MapPage {
+.MapPage2 {
   grid-area: 2 / 1 / 3 / 5;
   overflow: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 90px 40px 40px minmax(auto,calc(var(--scroll-height)px - 282px));
+  background-color: whitesmoke;
 }
 
-.MapPageForm {
-  grid-area: 1 / 1 / 2 / 2;
+.MapPage2 .MapPage2Top {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100%;
-  position: relative;
-}
-
-.MapFormTopRow,.MapFormBottomRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100vw;
-  height: 55px;
-  margin: 0 auto;
-}
-
-.LeftButton {
-  justify-self: flex-end;
-  width: fit-content;
-}
-
-
-.RightButton {
-  justify-self: flex-start;
-  width: fit-content;
+  width: 100%;
+  height: 130px;
+  background-color: whitesmoke;
 }
 
 /* .MapFormTextField{
   font-size: 0.8rem!important;
 } */
-.MapPageForm [class*="MuiInputLabel"]{
-  font-size: 0.8rem;
-  line-height: 1.0rem;
-}
 
-.MapPageForm [class*="MuiTextField"]{
-  width: 90%!important;
-  height: 40px;
-  justify-self: center;
-}
 
-.MapPageForm [class*="MuiInputBase"]{
-  font-size: 0.8rem;
-}
-
-.MapPageForm [class*="MuiMenuItem"]{
-  font-size: 0.8rem!important;
-}
-
-.LevelButtonGroup {
-  grid-area: 2 / 1 / 3 / 2;
-  display: flex!important;
-  justify-content: center;
-  align-items: center;
-  width: 99.9vw;
-}
-
-.CategoryButtonGroup{
-  grid-area: 3 / 1 / 4 / 2;
-  display: flex!important;
-  justify-content: center;
-  align-items: center;
-  width: 99.9vw;
-}
-
-.LevelButtonGroup [class*="MuiToggleButton"]{
-  font-size: 0.8rem!important;
-  padding: 0px 0px!important;
-  height: 40px;
-  width: calc((100% + 1%) / 7)!important;
-  margin: 0px!important;
-}
-
-.CategoryButtonGroup [class*="MuiToggleButton"]{
-  font-size: 0.7rem!important;
-  padding: 0px auto!important;
-  height: 40px;
-  width: calc((100% + 1%) / 4)!important;
-}
-
-.MapComponent {
+.MapPage2 .MapComponent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
   width: 100vw;
   /* height: 100%; */
-  height: minmax(auto,calc(var(--scroll-height)px - 282px));
+  height: minmax(auto,calc(var(--scroll-height)px - 400px));
   position: relative;
   background-color: rgb(206, 208, 210);
 }
 
 /* unable to assign class to the Transform Wrapper*/
-.MapPage .transform-component-module_wrapper__SPB86{
+.MapPage2 .transform-component-module_wrapper__SPB86{
     width: 100%!important;
 }
 
-.MapToolBar{
-  position:absolute;
-  top: 0px;
-  right: 0px;
-  z-index: 10;
-}
-
-.MapImage{
+.MapPage2 .MapImage{
   width: 100vw;
 }
 
@@ -124,18 +51,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: rgb(206, 208, 210);
 }
 
 .MapToolBar2{
   position:absolute;
-  top: 75%;
-  right: 41%;
+  top: 188px;
+  left: 0px;
   z-index: 10;
 }
 
 .MapImage2{
   width: 100vw;
-  height: 300px;
+  
+
 }
 
 .MapPage2 .react-transform-component{
@@ -145,6 +74,39 @@
 }
 
 .MuiTabs-flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MapPage2 .PrivateSwipeArea-root {
+  z-index: 50;
+}
+
+/* .MapPage2 .MuiButtonBase-root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30%;
+} */
+
+.MapPage2 .css-ag7rrr-MuiTypography-root{
+  margin-top: 15px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.MapPage2 .MuiTabPanel-root {
+  width: 100%;
+}
+
+.MapPage2 .MuiTabs-root {
+  background-color: whitesmoke;
+}
+
+.MapPage2 .css-19et2dj {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

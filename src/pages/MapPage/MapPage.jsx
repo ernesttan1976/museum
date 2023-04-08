@@ -76,7 +76,7 @@ export default function MapPage() {
         }
     });
 
-    const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
+    // const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
 
     const [level, setLevel] = useState('L1');
 
@@ -160,6 +160,16 @@ export default function MapPage() {
         console.log(formData);
     }
 
+    useEffect(()=>{
+            if (formData.from.value!=="" && formData.from.value === formData.to.value) {
+                const newLocationsTo = locationsTo.filter(item=>(item.value !== formData.from.value));
+                setLocationsTo(newLocationsTo);
+                const newFormData = {...formData, to: {value: "", label: ""}};
+                setFormData(newFormData);
+            }
+    },[formData])
+
+
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Submit: ", formData);
@@ -210,7 +220,7 @@ export default function MapPage() {
                             if (currentValue === '') return true;
                             return option.name === currentValue.name;
                         }}
-                        renderInput={(params) => <TextField {...params} name="to" label="to" />}
+                        renderInput={(params) => <TextField {...params} name="to" label="To" />}
                     />
                     <Button className="RightButton1" type="submit"><DirectionsWalkRoundedIcon /></Button>
                 </div>

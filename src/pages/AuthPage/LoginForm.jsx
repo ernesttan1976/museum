@@ -6,10 +6,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { getToken , getUser} from "../../utilities/users-service";
+import "./LoginForm.css";
 
 export default function LoginForm({setUser}) {
 
-  const [error, setError] = useState("No error");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const handleLogin = async (event) => {
@@ -26,11 +27,12 @@ export default function LoginForm({setUser}) {
         body: JSON.stringify(body),
       });
       const data = await response.json();
+      
       if (data.token) {
         localStorage.setItem("token", data.token);
         setUser(getUser())
         setError("");
-        window.alert(" account has login successfully.");
+        window.alert("Account has login successfully."); 
         navigate('/');
        } else {
         setError(data.message);
@@ -41,38 +43,38 @@ export default function LoginForm({setUser}) {
   };
 
   return (
-    <Box>
-      <form onSubmit={handleLogin}>
+    <Box className="LoginForm">
+      <form onSubmit={handleLogin} className="Form">
+        <br></br>
+        <Typography variant="h5">User Login </Typography>
         {error}
-        <fieldset>
-          <label>
-            User Email Address: 
+          <Box className="R1">
             <TextField 
             type="email"
-             label="Enter your email address"
+            label="Enter your email address"
             name="email" 
             required />
-          </label>
-          <br />
-          <label>
-            Password: 
+          </Box>
+
+          <Box className="R1">
             <TextField 
             label="Enter your password" 
             name="password" 
+            type="password"
             required />
-          </label>
-          <br /><br />
-          <Button variant="contained" type="submit" >Login</Button>
-          <br />
-          <p></p>
-        </fieldset>
-      </form>
-      {/* {error && <p>{error}</p>} */}
+          </Box>
+
+          <Box className="R1">
+          <Button variant="contained" type="submit" >Login</Button> 
+          </Box>
+
+      <Box className="R1">
       <Typography variant="p">No account yet? </Typography>
         <Link to={`/users/signup`}>
          <Button>Sign Up</Button>
         </Link>
-      
+      </Box>
+    </form>
     </Box>
   );
 }

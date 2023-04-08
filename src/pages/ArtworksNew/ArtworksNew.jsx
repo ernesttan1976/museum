@@ -5,16 +5,13 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
-import Card from '@mui/material/Card';
 import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import { CardContent } from '@mui/material';;
 import { useNavigate } from 'react-router-dom';
 import { number } from "prop-types";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
- 
+import "./ArtworksNew.css";
  
 function ArtworksNew() {
 
@@ -60,22 +57,15 @@ const navigate = useNavigate();
   }
   
     return (
-    <Box component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '150ch' },
-      }}
+    <Box className="AddNewArtworkForm" component="form"
       noValidate
       autoComplete="off"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} 
       >
-      {/* <Card>
-        <CardContent>
-          <Grid className="CustomGrid" container spacing={1}>
-            <Grid item xs={12} sm={6} lg={3}> */}
-        <Typography variant="h4">Add new Artwork</Typography> 
+
+        <FormControl className="NewArtworkForm"   autoComplete='off'>
+          <Typography className="AddNewArtwork" variant="h4">Add new Artwork</Typography> 
         
-        <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
-          <label>Image URL:</label>
           <TextField 
           label="Image URL" 
           type="text" 
@@ -84,9 +74,14 @@ const navigate = useNavigate();
           placeholder='Image URL' 
           onChange={handleChange}/>
           
-          <br />
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={data.artworkTitle} 
+          placeholder='Artwork Title' 
+          onChange={handleChange}/>
 
-          <label>Artist Name:</label>
           <TextField 
           label="Artist Name" 
           type="text" 
@@ -95,9 +90,6 @@ const navigate = useNavigate();
           placeholder='Artist Name' 
           onChange={handleChange}/>
 
-          <br />
-
-          <label>Artwork Dimension:</label>
           <TextField 
           label="Dimension" 
           type="text" 
@@ -106,9 +98,6 @@ const navigate = useNavigate();
           placeholder='Artwork Dimension' 
           onChange={handleChange}/>
 
-          <br />
-
-          <label>Artwork Information:</label>
           <TextField 
           label="Information" 
           type="text" 
@@ -117,33 +106,6 @@ const navigate = useNavigate();
           placeholder='Artwork Information:' 
           onChange={handleChange}/>
 
-          <br />
-
-          <label>Artwork Location:</label>
-          <TextField 
-          label="Location" 
-          type="text" 
-          name="artworkLocation" 
-          value={data.artworkLocation} 
-          placeholder='Artwork Location' 
-          onChange={handleChange}/>
-
-          <br />
-
-          <label>Floor</label>
-          <Select label="Floor" name="artworkFloor" value="L1" onChange={handleChange}>
-            <MenuItem value="B1">B1</MenuItem>
-            <MenuItem value="L1">L1</MenuItem>
-            <MenuItem value="L2">L2</MenuItem>
-            <MenuItem value="L3">L3</MenuItem>
-            <MenuItem value="L4">L4</MenuItem>
-            <MenuItem value="L5">L5</MenuItem>
-            <MenuItem value="L6">L6</MenuItem>
-           </Select>
-
-          <br />
-
-          <label> Artwork Medium: </label>
           <TextField 
           label="Medium" 
           type="text" 
@@ -152,35 +114,44 @@ const navigate = useNavigate();
           placeholder='Artwork Medium' 
           onChange={handleChange}/>
 
-          <br />
-
-          <label>Artwork Title :</label>
-          <TextField 
-          label="Title" 
-          type="text" 
-          name="artworkTitle" 
-          value={data.artworkTitle} 
-          placeholder='Artwork Title' 
-          onChange={handleChange}/>
-
-          <br />
- 
-          <label>Year:</label>
          <TextField 
          label="Year" 
-         type="number" 
-         name="artworkYear" 
+         type="text"
+         name="artworkYear"
          value={data.artworkYear} 
-         placeholder='Year' 
+         placeholder='Eg: 2003' 
          onChange={handleChange}/>
+ 
+          <TextField 
+          label="Location" 
+          type="text" 
+          name="artworkLocation" 
+          value={data.artworkLocation} 
+          placeholder='Artwork Location' 
+          onChange={handleChange}/>
 
-          <br />    
+          <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
+
+          <InputLabel>Floor</InputLabel>
+          <Select sx={{ width: '200px' }}
+          label="Floor" 
+          name="artworkFloor" 
+          value="L1" 
+          onChange={handleChange}>
+            <MenuItem value="" disabled>Select Floor</MenuItem>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+           </Select>
+           </FormControl>
+  
           <Button type="submit" variant="contained" onClick={handleAddNewArtWork}>Submit Artwork</Button>
         </FormControl>         
-        
-        {/* </Grid></Grid>
-        </CardContent>
-      </Card> */}
+
     </Box>
   );
 };

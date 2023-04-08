@@ -19,7 +19,7 @@ const artworkSchema = new Schema(
     },
 
     artworkYear: {
-      type: Number,
+      type: String,
       required: true,
     },
 
@@ -54,6 +54,5 @@ const artworkSchema = new Schema(
     },
   }
 );
-
 
 module.exports = mongoose.model("Artwork", artworkSchema);

@@ -19,7 +19,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 2 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -49,8 +49,9 @@ export default function BasicTabs(props) {
   };
 
   return (
-    <Box sx={{ width: '100%' , }}>
-      <TabPanel value={value} index={0} sx={{ height: '300' , }}>
+        <Box sx={{ width: '100%' , }}>
+
+      <TabPanel  value={value} index={0} sx={{ height: '300' , }}>
         <MapDirectionsComponentFrom maps={maps}/>
       </TabPanel>
       <TabPanel value={value} index={1} sx={{ height: '300' , }}>

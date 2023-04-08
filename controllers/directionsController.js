@@ -28,8 +28,19 @@ const show = async (req, res) => {
             "BBB.ARTWORK Royal Family Portrait with Moustached Minister",
           steps: "642bb5bf350c1b20a4cdb627", // Object ID of Route A
         };
+      } else if (
+        from === "6425c260c9d195369ec02476" &&
+        to === "6425c854c9d195369ec02494"
+      ) {
+        result = {
+          fromMapUrl: "EXHIBITION Between Declarations and Dreams",
+          toMapUrl: "Living Pictures",
+          steps: "642e2ff3e64813ab8c55a0ca", // Object ID of Route B
+        };
       } else {
-        result = "no path";
+        result = {
+          steps: "64305ed5cf61dfb8fdd221cc",
+        };
       }
 
       return result;

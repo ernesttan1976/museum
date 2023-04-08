@@ -66,7 +66,7 @@ function SwipeableEdgeDrawer(props) {
             height: `calc(90% - ${drawerBleeding}px)`,
             overflow: 'visible',
             display: "flex",
-            width: "60%",
+            width: "100%",
             justifyContent: "center",
             alignItems: "center",
             margin: "auto",
@@ -85,7 +85,7 @@ function SwipeableEdgeDrawer(props) {
         swipeAreaWidth={drawerBleeding}
         disableSwipeToOpen={false}
         ModalProps={{
-          keepMounted: true,
+        keepMounted: true,
         }}
         >
         <div>
