@@ -146,7 +146,13 @@ Ida:
 - Managing expectations
 - Communicate each other's code
 
-May: </br>
+May: 
+- Material UI
+- Understanding each other's style of code.  
+- The use of bcrypt and jsonwebtoken.
+- Getting the artwork Information to show when user click on the artwork. 
+
+</br>
 Mark: </br>
 
 will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
@@ -163,7 +169,14 @@ Ida:
 - Utilising wireframing, trello to manage a group project
 - Model is CRUCIAL
 
-May: </br>
+May: 
+- The use of Group Git, branches and conflicts during merge.
+- Initial planning of the project (wireframes, model schemas, paths and routes), the more detailed the planning, result in a clearer and smoother implementation of the app.
+- It is important to aim and focus on completing one specific task at a time.
+- React CRUD. 
+- User Sign up and Login using bcrypt and jsonwebtoken. 
+- Utilization of ternary operator to enable certain user to accessible to certain informations.
+
 Mark: </br>
 
 will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
