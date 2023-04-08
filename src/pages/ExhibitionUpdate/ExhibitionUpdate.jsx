@@ -67,7 +67,7 @@ function ExhibitionUpdate() {
       autoComplete="off"
     >
       <FormControl fullWidth sx={{ m: 20 }} autoComplete="off">
-        <Typography className="ExhibitionFormTitle" variant="h4">
+        <Typography className="ExhibitionFormTitle" variant="h4" style={{ width: "500px"}}>
           Update Page
         </Typography>
         <Typography>Exhibition Title:</Typography>
