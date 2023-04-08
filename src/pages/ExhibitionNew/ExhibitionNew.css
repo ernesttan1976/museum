@@ -24,7 +24,13 @@
     margin: 0 auto;
 }
 
-.MuiFormControl-fullWidth .MuiFormControl-root {
+/* .MuiFormControl-fullWidth .MuiFormControl-root {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+} */
+
+[class*="MuiFormControl-root-MuiTextField-root"]{
     width: 100%;
     display: flex;
     justify-content: flex-start;

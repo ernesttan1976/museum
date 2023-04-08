@@ -65,7 +65,7 @@ function ExhibitionNew() {
       className="ExhibitionFormContainer"
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "150ch" },
+        "& .MuiTextField-root": { m: 1},
       }}
       noValidate
       autoComplete="off"
