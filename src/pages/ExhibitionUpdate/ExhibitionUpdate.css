@@ -37,10 +37,10 @@
 }
 
 .EditExhibitionForm [class*="MuiFormControl-root-MuiTextField-root"] {
-  padding: 10px;
+  padding: 6px;
   margin: 10px;
 }
 
 .EditExhibitionForm [class*="MuiFormControl-root"] {
-  padding: 10px;
+  padding: 6px;
 }

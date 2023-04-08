@@ -128,7 +128,6 @@ function ExhibitionUpdate() {
 
         <FormControl
           className="EditDropdown"
-          fullWidth
           sx={{ m: 1 }}
           autoComplete="off"
         >
@@ -152,7 +151,6 @@ function ExhibitionUpdate() {
 
         <FormControl
           className="EditDropdown"
-          fullWidth
           sx={{ m: 1 }}
           autoComplete="off"
         >
@@ -192,7 +190,6 @@ function ExhibitionUpdate() {
           InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <br></br>
         <Button
           type="submit"
           variant="contained"
