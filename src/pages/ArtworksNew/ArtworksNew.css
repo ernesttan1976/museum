@@ -1,0 +1,37 @@
+.AddNewArtworkForm {
+    grid-area: 2 / 1 / 3 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    row-gap: 30px;
+}
+
+
+.AddNewArtworkForm .NewArtworkForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.AddNewArtwork {
+    width: 100%;
+    text-align: center;
+}
+
+.NewArtworkForm .MuiFormControl-root {
+    width: 100%;
+
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    padding: 10px;
+    margin: 10px;
+}
+
+.css-11szepw-MuiFormControl-root{
+padding: 10px;
+}
