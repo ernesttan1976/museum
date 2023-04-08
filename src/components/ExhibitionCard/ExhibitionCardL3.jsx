@@ -19,7 +19,10 @@ export default function ExhibitionCardL3() {
   useEffect(() => {
     fetch("/api/exhibitions")
       .then((response) => response.json())
-      .then((data) => setExhibition(data));
+      .then((data) => setExhibition(data))
+      .catch(error=>{
+        console.log(error);
+      })
   }, []);
 
   return exhibitions.map((exhibition) => {

@@ -10,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import "./ExhibitionNew.css"
 
 const currentDate = new Date().toISOString().split("T")[0];
 
@@ -71,7 +72,7 @@ function ExhibitionNew() {
     <Box
       className="ExhibitionFormContainer"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "150ch" },
+        "& .MuiTextField-root": { m: 1},
       }}
       component="form"
       noValidate
@@ -157,6 +158,7 @@ function ExhibitionNew() {
             <MenuItem value="L6">L6</MenuItem>
           </Select>
         </FormControl>
+        
         <TextField
           label="Start Date"
           type="date"

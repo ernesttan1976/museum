@@ -12,9 +12,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import ArtTrackIcon from '@mui/icons-material/ArtTrack';
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import MuseumOutlinedIcon from "@mui/icons-material/Museum";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { red } from '@mui/material/colors';
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
@@ -37,7 +37,7 @@ export default function CustomDrawer({user}) {
     {
       text: "Exhibition",
       to: "/",
-      icon: <MuseumOutlinedIcon />,
+      icon: <ArtTrackIcon />,
     },
     {
       text: "Artworks",
@@ -60,7 +60,7 @@ export default function CustomDrawer({user}) {
     {
       text: "Exhibition",
       to: "/",
-      icon: <MuseumOutlinedIcon />,
+      icon: <ArtTrackIcon />,
     },
     {
       text: "Artworks",

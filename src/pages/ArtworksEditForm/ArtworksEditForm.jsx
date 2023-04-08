@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import AccessDeniedMsg from '../../components/AccessDeniedMsg/AccessDeniedMsg'
+import "./ArtworksEditForm.css";
 
 function ArtworksEditForm({user}) {
 const { id } = useParams();
@@ -45,17 +45,18 @@ useEffect(() => {
   };
  
     return (
-    <Box
+    <Box className="ArtworksEditForm"
     component="form"
-      sx={{
-        '& .MuiTextField-root': { p:2, m: 1, width: '150ch' },
-      }}
+      // sx={{
+      //   '& .MuiTextField-root': { p:2, m: 1, width: '150ch' },
+      //   textAlign: 'center'
+      // }}
       noValidate
       autoComplete="off">
-
-        <Typography variant="h4">Edit Artworks</Typography>
-        <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
-          <label>Image URL:</label>
+        
+        <FormControl className="EditArtworkForm"  autoComplete='off'>
+          <Typography className="EditArtworks" variant="h4">Edit Artworks</Typography>
+          
           <TextField 
           label="Image URL" 
           type="url" 
@@ -63,9 +64,13 @@ useEffect(() => {
           value={artwork.artworkUrl  || ""} 
           onChange={handleChange} />
           
-          <br />
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={artwork.artworkTitle || ""} 
+          onChange={handleChange} />
 
-          <label>Artist Name:</label>
           <TextField 
           label="Artist Name" 
           type="text" 
@@ -73,9 +78,6 @@ useEffect(() => {
           value={artwork.artistName  || ""}  
           onChange={handleChange} />
 
-          <br />
-
-          <label>Artwork Dimension:</label>
           <TextField 
           label="Dimension" 
           type="text" 
@@ -83,9 +85,6 @@ useEffect(() => {
           value={artwork.artworkDimension  || ""} 
           onChange={handleChange} />
 
-          <br />
-
-          <label>Artwork Information:</label>
           <TextField 
           label="Information" 
           type="text" 
@@ -93,25 +92,35 @@ useEffect(() => {
           value={artwork.artworkInformation  || ""}  
           onChange={handleChange} />
 
-          <br />
+          <TextField 
+          label="Medium" 
+          type="text" 
+          name="artworkMedium" 
+          value={artwork.artworkMedium  || ""} 
+          onChange={handleChange} />
 
-          <label>Artwork Location:</label>
+         <TextField 
+         label="Year" 
+         type="number" 
+         name="artworkYear" 
+         value={artwork.artworkYear  || ""} 
+         onChange={handleChange} />
+
           <TextField 
           label="Location" 
           type="text" 
           name="artworkLocation" 
           value={artwork.artworkLocation  || ""} 
           onChange={handleChange} />
-
-          <br />
           
-           <label>Artwork Floor:</label>  
-          <Select label="Floor" 
-          type="text" 
+           <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
+          <label>Floor</label>
+          <Select sx={{ width: '200px' }}
+          label="Floor" 
           name="artworkFloor" 
-          value={artwork.artworkFloor} 
-          placeholder='Select Floor' 
+          value={artwork.artworkFloor || ""} 
           onChange={handleChange}>
+            <MenuItem value="" disabled>Select Floor</MenuItem>
             <MenuItem value="B1">B1</MenuItem>
             <MenuItem value="L1">L1</MenuItem>
             <MenuItem value="L2">L2</MenuItem>
@@ -120,39 +129,9 @@ useEffect(() => {
             <MenuItem value="L5">L5</MenuItem>
             <MenuItem value="L6">L6</MenuItem>
           </Select>
-
-          <br />
-
-          <label>Artwork Medium:</label>
-          <TextField 
-          label="Medium" 
-          type="text" 
-          name="artworkMedium" 
-          value={artwork.artworkMedium  || ""} 
-          onChange={handleChange} />
-
-          <br />
-
-          <label>Artwork Title :</label>
-          <TextField 
-          label="Title" 
-          type="text" 
-          name="artworkTitle" 
-          value={artwork.artworkTitle || ""} 
-          onChange={handleChange} />
-
-          <br />
- 
-          <label>Year:</label>
-         <TextField 
-         label="Year" 
-         type="number" 
-         name="artworkYear" 
-         value={artwork.artworkYear  || ""} 
-         onChange={handleChange} />
-
-          <br />    
-          <Button type="submit" onClick={handleUpdate} >Update Artwork</Button>
+          </FormControl>
+    
+          <Button type="submit" variant="contained" onClick={handleUpdate} >Update Artwork</Button>
         </FormControl>    
     </Box>
     );

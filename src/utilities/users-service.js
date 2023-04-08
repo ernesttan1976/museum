@@ -1,5 +1,3 @@
-// Import all named exports attached to a usersAPI object
-// This syntax can be helpful documenting where the methods come from
 import * as usersAPI from "./users-api";
 
 export async function signUp(userData) {
@@ -7,16 +5,10 @@ export async function signUp(userData) {
   // which will ultimately return a JSON Web Token (JWT)
   const token = await usersAPI.signUp(userData);
   localStorage.setItem("token", token);
-  // Baby step by returning whatever is sent back by the server
   return getUser();
 }
 
-export async function login(userData) {
-  const token = await usersAPI.login(userData);
-  localStorage.setItem("token", token);
-  return getUser();
-}
-
+// User Logout
 export function logout() {
   localStorage.removeItem("token");
 }

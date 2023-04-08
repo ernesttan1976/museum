@@ -7,7 +7,7 @@ import Level5 from '../../images/maps/Level5.png';
 import Level6 from '../../images/maps/Level6.png';
 
 const MAPIMAGES = {
-  B1: Basement1,
+  B1: Basement1, 
   L1: Level1,
   L2: Level2,
   L3: Level3,
