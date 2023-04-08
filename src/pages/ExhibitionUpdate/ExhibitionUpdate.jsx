@@ -9,7 +9,6 @@ import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
 import "./ExhibitionUpdate.css";
 
 function ExhibitionUpdate() {
@@ -194,7 +193,8 @@ function ExhibitionUpdate() {
           value={exhibition.exhibitionEntry}
           InputLabelProps={{ shrink: true }}
           onChange={handleChange}
-        /><br></br>
+        />
+        <br></br>
         <Button
           type="submit"
           variant="contained"
