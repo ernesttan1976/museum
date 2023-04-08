@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ExhibitionCard() {
 
+export default function ExhibitionCardL2() {
   const [exhibitions, setExhibition] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
 
@@ -22,9 +22,9 @@ export default function ExhibitionCard() {
       .then((data) => setExhibition(data));
   }, []);
 
-  return (
-    <>
-      {exhibitions.map((exhibition) => (
+  return exhibitions.map((exhibition) => {
+    if (exhibition.exhibitionFloor === "L2") {
+      return (
         <Card className="exhibitionGridCard" key={exhibition._id}>
           <CardHeader
             title={exhibition.exhibitionTitle}
@@ -40,7 +40,6 @@ export default function ExhibitionCard() {
             <Typography variant="h6" color="text.secondary">
               {exhibition.exhibitionEntry}
             </Typography>
-
             <Typography variant="body2" color="text.secondary">
               {exhibition.exhibitionDescription}
             </Typography>
@@ -48,12 +47,16 @@ export default function ExhibitionCard() {
               Exhibition ends:{" "}
               {new Date(exhibition.exhibitionEndDate).toLocaleDateString(
                 "en-GB"
-              )}<br></br>
+              )}
+              <br></br>
             </Typography>
             <Link to={`/exhibitions/${exhibition._id}`}>More Details</Link>
           </CardContent>
         </Card>
-      ))}
-    </>
-  );
+      );
+    } else {
+      return null;
+    }
+  });
 }
+
