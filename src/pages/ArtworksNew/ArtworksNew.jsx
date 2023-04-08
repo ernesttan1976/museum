@@ -119,8 +119,7 @@ const navigate = useNavigate();
          type="text"
          name="artworkYear"
          value={data.artworkYear} 
-         placeholder='Year' 
-         pattern="\d{4}"
+         placeholder='Eg: 2003' 
          onChange={handleChange}/>
  
           <TextField 
