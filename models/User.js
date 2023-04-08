@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
-// const validator = require("validator");
 const bcrypt = require("bcrypt");
-
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
-
 const SALT_ROUNDS = 6;
 
 const usersSchema = new Schema(
