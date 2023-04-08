@@ -67,7 +67,7 @@ Notes:
 - As a non-logged in user, I want to read accessible, consistent information on home screen & exhibition detail screen.
 - As a logged in user, I want to leave a comment about the exhibition that I joined at National Gallery Singapore.
 - As a visitor, I want to improve my wayfinding and exploration of National Gallery Singapore through the Map feature.
-- As an admin, I want to create, update and delete exhibition and artworks information. </br></br>
+- As an admin, I want to create, update and delete exhibition and artworks information. </br>
   [Product Prototype](https://www.figma.com/proto/WZ6XPMR2mlYvRAr9kvNFpD/P3-Gallery-Explorer-Redesign-v3.0?node-id=1-2&starting-point-node-id=1%3A2&scaling=scale-down)
 
 ## ERD Diagram (mermaid.live)
@@ -178,8 +178,6 @@ Mark:
 
 </br>
 
-will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
-
 ### Key Learnings
 
 shall we move the react key learnings here?
@@ -205,7 +203,6 @@ May:
 
 Mark: </br>
 
-will find a way to conclude everyone's thought as a whole, for now let's contribute our own thoughts here! :)
 
 ## Q & A
 
