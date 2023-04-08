@@ -96,8 +96,108 @@ Notes:
 
 ### Login, Sign Up (User & Admin)
 
+- `users-service.js`
 ```js
-insert your favorite express controller method here
+export async function signUp(userData) {
+  const token = await usersAPI.signUp(userData);
+  localStorage.setItem("token", token);
+  return getUser();
+}
+
+export function getUser() {
+  const token = getToken();
+    return token ? JSON.parse(window.atob(token?.split(".")[1])).user : null;
+}
+
+export function getToken() {
+    const token = localStorage.getItem("token");
+  if (!token) return null;
+   const payload = JSON.parse(window.atob(token.split(".")[1]));
+    if (payload.exp < Date.now() / 1000) {
+       localStorage.removeItem("token");
+    return null;
+  }
+  return token;
+}
+
+export function logout() {
+  localStorage.removeItem("token");
+}
+```
+
+The signUp(userData) function is an asynchronous function that takes a userData object as input. It uses the usersAPI module to make a network request by calling the signUp() function and waiting for the response. The response is a JSON Web Token (JWT), which is stored in local storage using the localStorage.setItem() method. The function then calls getUser() to get the user associated with the token and returns the result.
+
+The getUser() function first calls getToken() to obtain the JSON Web Token (JWT), and then uses the token to retrieve the user associated with it. If a token is present, it decodes it and returns the user property of the resulting object. However, if there is no token, it returns null.
+
+The getToken() function retrieves the JSON Web Token (JWT) stored in local storage. If there is no token stored, it returns null. If a token is present, it first decodes it using window.atob() and parses the resulting JSON string to obtain the payload. If the token has expired, as indicated by the exp property in the payload, the function removes the token from local storage and returns null. Otherwise, it returns the token itself.
+
+The logout() function removes the JSON Web Token (JWT) from local storage using the localStorage.removeItem() method.
+
+- `usersController.js`
+```js
+const create = async (req, res) => {
+  const { password } = req.body;
+  if (password.length < 5) {
+    res.status(400).json({ message: "Password is too Short, Please Try Agian." });
+    return;
+  }
+
+  try {
+    const user = await User.create(req.body);
+    const payload = { user };
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 }); // 1hr
+    res.status(201).json(token);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  if (password.length < 5) {
+    res.status(400).json({ message: "Incorrect Password" });
+    return;
+  }
+  try {
+    const user = await User.findOne({ email });
+    if (user === null) {
+      res.status(401).json({ message: "No user found, Please sign up." });
+      return;
+    }
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      const payload = { user };
+      const token = jwt.sign(payload, JWT_SECRET, { expiresIn: 60 });
+      res.status(200).json({ token });
+      console.log("user login successful");
+    } else {
+      res.status(401).json({ message: "Wrong password" });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+```
+
+The create() function first checks the length of the password provided in the request body. If it's less than 5 characters, it responds with a 400 Bad Request status code and a JSON object containing an error message. If the password is long enough, the function tries to create a new user in the database using the User.create() method, passing in the request body as the data to be stored. If the user is created successfully, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 201 Created status code. If an error occurs during user creation, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object.  
+
+The login() function attempts to find a user in the database with the specified email using the User.findOne() method. If the user is not found, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "No user found, Please sign up." If a user is found, it compares the password provided in the request body with the user's stored password using the bcrypt.compare() method. If the passwords match, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 200 OK status code. If the passwords don't match, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "Wrong password." If an error occurs during the login process, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object. 
+
+- `App.jsx` 
+```js
+<Route path="/users/signup" element={<SignUpForm />} />
+<Route path="/users/login" element={<LoginForm setUser={setUser} />} />  
+<Route path="/users/logout" element={<LogOutMsg />} />
+```
+React routes, paths to dirrerent component. For example, when a user navigates to "/users/signup" in the application, the <SignUpForm /> component will be rendered.
+
+```js
+<Route path="/*" element={<AccessDeniedMsg />}/>
+```
+If a user navigates to a URL that doesn't match any of the routes defined in the Router component, this AccessDeniedMsg component will be rendered instead. 
+
+```js
+insert your favorite react component here
 ```
 
 ```js
