@@ -12,7 +12,7 @@
     width: 200%;
     height: 100px;
     display: flex;
-    column-gap: max(5px,10vw);
+    column-gap: max(5px,11vw);
     overflow-x: auto;
 }
 

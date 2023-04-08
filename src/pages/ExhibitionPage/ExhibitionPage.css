@@ -6,9 +6,8 @@
   overflow-y: auto;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
   min-height: 365px;
-  border: 1px solid black;
   padding: 20px 20px;
 }
 
@@ -26,4 +25,3 @@
   display: flex;
   justify-content: center;
 }
-
