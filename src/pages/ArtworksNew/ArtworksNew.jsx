@@ -134,7 +134,7 @@ const navigate = useNavigate();
           <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
 
           <InputLabel>Floor</InputLabel>
-          <Select 
+          <Select sx={{ width: '200px' }}
           label="Floor" 
           name="artworkFloor" 
           value="L1" 

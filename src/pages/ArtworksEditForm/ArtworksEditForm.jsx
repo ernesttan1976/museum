@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import "./ArtworksEditForm.css";
 
 function ArtworksEditForm({user}) {
 const { id } = useParams();
@@ -44,22 +45,18 @@ useEffect(() => {
   };
  
     return (
-    <Box
+    <Box className="ArtworksEditForm"
     component="form"
-      sx={{
-        '& .MuiTextField-root': { p:2, m: 1, width: '150ch' },
-        textAlign: 'center'
-      }}
+      // sx={{
+      //   '& .MuiTextField-root': { p:2, m: 1, width: '150ch' },
+      //   textAlign: 'center'
+      // }}
       noValidate
       autoComplete="off">
         
-        {/* <Typography variant="h4">Edit Artworks</Typography> */}
-        <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
-          <Typography variant="h4">Edit Artworks</Typography>
+        <FormControl className="EditArtworkForm"  autoComplete='off'>
+          <Typography className="EditArtworks" variant="h4">Edit Artworks</Typography>
           
-          <br />
-
-          {/* <label>Image URL:</label> */}
           <TextField 
           label="Image URL" 
           type="url" 
@@ -67,9 +64,6 @@ useEffect(() => {
           value={artwork.artworkUrl  || ""} 
           onChange={handleChange} />
           
-          <br />
-
-          {/* <label>Artwork Title :</label> */}
           <TextField 
           label="Artwork Title" 
           type="text" 
@@ -77,9 +71,6 @@ useEffect(() => {
           value={artwork.artworkTitle || ""} 
           onChange={handleChange} />
 
-          <br />
-
-          {/* <label>Artist Name:</label> */}
           <TextField 
           label="Artist Name" 
           type="text" 
@@ -87,9 +78,6 @@ useEffect(() => {
           value={artwork.artistName  || ""}  
           onChange={handleChange} />
 
-          <br />
-
-          {/* <label>Artwork Dimension:</label> */}
           <TextField 
           label="Dimension" 
           type="text" 
@@ -97,9 +85,6 @@ useEffect(() => {
           value={artwork.artworkDimension  || ""} 
           onChange={handleChange} />
 
-          <br />
-
-          {/* <label>Artwork Information:</label> */}
           <TextField 
           label="Information" 
           type="text" 
@@ -107,9 +92,6 @@ useEffect(() => {
           value={artwork.artworkInformation  || ""}  
           onChange={handleChange} />
 
-          <br />
-
-          {/* <label>Artwork Medium:</label> */}
           <TextField 
           label="Medium" 
           type="text" 
@@ -117,9 +99,6 @@ useEffect(() => {
           value={artwork.artworkMedium  || ""} 
           onChange={handleChange} />
 
-          <br />
-
-          {/* <label>Year:</label> */}
          <TextField 
          label="Year" 
          type="number" 
@@ -127,15 +106,12 @@ useEffect(() => {
          value={artwork.artworkYear  || ""} 
          onChange={handleChange} />
 
-        {/* <label>Artwork Location:</label> */}
           <TextField 
           label="Location" 
           type="text" 
           name="artworkLocation" 
           value={artwork.artworkLocation  || ""} 
           onChange={handleChange} />
-
-          <br />
           
            <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
           <label>Floor</label>
@@ -154,9 +130,8 @@ useEffect(() => {
             <MenuItem value="L6">L6</MenuItem>
           </Select>
           </FormControl>
-
-          <br />    
-          <Button sx={{ width: '100px' }} type="submit" variant="contained" onClick={handleUpdate} >Update Artwork</Button>
+    
+          <Button type="submit" variant="contained" onClick={handleUpdate} >Update Artwork</Button>
         </FormControl>    
     </Box>
     );
