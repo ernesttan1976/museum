@@ -53,8 +53,12 @@ useEffect(() => {
       noValidate
       autoComplete="off">
         
-        <Typography variant="h4">Edit Artworks</Typography>
+        {/* <Typography variant="h4">Edit Artworks</Typography> */}
         <FormControl fullWidth sx={{ m: 10 }}  autoComplete='off'>
+          <Typography variant="h4">Edit Artworks</Typography>
+          
+          <br />
+
           {/* <label>Image URL:</label> */}
           <TextField 
           label="Image URL" 
