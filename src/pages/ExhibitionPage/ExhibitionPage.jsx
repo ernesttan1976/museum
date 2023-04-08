@@ -44,7 +44,9 @@ export default function ExhibitionPage({ user }) {
   };
 
   return (
-    <Box className="ExhibitionPage">
+    <Box
+      className="ExhibitionPage"
+    >
       <Grid container spacing={2}>
         <Grid xs={12}>
           <CardMedia

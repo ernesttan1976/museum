@@ -1,61 +1,46 @@
 .ExhibitionFormContainer {
-    grid-area: 2 / 1 / 3 / 5;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  grid-area: 2 / 1 / 3 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  row-gap: 30px;
 }
 
-.ExhibitionFormContainer .MuiFormControl-fullWidth {
-    width: 50%;
-    padding: 20px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    row-gap: 8px;
+.NewExhibitionForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  row-gap: 30px;
 }
 
-[class*="MuiTypography-root"][class*="ExhibitionFormTitle"] {
-    display: flex;
-    margin: 0 auto;
+.NewExhibitionForm label {
+  align-items: left;
 }
 
-/* .MuiFormControl-fullWidth .MuiFormControl-root {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-} */
-
-[class*="MuiFormControl-root-MuiTextField-root"]{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+.ExhibitionFormTitle {
+  padding-top: 40px;
+  width: 100%;
+  text-align: center;
 }
 
-.MuiFormControl-fullWidth [class*="MuiTypography-root"][class*="MuiTypography-body1"]{
-    margin: 0 8px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+.Dropdown {
+  width: 100%;
 }
 
-.MuiFormControl-fullWidth [class*="MuiSelect-root"] {
-    margin: 0 8px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+.NewExhibitionForm .MuiFormControl-root {
+  width: 100%;
 }
 
-.MuiFormControl-fullWidth [class*="MuiOutlinedInput-root-MuiSelect-root"]{
-    margin-top: 8px;
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  padding: 10px;
+  margin: 10px;
 }
 
-.MuiFormControl-fullWidth .MuiButtonBase-root {
-    margin: 0 auto;
-    align-content: center;
-
+.css-11szepw-MuiFormControl-root {
+  padding: 10px;
 }

@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
 import "./ExhibitionUpdate.css";
 
 function ExhibitionUpdate() {
@@ -66,116 +67,141 @@ function ExhibitionUpdate() {
       noValidate
       autoComplete="off"
     >
-      <FormControl fullWidth sx={{ m: 20 }} autoComplete="off">
-        <Typography className="ExhibitionFormTitle" variant="h4" style={{ width: "500px"}}>
-          Update Page
+      <FormControl className="EditExhibitionForm" autoComplete="off">
+        <Typography className="ExhibitionEditFormTitle" variant="h4">
+          Edit Exhibition
         </Typography>
-        <Typography>Exhibition Title:</Typography>
         <TextField
           type="text"
           name="exhibitionTitle"
+          label="Exhibition Title"
           value={exhibition.exhibitionTitle}
           inputProps={{ maxLength: 50 }}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <Typography>Exhibition Subheader:</Typography>
         <TextField
           type="text"
           name="exhibitionTitleSub"
+          label="Exhibition Subheader"
           value={exhibition.exhibitionTitleSub}
           inputProps={{ maxLength: 50 }}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <Typography>Image URL:</Typography>
         <TextField
           type="text"
           name="exhibitionImage"
+          label="Image URL"
           value={exhibition.exhibitionImage}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <Typography>Short Description:</Typography>
         <TextField
           type="text"
           name="exhibitionDescription"
+          label="Short Description"
           value={exhibition.exhibitionDescription}
           inputProps={{ maxLength: 200 }}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <Typography>Full Description:</Typography>
         <TextField
           multiline
           rows={6}
           type="text"
           name="exhibitionInformation"
+          label="Full Description"
           value={exhibition.exhibitionInformation}
           inputProps={{ maxLength: 1500 }}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <label>Location:</label>
         <TextField
           required
           type="text"
           name="exhibitionLocation"
+          label="Location"
           value={exhibition.exhibitionLocation}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
-        <Typography>Floor:</Typography>
-        <br></br>
-        <Select
-          name="exhibitionFloor"
-          label="Floor"
-          value={exhibition.exhibitionFloor}
-          type="text"
-          onChange={handleChange}
+
+        <FormControl
+          className="Dropdown"
+          fullWidth
+          sx={{ m: 1 }}
+          autoComplete="off"
         >
-          <MenuItem value="B1">B1</MenuItem>
-          <MenuItem value="L1">L1</MenuItem>
-          <MenuItem value="L2">L2</MenuItem>
-          <MenuItem value="L3">L3</MenuItem>
-          <MenuItem value="L4">L4</MenuItem>
-          <MenuItem value="L5">L5</MenuItem>
-          <MenuItem value="L6">L6</MenuItem>
-        </Select>
-        <Typography>Select Artwork:</Typography>
-        <Select name="artworks" type="text" onChange={handleChange}>
-          {artworks.map((artwork) => (
-            <MenuItem value={artwork._id}>{artwork.artworkTitle}</MenuItem>
-          ))}
-        </Select>
-        <label>Start Date:</label>
+          <label>Floor</label>
+          <Select
+            sx={{ width: "200px" }}
+            name="exhibitionFloor"
+            label="Floor"
+            value={exhibition.exhibitionFloor}
+            type="text"
+            onChange={handleChange}
+          >
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl
+          className="Dropdown"
+          fullWidth
+          sx={{ m: 1 }}
+          autoComplete="off"
+        >
+          <label>Artwork</label>
+          <Select
+            sx={{ width: "600px" }}
+            name="artworks"
+            type="text"
+            onChange={handleChange}
+          >
+            {artworks.map((artwork) => (
+              <MenuItem value={artwork._id}>{artwork.artworkTitle}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
         <TextField
           type="date"
           name="exhibitionStartDate"
+          label="Start Date"
           value={exhibition.exhibitionStartDate}
           onChange={handleChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
         />
-        <label>End Date:</label>
         <TextField
           type="date"
           name="exhibitionEndDate"
+          label="End Date"
           value={exhibition.exhibitionEndDate}
           onChange={handleChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
         />
-        <label>Entry:</label>
         <TextField
           type="text"
           name="exhibitionEntry"
+          label="Entry"
           value={exhibition.exhibitionEntry}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
-        />
+        /><br></br>
         <Button
           type="submit"
           variant="contained"
           color="primary"
           onClick={handleUpdate}
         >
-          Update
+          Update Exhibition
         </Button>
       </FormControl>
     </Box>

@@ -1,3 +1,47 @@
-.MuiTypography-root MuiTypography-h4 ExhibitionFormTitle css-5lbw0b-MuiTypography-root {
-  width: 500px;
+.ExhibitionFormContainer{
+  grid-area: 2 / 1 / 3 / 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+      margin: 0 auto;
+      row-gap: 30px;
+}
+
+.EditExhibitionForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  row-gap: 30px;
+}
+
+.EditExhibitionForm label {
+  align-items: left;
+
+}
+
+.ExhibitionEditFormTitle {
+  padding-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.Dropdown {
+  width: 100%;
+}
+
+.EditExhibitionForm .MuiFormControl-root {
+  width: 100%;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  padding: 10px;
+  margin: 10px;
+}
+
+.css-11szepw-MuiFormControl-root {
+  padding: 10px;
 }
