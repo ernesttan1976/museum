@@ -189,6 +189,8 @@ Product Prototype: <a href="https://www.figma.com/proto/WZ6XPMR2mlYvRAr9kvNFpD/P
 Wireframe: <a href="https://docs.google.com/presentation/d/1QK74u5tYnI7stAfgfH9_ZuHCs52L_hfNjI2NLIp1Txw/edit?usp=sharing">Google Docs</a><br />
 Project Management: <a href="https://trello.com/invite/b/iE3FX0N4/ATTI2210f3e4c5cad04ab957b63d518ae7e0C5D3A9A5/national-gallery-web">Trello</a><br />
 Path & Components: <a href="https://docs.google.com/presentation/d/1zn3BJGd09h5cBunKGQARrrkWUGV-Zak4PTxHN-Otd1w/edit?usp=sharing">Google Docs</a><br />
+Photos used: <a href="https://pixabay.com/">pixabay</a><br />
+Artworks and Exhibitions Reference: <a href="https://www.nationalgallery.sg/">National Gallery Singapore</a>
 
 <!-- 
 ## How to Configure MUI Theme?
@@ -283,3 +285,4 @@ For showing a placeholder while waiting for content to load
 This element is part of a larger element like a menu or it can be a list of images or messages.  
 
 -->
+
