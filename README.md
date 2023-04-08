@@ -17,7 +17,7 @@ Designer: K2Z [Kally](), [Kriti]() & [Zhi Qing]() </br>
 
 ## Why We Choose React?
 Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps. 
-<Details open>
+<Details>
 <Summary> 
 read more
 </Summary>

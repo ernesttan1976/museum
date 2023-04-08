@@ -13,7 +13,6 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import DirectionsWalkRoundedIcon from '@mui/icons-material/DirectionsWalkRounded';
 import { useNavigate } from 'react-router-dom';
-// import CustomSwipeableDrawer from '../../components/CustomSwipeableDrawer/CustomSwipeableDrawer';
 
 
 export default function MapPage() {
@@ -41,28 +40,6 @@ export default function MapPage() {
 
     const [locationsFrom, setLocationsFrom] = useState([]);
 
-    // const locationsFrom = [
-    //     {
-    //         value: '',
-    //         label: '',
-    //     },
-    //     {
-    //         value: '1001',
-    //         label: 'Gallery1',
-    //     },
-    //     {
-    //         value: '1002',
-    //         label: 'Gallery2',
-    //     },
-    //     {
-    //         value: '1003',
-    //         label: 'Gallery3',
-    //     },
-    //     {
-    //         value: '1004',
-    //         label: 'Gallery4',
-    //     }]
-
     const [locationsTo, setLocationsTo] = useState([])
 
     const [formData, setFormData] = useState({
@@ -75,8 +52,6 @@ export default function MapPage() {
             value: ""
         }
     });
-
-    // const [levelButtonIsForMap, setLevelButtonIsForMap] = useState(true);
 
     const [level, setLevel] = useState('L1');
 
@@ -94,7 +69,6 @@ export default function MapPage() {
 
         const filterFloor = locations.filter(item => (item.floor === level));
         if (filterFloor.length === 0) return;
-        // console.log(filterFloor)
 
         let result = [{
             value: "",
@@ -130,7 +104,6 @@ export default function MapPage() {
             })));
         }
 
-        // console.log(result);
 
         if (result.length > 0) {
             setLocationsFrom(result);
@@ -268,7 +241,7 @@ export default function MapPage() {
                 <MapComponent level={level} />
             </Box>
         </Box>
-    )
+    )        
 }
 
 
