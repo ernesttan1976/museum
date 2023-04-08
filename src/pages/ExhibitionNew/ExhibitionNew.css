@@ -1,10 +1,55 @@
 .ExhibitionFormContainer {
-justify-self: center;
+    grid-area: 2 / 1 / 3 / 5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ExhibitionFormTitle {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+.ExhibitionFormContainer .MuiFormControl-fullWidth {
+    width: 50%;
+    padding: 20px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 8px;
+}
+
+[class*="MuiTypography-root"][class*="ExhibitionFormTitle"] {
+    display: flex;
+    margin: 0 auto;
+}
+
+.MuiFormControl-fullWidth .MuiFormControl-root {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MuiFormControl-fullWidth [class*="MuiTypography-root"][class*="MuiTypography-body1"]{
+    margin: 0 8px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MuiFormControl-fullWidth [class*="MuiSelect-root"] {
+    margin: 0 8px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MuiFormControl-fullWidth [class*="MuiOutlinedInput-root-MuiSelect-root"]{
+    margin-top: 8px;
+}
+
+.MuiFormControl-fullWidth .MuiButtonBase-root {
+    margin: 0 auto;
+    align-content: center;
+
 }

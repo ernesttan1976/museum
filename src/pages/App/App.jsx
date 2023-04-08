@@ -49,7 +49,6 @@ function App() {
               <CustomDrawerLogin user={user} setUser={setUser} />
             </Box>
             <ErrorBoundary>
-              <h6>Exhibitions</h6>
               <Routes>
                 <Route path="/*" element={<PageNotFound />} />
                 <Route path="/" element={<HomePage user={user} />} />

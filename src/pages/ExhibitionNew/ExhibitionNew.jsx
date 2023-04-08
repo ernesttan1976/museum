@@ -11,6 +11,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
+import "./ExhibitionNew.css"
+
 const floors = [
   "Basement 1",
   "Level 1",
@@ -130,7 +132,7 @@ function ExhibitionNew() {
         <Typography>Floor:</Typography>
         <Select
           name="exhibitionFloor"
-          label="Floor"
+          // label="Floor"
           value={data.exhibitionFloor}
           type="text"
           onChange={handleChange}
