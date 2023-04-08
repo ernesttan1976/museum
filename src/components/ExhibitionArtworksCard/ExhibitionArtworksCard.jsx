@@ -24,11 +24,11 @@ export default function ExhibitionArtworksCard({ artworks }) {
               height="200"
               image={artwork.artworkUrl}
               alt={artwork.artworkTitle}
-            />{" "}
+            />
             <br></br>
             <Typography variant="body2" color="text.secondary">
               {artwork.artistName}
-            </Typography>{" "}
+            </Typography>
             <p></p>
             <Typography paragraph>{artwork.artworkTitle}</Typography>
           </CardContent>
