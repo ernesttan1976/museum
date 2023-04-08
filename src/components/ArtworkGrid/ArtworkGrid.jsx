@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ArtworksCard from '../ArtworksCard/ArtworksCard';
-import ArtworkInfo from '../ArtworkInfo/ArtworkInfo';
+// import ArtworkInfo from '../../pages/ArtworkInfo/ArtworkInfo';
 import { useEffect, useState } from "react";
 
 

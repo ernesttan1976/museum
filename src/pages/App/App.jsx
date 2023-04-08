@@ -13,7 +13,7 @@ import LoginForm from "../AuthPage/LoginForm";
 import LogOutMsg from "../AuthPage/LogOutMsg";
 import ArtworksPage from "../ArtworksPage/ArtworksPage";
 import ArtworksNew from "../ArtworksNew/ArtworksNew";
-import ArtworkInfo from "../../components/ArtworkInfo/ArtworkInfo";
+import ArtworkInfo from "../ArtworkInfo/ArtworkInfo";
 import ArtworksEditForm from "../ArtworksEditForm/ArtworksEditForm";
 import MapPage from "../MapPage/MapPage";
 import MapPage2 from "../MapPage/MapPage2";
