@@ -62,7 +62,7 @@ function ExhibitionUpdate() {
       className="ExhibitionFormContainer"
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "150ch" },
+        "& .MuiTextField-root": { m: 1},
       }}
       noValidate
       autoComplete="off"
@@ -135,7 +135,6 @@ function ExhibitionUpdate() {
         >
           <label>Floor</label>
           <Select
-            sx={{ width: "200px" }}
             name="exhibitionFloor"
             label="Floor"
             value={exhibition.exhibitionFloor}
@@ -160,7 +159,6 @@ function ExhibitionUpdate() {
         >
           <label>Artwork</label>
           <Select
-            sx={{ width: "600px" }}
             name="artworks"
             type="text"
             onChange={handleChange}

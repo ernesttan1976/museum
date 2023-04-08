@@ -4,9 +4,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 60%;
+      width: 80%;
       margin: 0 auto;
-      row-gap: 30px;
 }
 
 .EditExhibitionForm {
@@ -15,7 +14,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  row-gap: 30px;
+  row-gap: 20px;
 }
 
 .EditExhibitionForm label {
@@ -29,19 +28,19 @@
   text-align: center;
 }
 
-.Dropdown {
-  width: 100%;
+.EditExhibitionForm .Dropdown {
+  width: 80%;
 }
 
-.EditExhibitionForm .MuiFormControl-root {
-  width: 100%;
+.EditExhibitionForm [class*="MuiTextField-root"] {
+  width: 80%;
 }
 
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+.EditExhibitionForm [class*="MuiFormControl-root-MuiTextField-root"] {
   padding: 10px;
   margin: 10px;
 }
 
-.css-11szepw-MuiFormControl-root {
+.EditExhibitionForm [class*="MuiFormControl-root"] {
   padding: 10px;
 }
