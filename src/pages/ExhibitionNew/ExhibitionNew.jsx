@@ -83,7 +83,6 @@ function ExhibitionNew() {
           onChange={handleChange}
         />
         <TextField
-          required
           label="Subheader"
           type="text"
           name="exhibitionTitleSub"
@@ -105,7 +104,7 @@ function ExhibitionNew() {
           type="text"
           name="exhibitionDescription"
           value={data.exhibitionDescription}
-          inputProps={{ maxLength: 200 }}
+          inputProps={{ maxLength: 300 }}
           onChange={handleChange}
         />
         <TextField

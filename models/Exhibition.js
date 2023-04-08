@@ -6,7 +6,6 @@ const commentSchema = new Schema(
     comments: {
       type: String,
       trim: true,
-      required: true,
     },
 },
   {
@@ -24,7 +23,6 @@ const exhibitionsSchema = new Schema(
 
     exhibitionTitleSub: {
       type: String,
-      required: true,
     },
     
     exhibitionDescription: {
