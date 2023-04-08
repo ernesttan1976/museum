@@ -16,9 +16,11 @@ Database Manager: [Mark](https://github.com/Marklimjr)</br>
 Designer: K2Z [Kally](), [Kriti]() & [Zhi Qing]() </br>
 
 ## Why We Choose React?
-
-Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps.
-
+Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps. 
+<Details open>
+<Summary> 
+read more
+</Summary>
 However, React does not offer native support for server-side rendering (15), forms(17), routing(16), CSS utilities(18), UI Component Libraries(19), but these functionalities can be added using third-party libraries such as Next.js, Formik, React Router, Tailwind CSS and Material UI, respectively.
 
 Ultimately, the choice of technology depends on the specific requirements of the project, and we should consider factors such as community support, documentation, and compatibility with existing code. Nonetheless, React's popularity and vast ecosystem make it a solid choice for building modern web applications.
@@ -50,6 +52,8 @@ Notes:
 - The ratings are represented by stars (★), with 5 stars being the highest rating.
 - Some of the features are not applicable for certain frameworks (represented as N/A).
 - The external libraries are listed in brackets in the column cells.
+</Details>
+
 
 ## Wireframe
 

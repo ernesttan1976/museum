@@ -1,7 +1,6 @@
 import React from 'react'
 import {render, screen} from "@testing-library/react";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
 import { expect, it } from 'vitest'
 
 import * as config from "vitest/config"
