@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import "./LogOutMSG.css";
+import "./LogOutMsg.css";
 
 export default function LogOutMsg({setUser}) {
 
