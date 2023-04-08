@@ -197,7 +197,7 @@ function ExhibitionNew() {
           color="primary"
           onClick={handleAddNewExhibition}
         >
-          Submit
+          Submit Exhibition
         </Button>
       </FormControl>
     </Box>
