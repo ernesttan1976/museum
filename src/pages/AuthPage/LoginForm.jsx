@@ -43,12 +43,12 @@ export default function LoginForm({setUser}) {
   };
 
   return (
-    <Box className="LoginForm">
-      <form onSubmit={handleLogin} className="Form">
+    <Box className="LoginFormContainer">
+      <form onSubmit={handleLogin} className="LoginForm">
         <br></br>
         <Typography variant="h5">User Login </Typography>
         {error}
-          <Box className="R1">
+          <Box className="R2">
             <TextField 
             type="email"
             label="Enter your email address"
@@ -56,7 +56,7 @@ export default function LoginForm({setUser}) {
             required />
           </Box>
 
-          <Box className="R1">
+          <Box className="R2">
             <TextField 
             label="Enter your password" 
             name="password" 
@@ -64,11 +64,11 @@ export default function LoginForm({setUser}) {
             required />
           </Box>
 
-          <Box className="R1">
+          <Box className="R2">
           <Button variant="contained" type="submit" >Login</Button> 
           </Box>
 
-      <Box className="R1">
+      <Box className="R2">
       <Typography variant="p">No account yet? </Typography>
         <Link to={`/users/signup`}>
          <Button>Sign Up</Button>

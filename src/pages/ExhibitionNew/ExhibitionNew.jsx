@@ -70,7 +70,7 @@ function ExhibitionNew() {
 
   return (
     <Box
-      className="ExhibitionFormContainer"
+      className="NewExhibitionFormContainer"
       sx={{
         "& .MuiTextField-root": { m: 1},
       }}
@@ -80,7 +80,7 @@ function ExhibitionNew() {
       onSubmit={handleSubmit}
     >
       <FormControl className="NewExhibitionForm" autoComplete="off">
-        <Typography className="ExhibitionFormTitle" variant="h4">
+        <Typography className="NewExhibitionFormTitle" variant="h4">
           Create Exhibition
         </Typography>
         <TextField
@@ -142,12 +142,12 @@ function ExhibitionNew() {
         <FormControl fullWidth sx={{ m: 1 }} autoComplete="off">
           <InputLabel>Floor</InputLabel>
           <Select
-            sx={{ width: "200px" }}
             name="exhibitionFloor"
             label="Floor"
             value={data.exhibitionFloor}
             type="text"
             onChange={handleChange}
+            className="NewDropDown"
           >
             <MenuItem value="B1">B1</MenuItem>
             <MenuItem value="L1">L1</MenuItem>

@@ -1,32 +1,30 @@
-.LoginForm {
-    width: 100%; 
-    height: 100%;
+.LoginFormContainer {
     grid-area: 2 / 1 / 3 / 5;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    display: 'flex',
 }
 
-.Form {
-    height:50%;
+.LoginForm {
+    height: 65%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     box-shadow: 0px 3px 6px #d61f1f29;
+    row-gap: 20px;
 }
 
 
-.R1 {
-    height: 100px;
+.R2 {
     width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 

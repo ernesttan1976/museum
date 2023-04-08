@@ -58,7 +58,7 @@ function ExhibitionUpdate() {
 
   return (
     <Box
-      className="ExhibitionFormContainer"
+      className="EditExhibitionFormContainer"
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1},
@@ -67,7 +67,7 @@ function ExhibitionUpdate() {
       autoComplete="off"
     >
       <FormControl className="EditExhibitionForm" autoComplete="off">
-        <Typography className="ExhibitionEditFormTitle" variant="h4">
+        <Typography className="EditExhibitionFormTitle" variant="h4">
           Edit Exhibition
         </Typography>
         <TextField
@@ -127,7 +127,7 @@ function ExhibitionUpdate() {
         />
 
         <FormControl
-          className="Dropdown"
+          className="EditDropdown"
           fullWidth
           sx={{ m: 1 }}
           autoComplete="off"
@@ -151,7 +151,7 @@ function ExhibitionUpdate() {
         </FormControl>
 
         <FormControl
-          className="Dropdown"
+          className="EditDropdown"
           fullWidth
           sx={{ m: 1 }}
           autoComplete="off"

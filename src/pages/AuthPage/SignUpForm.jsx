@@ -51,8 +51,8 @@ export default function SignUpForm({ setUser }) {
   };
 
   return (
-      <Box className="SignUpForm">
-        <form component="form" autoComplete="off" onSubmit={handleSubmit} className="Form">
+      <Box className="SignUpFormContainer">
+        <form component="form" autoComplete="off" onSubmit={handleSubmit} className="SignUpForm">
           <Typography variant="h5">Sign Up a new Account </Typography>
           {error}
 
