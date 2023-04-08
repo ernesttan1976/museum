@@ -7,8 +7,10 @@ function PageNotFound() {
   return (
     <>
       <Typography variant="h4" className="PageNotFoundMsg">
-        Page Not Found. <br></br><br></br>
-        <img src={pepe} /><br></br>
+        Page Not Found. <br></br>
+        <br></br>
+        <img src={pepe} />
+        <br></br>
         <Link to="/">Check out Homepage Here</Link>
       </Typography>
     </>

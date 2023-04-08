@@ -2,15 +2,15 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
-import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
-import "./ExhibitionPage.css";
-
 import CardMedia from "@mui/material/CardMedia";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
+
+import ExhibitionArtworksCard from "../../components/ExhibitionArtworksCard/ExhibitionArtworksCard";
+import ExhibitionComments from "../../components/ExhibitionComments/ExhibitionComments";
+import "./ExhibitionPage.css";
 
 export default function ExhibitionPage({ user }) {
   const { id } = useParams();
@@ -44,9 +44,7 @@ export default function ExhibitionPage({ user }) {
   };
 
   return (
-    <Box
-      className="ExhibitionPage"
-    >
+    <Box className="ExhibitionPage">
       <Grid container spacing={2}>
         <Grid xs={12}>
           <CardMedia

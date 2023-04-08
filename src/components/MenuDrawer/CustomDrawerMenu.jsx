@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { red } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -16,12 +17,10 @@ import ArtTrackIcon from '@mui/icons-material/ArtTrack';
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { red } from '@mui/material/colors';
-import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 
 import "./CustomDrawerMenu.css";
 
-export default function CustomDrawer({user}) {
+export default function CustomDrawer({ user }) {
   const [isOpen, setIsOpen] = useState(false);
   console.log("user is " + user);
   const toggleDrawer = (open) => (event) => {
@@ -90,40 +89,48 @@ export default function CustomDrawer({user}) {
         <MenuIcon />
       </Button>
       <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
-      <Box
-      sx={{ width: 0.5 }}
-      className="CustomDrawerMenu sticky"
-      role="presentation"
-      onClick={toggleDrawer(false)}
-    >
-      {user && user.userRole =="admin" ? (
-        <List>
-          {adminMenuItems.map((item, index) => (
-            <ListItem key={item.text} disablePadding>
-              <Link to={item.to}>
-                <ListItemButton>
-                  {item.icon && <ListItemIcon sx={{ color: red[800] }}>{item.icon}</ListItemIcon>}
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      ) : (
-        <List>
-          {userMenuItems  .map((item, index) => (
-            <ListItem key={item.text} disablePadding>
-              <Link to={item.to}>
-                <ListItemButton>
-                  {item.icon && <ListItemIcon sx={{ color: red[800] }}>{item.icon}</ListItemIcon>}
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      )}
-    </Box>
+        <Box
+          sx={{ width: 0.5 }}
+          className="CustomDrawerMenu sticky"
+          role="presentation"
+          onClick={toggleDrawer(false)}
+        >
+          {user && user.userRole == "admin" ? (
+            <List>
+              {adminMenuItems.map((item, index) => (
+                <ListItem key={item.text} disablePadding>
+                  <Link to={item.to}>
+                    <ListItemButton>
+                      {item.icon && (
+                        <ListItemIcon sx={{ color: red[800] }}>
+                          {item.icon}
+                        </ListItemIcon>
+                      )}
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <List>
+              {userMenuItems.map((item, index) => (
+                <ListItem key={item.text} disablePadding>
+                  <Link to={item.to}>
+                    <ListItemButton>
+                      {item.icon && (
+                        <ListItemIcon sx={{ color: red[800] }}>
+                          {item.icon}
+                        </ListItemIcon>
+                      )}
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </Box>
       </Drawer>
     </div>
   );
