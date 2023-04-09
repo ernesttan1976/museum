@@ -78,8 +78,9 @@ Notes:
 
 ![Home Page Carousell](/src/images/readme/homepagecarousell.png "Home Page Carousell")</br>
 ![Exhibition](/src/images/readme/exhibitionaccordion.png "Exhibition")</br>
-![Map](/src/images/readme/maps.png "Maps")</br>
-![Map Route](/src/images/readme/maps.png "Map Route")</br>
+![Map](/src/images/readme/MapFilterPage.png "Maps")</br>
+![Map Route](/src/images/readme/MapDirections.png "Map Route")</br>
+![Map Explorer](/src/images/readme/MapDirectionsExplorer.png "Map Explorer")</br>
 
 ## Technologies Used
 
@@ -450,7 +451,7 @@ May:
 </br>
 Mark: 
 
-- Material UI
+- Working in the MUI environment
 - Initial modelling of Data Models and planning out relationships and dependencies 
 - Formulating the logic of a map feature 
 - Condensing a route solution into a single object that holds various fields of information, eg img,directions,features,icons
@@ -480,7 +481,13 @@ May:
 - User Sign up and Login using bcrypt and jsonwebtoken.
 - Utilization of ternary operator to enable certain user to accessible to certain informations.
 
-Mark: </br>
+Mark: 
+
+- Error finding through learning to read DevTools and testing routes with Insomnia
+- Understanding how to work in an environment where there are potential conflicts in code and resolving it by using a common seed data from the start
+- Planning the code with the MUI structure 
+
+</br>
 
 
 ## Q & A
