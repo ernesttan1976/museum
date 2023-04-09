@@ -3,8 +3,8 @@ const directionsController = require("../controllers/directionsController");
 
 const router = express.Router();
 
-// start from /api/exhibitions
-// router.get("/", directionsController.index);
+// start from /api/map/directions
+
 router.get("/from/:from/to/:to", directionsController.show);
 
 module.exports = router;
