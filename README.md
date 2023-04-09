@@ -391,6 +391,135 @@ The LoginForm component is similar to the SignUpForm component, except that it i
 
 ### Artwork CRUD
 
+Code extract example on update of CRUD. 
+
+- `ArtworksEditForm.jsx`
+```js
+function ArtworksEditForm({user}) {
+const { id } = useParams();
+const [artwork, setArtwork] = useState({});
+const navigate = useNavigate();
+
+useEffect(() => {
+    const fetchArtwork = async () => {
+      const response = await fetch(`/api/artworks/${id}`);
+      const artwork = await response.json();
+      setArtwork(artwork);
+    };
+    fetchArtwork();
+  }, [id]);
+    const handleChange = (event) => {
+    const key = event.target?.name;
+    const value = event.target?.value;
+    setArtwork({ ...artwork, [key]: value });
+  };
+
+  const handleUpdate = async (event) => {
+    event.preventDefault()
+    const response = await fetch(`/api/artworks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(artwork),
+    });
+    navigate('/artworks');
+  };
+ 
+    return (
+    <Box className="ArtworksEditForm"
+    component="form"
+      noValidate
+      autoComplete="off">
+        
+        <FormControl className="EditArtworkForm"  autoComplete='off'>
+          <Typography className="EditArtworks" variant="h4">Edit Artworks</Typography>
+          
+          <TextField 
+          label="Image URL" 
+          type="url" 
+          name="artworkUrl" 
+          value={artwork.artworkUrl  || ""} 
+          onChange={handleChange} />
+          
+          <TextField 
+          label="Artwork Title" 
+          type="text" 
+          name="artworkTitle" 
+          value={artwork.artworkTitle || ""} 
+          onChange={handleChange} />
+
+          <TextField 
+          label="Artist Name" 
+          type="text" 
+          name="artistName" 
+          value={artwork.artistName  || ""}  
+          onChange={handleChange} />
+
+          <TextField 
+          label="Dimension" 
+          type="text" 
+          name="artworkDimension" 
+          value={artwork.artworkDimension  || ""} 
+          onChange={handleChange} />
+
+          <TextField 
+          label="Information" 
+          type="text" 
+          name="artworkInformation" 
+          value={artwork.artworkInformation  || ""}  
+          onChange={handleChange} />
+
+          <TextField 
+          label="Medium" 
+          type="text" 
+          name="artworkMedium" 
+          value={artwork.artworkMedium  || ""} 
+          onChange={handleChange} />
+
+         <TextField 
+         label="Year" 
+         type="number" 
+         name="artworkYear" 
+         value={artwork.artworkYear  || ""} 
+         onChange={handleChange} />
+
+          <TextField 
+          label="Location" 
+          type="text" 
+          name="artworkLocation" 
+          value={artwork.artworkLocation  || ""} 
+          onChange={handleChange} />
+          
+           <FormControl fullWidth sx={{ m: 2 }} autoComplete='off'>
+          <label>Floor</label>
+          <Select sx={{ width: '200px' }}
+          label="Floor" 
+          name="artworkFloor" 
+          value={artwork.artworkFloor || ""} 
+          onChange={handleChange}>
+            <MenuItem value="" disabled>Select Floor</MenuItem>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="L1">L1</MenuItem>
+            <MenuItem value="L2">L2</MenuItem>
+            <MenuItem value="L3">L3</MenuItem>
+            <MenuItem value="L4">L4</MenuItem>
+            <MenuItem value="L5">L5</MenuItem>
+            <MenuItem value="L6">L6</MenuItem>
+          </Select>
+          </FormControl>
+    
+          <Button type="submit" variant="contained" onClick={handleUpdate} >Update Artwork</Button>
+        </FormControl>    
+    </Box>
+    );
+}
+export default ArtworksEditForm;
+```
+
+This Artworks Edit Form component allows the admin to edit an artwork. It receives a user object as a prop and uses the useParams and useNavigate hooks from react-router-dom to get the ID of the artwork and navigate to the artworks page after updating the artwork. The handleChange() function is called when the admin changes the input fields and updates the state with the new values. The handleUpdate() function is used to update the artwork, when the admin clicks the "Update Artwork" button. It sends a PUT request to the backend API with the updated artwork data and navigates to the artworks page.
+
+
 ```js
 insert your favorite express controller method here
 ```
