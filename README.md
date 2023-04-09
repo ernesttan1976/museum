@@ -414,12 +414,127 @@ insert your favorite react component here
 
 ### Map Route
 
-```js
-insert your favorite express controller method here
-```
+The controller holds the logic of taking in the "to and from" from the map page and generating a pre-written route from the database. The controller pulls in the ObjectID of the respective exhibitions and runs it in an If Else statement to respond with the ObjectID of a route solution. Using req.params the objectIDs are retrieved from the URL from the :from and :to and passed through as arguements for the function findRoute. 
+
+
+- directionsController.jsx
 
 ```js
-insert your favorite react component here
+const Directions = require("../models/Directions");
+require("../models/Explorer");
+
+const show = async (req, res) => {
+  try {
+    const from = req.params.from;
+    const to = req.params.to;
+
+    function findRoute(from, to) {
+      if (
+        from === "6425c260c9d195369ec02476" &&
+        to === "6425ba0ac9d195369ec02461"
+      ) {
+        result = {
+          fromMapUrl: "EXHIBITION Between Declarations and Dreams",
+          toMapUrl:
+            "BBB.ARTWORK Royal Family Portrait with Moustached Minister",
+          steps: "642bb5bf350c1b20a4cdb627", // Object ID of Route A
+        };
+      } else if (
+        from === "6425c260c9d195369ec02476" &&
+        to === "6425c854c9d195369ec02494"
+      ) {
+        result = {
+          fromMapUrl: "EXHIBITION Between Declarations and Dreams",
+          toMapUrl: "Living Pictures",
+          steps: "642e2ff3e64813ab8c55a0ca", // Object ID of Route B
+        };
+      } else {
+        result = {
+          steps: "64305ed5cf61dfb8fdd221cc",
+        };
+      }
+
+      return result;
+    }
+
+    const routeAnswer = findRoute(from, to).steps;
+
+    console.log("this result " + routeAnswer);
+
+    const foundDirections = await Directions.findById(routeAnswer).populate(
+      "routeDirections"
+    );
+    res.status(200).json(foundDirections);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  show,
+};
+
+```
+
+
+The MapDirectionsExplorer is a child component of the Map Directions Route Page. It receives data from the database that holds the route information. For this component it has the props required to fill the table with Icons, a string of directions in text and an img URL for the route path. The data representing the icon in the database comes in a value of a Keyname such as "turnRight". An object "const Icons" contains a key value pair of the keyname and the Icon componenet from MUI. Therefore when the keyname is called into the table, "[Icons.turnRight]" will access the turnRight Key in the Icons object and access the value of the MUI Icon Component. 
+
+- MapDirectionsExplorer.jsx
+
+```js
+const Icons = {
+  turnRight : <TurnRightOutlinedIcon />,
+  turnLeft : <TurnLeftOutlinedIcon />,
+  slightRight : <TurnSlightRightOutlinedIcon />,
+  slightLeft : <TurnSlightLeftOutlinedIcon />,
+  goStraight: <StraightOutlinedIcon />,
+  
+  stairs : <StairsOutlinedIcon />,
+  camera : <CameraAltOutlinedIcon />,
+  artwork : <PhotoOutlinedIcon />
+
+}
+
+export default function BasicTable(props) {
+  const { direction, table } = props;
+
+  const { id } = useParams();
+  const [tableData, setTableData] = useState([]);
+  // const navigate = useNavigate();
+
+
+  return (
+    <>
+    <Typography>Explorer Mode - on</Typography>
+    <TableContainer style={{ width: '100%' }} component={Paper}>
+      <Table sx={{ minWidth: 400 }} aria-label="simple table" >
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Direction icon </TableCell>
+            <TableCell align="center">Directions</TableCell>
+            <TableCell align="center">Img</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {table?.map((table,index) => (
+            <TableRow key={index}
+            //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell align="center" component="th" scope="row">{Icons[table.icon]}</TableCell>
+              <TableCell align="center">{table.directions}{table.explorerPrompt}<a href ={`${table.featureUrl}`}>{table.featureTitle}</a></TableCell>
+              <TableCell align="center">
+              <img src={`${table.imgUrl}`} height="150" /> </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+    </>
+
+    
+  );
+}
 ```
 
 ### Client Side Routing
