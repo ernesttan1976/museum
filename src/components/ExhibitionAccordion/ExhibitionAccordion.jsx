@@ -13,8 +13,8 @@ import ExhibitionCardL3 from "../ExhibitionCard/ExhibitionCardL3";
 import ExhibitionCardL4 from "../ExhibitionCard/ExhibitionCardL4";
 import ExhibitionCardL5 from "../ExhibitionCard/ExhibitionCardL5";
 import ExhibitionCardL6 from "../ExhibitionCard/ExhibitionCardL6";
-
 import "./ExhibitionAccordion.css";
+
 export default function ExhibitionAccordion() {
   return (
     <>

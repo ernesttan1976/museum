@@ -1,6 +1,6 @@
 # National Gallery Mobile App
 
-### Getting Started
+## Getting Started
 
 https://museumrender.onrender.com/
 
@@ -117,6 +117,43 @@ K2Z, a group consisting of three members, [Kally](https://www.linkedin.com/in/ka
 
 ### Login, Sign Up (User & Admin)
 
+### Mongoose Model
+
+- `User.js`
+
+```js
+const usersSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    email: {
+      type: String,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      unique: true,
+      trim: true,
+      minLength: 5,
+      required: true,
+    },
+    userRole: {
+      type: String,
+      required: true,
+      enum: ["user", "admin"],
+    },
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
+```
+
 - `users-service.js`
 
 ```js
@@ -208,6 +245,8 @@ The create() function firstly checks the length of the password provided in the 
 
 The login() function attempts to find a user in the database with the specified email using the User.findOne() method. If the user is not found, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "No user found, Please sign up." If a user is found, it compares the password provided in the request body with the user's stored password using the bcrypt.compare() method. If the passwords match, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 200 OK status code. If the passwords don't match, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "Wrong password." If an error occurs during the login process, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object.
 
+### Client Side Routing
+
 - `App.jsx`
 
 ```js
@@ -228,13 +267,13 @@ React routes, paths to different components. For example, when a user navigates 
 
 If a user navigates to a URL that doesn't match any of the routes defined in the Router component, this AccessDeniedMsg component will be rendered instead.
 
-```js 
+```js
 ...
-<Route path="/artworks/new" element={user && user.userRole == "admin" ? <ArtworksNew user={user} /> : <AccessDeniedMsg />} /> 
-<Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ? <ArtworksEditForm user={user} /> : <AccessDeniedMsg />} />  
-<Route path="/exhibitions/new" element={user && user.userRole == "admin" ? <ExhibitionNew user={user} /> : <AccessDeniedMsg />} /> 
-<Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user} /> : <AccessDeniedMsg />} /> 
-<Route path="/admin/signup" element={user && user.userRole == "admin" ? <AdminSignUpForm user={user} /> : <AccessDeniedMsg />} />   
+<Route path="/artworks/new" element={user && user.userRole == "admin" ? <ArtworksNew user={user} /> : <AccessDeniedMsg />} />
+<Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ? <ArtworksEditForm user={user} /> : <AccessDeniedMsg />} />
+<Route path="/exhibitions/new" element={user && user.userRole == "admin" ? <ExhibitionNew user={user} /> : <AccessDeniedMsg />} />
+<Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user} /> : <AccessDeniedMsg />} />
+<Route path="/admin/signup" element={user && user.userRole == "admin" ? <AdminSignUpForm user={user} /> : <AccessDeniedMsg />} />
 ...
 ```
 
@@ -457,9 +496,69 @@ The LoginForm component is similar to the SignUpForm component, except that it i
 
 Code extract example will focus on edit and update of Artwork CRUD.
 
+### Mongoose Model
+
+- `Artwork.js`
+
+```js
+const artworkSchema = new Schema(
+  {
+    artworkUrl: {
+      type: String,
+      required: true,
+    },
+
+    artistName: {
+      type: String,
+      required: true,
+    },
+
+    artworkTitle: {
+      type: String,
+      required: true,
+    },
+
+    artworkYear: {
+      type: String,
+      required: true,
+    },
+
+    artworkMedium: {
+      type: String,
+    },
+
+    artworkDimension: {
+      type: String,
+    },
+
+    artworkInformation: {
+      type: String,
+    },
+
+    artworkLocation: {
+      type: String,
+      required: true,
+    },
+
+    artworkFloor: {
+      type: String,
+      enum: ["B1", "L1", "L2", "L3", "L4", "L5", "L6"],
+      default: "L1",
+      required: true,
+    },
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
+```
+
 - `artworksController.js`
 
-```js 
+```js
 const Artwork = require("../models/Artwork");
 
 const create = async (req, res) => {
@@ -519,6 +618,7 @@ module.exports = {
   update,
 };
 ```
+
 The create() function handles the creation of new artwork by calling the create method on the Artwork model with the request body. If successful, it returns the created artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
 
 The index() function retrieves all artworks by calling the find method on the Artwork model with an empty query. If successful, it returns an array of artworks with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
@@ -528,7 +628,6 @@ The deleteArtwork() function handles the deletion of artwork by calling the find
 The show() function retrieves a single artwork by calling the findById method on the Artwork model with the artwork ID from the request parameters. If successful, it returns the artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
 
 The update() function handles the updating of artwork by calling the findByIdAndUpdate method on the Artwork model with the artwork ID from the request parameters and the request body, with { new: true } to return the updated artwork. If successful, it returns the updated artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
-
 
 - `ArtworksEditForm.jsx`
 
@@ -676,15 +775,340 @@ This Artworks Edit Form component allows the admin to edit an artwork. It receiv
 
 ### Exhibition CRUD
 
-```js
-insert your favorite express controller method here
-```
+Code extract example will focus on read and update of Exhibition CRUD.
+
+### Mongoose Model
+
+- `Exhibition.js`
 
 ```js
-insert your favorite react component here
+const commentSchema = new Schema(
+  {
+    comments: {
+      type: String,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const exhibitionsSchema = new Schema(
+  {
+    exhibitionTitle: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 10,
+      maxlength: 50,
+    },
+
+    exhibitionTitleSub: {
+      type: String,
+      trim: true,
+      minlength: 10,
+      maxlength: 50,
+    },
+
+    exhibitionDescription: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 50,
+      maxlength: 300,
+    },
+
+    exhibitionInformation: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 200,
+      maxlength: 1500,
+    },
+
+    exhibitionStartDate: {
+      type: Date,
+      required: true,
+      min: Date.now,
+    },
+
+    exhibitionEndDate: {
+      type: Date,
+      required: true,
+      validate: {
+        validator: function (value) {
+          return value > this.exhibitionStartDate;
+        },
+        message: "Exhibition end date must be after exhibition start date",
+      },
+    },
+
+    exhibitionEntry: {
+      type: String,
+      required: true,
+    },
+
+    exhibitionImage: {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (value) {
+          // Regular expression to match URLs ending with common image file extensions
+          var regex = /\.(jpg|jpeg|gif|png|bmp)$/i;
+          return regex.test(value);
+        },
+        message: "Please provide a valid image URL",
+      },
+    },
+
+    exhibitionLocation: {
+      type: String,
+      required: true,
+    },
+
+    exhibitionFloor: {
+      type: String,
+      enum: ["B1", "L1", "L2", "L3", "L4", "L5", "L6"],
+      required: true,
+    },
+    artworks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Artwork",
+      },
+    ],
+    exhibitionComments: [commentSchema],
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
 ```
+
+- `exhibitionsControlller.jsx`
+
+```js
+const show = async (req, res) => {
+  try {
+    const exhibition = await Exhibition.findById(req.params.id).populate(
+      "artworks"
+    );
+    res.status(200).json(exhibition);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+```
+
+Implentation of Populate
+
+- `ExhibitionAccordion.jsx`
+
+```js
+<Box className="exhibitionAccordionContainer">
+  <Accordion className="ExhibitionAccordion">
+    <AccordionSummary
+      className="AccordionSummary"
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel1a-content"
+      id="panel1a-header"
+    >
+      <Typography variant="h6">Basement 1</Typography>
+    </AccordionSummary>
+    <AccordionDetails className="AccordionDetails">
+      <Grid container className="ExhibitionGridContainer" spacing={2}>
+        <ExhibitionCardB1 item xs={12} md={6} lg={3} />
+      </Grid>
+    </AccordionDetails>
+  </Accordion>
+</Box>
+```
+
+React Material UI Accordion
+
+- `ExhibitionUpdate.jsx`
+
+```js
+const currentDate = new Date().toISOString().split("T")[0];
+
+function ExhibitionUpdate() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [exhibition, setExhibition] = useState({});
+  const [artworks, setArtwork] = useState([]);
+
+  useEffect(() => {
+    const fetchExhibition = async () => {
+      const response = await fetch(`/api/exhibitions/${id}`);
+      const exhibition = await response.json();
+      setExhibition(exhibition);
+    };
+    fetchExhibition();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchArtwork = async () => {
+      const response = await fetch("/api/artworks");
+      const artworks = await response.json();
+      setArtwork(artworks);
+    };
+    fetchArtwork();
+  }, [id]);
+
+  function handleChange(event) {
+    event.preventDefault();
+    const key = event.target.name;
+    const value = event.target.value;
+    setExhibition({ ...exhibition, [key]: value });
+  }
+
+  const handleUpdate = async (event) => {
+    event.preventDefault();
+    const response = await fetch(`/api/exhibitions/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(exhibition),
+    });
+    console.log("exhibition info updated");
+    navigate("/");
+    return response.json();
+  };
+
+  return (
+    <Box
+      className="EditExhibitionFormContainer"
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1 },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <FormControl className="EditExhibitionForm" autoComplete="off">
+        <Typography className="EditExhibitionFormTitle" variant="h4">
+          Edit Exhibition
+        </Typography>
+        <TextField
+          type="text"
+          name="exhibitionTitle"
+          label="Exhibition Title"
+          value={exhibition.exhibitionTitle}
+          inputProps={{ maxLength: 50 }}
+          InputLabelProps={{ shrink: true }}
+          onChange={handleChange}
+        />
+        />
+        <TextField
+          multiline
+          rows={6}
+          type="text"
+          name="exhibitionInformation"
+          label="Full Description"
+          value={exhibition.exhibitionInformation}
+          inputProps={{ maxLength: 1500 }}
+          InputLabelProps={{ shrink: true }}
+          onChange={handleChange}
+        />
+        <FormControl className="EditDropdown" sx={{ m: 1 }} autoComplete="off">
+          <label>Artwork</label>
+          <Select name="artworks" type="text" onChange={handleChange}>
+            {artworks.map((artwork) => (
+              <MenuItem value={artwork._id}>{artwork.artworkTitle}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <TextField
+          type="date"
+          name="exhibitionStartDate"
+          label="Start Date"
+          value={exhibition.exhibitionStartDate}
+          onChange={handleChange}
+          inputProps={{ min: currentDate }}
+          InputLabelProps={{ shrink: true }}
+        />
+        <TextField
+          type="date"
+          name="exhibitionEndDate"
+          label="End Date"
+          value={exhibition.exhibitionEndDate}
+          onChange={handleChange}
+          inputProps={{ min: exhibition.exhibitionStartDate }}
+          InputLabelProps={{ shrink: true }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          onClick={handleUpdate}
+        >
+          Update Exhibition
+        </Button>
+      </FormControl>
+    </Box>
+  );
+}
+```
+
+Updating multiple details while utilising inputProps to validate input data
+
+- `ExhibitionComments.jsx`
+
+```js
+  return (
+    <>
+      {user ? (
+        <>
+          <br></br>
+          <Typography variant="h6">Submit Your Comment:</Typography>
+          <br></br>
+          <TextField
+            type="text"
+            rows="4"
+            cols="50"
+            onChange={(event) => setComment(event.target.value)}
+            value={comment}
+          ></TextField>
+          <br></br>
+          <Button
+            onClick={handleAddNewComment}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Submit Comment
+          </Button>
+          <br></br>
+        </>
+      ) : null}
+
+      {!comments || comments.length === 0 ? (
+        null
+      ) : (
+        <>
+          <Typography variant="h4">Comments</Typography><br></br>
+          {comments.map((review) => (
+            <Typography variant="subtitle1" key={review._id}>
+              {review.comments}
+            </Typography>
+          ))}
+        </>
+      )}
+    </>
+  );
+}
+```
+
+Dynamically show comments and submit comment text field
 
 ### Icon Slider
+
+- `IconSlider.jsx`
 
 ```js
 const IconSlider = () => {
@@ -762,6 +1186,86 @@ export default IconSlider;
 ```
 
 ### Map Search
+
+### Mongoose Model
+
+- `Location.js`
+
+```js
+const locationObjectsSchema = new Schema({
+  type: {
+    type: String,
+    enum: ["Exhibitions", "Artworks", "Shop & Dine", "Amenities"],
+    default: "Artworks",
+  },
+  exhibitionId: {
+    type: Schema.Types.ObjectId,
+    ref: "Exhibition",
+  },
+  artworkId: {
+    type: Schema.Types.ObjectId,
+    ref: "Artwork",
+  },
+  name: String,
+});
+
+const unitsSchema = new Schema({
+  unit: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 20,
+    validate: {
+      validator: Number.isInteger,
+      message: "{VALUE} is not an integer.",
+    },
+  },
+  objects: [locationObjectsSchema],
+});
+
+const locationsSchema = new Schema(
+  {
+    floor: {
+      type: String,
+      enum: ["B1", "L1", "L2", "L3", "L4", "L5", "L6"],
+      default: "L1",
+    },
+
+    exhibitions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Exhibition",
+      },
+    ],
+    artworks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Artwork",
+      },
+    ],
+    shopanddine: [
+      {
+        type: String,
+        minlength: 3,
+      },
+    ],
+    amenities: [
+      {
+        type: String,
+        minlength: 3,
+      },
+    ],
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
+```
+
+- `MapPage.jsx`
 
 ```js
 export default function MapPage() {
@@ -1055,6 +1559,39 @@ The current working examples of the route are:
 1. EXHIBITION Between Declarations and Dreams L1 to EXHIBITION Siapa Nama Kamu B1
 2. EXHIBITION Between Declarations and Dreams L2 to EXHIBITION As We See It L3
 
+### Mongoose Model
+
+- `Directions.js`
+
+```js
+const directionsSchema = new Schema(
+  {
+    route: {
+      type: String,
+      required: true,
+    },
+
+    mapImg: {
+      type: Array,
+      required: true,
+    },
+
+    routeDirections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Explorer",
+      },
+    ],
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
+```
+
 - `directionsController.jsx`
 
 ```js
@@ -1113,6 +1650,50 @@ module.exports = {
 ```
 
 The MapDirectionsExplorer is a child component of the Map Directions Route Page. It receives data from the database that holds the route information. For this component it has the props required to fill the table with Icons, a string of directions in text and an img URL for the route path. The data representing the icon in the database comes in a value of a Keyname such as "turnRight". An object "const Icons" contains a key value pair of the keyname and the Icon componenet from MUI. Therefore when the keyname is called into the table, "[Icons.turnRight]" will access the turnRight Key in the Icons object and access the value of the MUI Icon Component.
+
+### Mongoose Model
+
+```js
+const explorerSchema = new Schema(
+  {
+    directions: {
+      type: String,
+      required: true,
+    },
+
+    explorerPrompt: {
+      type: String,
+      required: true,
+    },
+
+    featureUrl: {
+      type: String,
+      required: true,
+    },
+
+    featureTitle: {
+      type: String,
+      required: true,
+    },
+
+    icon: {
+      type: String,
+      required: true,
+    },
+
+    imgUrl: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
+```
 
 - `MapDirectionsExplorer.jsx`
 
@@ -1174,94 +1755,27 @@ export default function BasicTable(props) {
 }
 ```
 
-### Client Side Routing
-
-```js
-<Routes>
-  <Route path="/*" element={<PageNotFound />} />
-  <Route path="/" element={<HomePage user={user} />} />
-  <Route path="/users/signup" element={<SignUpForm />} />
-  <Route path="/users/login" element={<LoginForm setUser={setUser} />} />
-  <Route path="/users/logout" element={<LogOutMsg />} />
-  <Route path="/artworks" element={<ArtworksPage />} />
-  <Route path="/artworks/:id" element={<ArtworkInfo user={user} />} />{" "}
-  <Route path="/exhibitions/:id" element={<ExhibitionPage user={user} />}></Route>{" "}
-  <Route path="/experimental" element={<ExperimentalPage />} />
-  <Route path="/map" element={<MapPage />} />
-  <Route path="/map/directions" element={<MapPage2 />} />
-  <Route path="/map/directions/from/:from/to/:to" element={<MapPage2 />} />
-  ///map/directions?to=1234from=5678 //get request, post to req.query
-  <Route
-    path="/artworks/new"
-    element={
-      user && user.userRole == "admin" ? (
-        <ArtworksNew user={user} />
-      ) : (
-        <AccessDeniedMsg />
-      )
-    }
-  />
-  <Route
-    path="/artworks/:id/edit"
-    element={
-      user && user.userRole == "admin" ? (
-        <ArtworksEditForm user={user} />
-      ) : (
-        <AccessDeniedMsg />
-      )
-    }
-  />
-  <Route
-    path="/exhibitions/new"
-    element={
-      user && user.userRole == "admin" ? (
-        <ExhibitionNew user={user} />
-      ) : (
-        <AccessDeniedMsg />
-      )
-    }
-  />
-  <Route
-    path="/exhibitions/:id/edit"
-    element={
-      user && user.userRole == "admin" ? (
-        <ExhibitionUpdate user={user} />
-      ) : (
-        <AccessDeniedMsg />
-      )
-    }
-  />
-  <Route
-    path="/admin/signup"
-    element={
-      user && user.userRole == "admin" ? (
-        <AdminSignUpForm user={user} />
-      ) : (
-        <AccessDeniedMsg />
-      )
-    }
-  />
-</Routes>
-```
-
 ## Conclusion
 
 ### Biggest Challenge
 
 Ernest:
 
-- Identifying the need for an industrial grade UI framework. Selecting and learning Material UI framework early in the project helped to allieviate most of the issues and reduced risk of delays.
+- Identifying the need for an industrial grade UI framework. 
+- Selecting and learning Material UI framework early in the project helped to allieviate most of the issues and reduced risk of delays.
 - Splitting the coding responsibilities to avoid double work and clashes.
 - Clarifying the scope of work with the UI/UX team helped to reduce the guesswork and speed up the development.
-- Deployment was tricky because the host servers did not provide enough documentation and troubleshooting advice for free account users. Cyclic server had a disk limit of 240mb, which our deployment exceeded because of the large MUI packages. Render server was using [Node 14](https://render.com/docs/node-version), which was not surfaced up by the error logs but was hidden inside the documentation.
+- Deployment was tricky because the host servers did not provide enough documentation and troubleshooting advice for free account users. 
+- Cyclic server had a disk limit of 240mb, which our deployment exceeded because of the large MUI packages. Render server was using [Node 14](https://render.com/docs/node-version), which was not surfaced up by the error logs but was hidden inside the documentation.
   </br>
 
 Ida:
 
-- Material UI CSS Style Default Behaviour
-- Learning to work in a group using Github
-- Managing expectations
-- Communicate each other's code
+- Learning to work in a group using Github.
+- Managing expectations & communication.
+- Working with referencing and embedding data.
+- Material UI CSS Style Default Behaviour.
+- React Props & State.
   </br>
 
 May:
@@ -1274,18 +1788,18 @@ May:
 
 Mark:
 
-- Working in the MUI environment
-- Initial modelling of Data Models and planning out relationships and dependencies
-- Formulating the logic of a map feature
-- Condensing a route solution into a single object that holds various fields of information, eg img,directions,features,icons
+- Working in the MUI environment.
+- Initial modelling of Data Models and planning out relationships and dependencies.
+- Formulating the logic of a map feature.
+- Condensing a route solution into a single object that holds various fields of information, eg img,directions,features,icons.
   </br>
 
 ### Key Learnings
 
 Ernest:
 
-- The power of JSX enables you to output HTML within the Javascript. Enabling you to output an icon component with an array like this.
-  i.e. The value of a property can be a JSX element.
+- The power of JSX enables you to output HTML within the Javascript. Enabling you to output an icon component with an array like this. </br> 
+i.e. The value of a property can be a JSX element.
 
 ```
 const userMenuItems = [
@@ -1311,16 +1825,18 @@ const userMenuItems = [
     },
   ];
 ```
-
 </br>
 
 Ida:
 
-- Group Git
-- Learnt debugging skills from fellow members
-- Material UI - Difficult at first but very powerful tool
-- Utilising wireframing, trello to manage a group project
-- Model is CRUCIAL
+- Understand the significance of Group Git especially managing code conflicts.
+- Learnt debugging, prioritising and analyzing skills from fellow members.
+- Utilising wireframe & trello to align group vision.
+- Getting familiarise with the key concepts of React (useState, useEffect, React Router, useParams, useNavigate).
+- Implentation of API Fetching for GET,POST,PUT & DELETE.
+- Working with Material UI to create beautiful interface with built in features.
+- Working with referencing and embedding data.
+- Understanding how model affects the entire app.
   </br>
 
 May:
@@ -1335,11 +1851,11 @@ May:
 
 Mark:
 
-- Error finding through learning to read DevTools and testing routes with Insomnia
-- Understanding how to work in an environment where there are potential conflicts in code and resolving it by using a common seed data from the start
-- Planning the code with the MUI structure
+- Error finding through learning to read DevTools and testing routes with Insomnia.
+- Understanding how to work in an environment where there are potential conflicts in code and resolving it by using a common seed data from the start.
+- Planning the code with the MUI structure.
   </br>
-
+  </br>
 ## Why We Choose React?
 
 Based on this analysis, we can conclude that React is a popular choice due to its high job demand(1), ease of learning(2), component-based architecture(5), virtual DOM(4), reactive updates(8), and state management (Redux)(14). React also offers excellent performance (10), simplicity(11), and optional support for Typescript (12), making it suitable for building complex web applications. Additionally, React's mobile framework, React-Native (13), makes it an excellent choice for building mobile apps.
