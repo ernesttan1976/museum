@@ -507,7 +507,6 @@ export default function BasicTable(props) {
 
   const { id } = useParams();
   const [tableData, setTableData] = useState([]);
-  // const navigate = useNavigate();
 
 
   return (
