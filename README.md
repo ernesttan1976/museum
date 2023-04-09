@@ -77,6 +77,13 @@ Notes:
 ## Screenshots
 
 ![Home Page Carousell](/src/images/readme/homepagecarousell.png "Home Page Carousell")</br>
+![Sign Up](/src/images/readme/Signup.png "Sign up")</br>
+![Login](/src/images/readme/Login.png "Login")</br>
+![Create a New Artwork](/src/images/readme/CreateNewArtwork.png "Create Artwork Form")</br>
+![Artworks](/src/images/readme/artworks.png "Artworks")</br>
+![User Artwork Information](/src/images/readme/UserArtworkInfo.png "User Artwork Information page")</br>
+![Admin Artwork Information](/src/images/readme/AdminArtworkInfo.png "Admin Artwork Information page")</br>
+![Edit Artwork](/src/images/readme/AdminEditArtwork.png "Edit Artwork Form")</br>
 ![Exhibition](/src/images/readme/exhibitionaccordion.png "Exhibition")</br>
 ![Map](/src/images/readme/MapFilterPage.png "Maps")</br>
 ![Map Route](/src/images/readme/MapDirections.png "Map Route")</br>
@@ -197,7 +204,7 @@ React routes, paths to different components. For example, when a user navigates 
 ```
 If a user navigates to a URL that doesn't match any of the routes defined in the Router component, this AccessDeniedMsg component will be rendered instead. 
 
-- SignUpForm.jsx 
+- `SignUpForm.jsx` 
 ```js
 export default function SignUpForm({ setUser }) {
   const [state, setState] = useState({
@@ -312,7 +319,7 @@ export default function SignUpForm({ setUser }) {
 ```
 This sign up form component receives the setUser function as a prop, which is used to update the user state after successful sign up. The state contains the user's name, email, password, and a confirmation of the password. The user role is set as "user" by default. The handleChange() function is used to update the state whenever an input field changes and it’s user role is set as a user by default. The handleSubmit() function is called when the user submits the form. It checks if the password is at least 5 characters/numbers long and if the password and confirm fields match. If these conditions are met, it sends a POST request to the server to create a new user account. If the account is successfully created, it displays an alert message and navigates to the login page. Otherwise, it displays an error message.
 
-- LoginForm.jsx
+- `LoginForm.jsx`
 ```js
 export default function LoginForm({setUser}) {
   const [error, setError] = useState("");
@@ -417,7 +424,7 @@ insert your favorite react component here
 The controller holds the logic of taking in the "to and from" from the map page and generating a pre-written route from the database. The controller pulls in the ObjectID of the respective exhibitions and runs it in an If Else statement to respond with the ObjectID of a route solution. Using req.params the objectIDs are retrieved from the URL from the :from and :to and passed through as arguements for the function findRoute. 
 
 
-- directionsController.jsx
+- `directionsController.jsx`
 
 ```js
 const Directions = require("../models/Directions");
@@ -479,7 +486,7 @@ module.exports = {
 
 The MapDirectionsExplorer is a child component of the Map Directions Route Page. It receives data from the database that holds the route information. For this component it has the props required to fill the table with Icons, a string of directions in text and an img URL for the route path. The data representing the icon in the database comes in a value of a Keyname such as "turnRight". An object "const Icons" contains a key value pair of the keyname and the Icon componenet from MUI. Therefore when the keyname is called into the table, "[Icons.turnRight]" will access the turnRight Key in the Icons object and access the value of the MUI Icon Component. 
 
-- MapDirectionsExplorer.jsx
+- `MapDirectionsExplorer.jsx`
 
 ```js
 const Icons = {
