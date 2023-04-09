@@ -439,7 +439,80 @@ The LoginForm component is similar to the SignUpForm component, except that it i
 
 ### Artwork CRUD
 
-Code extract example on update of CRUD.
+Code extract example will focus on edit and update of Artwork CRUD.
+
+- `artworksController.js`
+
+```js 
+const Artwork = require("../models/Artwork");
+
+const create = async (req, res) => {
+  try {
+    const createdArtwork = await Artwork.create(req.body);
+    res.status(200).send(createdArtwork);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const index = async (req, res) => {
+  try {
+    const foundArtwork = await Artwork.find({});
+    res.status(200).send(foundArtwork);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const deleteArtwork = async (req, res) => {
+  try {
+    const deletedArtwork = await Artwork.findByIdAndRemove(req.params.id);
+    res.status(200).send(deletedArtwork);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const show = async (req, res) => {
+  try {
+    const artwork = await Artwork.findById(req.params.id);
+    res.status(200).send(artwork);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const update = async (req, res) => {
+  try {
+    const updatedArtwork = await Artwork.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).send(updatedArtwork);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  create,
+  index,
+  delete: deleteArtwork,
+  show,
+  update,
+};
+```
+The create() function handles the creation of new artwork by calling the create method on the Artwork model with the request body. If successful, it returns the created artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
+
+The index() function retrieves all artworks by calling the find method on the Artwork model with an empty query. If successful, it returns an array of artworks with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
+
+The deleteArtwork() function handles the deletion of artwork by calling the findByIdAndRemove method on the Artwork model with the artwork ID from the request parameters. If successful, it returns the deleted artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
+
+The show() function retrieves a single artwork by calling the findById method on the Artwork model with the artwork ID from the request parameters. If successful, it returns the artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
+
+The update() function handles the updating of artwork by calling the findByIdAndUpdate method on the Artwork model with the artwork ID from the request parameters and the request body, with { new: true } to return the updated artwork. If successful, it returns the updated artwork with a status code of 200. If there is an error, it returns a status code of 400 and an error message.
+
 
 - `ArtworksEditForm.jsx`
 
