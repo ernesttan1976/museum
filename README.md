@@ -127,9 +127,9 @@ export function logout() {
 
 The signUp(userData) function is an asynchronous function that takes a userData object as input. It uses the usersAPI module to make a network request by calling the signUp() function and waiting for the response. The response is a JSON Web Token (JWT), which is stored in local storage using the localStorage.setItem() method. The function then calls getUser() to get the user associated with the token and returns the result.
 
-The getUser() function first calls getToken() to obtain the JSON Web Token (JWT), and then uses the token to retrieve the user associated with it. If a token is present, it decodes it and returns the user property of the resulting object. However, if there is no token, it returns null.
+The getUser() function calls getToken() to obtain the JSON Web Token (JWT). Then uses the token to retrieve the user associated with it. If a token is present, it decodes it and returns the user property of the resulting object. However, if there is no token, it returns null.
 
-The getToken() function retrieves the JSON Web Token (JWT) stored in local storage. If there is no token stored, it returns null. If a token is present, it first decodes it using window.atob() and parses the resulting JSON string to obtain the payload. If the token has expired, as indicated by the exp property in the payload, the function removes the token from local storage and returns null. Otherwise, it returns the token itself.
+The getToken() function retrieves the JSON Web Token (JWT) stored in local storage. If there is no token stored, it returns null. If a token is present, it will decodes it using window.atob() and parses the resulting JSON string to obtain the payload. If the token has expired, as indicated by the exp property in the payload, the function removes the token from local storage and returns null. Otherwise, it returns the token itself.
 
 The logout() function removes the JSON Web Token (JWT) from local storage using the localStorage.removeItem() method.
 
@@ -138,7 +138,7 @@ The logout() function removes the JSON Web Token (JWT) from local storage using 
 const create = async (req, res) => {
   const { password } = req.body;
   if (password.length < 5) {
-    res.status(400).json({ message: "Password is too Short, Please Try Agian." });
+    res.status(400).json({ message: "Password is too Short, Please Try Again." });
     return;
   }
 
@@ -179,7 +179,7 @@ const login = async (req, res) => {
 };
 ```
 
-The create() function first checks the length of the password provided in the request body. If it's less than 5 characters, it responds with a 400 Bad Request status code and a JSON object containing an error message. If the password is long enough, the function tries to create a new user in the database using the User.create() method, passing in the request body as the data to be stored. If the user is created successfully, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 201 Created status code. If an error occurs during user creation, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object.  
+The create() function firstly checks the length of the password provided in the request body. If it's less than 5 characters/numbers, it responds with a 400 Bad Request status code and a JSON object containing an error message. If the password is long enough, the function tries to create a new user in the database using the User.create() method, passing in the request body as the data to be stored. If the user is created successfully, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 201 Created status code. If an error occurs during user creation, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object.  
 
 The login() function attempts to find a user in the database with the specified email using the User.findOne() method. If the user is not found, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "No user found, Please sign up." If a user is found, it compares the password provided in the request body with the user's stored password using the bcrypt.compare() method. If the passwords match, it creates a payload object containing the user and signs it with a JSON Web Token using the jwt.sign() method. The signed token is then returned in the response with a 200 OK status code. If the passwords don't match, it responds with a 401 Unauthorized status code and a JSON object containing a message property with the value "Wrong password." If an error occurs during the login process, such as a database error, it responds with a 500 Internal Server Error status code and returns the error as a JSON object. 
 
@@ -189,20 +189,197 @@ The login() function attempts to find a user in the database with the specified 
 <Route path="/users/login" element={<LoginForm setUser={setUser} />} />  
 <Route path="/users/logout" element={<LogOutMsg />} />
 ```
-React routes, paths to dirrerent component. For example, when a user navigates to "/users/signup" in the application, the <SignUpForm /> component will be rendered.
+React routes, paths to different components. For example, when a user navigates to "/users/signup" in the application, the <SignUpForm /> component will be rendered.
 
 ```js
 <Route path="/*" element={<AccessDeniedMsg />}/>
 ```
 If a user navigates to a URL that doesn't match any of the routes defined in the Router component, this AccessDeniedMsg component will be rendered instead. 
 
+- SignUpForm.jsx 
 ```js
-insert your favorite react component here
-```
+export default function SignUpForm({ setUser }) {
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirm: "",
+    userRole: "user",
+  });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-```js
-insert your favorite react component here
+  const disable = state.password !== state.confirm;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (state.password.length < 5) {
+    setError("Password must be at least 5 characters or numbers long.");
+    return;
+    }
+
+    window.alert(state.email + " Account has been created successfully. Please Login.");
+    fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(state),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log( data ));
+      console.log("submitted");
+      navigate('/users/login');
+  };
+
+  const handleChange = (event) => {
+    setState({
+      ...state, 
+      [event.target.name]: event.target.value, userRole:"user"
+    });
+    console.log(state);
+  };
+
+  return (
+      <Box className="SignUpFormContainer">
+        <form component="form" autoComplete="off" onSubmit={handleSubmit} className="SignUpForm">
+          <Typography variant="h5">Sign Up a new Account </Typography>
+          {error}
+
+          <Box className="R1">
+          <TextField 
+          id="outlined-basic" 
+          label="UserName" 
+          variant="outlined" 
+          type="text" 
+          name="name" 
+          value={state.name} 
+          onChange={handleChange} 
+          required/>
+          </Box>
+
+          <Box className="R1">
+          <TextField 
+          id="outlined-basic" 
+          label="Email Address"  
+          variant="outlined" 
+          type="email" 
+          name="email" 
+          value={state.email} 
+          onChange={handleChange} 
+          required/>
+          </Box>
+
+          <Box className="R1">
+          <TextField 
+          id="outlined-basic" 
+          label="Password (min 5)" 
+          variant="outlined" 
+          type="password" 
+          name="password" 
+          value={state.password} 
+          onChange={handleChange} 
+          required/>
+          </Box>
+
+          <Box className="R1">
+          <TextField 
+          id="outlined-basic" 
+          label="Confirm Password"  
+          variant="outlined" 
+          type="password" 
+          name="confirm" 
+          value={state.confirm} 
+          onChange={handleChange} 
+          required/>
+          </Box>
+
+          <Box className="R1">
+          <Button variant="contained" type="submit" disabled={disable}>Sign Up</Button>
+          <p className="error-message">&nbsp;{state.error}</p>
+          </Box>
+
+        <Box className="R1">
+        <Typography variant="p">Already have an account? 
+        <Link to={`/users/login`}> <Button>Login</Button> </Link>
+        </Typography>
+        </Box>
+      </form>
+      </Box>
+  );
+}
 ```
+This sign up form component receives the setUser function as a prop, which is used to update the user state after successful sign up. The state contains the user's name, email, password, and a confirmation of the password. The user role is set as "user" by default. The handleChange() function is used to update the state whenever an input field changes and it’s user role is set as a user by default. The handleSubmit() function is called when the user submits the form. It checks if the password is at least 5 characters/numbers long and if the password and confirm fields match. If these conditions are met, it sends a POST request to the server to create a new user account. If the account is successfully created, it displays an alert message and navigates to the login page. Otherwise, it displays an error message.
+
+- LoginForm.jsx
+```js
+export default function LoginForm({setUser}) {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const body = Object.fromEntries(formData);
+    try {
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        setUser(getUser())
+        setError("");
+        window.alert("Account has login successfully."); 
+        navigate('/');
+       } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  return (
+    <Box className="LoginFormContainer">
+      <form onSubmit={handleLogin} className="LoginForm">
+        <br></br>
+        <Typography variant="h5">User Login </Typography>
+        {error}
+          <Box className="R2">
+            <TextField 
+            type="email"
+            label="Enter your email address"
+            name="email" 
+            required />
+          </Box>
+
+          <Box className="R2">
+            <TextField 
+            label="Enter your password" 
+            name="password" 
+            type="password"
+            required />
+          </Box>
+          <Box className="R2">
+          <Button variant="contained" type="submit" >Login</Button> 
+          </Box>
+
+      <Box className="R2">
+      <Typography variant="p">No account yet? </Typography>
+        <Link to={`/users/signup`}> <Button>Sign Up</Button> </Link>
+      </Box>
+    </form>
+    </Box>
+  );
+}
+```
+The LoginForm component is similar to the SignUpForm component, except that it is used for logging in existing users. It also receives a setUser prop and uses the useState hook to manage form state and error messages. It uses the useNavigate hook to navigate between pages after the form is submitted. When the form is submitted, it sends a POST request to the /api/users/login endpoint with the form data. If the response contains a token, it is stored in localStorage and the user is redirected to the homepage. Otherwise, an error message is displayed. Non-existing users can sign up for an account using the link leading to the sign-up page.
+
 
 ### Artwork CRUD
 
