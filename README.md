@@ -211,18 +211,34 @@ The login() function attempts to find a user in the database with the specified 
 - `App.jsx`
 
 ```js
+...
 <Route path="/users/signup" element={<SignUpForm />} />
 <Route path="/users/login" element={<LoginForm setUser={setUser} />} />
 <Route path="/users/logout" element={<LogOutMsg />} />
+...
 ```
 
 React routes, paths to different components. For example, when a user navigates to "/users/signup" in the application, the <SignUpForm /> component will be rendered.
 
 ```js
+...
 <Route path="/*" element={<AccessDeniedMsg />} />
+...
 ```
 
 If a user navigates to a URL that doesn't match any of the routes defined in the Router component, this AccessDeniedMsg component will be rendered instead.
+
+```js 
+...
+<Route path="/artworks/new" element={user && user.userRole == "admin" ? <ArtworksNew user={user} /> : <AccessDeniedMsg />} /> 
+<Route path="/artworks/:id/edit" element={user && user.userRole == "admin" ? <ArtworksEditForm user={user} /> : <AccessDeniedMsg />} />  
+<Route path="/exhibitions/new" element={user && user.userRole == "admin" ? <ExhibitionNew user={user} /> : <AccessDeniedMsg />} /> 
+<Route path="/exhibitions/:id/edit" element={user && user.userRole == "admin" ? <ExhibitionUpdate user={user} /> : <AccessDeniedMsg />} /> 
+<Route path="/admin/signup" element={user && user.userRole == "admin" ? <AdminSignUpForm user={user} /> : <AccessDeniedMsg />} />   
+...
+```
+
+The ternary operator is used to conditionally render certain components based on whether the user accessing the site is an admin or not. If the user is an admin, then they are allowed to access certain restricted routes. However, the user is not an admin, it renders an AccessDeniedMsg component, an "Access Denied" message will be shown and prompted the user to log in as an admin.
 
 - `SignUpForm.jsx`
 
