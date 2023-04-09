@@ -11,6 +11,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import "./ExhibitionUpdate.css";
 
+const currentDate = new Date().toISOString().split("T")[0];
+
 function ExhibitionUpdate() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -176,6 +178,7 @@ function ExhibitionUpdate() {
           label="Start Date"
           value={exhibition.exhibitionStartDate}
           onChange={handleChange}
+          inputProps={{ min: currentDate }}
           InputLabelProps={{ shrink: true }}
         />
         <TextField
@@ -184,6 +187,7 @@ function ExhibitionUpdate() {
           label="End Date"
           value={exhibition.exhibitionEndDate}
           onChange={handleChange}
+          inputProps={{ min: exhibition.exhibitionStartDate }}
           InputLabelProps={{ shrink: true }}
         />
         <TextField
