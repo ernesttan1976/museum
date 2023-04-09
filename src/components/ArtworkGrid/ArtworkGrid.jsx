@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import ArtworksCard from '../ArtworksCard/ArtworksCard';
 // import ArtworkInfo from '../../pages/ArtworkInfo/ArtworkInfo';
 import { useEffect, useState } from "react";
-
+import "./ArtworkGrid.css";
 
 export default function ArtworkGrid() {
   //! show the list of artworks
@@ -30,7 +30,7 @@ export default function ArtworkGrid() {
        ))}
        
      </Grid>
-     <Link to={`/artworks/${selectedArtwork?._id}`} artworks={artworks} />
+     <Link className="ArtworkGridLinks" to={`/artworks/${selectedArtwork?._id}`} artworks={artworks} underline="none"/>
 
     </>
    );

@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
+import "./ArtworksCard.css";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 500,
@@ -17,7 +18,7 @@ export default function ArtworksCard(props) {
  
   return (
     <Card onMouseOver={() => onClick(artwork._id)}>
-    <Link to={`/artworks/${artwork._id}`}>
+    <Link className='ArtworkCardLinks' to={`/artworks/${artwork._id}`}>
     <StyledCard className="artwork">
       <CardContent >   
         <CardMedia
