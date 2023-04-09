@@ -21,19 +21,9 @@ function ExhibitionComments({ user, comments, setExhibition }) {
     setComment("");
   };
 
-  if (!comments || comments.length === 0) {
-    return null;
-  }
-
   return (
     <>
-      <Typography variant="h5">Comments</Typography>
-      {comments.map((review) => (
-        <Typography variant="subtitle1" key={review._id}>
-          {review.comments}
-        </Typography>
-      ))}
-      {user && user.userRole === "user" ? (
+      {user ? (
         <>
           <br></br>
           <Typography variant="h6">Submit Your Comment:</Typography>
@@ -46,17 +36,30 @@ function ExhibitionComments({ user, comments, setExhibition }) {
             value={comment}
           ></TextField>
           <br></br>
-          <br></br>
           <Button
             onClick={handleAddNewComment}
             type="submit"
             variant="contained"
             color="primary"
           >
-            Submit
+            Submit Comment
           </Button>
+          <br></br>
         </>
       ) : null}
+
+      {!comments || comments.length === 0 ? (
+        null
+      ) : (
+        <>
+          <Typography variant="h4">Comments</Typography><br></br>
+          {comments.map((review) => (
+            <Typography variant="subtitle1" key={review._id}>
+              {review.comments}
+            </Typography>
+          ))}
+        </>
+      )}
     </>
   );
 }
