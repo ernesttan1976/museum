@@ -424,6 +424,12 @@ insert your favorite react component here
 The controller holds the logic of taking in the "to and from" from the map page and generating a pre-written route from the database. The controller pulls in the ObjectID of the respective exhibitions and runs it in an If Else statement to respond with the ObjectID of a route solution. Using req.params the objectIDs are retrieved from the URL from the :from and :to and passed through as arguements for the function findRoute. 
 
 
+The current working examples of the route are: 
+
+1. EXHIBITION Between Declarations and Dreams L1 to EXHIBITION Siapa Nama Kamu B1
+2. EXHIBITION Between Declarations and Dreams L2 to EXHIBITION As We See It L3
+
+
 - `directionsController.jsx`
 
 ```js
