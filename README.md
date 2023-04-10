@@ -2,7 +2,9 @@
 
 ## Getting Started
 
-https://museumrender.onrender.com/
+https://museumrender.onrender.com/ 
+ 
+<img src='./src/images/QRCode.png' width='200px' height='200px' /> 
 
 ## Contribution
 

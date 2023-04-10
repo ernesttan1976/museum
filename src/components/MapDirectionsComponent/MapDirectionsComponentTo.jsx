@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import ZoomInOutlinedIcon from '@mui/icons-material/ZoomInOutlined';
 import ZoomOutOutlinedIcon from '@mui/icons-material/ZoomOutOutlined';
 import CenterFocusStrongOutlinedIcon from '@mui/icons-material/CenterFocusStrongOutlined';
+import MAPIMAGES from "./MapImages";
 
 
 export default function MapComponent(props) {
@@ -35,7 +36,7 @@ export default function MapComponent(props) {
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => resetTransform()}><CenterFocusStrongOutlinedIcon /></Button>
           </ButtonGroup>
           <TransformComponent className="MapImage2">
-            <img src={`/src/images/maps/${maps?.[1]}.png`} alt="map" width={IMAGE_WIDTH} height={0.75*IMAGE_WIDTH}/>
+            <img src={MAPIMAGES[maps?.[1]]} alt="map" width={IMAGE_WIDTH} height={0.75*IMAGE_WIDTH}/>
 
           </TransformComponent>
         </>
