@@ -15,8 +15,8 @@
   align-self: center;
   display: block;
   margin: 10px auto;
-  height: 500px;
-  width: 80%;
+  max-height: 500px;
+  width: 100%;
   align-self: center;
   padding-bottom: 30px;
 }
@@ -24,4 +24,11 @@
 .ExhibitionPageButton {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .ExhibitionPage img {
+    max-height: 300px;
+    width: 90%;
+  }
 }

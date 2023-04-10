@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import "./HomePageCarousell.css";
 
 export default function HomePageCarousell() {
   const items = [

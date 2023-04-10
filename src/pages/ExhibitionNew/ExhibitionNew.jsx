@@ -19,7 +19,6 @@ function ExhibitionNew() {
 
   const [exhibitions, setExhibition] = useState([]);
   const [data, setData] = useState({});
-  const [error, setError] = useState({});
 
   const addExhibition = (exhibition) =>
     setExhibition([exhibition, ...exhibitions]);
@@ -52,22 +51,6 @@ function ExhibitionNew() {
     navigate("/");
   };
 
-  const validate = () => {
-    let isError = false;
-    const errors = {
-      titleError: "",
-    };
-
-    if (data.exhibitionTitle.length < 10) {
-      isError = true;
-      errors.titleError = "Minimum characters for title: 10 characters";
-    }
-
-    setError(errors);
-
-    return isError;
-  };
-
   return (
     <Box
       className="NewExhibitionFormContainer"
@@ -88,8 +71,6 @@ function ExhibitionNew() {
           label="Exhibition Title"
           type="text"
           name="exhibitionTitle"
-          error={Boolean(error.titleError)}
-          helperText={error.titleError}
           value={data.exhibitionTitle}
           inputProps={{ maxLength: 50, minLength: 10 }}
           onChange={handleChange}
