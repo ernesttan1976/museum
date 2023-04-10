@@ -23,6 +23,7 @@ export default function MapPage() {
         console.log('Component mounted');
         //this function is in index.html
         setScrollHeight();
+        window.scroll(0, 0);
     }, []);
 
     const [locations, setLocations] = useState([]);
