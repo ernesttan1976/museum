@@ -36,7 +36,7 @@ export default function MapComponent(props) {
             <Button className="MapToolBarButton" color='primary' size='large' onClick={() => resetTransform()}><CenterFocusStrongOutlinedIcon /></Button>
           </ButtonGroup>
           <TransformComponent className="MapImage2">
-            <img src={MAPIMAGES[maps?.[0]]} alt="map" width={IMAGE_WIDTH} height={0.75*IMAGE_WIDTH}/>
+            <img src={MAPIMAGES[maps?.[1]]} alt="map" width={IMAGE_WIDTH} height={0.75*IMAGE_WIDTH}/>
 
           </TransformComponent>
         </>
