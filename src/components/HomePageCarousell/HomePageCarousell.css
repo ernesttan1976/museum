@@ -1,0 +1,13 @@
+.CarouselItemImage {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .CarouselItemName {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  .CarouselItem {
+    padding: 1rem;
+  }
+}

@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+
 function ExhibitionComments({ user, comments, setExhibition }) {
   const { id } = useParams();
   const [comment, setComment] = useState("");
@@ -58,6 +59,7 @@ function ExhibitionComments({ user, comments, setExhibition }) {
               {review.comments}
             </Typography>
           ))}
+   
         </>
       )}
     </>

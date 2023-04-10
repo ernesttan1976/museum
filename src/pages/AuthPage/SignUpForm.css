@@ -16,7 +16,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    box-shadow: 0px 3px 6px #d61f1f29;
+    /* box-shadow: 0px 3px 6px #d61f1f29; */
     row-gap: 20px;
 }
 
